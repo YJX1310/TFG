@@ -1,357 +1,116 @@
-// $ANTLR 2.7.7 (2006-11-01): "microcalc.g" -> "ExprLexer.java"$
-package acide.process.parser.grammar;
+// Generated from Expr.g4 by ANTLR 4.7.1
+import org.antlr.v4.runtime.Lexer;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.TokenStream;
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.atn.*;
+import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.misc.*;
 
-import java.io.InputStream;
-import antlr.TokenStreamException;
-import antlr.TokenStreamIOException;
-import antlr.TokenStreamRecognitionException;
-import antlr.CharStreamException;
-import antlr.CharStreamIOException;
-import java.io.Reader;
-import java.util.Hashtable;
-import antlr.InputBuffer;
-import antlr.ByteBuffer;
-import antlr.CharBuffer;
-import antlr.Token;
-import antlr.RecognitionException;
-import antlr.NoViableAltForCharException;
-import antlr.TokenStream;
-import antlr.LexerSharedInputState;
+@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
+public class ExprLexer extends Lexer {
+	static { RuntimeMetaData.checkVersion("4.7.1", RuntimeMetaData.VERSION); }
 
-/**
- * 
- */
-public class ExprLexer extends antlr.CharScanner implements
-		ExprLexerTokenTypes, TokenStream {
-	
-	/**
-	 * 
-	 * @param in
-	 */
-	public ExprLexer(InputStream in) {
-		this(new ByteBuffer(in));
-	}
+	protected static final DFA[] _decisionToDFA;
+	protected static final PredictionContextCache _sharedContextCache =
+		new PredictionContextCache();
+	public static final int
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, NEWLINE=7, INT=8;
+	public static String[] channelNames = {
+		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
+	};
 
-	/**
-	 * 
-	 * @param in
-	 */
-	public ExprLexer(Reader in) {
-		this(new CharBuffer(in));
-	}
+	public static String[] modeNames = {
+		"DEFAULT_MODE"
+	};
+
+	public static final String[] ruleNames = {
+		"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "NEWLINE", "INT"
+	};
+
+	private static final String[] _LITERAL_NAMES = {
+		null, "'*'", "'/'", "'+'", "'-'", "'('", "')'"
+	};
+	private static final String[] _SYMBOLIC_NAMES = {
+		null, null, null, null, null, null, null, "NEWLINE", "INT"
+	};
+	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**
-	 * 
-	 * @param ib
+	 * @deprecated Use {@link #VOCABULARY} instead.
 	 */
-	public ExprLexer(InputBuffer ib) {
-		this(new LexerSharedInputState(ib));
-	}
+	@Deprecated
+	public static final String[] tokenNames;
+	static {
+		tokenNames = new String[_SYMBOLIC_NAMES.length];
+		for (int i = 0; i < tokenNames.length; i++) {
+			tokenNames[i] = VOCABULARY.getLiteralName(i);
+			if (tokenNames[i] == null) {
+				tokenNames[i] = VOCABULARY.getSymbolicName(i);
+			}
 
-	@SuppressWarnings("rawtypes")
-	/**
-	 * 
-	 */
-	public ExprLexer(LexerSharedInputState state) {
-		super(state);
-		caseSensitiveLiterals = true;
-		setCaseSensitive(true);
-		literals = new Hashtable();
-	}
-
-	@SuppressWarnings("unused")
-	/**
-	 * 
-	 */
-	public Token nextToken() throws TokenStreamException {
-		Token theRetToken = null;
-		tryAgain: for (;;) {
-			Token _token = null;
-			int _ttype = Token.INVALID_TYPE;
-			resetText();
-			try { // for char stream error handling
-				try { // for lexical error handling
-					switch (LA(1)) {
-					case '(': {
-						mLPAREN(true);
-						theRetToken = _returnToken;
-						break;
-					}
-					case ')': {
-						mRPAREN(true);
-						theRetToken = _returnToken;
-						break;
-					}
-					case '+': {
-						mPLUS(true);
-						theRetToken = _returnToken;
-						break;
-					}
-					case '-': {
-						mMINUS(true);
-						theRetToken = _returnToken;
-						break;
-					}
-					case '*': {
-						mSTAR(true);
-						theRetToken = _returnToken;
-						break;
-					}
-					case '0':
-					case '1':
-					case '2':
-					case '3':
-					case '4':
-					case '5':
-					case '6':
-					case '7':
-					case '8':
-					case '9': {
-						mINT(true);
-						theRetToken = _returnToken;
-						break;
-					}
-					case '\t':
-					case '\n':
-					case '\r':
-					case ' ': {
-						mWS(true);
-						theRetToken = _returnToken;
-						break;
-					}
-					default: {
-						if (LA(1) == EOF_CHAR) {
-							uponEOF();
-							_returnToken = makeToken(Token.EOF_TYPE);
-						} else {
-							throw new NoViableAltForCharException((char) LA(1),
-									getFilename(), getLine(), getColumn());
-						}
-					}
-					}
-					if (_returnToken == null)
-						continue tryAgain; // found SKIP token
-					_ttype = _returnToken.getType();
-					_ttype = testLiteralsTable(_ttype);
-					_returnToken.setType(_ttype);
-					return _returnToken;
-				} catch (RecognitionException e) {
-					throw new TokenStreamRecognitionException(e);
-				}
-			} catch (CharStreamException cse) {
-				if (cse instanceof CharStreamIOException) {
-					throw new TokenStreamIOException(
-							((CharStreamIOException) cse).io);
-				} else {
-					throw new TokenStreamException(cse.getMessage());
-				}
+			if (tokenNames[i] == null) {
+				tokenNames[i] = "<INVALID>";
 			}
 		}
 	}
 
-	/**
-	 * 
-	 * @param _createToken
-	 * @throws RecognitionException
-	 * @throws CharStreamException
-	 * @throws TokenStreamException
-	 */
-	public final void mLPAREN(boolean _createToken)
-			throws RecognitionException, CharStreamException,
-			TokenStreamException {
-		int _ttype;
-		Token _token = null;
-		int _begin = text.length();
-		_ttype = LPAREN;
-		@SuppressWarnings("unused")
-		int _saveIndex;
-
-		match('(');
-		if (_createToken && _token == null && _ttype != Token.SKIP) {
-			_token = makeToken(_ttype);
-			_token.setText(new String(text.getBuffer(), _begin, text.length()
-					- _begin));
-		}
-		_returnToken = _token;
+	@Override
+	@Deprecated
+	public String[] getTokenNames() {
+		return tokenNames;
 	}
 
-	/**
-	 * 
-	 * @param _createToken
-	 * @throws RecognitionException
-	 * @throws CharStreamException
-	 * @throws TokenStreamException
-	 */
-	public final void mRPAREN(boolean _createToken)
-			throws RecognitionException, CharStreamException,
-			TokenStreamException {
-		int _ttype;
-		Token _token = null;
-		int _begin = text.length();
-		_ttype = RPAREN;
+	@Override
 
-		match(')');
-		if (_createToken && _token == null && _ttype != Token.SKIP) {
-			_token = makeToken(_ttype);
-			_token.setText(new String(text.getBuffer(), _begin, text.length()
-					- _begin));
-		}
-		_returnToken = _token;
+	public Vocabulary getVocabulary() {
+		return VOCABULARY;
 	}
 
-	/**
-	 * 
-	 * @param _createToken
-	 * @throws RecognitionException
-	 * @throws CharStreamException
-	 * @throws TokenStreamException
-	 */
-	public final void mPLUS(boolean _createToken) throws RecognitionException,
-			CharStreamException, TokenStreamException {
-		int _ttype;
-		Token _token = null;
-		int _begin = text.length();
-		_ttype = PLUS;
 
-		match('+');
-		if (_createToken && _token == null && _ttype != Token.SKIP) {
-			_token = makeToken(_ttype);
-			_token.setText(new String(text.getBuffer(), _begin, text.length()
-					- _begin));
-		}
-		_returnToken = _token;
+	public ExprLexer(CharStream input) {
+		super(input);
+		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
-	/**
-	 * 
-	 * @param _createToken
-	 * @throws RecognitionException
-	 * @throws CharStreamException
-	 * @throws TokenStreamException
-	 */
-	public final void mMINUS(boolean _createToken) throws RecognitionException,
-			CharStreamException, TokenStreamException {
-		int _ttype;
-		Token _token = null;
-		int _begin = text.length();
-		_ttype = MINUS;
+	@Override
+	public String getGrammarFileName() { return "Expr.g4"; }
 
-		match('-');
-		if (_createToken && _token == null && _ttype != Token.SKIP) {
-			_token = makeToken(_ttype);
-			_token.setText(new String(text.getBuffer(), _begin, text.length()
-					- _begin));
+	@Override
+	public String[] getRuleNames() { return ruleNames; }
+
+	@Override
+	public String getSerializedATN() { return _serializedATN; }
+
+	@Override
+	public String[] getChannelNames() { return channelNames; }
+
+	@Override
+	public String[] getModeNames() { return modeNames; }
+
+	@Override
+	public ATN getATN() { return _ATN; }
+
+	public static final String _serializedATN =
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\2\n)\b\1\4\2\t\2\4"+
+		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\3\2\3\2\3\3\3\3"+
+		"\3\4\3\4\3\5\3\5\3\6\3\6\3\7\3\7\3\b\6\b!\n\b\r\b\16\b\"\3\t\6\t&\n\t"+
+		"\r\t\16\t\'\2\2\n\3\3\5\4\7\5\t\6\13\7\r\b\17\t\21\n\3\2\4\4\2\f\f\17"+
+		"\17\3\2\62;\2*\2\3\3\2\2\2\2\5\3\2\2\2\2\7\3\2\2\2\2\t\3\2\2\2\2\13\3"+
+		"\2\2\2\2\r\3\2\2\2\2\17\3\2\2\2\2\21\3\2\2\2\3\23\3\2\2\2\5\25\3\2\2\2"+
+		"\7\27\3\2\2\2\t\31\3\2\2\2\13\33\3\2\2\2\r\35\3\2\2\2\17 \3\2\2\2\21%"+
+		"\3\2\2\2\23\24\7,\2\2\24\4\3\2\2\2\25\26\7\61\2\2\26\6\3\2\2\2\27\30\7"+
+		"-\2\2\30\b\3\2\2\2\31\32\7/\2\2\32\n\3\2\2\2\33\34\7*\2\2\34\f\3\2\2\2"+
+		"\35\36\7+\2\2\36\16\3\2\2\2\37!\t\2\2\2 \37\3\2\2\2!\"\3\2\2\2\" \3\2"+
+		"\2\2\"#\3\2\2\2#\20\3\2\2\2$&\t\3\2\2%$\3\2\2\2&\'\3\2\2\2\'%\3\2\2\2"+
+		"\'(\3\2\2\2(\22\3\2\2\2\5\2\"\'\2";
+	public static final ATN _ATN =
+		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
+	static {
+		_decisionToDFA = new DFA[_ATN.getNumberOfDecisions()];
+		for (int i = 0; i < _ATN.getNumberOfDecisions(); i++) {
+			_decisionToDFA[i] = new DFA(_ATN.getDecisionState(i), i);
 		}
-		_returnToken = _token;
-	}
-
-	/**
-	 * 
-	 * @param _createToken
-	 * @throws RecognitionException
-	 * @throws CharStreamException
-	 * @throws TokenStreamException
-	 */
-	public final void mSTAR(boolean _createToken) throws RecognitionException,
-			CharStreamException, TokenStreamException {
-		int _ttype;
-		Token _token = null;
-		int _begin = text.length();
-		_ttype = STAR;
-		
-		match('*');
-		if (_createToken && _token == null && _ttype != Token.SKIP) {
-			_token = makeToken(_ttype);
-			_token.setText(new String(text.getBuffer(), _begin, text.length()
-					- _begin));
-		}
-		_returnToken = _token;
-	}
-
-	/**
-	 * 
-	 * @param _createToken
-	 * @throws RecognitionException
-	 * @throws CharStreamException
-	 * @throws TokenStreamException
-	 */
-	public final void mINT(boolean _createToken) throws RecognitionException,
-			CharStreamException, TokenStreamException {
-		int _ttype;
-		Token _token = null;
-		int _begin = text.length();
-		_ttype = INT;
-
-		{
-			int _cnt8 = 0;
-			_loop8: do {
-				if (((LA(1) >= '0' && LA(1) <= '9'))) {
-					matchRange('0', '9');
-				} else {
-					if (_cnt8 >= 1) {
-						break _loop8;
-					} else {
-						throw new NoViableAltForCharException((char) LA(1),
-								getFilename(), getLine(), getColumn());
-					}
-				}
-
-				_cnt8++;
-			} while (true);
-		}
-		if (_createToken && _token == null && _ttype != Token.SKIP) {
-			_token = makeToken(_ttype);
-			_token.setText(new String(text.getBuffer(), _begin, text.length()
-					- _begin));
-		}
-		_returnToken = _token;
-	}
-
-	/**
-	 * 
-	 * @param _createToken
-	 * @throws RecognitionException
-	 * @throws CharStreamException
-	 * @throws TokenStreamException
-	 */
-	public final void mWS(boolean _createToken) throws RecognitionException,
-			CharStreamException, TokenStreamException {
-		int _ttype;
-		Token _token = null;
-		int _begin = text.length();
-		_ttype = WS;
-
-		{
-			switch (LA(1)) {
-			case ' ': {
-				match(' ');
-				break;
-			}
-			case '\r': {
-				match('\r');
-				match('\n');
-				break;
-			}
-			case '\n': {
-				match('\n');
-				break;
-			}
-			case '\t': {
-				match('\t');
-				break;
-			}
-			default: {
-				throw new NoViableAltForCharException((char) LA(1),
-						getFilename(), getLine(), getColumn());
-			}
-			}
-		}
-		_ttype = Token.SKIP;
-		if (_createToken && _token == null && _ttype != Token.SKIP) {
-			_token = makeToken(_ttype);
-			_token.setText(new String(text.getBuffer(), _begin, text.length()
-					- _begin));
-		}
-		_returnToken = _token;
 	}
 }
