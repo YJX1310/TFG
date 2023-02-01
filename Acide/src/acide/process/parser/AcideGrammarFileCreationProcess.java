@@ -114,22 +114,22 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		executeAntlr();
 
 		// Modifies the generated GrammarParser.java
-		modifyGrammarParserFile();
+		//modifyGrammarParserFile();
 
 		// Compiles the generated files to obtain the .class files
-		compileGeneratedFiles();
+		//compileGeneratedFiles();
 
 		// Reallocates the generated files in the correspondent folder
 		reallocateGeneratedFiles();
 
 		// Generates the .jar file
-		generateJarFile();
+		//generateJarFile();
 
 		// Deletes the generated files
-		deleteGeneratedFiles();
+		//deleteGeneratedFiles();
 
 		// Reallocates the generated .jar file into the correspondent folder
-		reallocateJarFile();
+		//reallocateJarFile();
 
 		// If the verbose flag is true then
 		if (_verboseProcess)
@@ -201,9 +201,7 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		// Updates the progress window
 		AcideProgressWindow
 				.getInstance()
-				.setText(
-						"\"" + javaPath
-								+ "\" -cp ./lib/antlr.jar antlr.Tool grammar.g");
+				.setText("\"" + javaPath + "\" -jar ./lib/antlr-4.7.1-complete.jar -visitor Expr.g4");
 
 		// Executes antlr to generate the files which will be at the .jar
 		Process process = null;
@@ -211,9 +209,8 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		try {
 
 			// Executes the command
-			process = Runtime.getRuntime().exec(
-					"\"" + javaPath
-							+ "\" -cp ./lib/antlr.jar antlr.Tool grammar.g");
+			process = Runtime.getRuntime().exec("\"" + javaPath + "\" -jar ./lib/antlr-4.7.1-complete.jar -visitor Expr.g4");
+
 
 			// Waits for the process to finish
 			process.waitFor();
@@ -376,35 +373,49 @@ public class AcideGrammarFileCreationProcess extends Thread {
 				AcideLanguageManager.getInstance().getLabels()
 						.getString("s1055"));
 
-		// Reallocates the GrammarLexer.java file
-		AcideByteFileManager.getInstance().reallocateFile("GrammarLexer.java",
-				"src/acide/process/parser/grammar/GrammarLexer.java");
+		// Reallocates the Expr.g4 file
+		AcideByteFileManager.getInstance().reallocateFile("Expr.g4",
+				"src/acide/process/parser/grammar/Expr.g4");
+		
+		// Reallocates the Expr.interp file
+		AcideByteFileManager.getInstance().reallocateFile("Expr.interp",
+				"src/acide/process/parser/grammar/Expr.interp");
+		
+		// Reallocates the Expr.tokens file
+		AcideByteFileManager.getInstance().reallocateFile("Expr.tokens",
+				"src/acide/process/parser/grammar/Expr.tokens");
 
-		// Reallocates the GrammarLexer.smap file
-		AcideByteFileManager.getInstance().reallocateFile("GrammarLexer.smap",
-				"src/acide/process/parser/grammar/GrammarLexer.smap");
+		// Reallocates the ExprBaseListener.java file
+		AcideByteFileManager.getInstance().reallocateFile("ExprBaseListener.java",
+				"src/acide/process/parser/grammar/ExprBaseListener.java");
 
-		// Reallocates the GrammarLexerTokenTypes.java file
-		AcideByteFileManager.getInstance().reallocateFile(
-				"GrammarLexerTokenTypes.java",
-				"src/acide/process/parser/grammar/GrammarLexerTokenTypes.java");
+		// Reallocates the ExprBaseVisitor.java file
+		AcideByteFileManager.getInstance().reallocateFile("ExprBaseVisitor.java",
+				"src/acide/process/parser/grammar/ExprBaseVisitor.java");
 
-		// Reallocates the GrammarLexerTokenTypes.txt file
-		AcideByteFileManager.getInstance().reallocateFile(
-				"GrammarLexerTokenTypes.txt",
-				"src/acide/process/parser/grammar/GrammarLexerTokenTypes.txt");
+		// Reallocates the ExprLexer.interp file
+		AcideByteFileManager.getInstance().reallocateFile("ExprLexer.interp",
+				"src/acide/process/parser/grammar/ExprLexer.interp");
+		
+		// Reallocates the ExprLexer.java file
+		AcideByteFileManager.getInstance().reallocateFile("ExprLexer.java",
+				"src/acide/process/parser/grammar/ExprLexer.java");
+		
+		// Reallocates the ExprLexer.tokens file
+		AcideByteFileManager.getInstance().reallocateFile("ExprLexer.tokens",
+				"src/acide/process/parser/grammar/ExprLexer.tokens");
+		
+		// Reallocates the ExprListener.java file
+		AcideByteFileManager.getInstance().reallocateFile("ExprListener.java",
+				"src/acide/process/parser/grammar/ExprListener.java");
 
-		// Reallocates the GrammarParser.java file
-		AcideByteFileManager.getInstance().reallocateFile("GrammarParser.java",
-				"src/acide/process/parser/grammar/GrammarParser.java");
+		// Reallocates the ExprParser.java file
+		AcideByteFileManager.getInstance().reallocateFile("ExprParser.java",
+				"src/acide/process/parser/grammar/ExprParser.java");
 
-		// Reallocates the GrammarParser.smap file
-		AcideByteFileManager.getInstance().reallocateFile("GrammarParser.smap",
-				"src/acide/process/parser/grammar/GrammarParser.smap");
-
-		// Reallocates the grammar.g file
-		AcideByteFileManager.getInstance().reallocateFile("grammar.g",
-				"src/acide/process/parser/grammar/grammar.g");
+		// Reallocates the ExprVisitor.java file
+		AcideByteFileManager.getInstance().reallocateFile("ExprVisitor.java",
+				"src/acide/process/parser/grammar/ExprVisitor.java");
 
 		// Reallocates the syntaxRules.txt file
 		AcideByteFileManager.getInstance().reallocateFile("syntaxRules.txt",
@@ -496,46 +507,50 @@ public class AcideGrammarFileCreationProcess extends Thread {
 				AcideLanguageManager.getInstance().getLabels()
 						.getString("s1059"));
 
-		// Deletes the GrammarLexer.java file
-		File file = new File("GrammarLexer.java");
+		// Deletes the Expr.g4 file
+		File file = new File("Expr.g4");
 		file.delete();
 
-		// Deletes the GrammarLexer.class file
-		file = new File("GrammarLexer.class");
+		// Deletes the Expr.interp file
+		file = new File("Expr.interp");
 		file.delete();
 
-		// Deletes the GrammarLexerTokenTypes.java file
-		file = new File("GrammarLexerTokenTypes.java");
+		// Deletes the Expr.tokens file
+		file = new File("Expr.tokens");
 		file.delete();
 
-		// Deletes the GrammarLexerTokenTypes.class file
-		file = new File("GrammarLexerTokenTypes.class");
+		// Deletes the ExprBaseListener.java file
+		file = new File("ExprBaseListener.java");
 		file.delete();
 
-		// Deletes the GrammarParser.java file
-		file = new File("GrammarParser.java");
+		// Deletes the ExprBaseVisitor.java file
+		file = new File("ExprBaseVisitor.java");
 		file.delete();
 
-		// Deletes the GrammarParser.class file
-		file = new File("GrammarParser.class");
+		// Deletes the ExprLexer.interp file
+		file = new File("ExprLexer.interp");
 		file.delete();
 
-		// Deletes the GrammarLexer.smap file
-		file = new File("GrammarLexer.smap");
+		// Deletes the ExprLexer.java file
+		file = new File("ExprLexer.java");
 		file.delete();
 
-		// Deletes the GrammarParser.smap file
-		file = new File("GrammarParser.smap");
+		// Deletes the ExprLexer.tokens file
+		file = new File("ExprLexer.tokens");
 		file.delete();
 
-		// Deletes the GrammarLexerTokenTypes.txt
-		file = new File("GrammarLexerTokenTypes.txt");
+		// Deletes the ExprListener.java file
+		file = new File("ExprListener.java");
 		file.delete();
 
-		// Deletes the grammar.g
-		file = new File("grammar.g");
+		// Deletes the ExprParser.java file
+		file = new File("ExprParser.java");
 		file.delete();
-
+		
+		// Deletes the ExprVisitor.java file
+		file = new File("ExprVisitor.java");
+		file.delete();
+		
 		// Deletes the syntaxRules.txt
 		file = new File("syntaxRules.txt");
 		file.delete();

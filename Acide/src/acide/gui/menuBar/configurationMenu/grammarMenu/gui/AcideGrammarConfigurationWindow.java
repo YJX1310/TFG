@@ -259,8 +259,8 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 				// Reallocates the grammar.g file
 				AcideByteFileManager.getInstance().reallocateFile(
-						"src/acide/process/parser/grammar/grammar.g",
-						"grammar.g");
+						"src/acide/process/parser/grammar/Expr.g4",
+						"Expr.g4");
 
 				// Reallocates the syntaxRules.txt file
 				AcideByteFileManager.getInstance().reallocateFile(
@@ -656,15 +656,10 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 		public void actionPerformed(ActionEvent actionEvent) {
 
 			// Creates the file content
-			String textContent = "header{\npackage acide.process.parser.grammar;\n}\n";
-			textContent += "class GrammarLexer extends Lexer;\n";
-			textContent += _categoriesTextArea.getText();
-			textContent += "\nclass GrammarParser extends Parser;\n";
-			textContent += "options{k=2;}\n";
-			textContent += _rulesTextArea.getText();
+			String textContent = _rulesTextArea.getText();
 
-			// Saves the grammar.g file
-			boolean isSaved = AcideFileManager.getInstance().write("grammar.g",
+			// Saves the Expr.g4 file
+			boolean isSaved = AcideFileManager.getInstance().write("Expr.g4",
 					textContent);
 
 			// Saves the lexical categories file
