@@ -150,9 +150,9 @@
             <__caretPosition>222</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
-            <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
-            <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
-            <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
+            <__lexiconConfiguration>C:\Users\34642\eclipse\TFG\Github\Acide\configuration\lexicon\java.xml</__lexiconConfiguration>
+            <__previousGrammarConfiguration>./configuration/grammars/newGrammar.jar</__previousGrammarConfiguration>
+            <__currentGrammarConfiguration>C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar</__currentGrammarConfiguration>
           </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\SQLDebugger\example1.sql</__path>
