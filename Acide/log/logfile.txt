@@ -1,185 +1,380 @@
-01 feb 2023 20:29:35,563 [main] INFO  LogAcide - Using your system's LookAndFeel
-01 feb 2023 20:29:35,684 [AWT-EventQueue-0] INFO  LogAcide - Initiating application...
-01 feb 2023 20:29:35,684 [AWT-EventQueue-0] INFO  LogAcide - Loading the ACIDE - A Configurable IDE - Workbench Configuration
-01 feb 2023 20:29:35,934 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Lexicon Assigner Configuration
-01 feb 2023 20:29:35,934 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Lexicon Assigner Configuration
-01 feb 2023 20:29:36,685 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Tool Bar Configuration
-01 feb 2023 20:29:36,701 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Menu Configuration
-01 feb 2023 20:29:36,704 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Language Configuration
-01 feb 2023 20:29:36,705 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Explorer Configuration
-01 feb 2023 20:29:36,733 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Main Window...
-01 feb 2023 20:29:36,747 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Menu...
-01 feb 2023 20:29:36,788 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu Configuration loaded: .\configuration\menu\lastModified.menuConfig
-01 feb 2023 20:29:36,846 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu Configuration loaded: .\configuration\menu\defaultAllOn.xml
-01 feb 2023 20:29:37,038 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,040 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,042 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,044 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,046 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,047 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,048 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,049 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,051 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,052 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,054 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,056 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,057 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,059 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,061 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,062 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,064 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-01 feb 2023 20:29:37,065 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu created
-01 feb 2023 20:29:37,079 [AWT-EventQueue-0] INFO  LogAcide - Menu Listeners established
-01 feb 2023 20:29:37,082 [AWT-EventQueue-0] INFO  LogAcide - Generating the tree of the working directory
-01 feb 2023 20:29:37,105 [AWT-EventQueue-0] INFO  LogAcide - Tree of the working directory generated
-01 feb 2023 20:29:37,112 [AWT-EventQueue-0] INFO  LogAcide - Creating exit of text... 
-01 feb 2023 20:29:37,135 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:37,136 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:37,148 [AWT-EventQueue-0] INFO  LogAcide - Exit of created text 
-01 feb 2023 20:29:37,168 [AWT-EventQueue-0] INFO  LogAcide - Generating the tree of the database directory
-01 feb 2023 20:29:37,177 [AWT-EventQueue-0] INFO  LogAcide - Tree of the working directory generated
-01 feb 2023 20:29:37,336 [AWT-EventQueue-0] INFO  LogAcide - Initializing icons...
-01 feb 2023 20:29:37,344 [AWT-EventQueue-0] INFO  LogAcide - Icons created
-01 feb 2023 20:29:37,345 [AWT-EventQueue-0] INFO  LogAcide - Icons created
-01 feb 2023 20:29:37,345 [AWT-EventQueue-0] INFO  LogAcide - Initializing the ACIDE - A Configurable IDE - Tool Bar...
-01 feb 2023 20:29:37,348 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Tool Bar created
-01 feb 2023 20:29:37,348 [AWT-EventQueue-0] INFO  LogAcide - Initializing the ACIDE - A Configurable IDE - Tool Bar...
-01 feb 2023 20:29:37,349 [AWT-EventQueue-0] INFO  LogAcide - Icons created
-01 feb 2023 20:29:37,350 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Tool Bar created
-01 feb 2023 20:29:37,360 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Main Window created
-01 feb 2023 20:29:37,363 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Debug Configuration
-01 feb 2023 20:29:37,366 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Console Configuration
-01 feb 2023 20:29:37,371 [AWT-EventQueue-0] ERROR LogAcide - 
-01 feb 2023 20:29:37,409 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Recent Files Configuration
-01 feb 2023 20:29:37,414 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Recent Projects Configuration
-01 feb 2023 20:29:37,415 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - File Editor Configuration
-01 feb 2023 20:29:37,505 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:37,507 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:37,507 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:37,555 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:37,707 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:37,708 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:37,708 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:37,714 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:37,845 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:37,845 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:37,845 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:37,852 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:37,937 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:37,938 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:37,939 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:37,945 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:38,018 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:38,018 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:38,019 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:38,024 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:38,093 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:38,094 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:38,094 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:38,100 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:38,164 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:38,164 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:38,164 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:38,168 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:38,224 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:38,224 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:38,224 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:38,231 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:38,499 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:38,500 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:38,500 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:38,506 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:38,567 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:38,567 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:38,567 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:38,573 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:38,640 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:38,640 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:38,640 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:38,645 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:38,703 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:38,703 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:38,703 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:38,706 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:38,746 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:38,746 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:38,746 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:38,750 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:38,825 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:38,825 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:38,825 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:38,830 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:39,027 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:39,027 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:39,027 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:39,030 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:39,109 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:39,109 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:39,110 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:39,114 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:39,188 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:39,188 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:39,188 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:39,193 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:39,253 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-01 feb 2023 20:29:39,253 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-01 feb 2023 20:29:39,253 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-01 feb 2023 20:29:39,258 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-01 feb 2023 20:29:39,307 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Main Window Configuration
-01 feb 2023 20:29:44,654 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Grammar Configuration Window...
-01 feb 2023 20:29:44,681 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Grammar Configuration Window created
-01 feb 2023 20:29:48,064 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
-01 feb 2023 20:29:48,154 [AWT-EventQueue-0] INFO  LogAcide - Grammar Rules successfully loaded
-01 feb 2023 20:29:55,334 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\lexicon\java.xml
-01 feb 2023 20:29:55,417 [AWT-EventQueue-0] INFO  LogAcide - Lexicon Categories successfully loaded
-01 feb 2023 20:29:56,193 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: Expr.g4
-01 feb 2023 20:29:56,195 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: lexicalCategories.txt
-01 feb 2023 20:29:56,196 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: syntaxRules.txt
-01 feb 2023 20:29:56,196 [AWT-EventQueue-0] INFO  LogAcide - File .g successfully created
-01 feb 2023 20:29:56,214 [AWT-EventQueue-0] INFO  LogAcide - New grammar created
-01 feb 2023 20:29:59,306 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.g4
-01 feb 2023 20:29:59,308 [Thread-7] INFO  LogAcide - Grammar file deleted successfully Expr.g4
-01 feb 2023 20:29:59,316 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.interp
-01 feb 2023 20:29:59,320 [Thread-7] INFO  LogAcide - Grammar file deleted successfully Expr.interp
-01 feb 2023 20:29:59,325 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.tokens
-01 feb 2023 20:29:59,327 [Thread-7] INFO  LogAcide - Grammar file deleted successfully Expr.tokens
-01 feb 2023 20:29:59,331 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprBaseListener.java
-01 feb 2023 20:29:59,333 [Thread-7] INFO  LogAcide - Grammar file deleted successfully ExprBaseListener.java
-01 feb 2023 20:29:59,339 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprBaseVisitor.java
-01 feb 2023 20:29:59,343 [Thread-7] INFO  LogAcide - Grammar file deleted successfully ExprBaseVisitor.java
-01 feb 2023 20:29:59,351 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.interp
-01 feb 2023 20:29:59,354 [Thread-7] INFO  LogAcide - Grammar file deleted successfully ExprLexer.interp
-01 feb 2023 20:29:59,359 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.java
-01 feb 2023 20:29:59,361 [Thread-7] INFO  LogAcide - Grammar file deleted successfully ExprLexer.java
-01 feb 2023 20:29:59,366 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.tokens
-01 feb 2023 20:29:59,369 [Thread-7] INFO  LogAcide - Grammar file deleted successfully ExprLexer.tokens
-01 feb 2023 20:29:59,373 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprListener.java
-01 feb 2023 20:29:59,375 [Thread-7] INFO  LogAcide - Grammar file deleted successfully ExprListener.java
-01 feb 2023 20:29:59,379 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprParser.java
-01 feb 2023 20:29:59,381 [Thread-7] INFO  LogAcide - Grammar file deleted successfully ExprParser.java
-01 feb 2023 20:29:59,385 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprVisitor.java
-01 feb 2023 20:29:59,387 [Thread-7] INFO  LogAcide - Grammar file deleted successfully ExprVisitor.java
-01 feb 2023 20:29:59,393 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/syntaxRules.txt
-01 feb 2023 20:29:59,395 [Thread-7] INFO  LogAcide - Grammar file deleted successfully syntaxRules.txt
-01 feb 2023 20:29:59,404 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/lexicalCategories.txt
-01 feb 2023 20:29:59,408 [Thread-7] INFO  LogAcide - Grammar file deleted successfully lexicalCategories.txt
-01 feb 2023 20:31:03,384 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\lexicon\java.xml
-01 feb 2023 20:31:08,437 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
-01 feb 2023 20:31:08,438 [AWT-EventQueue-0] INFO  LogAcide - Grammar successfully loaded C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
-01 feb 2023 20:31:27,653 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Grammar Configuration Window...
-01 feb 2023 20:31:27,676 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Grammar Configuration Window created
-01 feb 2023 20:32:34,097 [AWT-EventQueue-0] INFO  LogAcide - Grammar creation canceled by user
-01 feb 2023 20:32:36,295 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Grammar Configuration Window...
-01 feb 2023 20:32:36,299 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully Expr.g4
-01 feb 2023 20:32:36,300 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully src/acide/process/parser/grammar/Expr.g4
-01 feb 2023 20:32:36,302 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully syntaxRules.txt
-01 feb 2023 20:32:36,303 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully src/acide/process/parser/grammar/syntaxRules.txt
-01 feb 2023 20:32:36,304 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully lexicalCategories.txt
-01 feb 2023 20:32:36,305 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully src/acide/process/parser/grammar/lexicalCategories.txt
-01 feb 2023 20:32:36,560 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Grammar Configuration Window created
-01 feb 2023 20:34:20,543 [AWT-EventQueue-0] INFO  LogAcide - Reading of file canceled by the user. 
-01 feb 2023 20:34:23,341 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Grammar Configuration Window...
-01 feb 2023 20:34:23,560 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Grammar Configuration Window created
-01 feb 2023 20:34:26,504 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\bytes4.jar
-01 feb 2023 20:34:26,580 [AWT-EventQueue-0] INFO  LogAcide - Grammar Rules successfully loaded
-01 feb 2023 21:44:45,107 [AWT-EventQueue-0] INFO  LogAcide - Unable to kill des.exe. Exit code: 128n
+06 feb 2023 16:12:17,896 [main] INFO  LogAcide - Using your system's LookAndFeel
+06 feb 2023 16:12:18,058 [AWT-EventQueue-0] INFO  LogAcide - Initiating application...
+06 feb 2023 16:12:18,059 [AWT-EventQueue-0] INFO  LogAcide - Loading the ACIDE - A Configurable IDE - Workbench Configuration
+06 feb 2023 16:12:18,318 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Lexicon Assigner Configuration
+06 feb 2023 16:12:18,318 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Lexicon Assigner Configuration
+06 feb 2023 16:12:19,135 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Tool Bar Configuration
+06 feb 2023 16:12:19,151 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Menu Configuration
+06 feb 2023 16:12:19,158 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Language Configuration
+06 feb 2023 16:12:19,158 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Explorer Configuration
+06 feb 2023 16:12:19,185 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Main Window...
+06 feb 2023 16:12:19,200 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Menu...
+06 feb 2023 16:12:19,246 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu Configuration loaded: .\configuration\menu\lastModified.menuConfig
+06 feb 2023 16:12:19,310 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu Configuration loaded: .\configuration\menu\defaultAllOn.xml
+06 feb 2023 16:12:19,509 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,511 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,513 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,514 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,516 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,518 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,519 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,521 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,522 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,524 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,525 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,527 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,529 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,530 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,533 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,534 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,536 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+06 feb 2023 16:12:19,537 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu created
+06 feb 2023 16:12:19,547 [AWT-EventQueue-0] INFO  LogAcide - Menu Listeners established
+06 feb 2023 16:12:19,551 [AWT-EventQueue-0] INFO  LogAcide - Generating the tree of the working directory
+06 feb 2023 16:12:19,573 [AWT-EventQueue-0] INFO  LogAcide - Tree of the working directory generated
+06 feb 2023 16:12:19,581 [AWT-EventQueue-0] INFO  LogAcide - Creating exit of text... 
+06 feb 2023 16:12:19,602 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:19,602 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:19,614 [AWT-EventQueue-0] INFO  LogAcide - Exit of created text 
+06 feb 2023 16:12:19,636 [AWT-EventQueue-0] INFO  LogAcide - Generating the tree of the database directory
+06 feb 2023 16:12:19,648 [AWT-EventQueue-0] INFO  LogAcide - Tree of the working directory generated
+06 feb 2023 16:12:19,832 [AWT-EventQueue-0] INFO  LogAcide - Initializing icons...
+06 feb 2023 16:12:19,843 [AWT-EventQueue-0] INFO  LogAcide - Icons created
+06 feb 2023 16:12:19,843 [AWT-EventQueue-0] INFO  LogAcide - Icons created
+06 feb 2023 16:12:19,843 [AWT-EventQueue-0] INFO  LogAcide - Initializing the ACIDE - A Configurable IDE - Tool Bar...
+06 feb 2023 16:12:19,847 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Tool Bar created
+06 feb 2023 16:12:19,847 [AWT-EventQueue-0] INFO  LogAcide - Initializing the ACIDE - A Configurable IDE - Tool Bar...
+06 feb 2023 16:12:19,848 [AWT-EventQueue-0] INFO  LogAcide - Icons created
+06 feb 2023 16:12:19,849 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Tool Bar created
+06 feb 2023 16:12:19,856 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Main Window created
+06 feb 2023 16:12:19,858 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Debug Configuration
+06 feb 2023 16:12:19,861 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Console Configuration
+06 feb 2023 16:12:19,871 [AWT-EventQueue-0] ERROR LogAcide - 
+06 feb 2023 16:12:19,907 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Recent Files Configuration
+06 feb 2023 16:12:19,912 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Recent Projects Configuration
+06 feb 2023 16:12:19,913 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - File Editor Configuration
+06 feb 2023 16:12:20,003 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:20,006 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:20,006 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:20,054 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:20,221 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:20,221 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:20,222 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:20,227 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:20,363 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:20,363 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:20,363 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:20,369 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:20,441 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:20,442 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:20,442 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:20,446 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:20,507 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:20,507 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:20,507 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:20,511 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:20,573 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:20,573 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:20,573 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:20,577 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:20,643 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:20,644 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:20,644 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:20,649 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:20,716 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:20,716 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:20,716 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:20,722 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:20,993 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:20,993 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:20,993 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:20,997 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:21,067 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:21,067 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:21,068 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:21,073 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:21,123 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:21,123 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:21,123 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:21,127 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:21,192 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:21,192 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:21,192 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:21,196 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:21,235 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:21,235 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:21,236 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:21,242 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:21,312 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:21,312 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:21,312 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:21,316 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:21,511 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:21,511 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:21,511 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:21,515 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:21,579 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:21,579 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:21,579 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:21,584 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:21,656 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:21,656 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:21,656 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:21,659 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:21,720 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+06 feb 2023 16:12:21,721 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+06 feb 2023 16:12:21,721 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+06 feb 2023 16:12:21,725 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+06 feb 2023 16:12:21,781 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Main Window Configuration
+06 feb 2023 16:12:29,005 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Grammar Configuration Window...
+06 feb 2023 16:12:29,065 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Grammar Configuration Window created
+06 feb 2023 16:12:32,502 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
+06 feb 2023 16:12:32,605 [AWT-EventQueue-0] INFO  LogAcide - Grammar Rules successfully loaded
+06 feb 2023 16:12:38,770 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: Expr.g4
+06 feb 2023 16:12:38,771 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: lexicalCategories.txt
+06 feb 2023 16:12:38,772 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: syntaxRules.txt
+06 feb 2023 16:12:38,772 [AWT-EventQueue-0] INFO  LogAcide - File .g successfully created
+06 feb 2023 16:12:38,795 [AWT-EventQueue-0] INFO  LogAcide - New grammar created
+06 feb 2023 16:12:56,723 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.g4
+06 feb 2023 16:12:56,727 [Thread-7] INFO  LogAcide - Grammar file deleted successfully Expr.g4
+06 feb 2023 16:12:56,734 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.interp
+06 feb 2023 16:12:56,736 [Thread-7] INFO  LogAcide - Grammar file deleted successfully Expr.interp
+06 feb 2023 16:12:56,740 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.tokens
+06 feb 2023 16:12:56,742 [Thread-7] INFO  LogAcide - Grammar file deleted successfully Expr.tokens
+06 feb 2023 16:12:56,747 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprBaseListener.java
+06 feb 2023 16:12:56,750 [Thread-7] INFO  LogAcide - Grammar file deleted successfully ExprBaseListener.java
+06 feb 2023 16:12:56,755 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.interp
+06 feb 2023 16:12:56,757 [Thread-7] INFO  LogAcide - Grammar file deleted successfully ExprLexer.interp
+06 feb 2023 16:12:56,761 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.java
+06 feb 2023 16:12:56,763 [Thread-7] INFO  LogAcide - Grammar file deleted successfully ExprLexer.java
+06 feb 2023 16:12:56,768 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.tokens
+06 feb 2023 16:12:56,771 [Thread-7] INFO  LogAcide - Grammar file deleted successfully ExprLexer.tokens
+06 feb 2023 16:12:56,774 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprListener.java
+06 feb 2023 16:12:56,777 [Thread-7] INFO  LogAcide - Grammar file deleted successfully ExprListener.java
+06 feb 2023 16:12:56,781 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprParser.java
+06 feb 2023 16:12:56,786 [Thread-7] INFO  LogAcide - Grammar file deleted successfully ExprParser.java
+06 feb 2023 16:12:56,797 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/syntaxRules.txt
+06 feb 2023 16:12:56,800 [Thread-7] INFO  LogAcide - Grammar file deleted successfully syntaxRules.txt
+06 feb 2023 16:12:56,809 [Thread-7] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/lexicalCategories.txt
+06 feb 2023 16:12:56,811 [Thread-7] INFO  LogAcide - Grammar file deleted successfully lexicalCategories.txt
+06 feb 2023 16:13:40,929 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Grammar Configuration Window...
+06 feb 2023 16:13:40,962 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Grammar Configuration Window created
+06 feb 2023 16:13:42,816 [AWT-EventQueue-0] INFO  LogAcide - Grammar creation canceled by user
+06 feb 2023 16:18:44,480 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Grammar Configuration Window...
+06 feb 2023 16:18:44,522 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Grammar Configuration Window created
+06 feb 2023 16:18:53,709 [AWT-EventQueue-0] INFO  LogAcide - Reading of file canceled by the user. 
+06 feb 2023 16:18:59,309 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: Expr.g4
+06 feb 2023 16:18:59,312 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: lexicalCategories.txt
+06 feb 2023 16:18:59,315 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: syntaxRules.txt
+06 feb 2023 16:18:59,315 [AWT-EventQueue-0] INFO  LogAcide - File .g successfully created
+06 feb 2023 16:18:59,333 [AWT-EventQueue-0] INFO  LogAcide - New grammar created
+06 feb 2023 16:19:22,319 [Thread-8] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.g4
+06 feb 2023 16:19:22,325 [Thread-8] INFO  LogAcide - Grammar file deleted successfully Expr.g4
+06 feb 2023 16:19:22,341 [Thread-8] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/syntaxRules.txt
+06 feb 2023 16:19:22,346 [Thread-8] INFO  LogAcide - Grammar file deleted successfully syntaxRules.txt
+06 feb 2023 16:19:22,360 [Thread-8] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/lexicalCategories.txt
+06 feb 2023 16:19:22,365 [Thread-8] INFO  LogAcide - Grammar file deleted successfully lexicalCategories.txt
+06 feb 2023 16:20:15,730 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Grammar Configuration Window...
+06 feb 2023 16:20:15,767 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Grammar Configuration Window created
+06 feb 2023 16:20:19,642 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
+06 feb 2023 16:20:19,740 [AWT-EventQueue-0] INFO  LogAcide - Grammar Rules successfully loaded
+06 feb 2023 16:20:27,309 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: Expr.g4
+06 feb 2023 16:20:27,311 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: lexicalCategories.txt
+06 feb 2023 16:20:27,314 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: syntaxRules.txt
+06 feb 2023 16:20:27,314 [AWT-EventQueue-0] INFO  LogAcide - File .g successfully created
+06 feb 2023 16:20:27,336 [AWT-EventQueue-0] INFO  LogAcide - New grammar created
+06 feb 2023 16:20:37,427 [Thread-9] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.g4
+06 feb 2023 16:20:37,427 [Thread-9] INFO  LogAcide - Grammar file deleted successfully Expr.g4
+06 feb 2023 16:20:37,429 [Thread-9] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.interp
+06 feb 2023 16:20:37,429 [Thread-9] INFO  LogAcide - Grammar file deleted successfully Expr.interp
+06 feb 2023 16:20:37,431 [Thread-9] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.tokens
+06 feb 2023 16:20:37,431 [Thread-9] INFO  LogAcide - Grammar file deleted successfully Expr.tokens
+06 feb 2023 16:20:37,433 [Thread-9] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprBaseListener.java
+06 feb 2023 16:20:37,433 [Thread-9] INFO  LogAcide - Grammar file deleted successfully ExprBaseListener.java
+06 feb 2023 16:20:37,435 [Thread-9] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.interp
+06 feb 2023 16:20:37,436 [Thread-9] INFO  LogAcide - Grammar file deleted successfully ExprLexer.interp
+06 feb 2023 16:20:37,438 [Thread-9] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.java
+06 feb 2023 16:20:37,439 [Thread-9] INFO  LogAcide - Grammar file deleted successfully ExprLexer.java
+06 feb 2023 16:20:37,441 [Thread-9] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.tokens
+06 feb 2023 16:20:37,442 [Thread-9] INFO  LogAcide - Grammar file deleted successfully ExprLexer.tokens
+06 feb 2023 16:20:37,444 [Thread-9] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprListener.java
+06 feb 2023 16:20:37,444 [Thread-9] INFO  LogAcide - Grammar file deleted successfully ExprListener.java
+06 feb 2023 16:20:37,446 [Thread-9] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprParser.java
+06 feb 2023 16:20:37,446 [Thread-9] INFO  LogAcide - Grammar file deleted successfully ExprParser.java
+06 feb 2023 16:20:37,448 [Thread-9] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/syntaxRules.txt
+06 feb 2023 16:20:37,449 [Thread-9] INFO  LogAcide - Grammar file deleted successfully syntaxRules.txt
+06 feb 2023 16:20:37,452 [Thread-9] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/lexicalCategories.txt
+06 feb 2023 16:20:37,453 [Thread-9] INFO  LogAcide - Grammar file deleted successfully lexicalCategories.txt
+06 feb 2023 16:22:16,698 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
+06 feb 2023 16:22:16,699 [AWT-EventQueue-0] INFO  LogAcide - Grammar successfully loaded C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
+06 feb 2023 16:28:38,539 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Grammar Configuration Window...
+06 feb 2023 16:28:38,568 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Grammar Configuration Window created
+06 feb 2023 16:28:41,369 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
+06 feb 2023 16:28:41,480 [AWT-EventQueue-0] INFO  LogAcide - Grammar Rules successfully loaded
+06 feb 2023 16:28:49,531 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: Expr.g4
+06 feb 2023 16:28:49,533 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: lexicalCategories.txt
+06 feb 2023 16:28:49,534 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: syntaxRules.txt
+06 feb 2023 16:28:49,534 [AWT-EventQueue-0] INFO  LogAcide - File .g successfully created
+06 feb 2023 16:28:49,551 [AWT-EventQueue-0] INFO  LogAcide - New grammar created
+06 feb 2023 16:28:58,237 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Grammar Configuration Window...
+06 feb 2023 16:28:58,273 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Grammar Configuration Window created
+06 feb 2023 16:29:01,298 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
+06 feb 2023 16:29:01,349 [AWT-EventQueue-0] INFO  LogAcide - Grammar Rules successfully loaded
+06 feb 2023 16:29:05,703 [Thread-12] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.g4
+06 feb 2023 16:29:05,703 [Thread-12] INFO  LogAcide - Grammar file deleted successfully Expr.g4
+06 feb 2023 16:29:05,705 [Thread-12] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.interp
+06 feb 2023 16:29:05,706 [Thread-12] INFO  LogAcide - Grammar file deleted successfully Expr.interp
+06 feb 2023 16:29:05,708 [Thread-12] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.tokens
+06 feb 2023 16:29:05,709 [Thread-12] INFO  LogAcide - Grammar file deleted successfully Expr.tokens
+06 feb 2023 16:29:05,711 [Thread-12] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprBaseListener.java
+06 feb 2023 16:29:05,712 [Thread-12] INFO  LogAcide - Grammar file deleted successfully ExprBaseListener.java
+06 feb 2023 16:29:05,713 [Thread-12] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.interp
+06 feb 2023 16:29:05,714 [Thread-12] INFO  LogAcide - Grammar file deleted successfully ExprLexer.interp
+06 feb 2023 16:29:05,716 [Thread-12] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.java
+06 feb 2023 16:29:05,717 [Thread-12] INFO  LogAcide - Grammar file deleted successfully ExprLexer.java
+06 feb 2023 16:29:05,719 [Thread-12] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.tokens
+06 feb 2023 16:29:05,719 [Thread-12] INFO  LogAcide - Grammar file deleted successfully ExprLexer.tokens
+06 feb 2023 16:29:05,721 [Thread-12] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprListener.java
+06 feb 2023 16:29:05,722 [Thread-12] INFO  LogAcide - Grammar file deleted successfully ExprListener.java
+06 feb 2023 16:29:05,724 [Thread-12] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprParser.java
+06 feb 2023 16:29:05,724 [Thread-12] INFO  LogAcide - Grammar file deleted successfully ExprParser.java
+06 feb 2023 16:29:05,726 [Thread-12] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/syntaxRules.txt
+06 feb 2023 16:29:05,727 [Thread-12] INFO  LogAcide - Grammar file deleted successfully syntaxRules.txt
+06 feb 2023 16:29:05,729 [Thread-12] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/lexicalCategories.txt
+06 feb 2023 16:29:05,730 [Thread-12] INFO  LogAcide - Grammar file deleted successfully lexicalCategories.txt
+06 feb 2023 16:29:12,794 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: Expr.g4
+06 feb 2023 16:29:12,795 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: lexicalCategories.txt
+06 feb 2023 16:29:12,798 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: syntaxRules.txt
+06 feb 2023 16:29:12,798 [AWT-EventQueue-0] INFO  LogAcide - File .g successfully created
+06 feb 2023 16:29:12,817 [AWT-EventQueue-0] INFO  LogAcide - New grammar created
+06 feb 2023 16:29:31,651 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
+06 feb 2023 16:29:31,652 [AWT-EventQueue-0] INFO  LogAcide - Grammar successfully loaded C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
+06 feb 2023 16:29:38,435 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Grammar Configuration Window...
+06 feb 2023 16:29:38,470 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Grammar Configuration Window created
+06 feb 2023 16:29:43,980 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
+06 feb 2023 16:29:44,043 [AWT-EventQueue-0] INFO  LogAcide - Grammar Rules successfully loaded
+06 feb 2023 16:29:55,429 [Thread-13] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.g4
+06 feb 2023 16:29:55,430 [Thread-13] INFO  LogAcide - Grammar file deleted successfully Expr.g4
+06 feb 2023 16:29:55,432 [Thread-13] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.interp
+06 feb 2023 16:29:55,433 [Thread-13] INFO  LogAcide - Grammar file deleted successfully Expr.interp
+06 feb 2023 16:29:55,436 [Thread-13] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.tokens
+06 feb 2023 16:29:55,437 [Thread-13] INFO  LogAcide - Grammar file deleted successfully Expr.tokens
+06 feb 2023 16:29:55,440 [Thread-13] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprBaseListener.java
+06 feb 2023 16:29:55,441 [Thread-13] INFO  LogAcide - Grammar file deleted successfully ExprBaseListener.java
+06 feb 2023 16:29:55,443 [Thread-13] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.interp
+06 feb 2023 16:29:55,443 [Thread-13] INFO  LogAcide - Grammar file deleted successfully ExprLexer.interp
+06 feb 2023 16:29:55,444 [Thread-13] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.java
+06 feb 2023 16:29:55,446 [Thread-13] INFO  LogAcide - Grammar file deleted successfully ExprLexer.java
+06 feb 2023 16:29:55,448 [Thread-13] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.tokens
+06 feb 2023 16:29:55,448 [Thread-13] INFO  LogAcide - Grammar file deleted successfully ExprLexer.tokens
+06 feb 2023 16:29:55,450 [Thread-13] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprListener.java
+06 feb 2023 16:29:55,451 [Thread-13] INFO  LogAcide - Grammar file deleted successfully ExprListener.java
+06 feb 2023 16:29:55,453 [Thread-13] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprParser.java
+06 feb 2023 16:29:55,454 [Thread-13] INFO  LogAcide - Grammar file deleted successfully ExprParser.java
+06 feb 2023 16:29:55,457 [Thread-13] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/syntaxRules.txt
+06 feb 2023 16:29:55,458 [Thread-13] INFO  LogAcide - Grammar file deleted successfully syntaxRules.txt
+06 feb 2023 16:29:55,460 [Thread-13] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/lexicalCategories.txt
+06 feb 2023 16:29:55,462 [Thread-13] INFO  LogAcide - Grammar file deleted successfully lexicalCategories.txt
+06 feb 2023 16:30:01,647 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: Expr.g4
+06 feb 2023 16:30:01,649 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: lexicalCategories.txt
+06 feb 2023 16:30:01,651 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: syntaxRules.txt
+06 feb 2023 16:30:01,651 [AWT-EventQueue-0] INFO  LogAcide - File .g successfully created
+06 feb 2023 16:30:01,668 [AWT-EventQueue-0] INFO  LogAcide - New grammar created
+06 feb 2023 16:30:02,370 [Thread-14] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.g4
+06 feb 2023 16:30:02,370 [Thread-14] INFO  LogAcide - Grammar file deleted successfully Expr.g4
+06 feb 2023 16:30:02,372 [Thread-14] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.interp
+06 feb 2023 16:30:02,372 [Thread-14] INFO  LogAcide - Grammar file deleted successfully Expr.interp
+06 feb 2023 16:30:02,374 [Thread-14] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.tokens
+06 feb 2023 16:30:02,375 [Thread-14] INFO  LogAcide - Grammar file deleted successfully Expr.tokens
+06 feb 2023 16:30:02,377 [Thread-14] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprBaseListener.java
+06 feb 2023 16:30:02,378 [Thread-14] INFO  LogAcide - Grammar file deleted successfully ExprBaseListener.java
+06 feb 2023 16:30:02,380 [Thread-14] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.interp
+06 feb 2023 16:30:02,381 [Thread-14] INFO  LogAcide - Grammar file deleted successfully ExprLexer.interp
+06 feb 2023 16:30:02,383 [Thread-14] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.java
+06 feb 2023 16:30:02,384 [Thread-14] INFO  LogAcide - Grammar file deleted successfully ExprLexer.java
+06 feb 2023 16:30:02,386 [Thread-14] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.tokens
+06 feb 2023 16:30:02,387 [Thread-14] INFO  LogAcide - Grammar file deleted successfully ExprLexer.tokens
+06 feb 2023 16:30:02,389 [Thread-14] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprListener.java
+06 feb 2023 16:30:02,390 [Thread-14] INFO  LogAcide - Grammar file deleted successfully ExprListener.java
+06 feb 2023 16:30:02,393 [Thread-14] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprParser.java
+06 feb 2023 16:30:02,394 [Thread-14] INFO  LogAcide - Grammar file deleted successfully ExprParser.java
+06 feb 2023 16:30:02,397 [Thread-14] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/syntaxRules.txt
+06 feb 2023 16:30:02,398 [Thread-14] INFO  LogAcide - Grammar file deleted successfully syntaxRules.txt
+06 feb 2023 16:30:02,400 [Thread-14] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/lexicalCategories.txt
+06 feb 2023 16:30:02,401 [Thread-14] INFO  LogAcide - Grammar file deleted successfully lexicalCategories.txt
+06 feb 2023 16:31:19,332 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Grammar Configuration Window...
+06 feb 2023 16:31:19,366 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Grammar Configuration Window created
+06 feb 2023 16:31:23,102 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
+06 feb 2023 16:31:23,151 [AWT-EventQueue-0] INFO  LogAcide - Grammar Rules successfully loaded
+06 feb 2023 16:33:22,516 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: Expr.g4
+06 feb 2023 16:33:24,551 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: lexicalCategories.txt
+06 feb 2023 16:33:25,583 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: syntaxRules.txt
+06 feb 2023 16:33:27,116 [AWT-EventQueue-0] INFO  LogAcide - File .g successfully created
+06 feb 2023 16:34:14,444 [Thread-15] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.g4
+06 feb 2023 16:34:14,445 [Thread-15] INFO  LogAcide - Grammar file deleted successfully Expr.g4
+06 feb 2023 16:34:14,447 [Thread-15] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.interp
+06 feb 2023 16:34:14,448 [Thread-15] INFO  LogAcide - Grammar file deleted successfully Expr.interp
+06 feb 2023 16:34:14,450 [Thread-15] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.tokens
+06 feb 2023 16:34:14,450 [Thread-15] INFO  LogAcide - Grammar file deleted successfully Expr.tokens
+06 feb 2023 16:34:14,453 [Thread-15] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprBaseListener.java
+06 feb 2023 16:34:14,454 [Thread-15] INFO  LogAcide - Grammar file deleted successfully ExprBaseListener.java
+06 feb 2023 16:34:14,456 [Thread-15] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.interp
+06 feb 2023 16:34:14,456 [Thread-15] INFO  LogAcide - Grammar file deleted successfully ExprLexer.interp
+06 feb 2023 16:34:14,458 [Thread-15] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.java
+06 feb 2023 16:34:14,459 [Thread-15] INFO  LogAcide - Grammar file deleted successfully ExprLexer.java
+06 feb 2023 16:34:14,461 [Thread-15] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.tokens
+06 feb 2023 16:34:14,462 [Thread-15] INFO  LogAcide - Grammar file deleted successfully ExprLexer.tokens
+06 feb 2023 16:34:14,464 [Thread-15] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprListener.java
+06 feb 2023 16:34:14,464 [Thread-15] INFO  LogAcide - Grammar file deleted successfully ExprListener.java
+06 feb 2023 16:34:14,467 [Thread-15] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprParser.java
+06 feb 2023 16:34:14,467 [Thread-15] INFO  LogAcide - Grammar file deleted successfully ExprParser.java
+06 feb 2023 16:34:14,470 [Thread-15] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/syntaxRules.txt
+06 feb 2023 16:34:14,471 [Thread-15] INFO  LogAcide - Grammar file deleted successfully syntaxRules.txt
+06 feb 2023 16:34:14,473 [Thread-15] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/lexicalCategories.txt
+06 feb 2023 16:34:14,474 [Thread-15] INFO  LogAcide - Grammar file deleted successfully lexicalCategories.txt
+06 feb 2023 16:34:33,129 [AWT-EventQueue-0] INFO  LogAcide - New grammar created
+06 feb 2023 16:34:40,700 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Grammar Configuration Window...
+06 feb 2023 16:34:40,705 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully Expr.g4
+06 feb 2023 16:34:40,705 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully src/acide/process/parser/grammar/Expr.g4
+06 feb 2023 16:34:40,708 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully syntaxRules.txt
+06 feb 2023 16:34:40,709 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully src/acide/process/parser/grammar/syntaxRules.txt
+06 feb 2023 16:34:40,711 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully lexicalCategories.txt
+06 feb 2023 16:34:40,712 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully src/acide/process/parser/grammar/lexicalCategories.txt
+06 feb 2023 16:35:38,005 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Grammar Configuration Window created
+06 feb 2023 16:36:06,964 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: Expr.g4
+06 feb 2023 16:36:08,044 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: lexicalCategories.txt
+06 feb 2023 16:36:14,503 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: syntaxRules.txt
+06 feb 2023 16:36:16,801 [AWT-EventQueue-0] INFO  LogAcide - File .g successfully created
+06 feb 2023 16:36:25,718 [Thread-16] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.g4
+06 feb 2023 16:36:25,719 [Thread-16] INFO  LogAcide - Grammar file deleted successfully Expr.g4
+06 feb 2023 16:36:25,720 [Thread-16] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.interp
+06 feb 2023 16:36:25,721 [Thread-16] INFO  LogAcide - Grammar file deleted successfully Expr.interp
+06 feb 2023 16:36:25,722 [Thread-16] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.tokens
+06 feb 2023 16:36:25,723 [Thread-16] INFO  LogAcide - Grammar file deleted successfully Expr.tokens
+06 feb 2023 16:36:25,724 [Thread-16] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprBaseListener.java
+06 feb 2023 16:36:25,725 [Thread-16] INFO  LogAcide - Grammar file deleted successfully ExprBaseListener.java
+06 feb 2023 16:36:25,727 [Thread-16] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.interp
+06 feb 2023 16:36:25,728 [Thread-16] INFO  LogAcide - Grammar file deleted successfully ExprLexer.interp
+06 feb 2023 16:36:25,729 [Thread-16] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.java
+06 feb 2023 16:36:25,730 [Thread-16] INFO  LogAcide - Grammar file deleted successfully ExprLexer.java
+06 feb 2023 16:36:25,731 [Thread-16] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.tokens
+06 feb 2023 16:36:25,732 [Thread-16] INFO  LogAcide - Grammar file deleted successfully ExprLexer.tokens
+06 feb 2023 16:36:25,733 [Thread-16] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprListener.java
+06 feb 2023 16:36:25,734 [Thread-16] INFO  LogAcide - Grammar file deleted successfully ExprListener.java
+06 feb 2023 16:36:25,735 [Thread-16] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprParser.java
+06 feb 2023 16:36:25,736 [Thread-16] INFO  LogAcide - Grammar file deleted successfully ExprParser.java
+06 feb 2023 16:36:25,738 [Thread-16] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/syntaxRules.txt
+06 feb 2023 16:36:25,739 [Thread-16] INFO  LogAcide - Grammar file deleted successfully syntaxRules.txt
+06 feb 2023 16:36:25,741 [Thread-16] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/lexicalCategories.txt
+06 feb 2023 16:36:25,742 [Thread-16] INFO  LogAcide - Grammar file deleted successfully lexicalCategories.txt
+06 feb 2023 16:36:28,204 [AWT-EventQueue-0] INFO  LogAcide - New grammar created
+06 feb 2023 16:36:37,929 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
+06 feb 2023 16:36:37,930 [AWT-EventQueue-0] INFO  LogAcide - Grammar successfully loaded C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
+06 feb 2023 16:37:33,523 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
+06 feb 2023 16:37:33,524 [AWT-EventQueue-0] INFO  LogAcide - Grammar successfully loaded C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
+06 feb 2023 16:37:46,450 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Grammar Configuration Window...
+06 feb 2023 16:37:46,482 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Grammar Configuration Window created
+06 feb 2023 16:37:49,651 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
+06 feb 2023 16:37:49,708 [AWT-EventQueue-0] INFO  LogAcide - Lexicon Categories successfully loaded
+06 feb 2023 16:39:42,502 [AWT-EventQueue-0] INFO  LogAcide - File Name: C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
+06 feb 2023 16:39:42,502 [AWT-EventQueue-0] INFO  LogAcide - Grammar successfully loaded C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.jar
