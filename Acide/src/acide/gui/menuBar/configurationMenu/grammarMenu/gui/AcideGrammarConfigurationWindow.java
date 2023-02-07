@@ -658,14 +658,10 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			// Creates the file content
 			String textContent = _rulesTextArea.getText();
 
-			int index = textContent.indexOf(";");
-			String firstLine = "grammar Expr;";
-			textContent = firstLine + textContent.substring(index + 1);
-			
 			// Saves the Expr.g4 file
 			boolean isSaved = AcideFileManager.getInstance().write("Expr.g4",
 					textContent);
-			
+
 			// Saves the lexical categories file
 			isSaved = isSaved
 					&& AcideFileManager.getInstance().write(
@@ -688,7 +684,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 				AcideLog.getLog().info(
 						AcideLanguageManager.getInstance().getLabels()
 								.getString("s186"));
-			
+
 			// Closes the window
 			closeWindow();
 

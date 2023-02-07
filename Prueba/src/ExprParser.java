@@ -1,4 +1,4 @@
-// Generated from g.g4 by ANTLR 4.7.1
+// Generated from Expr.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class gParser extends Parser {
+public class ExprParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.7.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -63,7 +63,7 @@ public class gParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "g.g4"; }
+	public String getGrammarFileName() { return "Expr.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -74,7 +74,7 @@ public class gParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public gParser(TokenStream input) {
+	public ExprParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
@@ -85,9 +85,9 @@ public class gParser extends Parser {
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
-		public List<TerminalNode> NEWLINE() { return getTokens(gParser.NEWLINE); }
+		public List<TerminalNode> NEWLINE() { return getTokens(ExprParser.NEWLINE); }
 		public TerminalNode NEWLINE(int i) {
-			return getToken(gParser.NEWLINE, i);
+			return getToken(ExprParser.NEWLINE, i);
 		}
 		public ProgContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -95,15 +95,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_prog; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterProg(this);
+			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterProg(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitProg(this);
+			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitProg(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitProg(this);
+			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitProg(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -145,7 +145,7 @@ public class gParser extends Parser {
 	}
 
 	public static class ExprContext extends ParserRuleContext {
-		public TerminalNode INT() { return getToken(gParser.INT, 0); }
+		public TerminalNode INT() { return getToken(ExprParser.INT, 0); }
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
 		}
@@ -158,15 +158,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_expr; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterExpr(this);
+			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitExpr(this);
+			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitExpr(this);
+			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}

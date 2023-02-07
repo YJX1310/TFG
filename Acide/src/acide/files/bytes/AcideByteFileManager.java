@@ -44,13 +44,9 @@
  */
 package acide.files.bytes;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
@@ -266,55 +262,5 @@ public class AcideByteFileManager {
 							+ source);
 
 		return (saved && deleted);
-	}
-	
-	public void addPackage(String Path) {
-		
-		String newLine = "package acide.process.parser.grammar;";
-
-		try (BufferedReader reader = new BufferedReader(new FileReader(Path))) {
-			StringBuilder sb = new StringBuilder();
-			int i = 0;
-
-			String line = reader.readLine();
-			while (line != null) {
-				sb.append(line).append(System.lineSeparator());
-				if (i == 0)
-					sb.append(newLine).append(System.lineSeparator());
-				;
-				line = reader.readLine();
-				i++;
-			}
-
-			try (BufferedWriter writer = new BufferedWriter(new FileWriter(Path))) {
-				writer.write(sb.toString());
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void changeHeaderToExpr(String Path) {
-		String newLine = "grammar Expr";
-
-		try (BufferedReader reader = new BufferedReader(new FileReader(Path))) {
-			StringBuilder sb = new StringBuilder();
-			int i = 0;
-
-			String line = reader.readLine();
-			while (line != null) {
-				if (i == 0)
-					line = newLine;
-				sb.append(line).append(System.lineSeparator());
-				line = reader.readLine();
-				i++;
-			}
-
-			try (BufferedWriter writer = new BufferedWriter(new FileWriter(Path))) {
-				writer.write(sb.toString());
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 }
