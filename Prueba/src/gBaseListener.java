@@ -1,39 +1,39 @@
-// Generated from Expr.g4 by ANTLR 4.7.1
+// Generated from g.g4 by ANTLR 4.7.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- * This class provides an empty implementation of {@link ExprListener},
+ * This class provides an empty implementation of {@link gListener},
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-public class ExprBaseListener implements ExprListener {
+public class gBaseListener implements gListener {
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProg(ExprParser.ProgContext ctx) { }
+	@Override public void enterProg(gParser.ProgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitProg(ExprParser.ProgContext ctx) { }
+	@Override public void exitProg(gParser.ProgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpr(ExprParser.ExprContext ctx) { }
+	@Override public void enterExpr(gParser.ExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpr(ExprParser.ExprContext ctx) { }
+	@Override public void exitExpr(gParser.ExprContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -118,9 +118,12 @@ public class AcideGrammarFileCreationProcess extends Thread {
 
 		// Compiles the generated files to obtain the .class files
 		//compileGeneratedFiles();
-
+		
 		// Reallocates the generated files in the correspondent folder
 		reallocateGeneratedFiles();
+		
+		//
+		addPackage();
 
 		// Generates the .jar file
 		//generateJarFile();
@@ -201,7 +204,7 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		// Updates the progress window
 		AcideProgressWindow
 				.getInstance()
-				.setText("\"" + javaPath + "\" -jar ./lib/antlr-4.7.1-complete.jar -visitor Expr.g4");
+				.setText("\"" + javaPath + "\" -jar ./lib/antlr-4.7.1-complete.jar Expr.g4");
 
 		// Executes antlr to generate the files which will be at the .jar
 		Process process = null;
@@ -209,7 +212,7 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		try {
 
 			// Executes the command
-			process = Runtime.getRuntime().exec("\"" + javaPath + "\" -jar ./lib/antlr-4.7.1-complete.jar -visitor Expr.g4");
+			process = Runtime.getRuntime().exec("\"" + javaPath + "\" -jar ./lib/antlr-4.7.1-complete.jar Expr.g4");
 
 
 			// Waits for the process to finish
@@ -362,6 +365,21 @@ public class AcideGrammarFileCreationProcess extends Thread {
 						.getString("s1054"));
 	}
 
+	
+	private void addPackage() {
+		// Add package to the ExprBaseListener.java file
+		AcideByteFileManager.getInstance().addPackage("src/acide/process/parser/grammar/ExprBaseListener.java");
+
+		// Add package to the ExprBaseVisitor.java file
+		AcideByteFileManager.getInstance().addPackage("src/acide/process/parser/grammar/ExprLexer.java");
+		
+		// Add package to the ExprBaseVisitor.java file
+		AcideByteFileManager.getInstance().addPackage("src/acide/process/parser/grammar/ExprListener.java");
+		
+		// Add package to the ExprBaseVisitor.java file
+		AcideByteFileManager.getInstance().addPackage("src/acide/process/parser/grammar/ExprParser.java");
+	}
+	
 	/**
 	 * Reallocates the generated files into the correspondent folder in the
 	 * source folder of ACIDE - A Configurable IDE.
@@ -389,10 +407,6 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		AcideByteFileManager.getInstance().reallocateFile("ExprBaseListener.java",
 				"src/acide/process/parser/grammar/ExprBaseListener.java");
 
-		// Reallocates the ExprBaseVisitor.java file
-		AcideByteFileManager.getInstance().reallocateFile("ExprBaseVisitor.java",
-				"src/acide/process/parser/grammar/ExprBaseVisitor.java");
-
 		// Reallocates the ExprLexer.interp file
 		AcideByteFileManager.getInstance().reallocateFile("ExprLexer.interp",
 				"src/acide/process/parser/grammar/ExprLexer.interp");
@@ -412,10 +426,6 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		// Reallocates the ExprParser.java file
 		AcideByteFileManager.getInstance().reallocateFile("ExprParser.java",
 				"src/acide/process/parser/grammar/ExprParser.java");
-
-		// Reallocates the ExprVisitor.java file
-		AcideByteFileManager.getInstance().reallocateFile("ExprVisitor.java",
-				"src/acide/process/parser/grammar/ExprVisitor.java");
 
 		// Reallocates the syntaxRules.txt file
 		AcideByteFileManager.getInstance().reallocateFile("syntaxRules.txt",
@@ -523,10 +533,6 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		file = new File("ExprBaseListener.java");
 		file.delete();
 
-		// Deletes the ExprBaseVisitor.java file
-		file = new File("ExprBaseVisitor.java");
-		file.delete();
-
 		// Deletes the ExprLexer.interp file
 		file = new File("ExprLexer.interp");
 		file.delete();
@@ -545,10 +551,6 @@ public class AcideGrammarFileCreationProcess extends Thread {
 
 		// Deletes the ExprParser.java file
 		file = new File("ExprParser.java");
-		file.delete();
-		
-		// Deletes the ExprVisitor.java file
-		file = new File("ExprVisitor.java");
 		file.delete();
 		
 		// Deletes the syntaxRules.txt
