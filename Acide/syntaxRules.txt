@@ -1,4 +1,4 @@
-grammar asd;
+grammar djakljldks;
 prog:   (expr NEWLINE)* ;
 expr:   expr ('*'|'/') expr
     |   expr ('+'|'-') expr
