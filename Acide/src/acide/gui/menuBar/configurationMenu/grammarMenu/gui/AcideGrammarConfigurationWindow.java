@@ -257,7 +257,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 			if (jarPath != null && !jarPath.equals("null")) {
 
-				// Reallocates the grammar.g file
+				// Reallocates the Expr.g4 file
 				AcideByteFileManager.getInstance().reallocateFile(
 						"src/acide/process/parser/grammar/Expr.g4",
 						"Expr.g4");
@@ -694,10 +694,20 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 			// Selects the new grammar name
 			String newGrammarName = "";
-			if (_isForModifying)
+			
+			// Selects the action
+			String action = "";
+			if (_isForModifying){
 				newGrammarName = "lastModified.jar";
-			else
+				action = AcideLanguageManager.getInstance().getLabels()
+				.getString("s29");				
+			}
+			else {
 				newGrammarName = "newGrammar.jar";
+				action = AcideLanguageManager.getInstance().getLabels()
+				.getString("s30");				
+			}
+			
 
 			// Selects the new grammar path
 			String newGrammarPath = AcideGrammarConfiguration.DEFAULT_PATH
@@ -707,66 +717,11 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 				// Creates the process for the grammar file creation
 				AcideGrammarFileCreationProcess process = new AcideGrammarFileCreationProcess(
-						newGrammarName, _verboseProcessCheckBox.isSelected());
+						newGrammarName, _verboseProcessCheckBox.isSelected(), action);
 
 				// Starts the process
 				process.start();
 
-				// If the previous grammar configuration does not contain
-				// newGrammar or lastModified
-				if (!AcideMainWindow.getInstance().getFileEditorManager()
-						.getSelectedFileEditorPanel()
-						.getPreviousGrammarConfiguration().getPath()
-						.contains("newGrammar")
-						|| !AcideMainWindow.getInstance()
-								.getFileEditorManager()
-								.getSelectedFileEditorPanel()
-								.getPreviousGrammarConfiguration().getPath()
-								.contains("lastModified"))
-
-					// Sets the previous grammar path
-					AcideMainWindow
-							.getInstance()
-							.getFileEditorManager()
-							.getSelectedFileEditorPanel()
-							.getPreviousGrammarConfiguration()
-							.setPath(
-									AcideMainWindow.getInstance()
-											.getFileEditorManager()
-											.getSelectedFileEditorPanel()
-											.getCurrentGrammarConfiguration()
-											.getPath());
-
-				// Sets the current grammar path
-				AcideMainWindow.getInstance().getFileEditorManager()
-						.getSelectedFileEditorPanel()
-						.getCurrentGrammarConfiguration()
-						.setPath(newGrammarPath);
-
-				// Enables the save grammar menu item
-				AcideMainWindow.getInstance().getMenu().getConfigurationMenu()
-						.getGrammarMenu().getSaveGrammarMenuItem()
-						.setEnabled(true);
-
-				// Updates the grammar message in the status bar
-				AcideMainWindow
-						.getInstance()
-						.getStatusBar()
-						.setGrammarMessage(
-								AcideLanguageManager.getInstance().getLabels()
-										.getString("s248")
-										+ " "
-										+ AcideMainWindow
-												.getInstance()
-												.getFileEditorManager()
-												.getSelectedFileEditorPanel()
-												.getCurrentGrammarConfiguration()
-												.getName());
-
-				// Updates the log
-				AcideLog.getLog().info(
-						AcideLanguageManager.getInstance().getLabels()
-								.getString("s935"));
 			} catch (Exception exception) {
 
 				// Displays an error message

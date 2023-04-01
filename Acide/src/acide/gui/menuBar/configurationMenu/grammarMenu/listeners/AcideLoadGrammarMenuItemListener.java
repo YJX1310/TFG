@@ -46,15 +46,18 @@ package acide.gui.menuBar.configurationMenu.grammarMenu.listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import acide.files.AcideFileExtensionFilterManager;
 import acide.files.AcideFileManager;
+import acide.files.bytes.AcideByteFileManager;
 import acide.files.utils.AcideFileOperation;
 import acide.files.utils.AcideFileTarget;
 import acide.files.utils.AcideFileType;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
+import acide.process.parser.AcideGrammarFileCreationProcess;
 
 /**
  * ACIDE - A Configurable IDE load grammar menu item listener.
@@ -85,43 +88,19 @@ public class AcideLoadGrammarMenuItemListener implements ActionListener {
 						new AcideFileExtensionFilterManager(new String[] { "jar" },
 								AcideLanguageManager.getInstance().getLabels()
 										.getString("s270")));
-
-				if (absolutePath != null) {
-
-					// Updates the current grammar configuration path
-					AcideMainWindow.getInstance().getFileEditorManager()
-							.getSelectedFileEditorPanel()
-							.getCurrentGrammarConfiguration().setPath(absolutePath);
-
-					// Updates the log
-					AcideLog.getLog().info(
-							AcideLanguageManager.getInstance().getLabels()
-									.getString("s243")
-									+ " " + absolutePath);
-
-					// Updates the grammar message in the status bar
-					AcideMainWindow
-							.getInstance()
-							.getStatusBar()
-							.setGrammarMessage(
-									AcideLanguageManager.getInstance().getLabels()
-											.getString("s248")
-											+ " "
-											+ AcideMainWindow.getInstance()
-													.getFileEditorManager()
-													.getSelectedFileEditorPanel()
-													.getCurrentGrammarConfiguration()
-													.getName());
-
-					// Updates the grammar configuration path in the file editor
-					AcideMainWindow.getInstance().getFileEditorManager()
-							.getSelectedFileEditorPanel()
-							.getCurrentGrammarConfiguration().setPath(absolutePath);
-
-					// Disables the save grammar menu item
-					AcideMainWindow.getInstance().getMenu().getConfigurationMenu()
-							.getGrammarMenu().getSaveGrammarMenuItem()
-							.setEnabled(false);
+				try {
+					AcideByteFileManager.getInstance().copy(absolutePath, "src/acide/process/parser/grammar/syntaxRules.txt");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
+				AcideByteFileManager.getInstance().change2Expr(absolutePath, "Expr.g4");
+				AcideGrammarFileCreationProcess process = new AcideGrammarFileCreationProcess(
+						absolutePath, false, AcideLanguageManager.getInstance().getLabels()
+						.getString("s35"));
+
+				// Starts the process
+				process.start();
+				
 	}
 }

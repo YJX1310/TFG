@@ -294,27 +294,31 @@ public class AcideByteFileManager {
 		}
 	}
 	
-	public void changeHeaderToExpr(String Path) {
-		String newLine = "grammar Expr";
+	public void change2Expr(String source, String dest) {
+		
+		String newLine = "grammar Expr;";
 
-		try (BufferedReader reader = new BufferedReader(new FileReader(Path))) {
+		try (BufferedReader reader = new BufferedReader(new FileReader(source))) {
 			StringBuilder sb = new StringBuilder();
 			int i = 0;
 
 			String line = reader.readLine();
 			while (line != null) {
 				if (i == 0)
-					line = newLine;
-				sb.append(line).append(System.lineSeparator());
+					sb.append(newLine).append(System.lineSeparator());
+				else
+					sb.append(line).append(System.lineSeparator());
 				line = reader.readLine();
 				i++;
 			}
 
-			try (BufferedWriter writer = new BufferedWriter(new FileWriter(Path))) {
+			try (BufferedWriter writer = new BufferedWriter(new FileWriter(dest))) {
 				writer.write(sb.toString());
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+	
+
 }
