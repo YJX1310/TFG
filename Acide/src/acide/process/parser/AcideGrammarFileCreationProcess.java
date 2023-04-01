@@ -185,12 +185,6 @@ public class AcideGrammarFileCreationProcess extends Thread {
 								.getString("s243")
 								+ " " + _grammarName);
 						
-						
-						// Updates the grammar configuration path in the file editor
-						AcideMainWindow.getInstance().getFileEditorManager()
-						.getSelectedFileEditorPanel()
-						.getCurrentGrammarConfiguration().setPath(_grammarName);
-						
 						// Disables the save grammar menu item
 						AcideMainWindow.getInstance().getMenu().getConfigurationMenu()
 						.getGrammarMenu().getSaveGrammarMenuItem()
@@ -221,12 +215,6 @@ public class AcideGrammarFileCreationProcess extends Thread {
 													.getSelectedFileEditorPanel()
 													.getCurrentGrammarConfiguration()
 													.getPath());
-
-						// Sets the current grammar path
-						AcideMainWindow.getInstance().getFileEditorManager()
-								.getSelectedFileEditorPanel()
-								.getCurrentGrammarConfiguration()
-								.setPath(_grammarName);
 
 						// Enables the save grammar menu item
 						AcideMainWindow.getInstance().getMenu().getConfigurationMenu()

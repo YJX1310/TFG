@@ -717,7 +717,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 				// Creates the process for the grammar file creation
 				AcideGrammarFileCreationProcess process = new AcideGrammarFileCreationProcess(
-						newGrammarName, _verboseProcessCheckBox.isSelected(), action);
+						newGrammarPath, _verboseProcessCheckBox.isSelected(), action);
 
 				// Starts the process
 				process.start();
