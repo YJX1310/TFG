@@ -256,22 +256,6 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			}
 
 			if (jarPath != null && !jarPath.equals("null")) {
-				// Gets its content
-				String fileContent = AcideFileManager.getInstance().load(
-						"src/acide/process/parser/grammar/lexicalCategories.xml");
-
-				if (fileContent != null)
-					// Updates the categories text area
-					_categoriesTextArea.setText(fileContent);
-
-				// Gets its content
-				fileContent = AcideFileManager.getInstance().load(
-						"src/acide/process/parser/grammar/syntaxRules.txt");
-
-				if (fileContent != null)
-					// Updates the rules text area
-					_rulesTextArea.setText(fileContent);
-
 				// Sets the window icon image
 				setIconImage(new ImageIcon(ICON).getImage());
 
@@ -294,6 +278,23 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 				AcideLog.getLog().info(
 						AcideLanguageManager.getInstance().getLabels()
 								.getString("s174"));
+				
+				// Gets its content
+				String fileContent = AcideFileManager.getInstance().load(
+						"src/acide/process/parser/grammar/lexicalCategories.xml");
+
+				if (fileContent != null)
+					// Updates the categories text area
+					_categoriesTextArea.setText(fileContent);
+
+				// Gets its content
+				fileContent = AcideFileManager.getInstance().load(
+						"src/acide/process/parser/grammar/syntaxRules.txt");
+
+				if (fileContent != null)
+					// Updates the rules text area
+					_rulesTextArea.setText(fileContent);
+				
 			} else {
 
 				// Displays an warning message
@@ -462,9 +463,9 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 		constraints.anchor = GridBagConstraints.CENTER;
 		constraints.gridx = 0;
 		constraints.gridy = 0;
-		constraints.ipadx = 150;
-		constraints.ipady = 150;
-		constraints.insets = new Insets(5, 5, 5, 5);
+		constraints.ipadx = 300;
+		constraints.ipady = 300;
+		constraints.insets = new Insets(10, 10, 10, 10);
 
 		// Adds the categories panel to the categories scroll pane
 		_categoriesPanel.add(_categoriesScrollPane, constraints);
@@ -484,11 +485,11 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 		// Adds the categories button panel to the categories panel
 		_categoriesPanel.add(_categoriesButtonPanel, constraints);
 
-		constraints.fill = GridBagConstraints.BOTH;
+		constraints.fill = GridBagConstraints.NONE;
 		constraints.anchor = GridBagConstraints.CENTER;
 		constraints.gridy = 0;
-		constraints.ipadx = 150;
-		constraints.ipady = 205;
+		constraints.ipadx = 300;
+		constraints.ipady = 300;
 
 		// Adds the rules scroll panel to the rules panel
 		_rulesPanel.add(_rulesScrollPane, constraints);
@@ -516,17 +517,20 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 		constraints.fill = GridBagConstraints.BOTH;
 		constraints.anchor = GridBagConstraints.CENTER;
+		constraints.weightx = 0.5;
 		constraints.gridx = 0;
 		constraints.gridy = 0;
 
 		// Adds the categories panel to the window
 		add(_categoriesPanel, constraints);
+		constraints.weightx = 0.5;
 		constraints.gridx = 1;
 
 		// Adds the rules panel to the window
 		add(_rulesPanel, constraints);
 		constraints.fill = GridBagConstraints.NONE;
 		constraints.anchor = GridBagConstraints.EAST;
+		constraints.weightx = 0;
 		constraints.gridwidth = 2;
 		constraints.gridx = 0;
 		constraints.gridy = 1;
@@ -629,12 +633,12 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			// Saves the lexical categories file
 			isSaved = isSaved
 					&& AcideFileManager.getInstance().write(
-							"lexicalCategories.txt",
+							"src/acide/process/parser/grammar/lexicalCategories.xml",
 							_categoriesTextArea.getText());
 
 			// Saves the syntax rules file
 			isSaved = isSaved
-					&& AcideFileManager.getInstance().write("syntaxRules.txt",
+					&& AcideFileManager.getInstance().write("src/acide/process/parser/grammar/syntaxRules.txt",
 							_rulesTextArea.getText());
 
 			if (isSaved)
