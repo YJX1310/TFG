@@ -80,27 +80,24 @@ public class AcideLoadGrammarMenuItemListener implements ActionListener {
 	
 	public static void action(ActionEvent actionEvent){
 		// Asks the the file to the user
-				String absolutePath = AcideFileManager.getInstance().askForFile(
-						AcideFileOperation.OPEN,
-						AcideFileTarget.FILES,
-						AcideFileType.FILE,
-						"./configuration/grammars/",
-						new AcideFileExtensionFilterManager(new String[] { "jar" },
-								AcideLanguageManager.getInstance().getLabels()
-										.getString("s270")));
-				try {
-					AcideByteFileManager.getInstance().copy(absolutePath, "src/acide/process/parser/grammar/syntaxRules.txt");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				AcideByteFileManager.getInstance().change2Expr(absolutePath, "Expr.g4");
-				AcideGrammarFileCreationProcess process = new AcideGrammarFileCreationProcess(
-						absolutePath, false, AcideLanguageManager.getInstance().getLabels()
-						.getString("s35"));
-
-				// Starts the process
-				process.start();
-				
+		String absolutePath = AcideFileManager.getInstance().askForFile(
+				AcideFileOperation.OPEN,
+				AcideFileTarget.FILES,
+				AcideFileType.FILE,
+				"./configuration/grammars/",
+				new AcideFileExtensionFilterManager(new String[] { "txt" },
+						AcideLanguageManager.getInstance().getLabels()
+								.getString("s270")));
+		if(absolutePath != null) {			
+			//Extract the content for "syntaxRules.txt", "lexicalCategories.txt" and "Expr.g4"
+			AcideByteFileManager.getInstance().processGrammarJar(absolutePath);
+			
+			AcideGrammarFileCreationProcess process = new AcideGrammarFileCreationProcess(
+					absolutePath, false, AcideLanguageManager.getInstance().getLabels()
+					.getString("s35"));
+			
+			// Starts the process
+			process.start();
+		}
 	}
 }

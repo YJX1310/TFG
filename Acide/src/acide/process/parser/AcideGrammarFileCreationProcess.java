@@ -75,11 +75,13 @@ public class AcideGrammarFileCreationProcess extends Thread {
 	 */
 	private boolean _verboseProcess;
 	/**
-	 * ACIDE - A Configurable IDE grammar file creation process command error.
+	 * ACIDE - A Configurable IDE grammar file creation process action.
 	 */
-	private boolean _error;
-	
 	private String _action;
+	/**
+	 * ACIDE - A Configurable IDE lexicon configuration path.
+	 */
+	private static final String _lexer = "src/acide/process/parser/grammar/lexicalCategories.xml";
 
 	/**
 	 * Creates a new ACIDE - A Configurable IDE grammar file creation process.
@@ -98,9 +100,6 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		// Stores the verbose process flag
 		_verboseProcess = verboseProcess;
 		
-		// Initiate command error with false
-		_error = false;
-		
 		// Store the action
 		_action = action;
 	}
@@ -112,8 +111,8 @@ public class AcideGrammarFileCreationProcess extends Thread {
 	 */
 	@Override
 	public void run() {
-
-		String message;
+		String message, title;
+		int type;
 		
 		// If the verbose flag is true then
 		if (_verboseProcess) {
@@ -126,16 +125,14 @@ public class AcideGrammarFileCreationProcess extends Thread {
 			// Shows the progress window
 			AcideProgressWindow.getInstance().showWindow();
 		}
-		// Executes the antlr to obtain the .java files from the grammar
-		executeAntlr();
-
-		// Modifies the generated GrammarParser.java
-		//modifyGrammarParserFile();
-
-		// Compiles the generated files to obtain the .class files
-		//compileGeneratedFiles();
 		
-		if(_error == false) {
+		try {
+			// Executes the antlr to obtain the .java files from the grammar
+			executeAntlr();
+			
+			//Change the current lexer
+			modifyLexer();
+			
 			// Reallocates the generated files in the correspondent folder
 			reallocateGeneratedFiles();
 			
@@ -144,12 +141,94 @@ public class AcideGrammarFileCreationProcess extends Thread {
 			
 			message = AcideLanguageManager.getInstance().getLabels()
 					.getString("s1065");
-		}
-		else {
-			message = AcideLanguageManager.getInstance().getLabels()
-					.getString("s2426");
-		}
+			title = AcideLanguageManager
+					.getInstance().getLabels().getString("s1066");
+			type = JOptionPane.INFORMATION_MESSAGE;
+			
+			//If grammar name isnt null then
+			if (_grammarName != null) {
+				//If action is Load then 
+				if(_action.equals(AcideLanguageManager.getInstance().getLabels()
+						.getString("s35"))) {
+					// Updates the log
+					AcideLog.getLog().info(
+							AcideLanguageManager.getInstance().getLabels()
+							.getString("s243")
+							+ " " + _grammarName);
+					
+					// Disables the save grammar menu item
+					AcideMainWindow.getInstance().getMenu().getConfigurationMenu()
+					.getGrammarMenu().getSaveGrammarMenuItem()
+					.setEnabled(false);						
+				}
+				else{
+					// If the previous grammar configuration does not contain
+					// newGrammar or lastModified
+					if (!AcideMainWindow.getInstance().getFileEditorManager()
+							.getSelectedFileEditorPanel()
+							.getPreviousGrammarConfiguration().getPath()
+							.contains("newGrammar")
+							|| !AcideMainWindow.getInstance()
+									.getFileEditorManager()
+									.getSelectedFileEditorPanel()
+									.getPreviousGrammarConfiguration().getPath()
+									.contains("lastModified"))
 
+						// Sets the previous grammar path
+						AcideMainWindow
+								.getInstance()
+								.getFileEditorManager()
+								.getSelectedFileEditorPanel()
+								.getPreviousGrammarConfiguration()
+								.setPath(
+										AcideMainWindow.getInstance()
+												.getFileEditorManager()
+												.getSelectedFileEditorPanel()
+												.getCurrentGrammarConfiguration()
+												.getPath());
+
+					// Enables the save grammar menu item
+					AcideMainWindow.getInstance().getMenu().getConfigurationMenu()
+							.getGrammarMenu().getSaveGrammarMenuItem()
+							.setEnabled(true);
+					// Updates the log
+					AcideLog.getLog().info(
+							AcideLanguageManager.getInstance().getLabels()
+									.getString("s935"));
+				}
+				
+				// Updates the current grammar configuration path
+				AcideMainWindow.getInstance().getFileEditorManager()
+				.getSelectedFileEditorPanel()
+				.getCurrentGrammarConfiguration().setPath(_grammarName);
+				
+				// Updates the grammar message in the status bar
+				AcideMainWindow
+				.getInstance()
+				.getStatusBar()
+				.setGrammarMessage(
+						AcideLanguageManager.getInstance().getLabels()
+						.getString("s248")
+						+ " "
+						+ AcideMainWindow.getInstance()
+						.getFileEditorManager()
+						.getSelectedFileEditorPanel()
+						.getCurrentGrammarConfiguration()
+						.getName());
+			}
+			
+		} catch(Exception e) {
+			message = e.getMessage();
+			title = AcideLanguageManager
+					.getInstance().getLabels().getString("s943");
+			type = JOptionPane.ERROR_MESSAGE;
+		}
+		
+		// Modifies the generated GrammarParser.java
+		//modifyGrammarParserFile();
+
+		// Compiles the generated files to obtain the .class files
+		//compileGeneratedFiles();
 
 		// Generates the .jar file
 		//generateJarFile();
@@ -165,94 +244,10 @@ public class AcideGrammarFileCreationProcess extends Thread {
 			// Enables the close button in the progress window
 			AcideProgressWindow.getInstance().enableCloseButton();
 		else {
-			//If the error flag is false then
-			if(!_error) {
-				// Displays a message
-				JOptionPane.showMessageDialog(
-						AcideMainWindow.getInstance(),
-						message, AcideLanguageManager
-						.getInstance().getLabels().getString("s1066"),
-						JOptionPane.INFORMATION_MESSAGE);
-				
-				//If grammar name isnt null then
-				if (_grammarName != null) {
-					//If action is Load then 
-					if(_action.equals(AcideLanguageManager.getInstance().getLabels()
-							.getString("s35"))) {
-						// Updates the log
-						AcideLog.getLog().info(
-								AcideLanguageManager.getInstance().getLabels()
-								.getString("s243")
-								+ " " + _grammarName);
-						
-						// Disables the save grammar menu item
-						AcideMainWindow.getInstance().getMenu().getConfigurationMenu()
-						.getGrammarMenu().getSaveGrammarMenuItem()
-						.setEnabled(false);						
-					}
-					else{
-						// If the previous grammar configuration does not contain
-						// newGrammar or lastModified
-						if (!AcideMainWindow.getInstance().getFileEditorManager()
-								.getSelectedFileEditorPanel()
-								.getPreviousGrammarConfiguration().getPath()
-								.contains("newGrammar")
-								|| !AcideMainWindow.getInstance()
-										.getFileEditorManager()
-										.getSelectedFileEditorPanel()
-										.getPreviousGrammarConfiguration().getPath()
-										.contains("lastModified"))
-
-							// Sets the previous grammar path
-							AcideMainWindow
-									.getInstance()
-									.getFileEditorManager()
-									.getSelectedFileEditorPanel()
-									.getPreviousGrammarConfiguration()
-									.setPath(
-											AcideMainWindow.getInstance()
-													.getFileEditorManager()
-													.getSelectedFileEditorPanel()
-													.getCurrentGrammarConfiguration()
-													.getPath());
-
-						// Enables the save grammar menu item
-						AcideMainWindow.getInstance().getMenu().getConfigurationMenu()
-								.getGrammarMenu().getSaveGrammarMenuItem()
-								.setEnabled(true);
-						// Updates the log
-						AcideLog.getLog().info(
-								AcideLanguageManager.getInstance().getLabels()
-										.getString("s935"));
-					}
-					
-					// Updates the current grammar configuration path
-					AcideMainWindow.getInstance().getFileEditorManager()
-					.getSelectedFileEditorPanel()
-					.getCurrentGrammarConfiguration().setPath(_grammarName);
-					
-					// Updates the grammar message in the status bar
-					AcideMainWindow
-					.getInstance()
-					.getStatusBar()
-					.setGrammarMessage(
-							AcideLanguageManager.getInstance().getLabels()
-							.getString("s248")
-							+ " "
-							+ AcideMainWindow.getInstance()
-							.getFileEditorManager()
-							.getSelectedFileEditorPanel()
-							.getCurrentGrammarConfiguration()
-							.getName());
-				}
-			}
-			else {
-				// Displays a error message
-				JOptionPane.showMessageDialog(
-						AcideMainWindow.getInstance(),
-						message, AcideLanguageManager.getInstance().getLabels()
-						.getString("s943"), JOptionPane.ERROR_MESSAGE);
-			}
+			// Displays a message
+			JOptionPane.showMessageDialog(
+					AcideMainWindow.getInstance(),
+					message, title, type);
 			
 			// Enables the main window
 			AcideMainWindow.getInstance().setEnabled(true);
@@ -268,8 +263,9 @@ public class AcideGrammarFileCreationProcess extends Thread {
 	/**
 	 * Executes ANTLR for generating the required files to generate the .jar
 	 * file.
+	 * @throws Exception 
 	 */
-	private void executeAntlr() {
+	private void executeAntlr() throws Exception {
 
 		String javaPath = null;
 		int exitValue;
@@ -325,28 +321,16 @@ public class AcideGrammarFileCreationProcess extends Thread {
 			// Waits for the process to finish
 			exitValue = process.waitFor();
 			if(exitValue != 0) {
-				
-				_error = true;
-				
-				/*
-				if(_verboseProcess) {
-					BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-					StringBuilder errorMessage = new StringBuilder();
-					String line;
-					while ((line = errorReader.readLine()) != null) {
-						errorMessage.append(line);
-						errorMessage.append(System.lineSeparator());
-					}
-					throw new Exception("Error generated by executing the command antlr4: " + errorMessage.toString());
-				}*/
 				BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
 				StringBuilder errorMessage = new StringBuilder();
 				String line;
+				errorMessage.append(System.lineSeparator());
 				while ((line = errorReader.readLine()) != null) {
 					errorMessage.append(line);
 					errorMessage.append(System.lineSeparator());
 				}
-				throw new Exception("Error generated by executing the command antlr4: " + errorMessage.toString());
+				throw new Exception(AcideLanguageManager.getInstance().getLabels()
+						.getString("s2428") + errorMessage.toString());
 			}
 			else {
 				// Updates the progress window
@@ -361,13 +345,11 @@ public class AcideGrammarFileCreationProcess extends Thread {
 			
 			// Updates the log
 			AcideLog.getLog().error(exception.getMessage());
-			exception.printStackTrace();
 
 			// Closes the progress window
 			//AcideProgressWindow.getInstance().closeWindow();
 
-			
-			return;
+			throw new Exception(exception.getMessage());
 		}
 
 
@@ -503,7 +485,9 @@ public class AcideGrammarFileCreationProcess extends Thread {
 						.getString("s1054"));
 	}
 
-	
+	/**
+	 * Add package to .java file generated by anltr
+	 */
 	private void addPackage() {
 		// Add package to the ExprBaseListener.java file
 		AcideByteFileManager.getInstance().addPackage("src/acide/process/parser/grammar/ExprBaseListener.java");
@@ -564,15 +548,6 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		// Reallocates the ExprParser.java file
 		AcideByteFileManager.getInstance().reallocateFile("ExprParser.java",
 				"src/acide/process/parser/grammar/ExprParser.java");
-
-		// Reallocates the syntaxRules.txt file
-		AcideByteFileManager.getInstance().reallocateFile("syntaxRules.txt",
-				"src/acide/process/parser/grammar/syntaxRules.txt");
-
-		// Reallocates the lexicalCategories.txt file
-		AcideByteFileManager.getInstance().reallocateFile(
-				"lexicalCategories.txt",
-				"src/acide/process/parser/grammar/lexicalCategories.txt");
 
 		// Updates the progress window
 		AcideProgressWindow.getInstance().setText(
@@ -695,8 +670,8 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		file = new File("syntaxRules.txt");
 		file.delete();
 
-		// Deletes the lexicalCategories.txt
-		file = new File("lexicalCategories.txt");
+		// Deletes the lexicalCategories.xml
+		file = new File("lexicalCategories.xml");
 		file.delete();
 
 		// Deletes the acide folder
@@ -757,6 +732,36 @@ public class AcideGrammarFileCreationProcess extends Thread {
 			// Delete the file
 			files[index].delete();
 		}
+	}
+	
+	
+	/**
+	 * Change the current lexer
+	 * @throws Exception 
+	 */
+	private void modifyLexer() throws Exception{
+		
+		// Loads the lexicon configuration
+		AcideMainWindow.getInstance().getFileEditorManager()
+				.getSelectedFileEditorPanel().getLexiconConfiguration()
+				.loadLexerInGrammar(_lexer);
+		
+		// Resets the selected file editor text edition area
+		AcideMainWindow.getInstance().getFileEditorManager()
+				.getSelectedFileEditorPanel().resetStyledDocument();
+
+		// Updates the lexicon message status bar
+		AcideMainWindow
+				.getInstance()
+				.getStatusBar()
+				.setLexiconMessage(
+						AcideLanguageManager.getInstance().getLabels()
+								.getString("s449")
+								+ " "
+								+ AcideMainWindow.getInstance()
+										.getFileEditorManager()
+										.getSelectedFileEditorPanel()
+										.getLexiconConfiguration().getName());
 	}
 	
 }

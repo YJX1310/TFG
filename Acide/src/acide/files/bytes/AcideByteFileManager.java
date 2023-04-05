@@ -52,6 +52,8 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
+
 import javax.swing.JOptionPane;
 
 import acide.language.AcideLanguageManager;
@@ -153,7 +155,7 @@ public class AcideByteFileManager {
 					JOptionPane.showMessageDialog(null, AcideLanguageManager
 							.getInstance().getLabels().getString("s267")
 							+ targetPath, AcideLanguageManager.getInstance()
-							.getLabels().getString("268"),
+							.getLabels().getString("s268"),
 							JOptionPane.ERROR_MESSAGE);
 
 					// Updates the log
@@ -268,11 +270,17 @@ public class AcideByteFileManager {
 		return (saved && deleted);
 	}
 	
-	public void addPackage(String Path) {
+	/**
+	 * Add the corresponding package to the java file genereted by antlr
+	 * 
+	 * @param source
+	 *            source path.
+	 */
+	public void addPackage(String source) {
 		
 		String newLine = "package acide.process.parser.grammar;";
 
-		try (BufferedReader reader = new BufferedReader(new FileReader(Path))) {
+		try (BufferedReader reader = new BufferedReader(new FileReader(source))) {
 			StringBuilder sb = new StringBuilder();
 			int i = 0;
 
@@ -286,38 +294,144 @@ public class AcideByteFileManager {
 				i++;
 			}
 
-			try (BufferedWriter writer = new BufferedWriter(new FileWriter(Path))) {
+			try (BufferedWriter writer = new BufferedWriter(new FileWriter(source))) {
 				writer.write(sb.toString());
+			} catch (IOException e) {
+				// Updates the log
+				AcideLog.getLog().error(e.getMessage());
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			// Updates the log
+			AcideLog.getLog().error(e.getMessage());
 		}
 	}
 	
-	public void change2Expr(String source, String dest) {
+	/**
+	 * Extract grammar and lexer rule form source.
+	 * Write the grammar rule to "syntaxRules.txt", the lexer rule to "lexicalCategories.txt"
+	 * and generate "Expr.g4" with the grammar rule.
+	 * 
+	 * @param source
+	 *            source path.
+	 */
+	public void processGrammarJar(String source) {
 		
-		String newLine = "grammar Expr;";
+		String exprFile = "Expr.g4";
+		String syntaxFile = "src/acide/process/parser/grammar/syntaxRules.txt";
+		String lexicalFile = "src/acide/process/parser/grammar/lexicalCategories.xml";
+		
+        String syntaxContent = "";
+        String lexicalContent = "";
+        boolean syntax = false;
+        boolean lexical = false;
+        
+        // Read contents of source
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(source));
+            String line;
+            while ((line = reader.readLine()) != null) {
+            	if(line.equals("class ExprLexer extends Lexer;")){
+            		lexical = true;
+            		continue;
+            	}
+            	if(line.equals("class ExprParser extends Parser;")) {
+            		lexical = false;
+            		syntax = true;
+            		continue;
+            	}
+            	if(syntax)
+            		syntaxContent += line + "\n";
+            	if(lexical)
+            		lexicalContent += line + "\n";
+            }
+            reader.close();
+        } catch (IOException e) {
+        	// Updates the log
+        	AcideLog.getLog().error(e.getMessage());
+        }
+        
+        
+        try {
+        	// Write the "syntaxContent" to the syntaxFile
+            BufferedWriter syntaxWriter = new BufferedWriter(new FileWriter(syntaxFile));
+            syntaxWriter.write(syntaxContent);
+            syntaxWriter.close();
+            
+            // Write the "lexicalContent" to the lexicalFile
+            BufferedWriter lexicalWriter = new BufferedWriter(new FileWriter(lexicalFile));
+            lexicalWriter.write(lexicalContent);
+            lexicalWriter.close();
+            
+            // Write the "syntaxContent" to the exprFile
+            String[] lines = syntaxContent.split("\\r?\\n");
+            syntaxContent = "grammar Expr;\n" + String.join("\n", Arrays.copyOfRange(lines, 1, lines.length));
+            
+            BufferedWriter g4Writer = new BufferedWriter(new FileWriter(exprFile));
+            g4Writer.write(syntaxContent);
+            g4Writer.close();
+        } catch (IOException e) {
+        	// Updates the log
+        	AcideLog.getLog().error(e.getMessage());
+        }
+	}
+	
+	/**
+	 * Save the grammar with specific format in to the "target" file
+	 * @param target
+	 */
+	public void saveGrammar(String target) {
+		String syntaxFile = "src/acide/process/parser/grammar/syntaxRules.txt";
+		String lexicalFile = "src/acide/process/parser/grammar/lexicalCategories.xml";
+		
+		// Creates the file content
+		String textContent = "header{\npackage acide.process.parser.grammar;\n}\n";
+		textContent += "class ExprLexer extends Lexer;\n";
+		
+		String syntaxContent = "";
+		String lexicalContent = "";
+		
+        // Read contents of lexicalFile
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(lexicalFile));
+            String line;
+            while ((line = reader.readLine()) != null) {
+            	lexicalContent += line + "\n";
+            }
+            reader.close();
+        } catch (IOException e) {
+        	// Updates the log
+        	AcideLog.getLog().error(e.getMessage());
+        }
+		
+        // Append the lexical contents
+        textContent += lexicalContent;
+        textContent += "\nclass ExprParser extends Parser;\n";
+        
+        // Read contents of syntaxFile
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(syntaxFile));
+            String line;
+            while ((line = reader.readLine()) != null) {
+            		syntaxContent += line + "\n";
+            }
+            reader.close();
+        } catch (IOException e) {
+        	// Updates the log
+        	AcideLog.getLog().error(e.getMessage());
+        }
+        
+        // Append the grammatical contents
+        textContent +=  syntaxContent;
 
-		try (BufferedReader reader = new BufferedReader(new FileReader(source))) {
-			StringBuilder sb = new StringBuilder();
-			int i = 0;
-
-			String line = reader.readLine();
-			while (line != null) {
-				if (i == 0)
-					sb.append(newLine).append(System.lineSeparator());
-				else
-					sb.append(line).append(System.lineSeparator());
-				line = reader.readLine();
-				i++;
-			}
-
-			try (BufferedWriter writer = new BufferedWriter(new FileWriter(dest))) {
-				writer.write(sb.toString());
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        // Write the extracted substring to the target file
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(target));
+            writer.write(textContent);
+            writer.close();
+        } catch (IOException e) {
+        	// Updates the log
+        	AcideLog.getLog().error(e.getMessage());
+        }
 	}
 	
 

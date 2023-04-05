@@ -504,6 +504,98 @@ public class AcideLexiconConfiguration {
 			}
 		}
 	}
+	
+	
+	/**
+	 * Loads the ACIDE - A Configurable IDE lexicon configuration from a txt
+	 * file which is located in a path given as a parameter.
+	 * 
+	 * @param path
+	 *            File path of the file to extract the configuration from.
+	 *            
+	 * @throws Exception
+	 */
+	public void loadLexerInGrammar(String path) throws Exception {
+
+		// If the name is already set by the user
+		if ((path != null) && (!path.trim().equalsIgnoreCase(""))) {
+			try {
+
+				// Creates the XStream object
+				XStream x = new XStream(new DomDriver());
+
+				// Creates the file input stream
+				FileInputStream fileInputStream = new FileInputStream(path);
+
+				// Gets the lexicon configuration from the XML file
+				AcideLexiconConfiguration lexiconConfiguration = (AcideLexiconConfiguration) x
+						.fromXML(fileInputStream);
+
+				// Gets the name
+				String name = lexiconConfiguration.getName();
+
+				// Gets the is compiled or interpreted flag
+				Boolean isCompiledOrInterpreted = lexiconConfiguration
+						.getIsCompiledOrInterpreted();
+
+				// Gets the token type manager
+				AcideLexiconTokenManager tokenTypeManager = lexiconConfiguration
+						.getTokenTypeManager();
+
+				// Gets the valid extensions manager
+				AcideValidExtensionsManager validExtensionsManager = lexiconConfiguration
+						.getValidExtensionsManager();
+
+				// Gets the delimiters manager
+				AcideLexiconDelimitersManager delimitersManager = lexiconConfiguration
+						.getDelimitersManager();
+
+				// Gets the remarks manager
+				AcideLexiconRemarksManager remarksManager = lexiconConfiguration
+						.getRemarksManager();
+
+				// Closes the file input stream
+				fileInputStream.close();
+
+				// Stores the name
+				_name = name;
+
+				// Stores the is compiled or interpreted flag
+				_isCompiledOrInterpreted = isCompiledOrInterpreted;
+
+				// Stores the token type manager
+				_tokenTypeManager = tokenTypeManager;
+
+				// Stores the valid extensions manager
+				_validExtensionsManager = validExtensionsManager;
+
+				// Stores the delimiters manager
+				_delimitersManager = delimitersManager;
+
+				// Stores the remarks manager
+				_remarksManager = remarksManager;
+
+				// Stores the path
+				_path = path;
+
+			} catch (Exception exception) {
+				
+				// Updates the log
+				AcideLog.getLog().error(exception.getMessage());
+				
+				// If the file does not exist, loads the default configuration
+				load(DEFAULT_PATH + DEFAULT_NAME);
+
+				// Updates the log
+				AcideLog.getLog().info(
+						AcideLanguageManager.getInstance().getLabels()
+								.getString("s201")
+								+ " " + DEFAULT_PATH + DEFAULT_NAME);
+				
+				throw new Exception(exception.getMessage());
+			}
+		}
+	}
 
 	/**
 	 * Returns the ACIDE - A Configurable IDE lexicon configuration remarks

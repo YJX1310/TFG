@@ -87,28 +87,20 @@ public class AcideSaveAsGrammarMenuItemListener implements ActionListener {
 					AcideFileTarget.FILES,
 					AcideFileType.FILE,
 					"./configuration/grammars/",
-					new AcideFileExtensionFilterManager(new String[] { "jar" },
+					new AcideFileExtensionFilterManager(new String[] { "txt" },
 							AcideLanguageManager.getInstance().getLabels()
 									.getString("s270")));
 
 			if (absolutePath != null) {
 
-				// If it does not contains the .jar extension
-				if (!absolutePath.endsWith(".jar"))
+				// If it does not contains the .txt extension
+				if (!absolutePath.endsWith(".txt"))
 
 					// Adds it
-					absolutePath += ".jar";
-
-				// Gets the ACIDE - A Configurable IDE current grammar
-				// configuration
-				String currentGrammarConfiguration = AcideMainWindow
-						.getInstance().getFileEditorManager()
-						.getSelectedFileEditorPanel()
-						.getCurrentGrammarConfiguration().getPath();
-
-				// Copies the file
-				AcideByteFileManager.getInstance().copy(
-						currentGrammarConfiguration, absolutePath);
+					absolutePath += ".txt";
+				
+				// Save the grammar
+				AcideByteFileManager.getInstance().saveGrammar(absolutePath);
 
 				// Updates the current grammar configuration path
 				AcideMainWindow.getInstance().getFileEditorManager()

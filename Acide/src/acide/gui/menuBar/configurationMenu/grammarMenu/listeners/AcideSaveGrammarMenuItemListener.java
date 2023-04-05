@@ -82,15 +82,8 @@ public class AcideSaveGrammarMenuItemListener implements ActionListener {
 					.getFileEditorManager().getSelectedFileEditorPanel()
 					.getPreviousGrammarConfiguration().getPath();
 
-			// Gets the ACIDE - A Configurable IDE previous grammar
-			// configuration
-			String currentGrammarConfiguration = AcideMainWindow.getInstance()
-					.getFileEditorManager().getSelectedFileEditorPanel()
-					.getCurrentGrammarConfiguration().getPath();
-
-			// Copies the files
-			AcideByteFileManager.getInstance().copy(
-					currentGrammarConfiguration, previousGrammarConfiguration);
+			// Save the grammar
+			AcideByteFileManager.getInstance().saveGrammar(previousGrammarConfiguration);
 
 			// Updates the current grammar configuration path
 			AcideMainWindow.getInstance().getFileEditorManager()

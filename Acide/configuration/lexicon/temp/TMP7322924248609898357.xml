@@ -1,10 +1,6 @@
-header{
-package acide.process.parser.grammar;
-}
-class ExprLexer extends Lexer;
 <acide.configuration.lexicon.AcideLexiconConfiguration>
   <__name>java</__name>
-  <__path>.\configuration\lexicon\java.xml</__path>
+  <__path>C:\Users\34642\eclipse\TFG\Github\Acide\configuration\lexicon\java.xml</__path>
   <__isCompiledOrInterpreted>false</__isCompiledOrInterpreted>
   <__tokenTypeManager>
     <__list>
@@ -81,17 +77,3 @@ class ExprLexer extends Lexer;
     <__fontStyle>0</__fontStyle>
   </__remarksManager>
 </acide.configuration.lexicon.AcideLexiconConfiguration>
-
-
-
-
-class ExprParser extends Parser;
-grammar Prueba;
-prog:   (expr NEWLINE)* ;
-expr:   expr ('*'|'/') expr
-    |   expr ('+'|'-') expr
-    |   INT
-    |   '(' expr ')'
-    ;
-NEWLINE : [\r\n]+ ;
-INT     : [0-9]+ ;

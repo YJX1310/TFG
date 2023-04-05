@@ -256,49 +256,9 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			}
 
 			if (jarPath != null && !jarPath.equals("null")) {
-
-				// Reallocates the Expr.g4 file
-				AcideByteFileManager.getInstance().reallocateFile(
-						"src/acide/process/parser/grammar/Expr.g4",
-						"Expr.g4");
-
-				// Reallocates the syntaxRules.txt file
-				AcideByteFileManager.getInstance().reallocateFile(
-						"src/acide/process/parser/grammar/syntaxRules.txt",
-						"syntaxRules.txt");
-
-				// Reallocates the lexicalCategories.txt file
-				AcideByteFileManager
-						.getInstance()
-						.reallocateFile(
-								"src/acide/process/parser/grammar/lexicalCategories.txt",
-								"lexicalCategories.txt");
-
-				// Gets the syntaxRules.txt and lexical categories from the .jar
-				// file
-				Process process = null;
-				try {
-					process = Runtime.getRuntime().exec(
-							"\"" + jarPath + "\" xvf " + name + ".jar "
-									+ "syntaxRules.txt "
-									+ "lexicalCategories.txt");
-					process.waitFor();
-				} catch (Exception exception) {
-
-					// Displays an error message
-					JOptionPane.showMessageDialog(null, AcideLanguageManager
-							.getInstance().getLabels().getString("s2018"),
-							AcideLanguageManager.getInstance().getLabels()
-									.getString("s938"),
-							JOptionPane.ERROR_MESSAGE);
-
-					// Updates the log
-					AcideLog.getLog().error(exception.getMessage());
-				}
-
 				// Gets its content
 				String fileContent = AcideFileManager.getInstance().load(
-						"lexicalCategories.txt");
+						"src/acide/process/parser/grammar/lexicalCategories.xml");
 
 				if (fileContent != null)
 					// Updates the categories text area
@@ -306,7 +266,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 				// Gets its content
 				fileContent = AcideFileManager.getInstance().load(
-						"syntaxRules.txt");
+						"src/acide/process/parser/grammar/syntaxRules.txt");
 
 				if (fileContent != null)
 					// Updates the rules text area
