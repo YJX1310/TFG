@@ -87,7 +87,7 @@ public class AcideSaveAsGrammarMenuItemListener implements ActionListener {
 					AcideFileTarget.FILES,
 					AcideFileType.FILE,
 					"./configuration/grammars/",
-					new AcideFileExtensionFilterManager(new String[] { "txt" },
+					new AcideFileExtensionFilterManager(new String[] { ".txt" },
 							AcideLanguageManager.getInstance().getLabels()
 									.getString("s270")));
 

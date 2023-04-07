@@ -56,6 +56,7 @@ import java.util.Arrays;
 
 import javax.swing.JOptionPane;
 
+import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
 
@@ -432,6 +433,12 @@ public class AcideByteFileManager {
         	// Updates the log
         	AcideLog.getLog().error(e.getMessage());
         }
+        
+		// Displays a message
+		JOptionPane.showMessageDialog(
+				AcideMainWindow.getInstance(), AcideLanguageManager.getInstance()
+				.getLabels().getString("s2432"), AcideLanguageManager.getInstance()
+				.getLabels().getString("s2431"), JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 

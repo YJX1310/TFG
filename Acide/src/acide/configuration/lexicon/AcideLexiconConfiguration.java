@@ -57,6 +57,7 @@ import acide.configuration.lexicon.validExtensions.AcideValidExtensionsManager;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
+import acide.process.gui.AcideProgressWindow;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
@@ -521,6 +522,10 @@ public class AcideLexiconConfiguration {
 		if ((path != null) && (!path.trim().equalsIgnoreCase(""))) {
 			try {
 
+				//Updates the progress window
+				AcideProgressWindow.getInstance().setText(AcideLanguageManager.getInstance()
+						.getLabels().getString("s2430"));
+				
 				// Creates the XStream object
 				XStream x = new XStream(new DomDriver());
 
@@ -577,11 +582,19 @@ public class AcideLexiconConfiguration {
 
 				// Stores the path
 				_path = path;
+				
+				//Updates the progress window
+				AcideProgressWindow.getInstance().setText(AcideLanguageManager.getInstance()
+						.getLabels().getString("s201"));
 
 			} catch (Exception exception) {
 				
 				// Updates the log
 				AcideLog.getLog().error(exception.getMessage());
+				
+				// Updates the progress window
+				AcideProgressWindow.getInstance().setText(AcideLanguageManager.getInstance().getLabels()
+						.getString("s2429") + "\n" + exception.getMessage());
 				
 				// If the file does not exist, loads the default configuration
 				load(DEFAULT_PATH + DEFAULT_NAME);
