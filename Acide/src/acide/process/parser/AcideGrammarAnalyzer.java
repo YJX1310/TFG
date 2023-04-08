@@ -44,15 +44,107 @@
  */
 package acide.process.parser;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+
+import org.antlr.v4.runtime.BaseErrorListener;
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.RecognitionException;
+import org.antlr.v4.runtime.Recognizer;
+
+import acide.language.AcideLanguageManager;
+import acide.log.AcideLog;
+import acide.process.parser.grammar.ExprLexer;
+import acide.process.parser.grammar.ExprParser;
+
 /**
  * ACIDE - A Configurable IDE grammar analyzer.
  */
 public class AcideGrammarAnalyzer {
+	/**
+	 * ACIDE - A Configurable IDE grammar analyzer text to analyze.
+	 */
+	private String _text;
+
+	/**
+	 * ACIDE - A Configurable IDE grammar analyzer lexer.
+	 */
+	private ExprLexer _lexer;
+
+	/**
+	 * ACIDE - A Configurable IDE grammar analyzer parser.
+	 */
+	private ExprParser _parser;
 	
+	/**
+	 * ACIDE - A Configurable IDE grammar analyzer errors.
+	 */
+	private HashMap<String, String> _errors;
+
 	/**
 	 * Creates a new ACIDE - A Configurable IDE grammar analyzer.
 	 */
-	public AcideGrammarAnalyzer() {	
+	public AcideGrammarAnalyzer(String text) {
+		// Store the text
+		_text = text;
 		
+		// Initialize the error
+		_errors = new HashMap<String, String>();
+		
+		// Create the lexer
+		_lexer = new ExprLexer(CharStreams.fromString(_text));
+		
+		// Create the parser
+		_parser = new ExprParser(new CommonTokenStream(_lexer));
+
+		// Set the error listener for the lexer
+		_lexer.removeErrorListeners();
+		_lexer.addErrorListener(new BaseErrorListener() {
+			@Override
+			public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line,
+					int charPositionInLine, String msg, RecognitionException e) {
+				_errors.put(line + ":" + charPositionInLine, msg);
+			}
+		});
+		// Set the error listener for the parser
+		_parser.removeErrorListeners();
+		_parser.addErrorListener(new BaseErrorListener() {
+			@Override
+			public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line,
+					int charPositionInLine, String msg, RecognitionException e) {
+				_errors.put(line + ":" + charPositionInLine, msg);
+			}
+		});
+	}
+
+	/**
+	 * Analyze the entire text according to the grammar rules
+	 */
+	private void analyzeText() {
+		try {
+			_parser.getClass().getMethod(_parser.getRuleNames()[0]).invoke(_parser);
+			
+			// Updates the log
+			AcideLog.getLog().info(
+					AcideLanguageManager.getInstance().getLabels()
+							.getString("Analyze text sucess"));
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
+				| SecurityException e1) {
+			// Updates the log
+			AcideLog.getLog().error(
+					AcideLanguageManager.getInstance().getLabels()
+							.getString("Analyze text error: " + e1.getMessage()));
+			e1.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Returns the ACIDE - A Configurable IDE grammar analyzer grammar mistakes.
+	 * 
+	 * @return the ACIDE - A Configurable IDE grammar analyzer grammar mistakes.
+	 */
+	public HashMap<String, String> getErrors(){
+		return _errors;
 	}
 }
