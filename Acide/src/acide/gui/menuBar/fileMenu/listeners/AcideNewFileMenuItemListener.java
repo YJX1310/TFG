@@ -57,6 +57,7 @@ import javax.swing.JPanel;
 
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
+import acide.process.parser.AcideGrammarAnalyzer;
 
 
 /**
@@ -137,6 +138,8 @@ public class AcideNewFileMenuItemListener implements ActionListener {
 	}
 
 	private static void createNewDoc(String name) {
+				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer("");
+				
 				// Creates the lexicon configuration
 				AcideLexiconConfiguration lexiconConfiguration = new AcideLexiconConfiguration();
 
@@ -165,7 +168,7 @@ public class AcideNewFileMenuItemListener implements ActionListener {
 		.updateTabbedPane(name, "", true,
 				AcideProjectFileType.NORMAL, 0, 0, 1,
 				lexiconConfiguration, currentGrammarConfiguration,
-				previousGrammarConfiguration);
+				previousGrammarConfiguration, analyzer);
 	
 	//Set encoding for each file
 	AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel().changeEncode("windows-1252");

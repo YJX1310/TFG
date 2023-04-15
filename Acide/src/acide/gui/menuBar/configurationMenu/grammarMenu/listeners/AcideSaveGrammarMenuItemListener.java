@@ -78,18 +78,18 @@ public class AcideSaveGrammarMenuItemListener implements ActionListener {
 
 			// Gets the ACIDE - A Configurable IDE previous grammar
 			// configuration
-			String previousGrammarConfiguration = AcideMainWindow.getInstance()
+			String currentGrammarConfiguration = AcideMainWindow.getInstance()
 					.getFileEditorManager().getSelectedFileEditorPanel()
-					.getPreviousGrammarConfiguration().getPath();
+					.getCurrentGrammarConfiguration().getPath();
 
 			// Save the grammar
-			AcideByteFileManager.getInstance().saveGrammar(previousGrammarConfiguration);
+			AcideByteFileManager.getInstance().saveGrammar(currentGrammarConfiguration);
 
 			// Updates the current grammar configuration path
 			AcideMainWindow.getInstance().getFileEditorManager()
 					.getSelectedFileEditorPanel()
 					.getCurrentGrammarConfiguration()
-					.setPath(previousGrammarConfiguration);
+					.setPath(currentGrammarConfiguration);
 			
 			// Disables the save grammar menu item
 			AcideMainWindow.getInstance().getMenu().getConfigurationMenu()
@@ -114,7 +114,7 @@ public class AcideSaveGrammarMenuItemListener implements ActionListener {
 			AcideLog.getLog().info(
 					AcideLanguageManager.getInstance().getLabels()
 							.getString("s940")
-							+ ": " + previousGrammarConfiguration);
+							+ ": " + currentGrammarConfiguration);
 
 		} catch (Exception exception) {
 

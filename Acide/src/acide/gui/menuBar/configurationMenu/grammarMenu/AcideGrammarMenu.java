@@ -292,7 +292,7 @@ public class AcideGrammarMenu extends JMenu {
 		//add(_setPathsAutoAnalyisisSeparator);
 
 		// Adds the auto analysis check box menu item to the menu
-		//add(_autoAnalysisCheckBoxMenuItem);
+		add(_autoAnalysisCheckBoxMenuItem);
 	}
 
 	/**
@@ -490,7 +490,7 @@ public class AcideGrammarMenu extends JMenu {
 			&& !(name.equals(SAVE_GRAMMAR_NAME))
 			&& !(name.equals(SAVE_GRAMMAR_AS_NAME))
 			&& !(name.equals(SET_PATHS_NAME))
-			//&& !(name.equals(AUTO_ANALYSIS_NAME))
+			&& !(name.equals(AUTO_ANALYSIS_NAME))
 			){
 			return true;
 		}else {
@@ -552,12 +552,12 @@ public class AcideGrammarMenu extends JMenu {
 				.getSubmenu(GRAMMAR_MENU_NAME).getItem(SET_PATHS_NAME)));
 
 		// Sets the auto analysis check box menu item action listener
-//		_autoAnalysisCheckBoxMenuItem
-//				//.addActionListener(new AcideAutoAnalysisMenuItemListener());
-//			.addActionListener(new AcideInsertedItemListener(
-//				AcideMenuItemsConfiguration.getInstance()
-//				.getSubmenu(AcideConfigurationMenu.CONFIGURATION_MENU_NAME)
-//				.getSubmenu(GRAMMAR_MENU_NAME).getItem(AUTO_ANALYSIS_NAME)));
+		_autoAnalysisCheckBoxMenuItem
+				//.addActionListener(new AcideAutoAnalysisMenuItemListener());
+			.addActionListener(new AcideInsertedItemListener(
+				AcideMenuItemsConfiguration.getInstance()
+				.getSubmenu(AcideConfigurationMenu.CONFIGURATION_MENU_NAME)
+				.getSubmenu(GRAMMAR_MENU_NAME).getItem(AUTO_ANALYSIS_NAME)));
 		
 		Iterator<AcideMenuObjectConfiguration> it = _insertedObjects.iterator();
 		while (it.hasNext()){
@@ -837,5 +837,16 @@ public class AcideGrammarMenu extends JMenu {
 	 */
 	public JMenuItem getSaveGrammarAsMenuItem() {
 		return _saveGrammarAsMenuItem;
+	}
+	
+	/**
+	 * Returns the ACIDE - A Configurable IDE grammar menu auto analysis check box
+	 * menu item.
+	 * 
+	 * @return the ACIDE - A Configurable IDE grammar menu auto analysis check box
+	 *         menu item.
+	 */
+	public JCheckBoxMenuItem getAutoAnalysisCheckBoxMenuItem() {
+		return _autoAnalysisCheckBoxMenuItem;
 	}
 }

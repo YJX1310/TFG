@@ -1,9 +1,27 @@
 grammar Expr;
-prog:   (expr NEWLINE)* ;
-expr:   expr ('*'|'/') expr
-    |   expr ('+'|'-') expr
-    |   INT
-    |   '(' expr ')'
-    ;
-NEWLINE : [\r\n]+ ;
-INT     : [0-9]+ ;
+
+parse: statement+;
+
+statement: starStatement | orbitsStatement | satelliteStatement | planetStatement | intermediateStatement;
+
+starStatement: 'star' '(' ID ')' '.' ;
+
+orbitsStatement: 'orbits' '(' ID ',' ID ')' '.' | 'orbits' '(' ID ',' ID ')' ':-' orbitsPredicate '.' ;
+
+satelliteStatement: 'satellite' '(' ID ',' ID ')' ':-' orbitsPredicate ',' notIntermediatePredicate ',' notStarPredicate '.' ;
+
+planetStatement: 'planet' '(' ID ')' ':-' orbitsPredicate ',' starPredicate ',' notIntermediatePredicate '.' ;
+
+intermediateStatement: 'intermediate' '(' ID ',' ID ')' ':-' orbitsPredicate ',' orbitsPredicate '.' ;
+
+orbitsPredicate: 'orbits' '(' ID ',' ID ')';
+
+notIntermediatePredicate: 'not' '(' 'intermediate' '(' ID ',' ID ')' ')';
+
+notStarPredicate: 'not' '(' 'star' '(' ID ')' ')';
+
+starPredicate: 'star' '(' ID ')';
+
+ID: [a-zA-Z]+;
+WS: [ \t\r\n]+ -> skip;
+COMMENT : '%' ~[\r\n]* -> skip ;

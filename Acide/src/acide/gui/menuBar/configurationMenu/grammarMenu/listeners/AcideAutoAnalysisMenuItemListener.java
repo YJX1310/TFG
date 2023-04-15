@@ -47,6 +47,10 @@ package acide.gui.menuBar.configurationMenu.grammarMenu.listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JCheckBoxMenuItem;
+
+import acide.gui.mainWindow.AcideMainWindow;
+
 /**																
  * ACIDE - A Configurable IDE auto analysis check box menu item listener.										
  *					
@@ -64,6 +68,17 @@ public class AcideAutoAnalysisMenuItemListener implements ActionListener{
 	}
 	
 	public static void action(ActionEvent actionEvent){
-		//TODO
+		// Gets the new value of the checkBox
+		boolean selected = ((JCheckBoxMenuItem)actionEvent
+				.getSource()).isSelected();
+		if(selected)
+			System.out.println("Activado");
+		else
+			System.out.println("Desactivado");
+		
+		AcideMainWindow.getInstance()
+		.getMenu().getConfigurationMenu()
+		.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem().setSelected(selected);
+
 	}
 }

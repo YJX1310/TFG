@@ -79,10 +79,14 @@ public class AcideGrammarFileCreationProcess extends Thread {
 	 */
 	private String _action;
 	/**
-	 * ACIDE - A Configurable IDE lexicon configuration path.
+	 * ACIDE - A Configurable IDE grammar file creation lexicon configuration path.
 	 */
 	private static final String _lexer = "src/acide/process/parser/grammar/lexicalCategories.xml";
-
+	/**
+	 * ACIDE - A Configurable IDE grammar file creation display message.
+	 */
+	private boolean _displayMessage;
+	
 	/**
 	 * Creates a new ACIDE - A Configurable IDE grammar file creation process.
 	 * 
@@ -92,7 +96,7 @@ public class AcideGrammarFileCreationProcess extends Thread {
 	 *            verbose process flag.
 	 */
 	public AcideGrammarFileCreationProcess(String grammarName,
-			boolean verboseProcess, String action) {
+			boolean verboseProcess, String action, boolean display) {
 
 		// Stores the grammar name
 		_grammarName = grammarName;
@@ -102,7 +106,10 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		
 		// Store the action
 		_action = action;
+		
+		_displayMessage = display;
 	}
+	
 
 	/*
 	 * (non-Javadoc)
@@ -244,10 +251,12 @@ public class AcideGrammarFileCreationProcess extends Thread {
 			// Enables the close button in the progress window
 			AcideProgressWindow.getInstance().enableCloseButton();
 		else {
-			// Displays a message
-			JOptionPane.showMessageDialog(
-					AcideMainWindow.getInstance(),
-					message, title, type);
+			//	If the display message flag is true then
+			if(_displayMessage)
+				// Displays a message
+				JOptionPane.showMessageDialog(
+						AcideMainWindow.getInstance(),
+						message, title, type);
 			
 			// Enables the main window
 			AcideMainWindow.getInstance().setEnabled(true);
@@ -741,27 +750,30 @@ public class AcideGrammarFileCreationProcess extends Thread {
 	 */
 	private void modifyLexer() throws Exception{
 		
-		// Loads the lexicon configuration
-		AcideMainWindow.getInstance().getFileEditorManager()
-				.getSelectedFileEditorPanel().getLexiconConfiguration()
-				.loadLexerInGrammar(_lexer);
-		
-		// Resets the selected file editor text edition area
-		AcideMainWindow.getInstance().getFileEditorManager()
-				.getSelectedFileEditorPanel().resetStyledDocument();
+		File lexer = new File(_lexer);
+		if(lexer.length() != 0) {
+			// Loads the lexicon configuration
+			AcideMainWindow.getInstance().getFileEditorManager()
+					.getSelectedFileEditorPanel().getLexiconConfiguration()
+					.loadLexerInGrammar(_lexer);
+			
+			// Resets the selected file editor text edition area
+			AcideMainWindow.getInstance().getFileEditorManager()
+					.getSelectedFileEditorPanel().resetStyledDocument();
 
-		// Updates the lexicon message status bar
-		AcideMainWindow
-				.getInstance()
-				.getStatusBar()
-				.setLexiconMessage(
-						AcideLanguageManager.getInstance().getLabels()
-								.getString("s449")
-								+ " "
-								+ AcideMainWindow.getInstance()
-										.getFileEditorManager()
-										.getSelectedFileEditorPanel()
-										.getLexiconConfiguration().getName());
+			// Updates the lexicon message status bar
+			AcideMainWindow
+					.getInstance()
+					.getStatusBar()
+					.setLexiconMessage(
+							AcideLanguageManager.getInstance().getLabels()
+									.getString("s449")
+									+ " "
+									+ AcideMainWindow.getInstance()
+											.getFileEditorManager()
+											.getSelectedFileEditorPanel()
+											.getLexiconConfiguration().getName());
+		}
 	}
 	
 }

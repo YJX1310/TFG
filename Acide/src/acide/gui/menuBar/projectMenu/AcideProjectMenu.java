@@ -85,6 +85,7 @@ import acide.gui.menuBar.listeners.AcideMenuBarMouseClickListener;
 import acide.gui.menuBar.projectMenu.recentProjectsMenu.AcideRecentProjectsMenu;
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
+import acide.process.parser.AcideGrammarAnalyzer;
 import acide.resources.AcideResourceManager;
 import acide.resources.exception.MissedPropertyException;
 import acide.utils.IconsUtils;
@@ -2328,6 +2329,8 @@ public class AcideProjectMenu extends JMenu {
 				if (AcideProjectConfiguration.getInstance().getFileAt(index)
 						.isOpened()) {
 
+					AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer(fileContent);
+					
 					// Gets the predefined lexicon configuration
 					AcideLexiconConfiguration lexiconConfiguration = AcideWorkbenchConfiguration
 							.getInstance()
@@ -2364,7 +2367,7 @@ public class AcideProjectMenu extends JMenu {
 											.getFileAt(index).getType(), 0, 0,
 									1, lexiconConfiguration,
 									currentGrammarConfiguration,
-									previousGrammarConfiguration);
+									previousGrammarConfiguration, analyzer);
 				}
 
 				// The project configuration has been modified

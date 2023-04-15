@@ -39,6 +39,8 @@
  */
 package acide.gui.fileEditor.fileEditorManager.listeners;
 
+import java.util.HashMap;
+
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
@@ -49,11 +51,14 @@ import javax.swing.text.JTextComponent;
 import javax.swing.text.Utilities;
 
 import acide.configuration.workbench.AcideWorkbenchConfiguration;
+import acide.files.bytes.AcideByteFileManager;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideTextComponent;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
+import acide.process.parser.AcideGrammarAnalyzer;
+import acide.process.parser.AcideGrammarFileCreationProcess;
 
 /**
  * <p>
@@ -138,6 +143,30 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 			Element rootElement = AcideMainWindow.getInstance()
 					.getFileEditorManager().getSelectedFileEditorPanel()
 					.getStyledDocument().getDefaultRootElement();
+			
+			AcideByteFileManager.getInstance().processGrammarJar(selectedFileEditorPanel
+					.getCurrentGrammarConfiguration().getPath());
+			
+			AcideGrammarFileCreationProcess a = new AcideGrammarFileCreationProcess(AcideMainWindow
+					.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
+					.getCurrentGrammarConfiguration().getPath(), false, 
+					AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
+			
+			a.run();
+			
+			// Get the file editor panel analyzer
+			AcideGrammarAnalyzer analyzer = selectedFileEditorPanel.getGrammarAnalyzer();
+			analyzer.setText(activeTextPane.getText());
+			
+			// Analyze the text
+			analyzer.analyzeText();
+			
+			// Print the errors
+			for(HashMap.Entry<String, String> entry : analyzer.getErrors().entrySet()) {
+			    String key = entry.getKey();
+			    String value = entry.getValue();
+			    System.out.println(key + ": " +value);
+			}
 
 			// Gets its number of lines
 			int numLines = rootElement.getElementCount();

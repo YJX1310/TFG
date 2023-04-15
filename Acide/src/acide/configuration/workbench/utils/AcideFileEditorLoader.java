@@ -66,6 +66,7 @@ import acide.files.utils.CharsetDetector;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
+import acide.process.parser.AcideGrammarAnalyzer;
 import sun.nio.cs.StandardCharsets;
 
 /**
@@ -218,6 +219,7 @@ public class AcideFileEditorLoader {
 					fileContent = AcideFileManager.getInstance().applyCodification(
 							projectFile.getAbsolutePath(), ubis.getBOM().toString());
 					
+					AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer(fileContent);
 
 					// Gets the predefined lexicon configuration
 					AcideLexiconConfiguration lexiconConfiguration = AcideWorkbenchConfiguration
@@ -248,7 +250,7 @@ public class AcideFileEditorLoader {
 									fileContent, true, projectFile.getType(),
 									0, 0, 1, lexiconConfiguration,
 									currentGrammarConfiguration,
-									previousGrammarConfiguration);
+									previousGrammarConfiguration, analyzer);
 					
 					//Set encoding for each file
 					AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel().changeEncode(ubis.getBOM().toString());
@@ -322,6 +324,8 @@ public class AcideFileEditorLoader {
 					fileContent = AcideFileManager.getInstance().applyCodification(
 							fileEditorConfiguration.getFileAt(index).getPath(), ubis.getBOM().toString());
 
+					AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer(fileContent);
+					
 					// Creates the lexicon configuration
 					AcideLexiconConfiguration lexiconConfiguration = new AcideLexiconConfiguration();
 
@@ -363,7 +367,7 @@ public class AcideFileEditorLoader {
 											.getActiveTextEditionArea(),
 									lexiconConfiguration,
 									currentGrammarConfiguration,
-									previousGrammarConfiguration);
+									previousGrammarConfiguration, analyzer);
 					
 					//Set encoding for each file
 					AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel().changeEncode(ubis.getBOM().toString());

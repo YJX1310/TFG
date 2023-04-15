@@ -87,6 +87,7 @@ import acide.gui.menuBar.fileMenu.recentFilesMenu.AcideRecentFilesMenu;
 import acide.gui.menuBar.listeners.AcideMenuBarMouseClickListener;
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
+import acide.process.parser.AcideGrammarAnalyzer;
 import acide.resources.AcideResourceManager;
 import acide.utils.IconsUtils;
 
@@ -1079,6 +1080,8 @@ public class AcideFileMenu extends JMenu {
 			// Gets the file project index
 			int fileProjectIndex = AcideProjectConfiguration.getInstance().getIndexOfFile(filePath);
 
+			AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer(fileContent);
+			
 			// Gets the predefined lexicon configuration
 			AcideLexiconConfiguration lexiconConfiguration = AcideWorkbenchConfiguration.getInstance()
 					.getLexiconAssignerConfiguration().getPredifinedLexiconConfiguration(filePath);
@@ -1117,7 +1120,7 @@ public class AcideFileMenu extends JMenu {
 
 			// Updates the tabbed pane in the file editor manager
 			AcideMainWindow.getInstance().getFileEditorManager().updateTabbedPane(filePath, fileContent, true, fileType,
-					0, 0, 1, lexiconConfiguration, currentGrammarConfiguration, previousGrammarConfiguration);
+					0, 0, 1, lexiconConfiguration, currentGrammarConfiguration, previousGrammarConfiguration, analyzer);
 
 			// Set encoding for each file
 			AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
@@ -1490,6 +1493,8 @@ public class AcideFileMenu extends JMenu {
 			// Gets the file project index
 			int fileProjectIndex = AcideProjectConfiguration.getInstance().getIndexOfFile(filePath);
 
+			AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer(fileContent);
+			
 			// Gets the predefined lexicon configuration
 			AcideLexiconConfiguration lexiconConfiguration = AcideWorkbenchConfiguration.getInstance()
 					.getLexiconAssignerConfiguration().getPredifinedLexiconConfiguration(filePath);
@@ -1528,7 +1533,7 @@ public class AcideFileMenu extends JMenu {
 
 			// Updates the tabbed pane in the file editor manager
 			AcideMainWindow.getInstance().getFileEditorManager().updateTabbedPane(filePath, fileContent, true, fileType,
-					0, 0, 1, lexiconConfiguration, currentGrammarConfiguration, previousGrammarConfiguration);
+					0, 0, 1, lexiconConfiguration, currentGrammarConfiguration, previousGrammarConfiguration, analyzer);
 
 			// Set encoding for each file
 			AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel().changeEncode(encode);

@@ -47,6 +47,7 @@ package acide.gui.fileEditor.fileEditorManager;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.InputMap;
@@ -71,6 +72,8 @@ import acide.gui.mainWindow.AcideMainWindow;
 import acide.gui.menuBar.editMenu.utils.AcideUndoManager;
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
+import acide.main.AcideMain;
+import acide.process.parser.AcideGrammarAnalyzer;
 
 /**
  * <p>
@@ -251,7 +254,8 @@ public class AcideFileEditorManager extends JPanel {
 			int activeTextEditionArea,
 			AcideLexiconConfiguration lexiconConfiguration,
 			AcideGrammarConfiguration currentGrammarConfiguration,
-			AcideGrammarConfiguration previousGrammarConfiguration) {
+			AcideGrammarConfiguration previousGrammarConfiguration,
+			AcideGrammarAnalyzer analyzer) {
 
 		// Checks if the file is already opened
 		int tabPosition = -1;
@@ -280,7 +284,7 @@ public class AcideFileEditorManager extends JPanel {
 			addTab(fileName, filePath, isEditable, fileType,
 					activeTextEditionArea, splitPaneDividerLocation,
 					lexiconConfiguration, currentGrammarConfiguration,
-					previousGrammarConfiguration);
+					previousGrammarConfiguration, analyzer);
 
 			/*
 			 * Once the tabbed pane and tabbed pane UI are updated, the file
@@ -342,14 +346,15 @@ public class AcideFileEditorManager extends JPanel {
 			int splitPaneDividerLocation,
 			AcideLexiconConfiguration lexiconConfiguration,
 			AcideGrammarConfiguration currentGrammarConfiguration,
-			AcideGrammarConfiguration previousGrammarConfiguration) {
+			AcideGrammarConfiguration previousGrammarConfiguration,
+			AcideGrammarAnalyzer analyzer) {
 
 		// Creates the file editor panel
 		AcideFileEditorPanel fileEditorPanel = new AcideFileEditorPanel(
 				filePath, isEditable, new File(filePath).lastModified(),
 				new File(filePath).length(), activeTextEditionArea,
 				splitPaneDividerLocation, lexiconConfiguration,
-				currentGrammarConfiguration, previousGrammarConfiguration);
+				currentGrammarConfiguration, previousGrammarConfiguration, analyzer);
 
 		// Configures and adds the tab to the tabbed pane based on the file type
 		switch (fileType) {
@@ -512,6 +517,7 @@ public class AcideFileEditorManager extends JPanel {
 		// Puts the focus in the active text edition area
 		getSelectedFileEditorPanel().getActiveTextEditionArea()
 				.requestFocusInWindow();
+		
 	}
 
 	/**

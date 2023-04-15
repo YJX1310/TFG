@@ -52,6 +52,7 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
+import org.antlr.v4.runtime.tree.ParseTree;
 
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
@@ -66,26 +67,30 @@ public class AcideGrammarAnalyzer {
 	 * ACIDE - A Configurable IDE grammar analyzer text to analyze.
 	 */
 	private String _text;
-
 	/**
 	 * ACIDE - A Configurable IDE grammar analyzer lexer.
 	 */
 	private ExprLexer _lexer;
-
+	/**
+	 * ACIDE - A Configurable IDE grammar analyzer token.
+	 */
+	private CommonTokenStream _token;
 	/**
 	 * ACIDE - A Configurable IDE grammar analyzer parser.
 	 */
 	private ExprParser _parser;
-	
 	/**
 	 * ACIDE - A Configurable IDE grammar analyzer errors.
 	 */
 	private HashMap<String, String> _errors;
-
 	/**
 	 * Creates a new ACIDE - A Configurable IDE grammar analyzer.
 	 */
 	public AcideGrammarAnalyzer(String text) {
+		constructor(text);
+	}
+	
+	private void constructor(String text) {
 		// Store the text
 		_text = text;
 		
@@ -95,8 +100,11 @@ public class AcideGrammarAnalyzer {
 		// Create the lexer
 		_lexer = new ExprLexer(CharStreams.fromString(_text));
 		
+		//	Create the token
+		_token = new CommonTokenStream(_lexer); 
+		
 		// Create the parser
-		_parser = new ExprParser(new CommonTokenStream(_lexer));
+		_parser = new ExprParser(_token);
 
 		// Set the error listener for the lexer
 		_lexer.removeErrorListeners();
@@ -121,14 +129,16 @@ public class AcideGrammarAnalyzer {
 	/**
 	 * Analyze the entire text according to the grammar rules
 	 */
-	private void analyzeText() {
+	public void analyzeText() {
 		try {
-			_parser.getClass().getMethod(_parser.getRuleNames()[0]).invoke(_parser);
-			
+			ParseTree tree = (ParseTree)_parser.getClass().getMethod(_parser.getRuleNames()[0]).invoke(_parser);
+			_token.seek(0);
+			System.out.println("Parse Tree: "
+					  + tree.toStringTree(_parser));
 			// Updates the log
 			AcideLog.getLog().info(
 					AcideLanguageManager.getInstance().getLabels()
-							.getString("Analyze text sucess"));
+							.getString("s2433"));
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
 				| SecurityException e1) {
 			// Updates the log
@@ -147,4 +157,49 @@ public class AcideGrammarAnalyzer {
 	public HashMap<String, String> getErrors(){
 		return _errors;
 	}
+	
+	public void setErrors(HashMap<String, String> _errors) {
+		this._errors = _errors;
+	}
+
+	/**
+	 * Returns the ACIDE - A Configurable IDE grammar analyzer grammar text.
+	 * 
+	 * @return the ACIDE - A Configurable IDE grammar analyzer grammar text.
+	 */
+	public String getText() {
+		return _text;
+	}
+
+	public void setText(String _text) {
+		constructor(_text);
+	}
+
+	/**
+	 * Returns the ACIDE - A Configurable IDE grammar analyzer grammar lexer.
+	 * 
+	 * @return the ACIDE - A Configurable IDE grammar analyzer grammar lexer.
+	 */
+	public ExprLexer getLexer() {
+		return _lexer;
+	}
+
+	public void setLexer(ExprLexer _lexer) {
+		this._lexer = _lexer;
+	}
+
+	/**
+	 * Returns the ACIDE - A Configurable IDE grammar analyzer grammar parser.
+	 * 
+	 * @return the ACIDE - A Configurable IDE grammar analyzer grammar parser.
+	 */
+	public ExprParser getParser() {
+		return _parser;
+	}
+
+	public void setParser(ExprParser _parser) {
+		this._parser = _parser;
+	}
+	
+	
 }

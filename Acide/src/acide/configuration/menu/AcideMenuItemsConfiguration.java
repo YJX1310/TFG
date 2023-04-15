@@ -1437,12 +1437,12 @@ public class AcideMenuItemsConfiguration {
 		setPaths.setCommand("$SET_PATHS");
 		result.insertObject(setPaths);
 		
-//		//AUTO ANALYSIS
-//		AcideMenuItemConfiguration autoAnalysis = new AcideMenuItemConfiguration(AcideGrammarMenu.AUTO_ANALYSIS_NAME);
-//		autoAnalysis.setErasable(false);
-//		autoAnalysis.setVisible(true);
-//      autoAnalysis.setCommand("$AUTO_ANALYSIS");
-//		result.insertObject(autoAnalysis);
+		//AUTO ANALYSIS
+		AcideMenuItemConfiguration autoAnalysis = new AcideMenuItemConfiguration(AcideGrammarMenu.AUTO_ANALYSIS_NAME);
+		autoAnalysis.setErasable(false);
+		autoAnalysis.setVisible(true);
+		autoAnalysis.setCommand("$AUTO_ANALYSIS");
+		result.insertObject(autoAnalysis);
 		
 		return result;
 	}

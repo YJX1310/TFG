@@ -51,6 +51,7 @@ import acide.configuration.workbench.AcideWorkbenchConfiguration;
 import acide.files.AcideFileManager;
 import acide.files.project.AcideProjectFile;
 import acide.gui.mainWindow.AcideMainWindow;
+import acide.process.parser.AcideGrammarAnalyzer;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -182,6 +183,8 @@ public class AcideExplorerPanelMouseListener extends MouseAdapter {
 								.getInstance().getIndexOfFile(
 										currentProjectFile.getAbsolutePath());
 
+						AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer(fileContent);
+						
 						// Gets the predefined lexicon configuration
 						AcideLexiconConfiguration lexiconConfiguration = AcideWorkbenchConfiguration
 								.getInstance()
@@ -217,7 +220,7 @@ public class AcideExplorerPanelMouseListener extends MouseAdapter {
 												.getType(), 0, 0, 1,
 										lexiconConfiguration,
 										currentGrammarConfiguration,
-										previousGrammarConfiguration);
+										previousGrammarConfiguration, analyzer);
 
 						// Sets the file as opened in the project
 						// configuration

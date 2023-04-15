@@ -47,6 +47,7 @@ package acide.gui.menuBar.configurationMenu.grammarMenu.listeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.HashMap;
 
 import acide.files.AcideFileExtensionFilterManager;
 import acide.files.AcideFileManager;
@@ -54,9 +55,11 @@ import acide.files.bytes.AcideByteFileManager;
 import acide.files.utils.AcideFileOperation;
 import acide.files.utils.AcideFileTarget;
 import acide.files.utils.AcideFileType;
+import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
+import acide.process.parser.AcideGrammarAnalyzer;
 import acide.process.parser.AcideGrammarFileCreationProcess;
 
 /**
@@ -94,10 +97,28 @@ public class AcideLoadGrammarMenuItemListener implements ActionListener {
 			
 			AcideGrammarFileCreationProcess process = new AcideGrammarFileCreationProcess(
 					absolutePath, false, AcideLanguageManager.getInstance().getLabels()
-					.getString("s35"));
+					.getString("s35"), true);
 			
 			// Starts the process
 			process.start();
+			
+			// Get the selected file editor panel
+			AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
+							.getFileEditorManager().getSelectedFileEditorPanel();
+			
+			// Get the file editor panel analyzer
+			AcideGrammarAnalyzer analyzer = selectedFileEditorPanel.getGrammarAnalyzer();
+			analyzer.setText(selectedFileEditorPanel.getActiveTextEditionArea().getText());
+			
+			// Analyze the text
+			analyzer.analyzeText();
+			
+			// Print the errors
+			for(HashMap.Entry<String, String> entry : analyzer.getErrors().entrySet()) {
+			    String key = entry.getKey();
+			    String value = entry.getValue();
+			    System.out.println(key + ": " +value);
+			}
 		}
 	}
 }

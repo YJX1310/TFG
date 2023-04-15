@@ -77,7 +77,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\SQLDebugger\awards1.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>4279</__caretPosition>
+            <__caretPosition>4278</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
@@ -147,12 +147,12 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\DLDebugger\orbits1.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>221</__caretPosition>
+            <__caretPosition>159</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>src/acide/process/parser/grammar/lexicalCategories.xml</__lexiconConfiguration>
-            <__previousGrammarConfiguration>C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\1.txt</__previousGrammarConfiguration>
-            <__currentGrammarConfiguration>C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.txt</__currentGrammarConfiguration>
+            <__previousGrammarConfiguration>./configuration/grammars/newGrammar.jar</__previousGrammarConfiguration>
+            <__currentGrammarConfiguration>C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\newGrammar.jar</__currentGrammarConfiguration>
           </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\SQLDebugger\example1.sql</__path>

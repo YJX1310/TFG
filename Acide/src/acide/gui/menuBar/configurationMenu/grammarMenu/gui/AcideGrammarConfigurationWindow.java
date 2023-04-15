@@ -51,6 +51,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.HashMap;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
@@ -72,10 +73,12 @@ import acide.files.bytes.AcideByteFileManager;
 import acide.files.utils.AcideFileOperation;
 import acide.files.utils.AcideFileTarget;
 import acide.files.utils.AcideFileType;
+import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.listeners.AcideWindowClosingListener;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
+import acide.process.parser.AcideGrammarAnalyzer;
 import acide.process.parser.AcideGrammarFileCreationProcess;
 import acide.resources.AcideResourceManager;
 
@@ -681,11 +684,29 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 				// Creates the process for the grammar file creation
 				AcideGrammarFileCreationProcess process = new AcideGrammarFileCreationProcess(
-						newGrammarPath, _verboseProcessCheckBox.isSelected(), action);
+						newGrammarPath, _verboseProcessCheckBox.isSelected(), action, true);
 
 				// Starts the process
 				process.start();
 
+				// Get the selected File editor panel
+				AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
+						.getFileEditorManager().getSelectedFileEditorPanel();
+				
+				// Get the file editor panel analyzer
+				AcideGrammarAnalyzer analyzer = selectedFileEditorPanel.getGrammarAnalyzer();
+				analyzer.setText(selectedFileEditorPanel.getActiveTextEditionArea().getText());
+				
+				// Analyze the text
+				analyzer.analyzeText();
+				
+				// Print the errors
+				for(HashMap.Entry<String, String> entry : analyzer.getErrors().entrySet()) {
+				    String key = entry.getKey();
+				    String value = entry.getValue();
+				    System.out.println(key + ": " +value);
+				}
+				
 			} catch (Exception exception) {
 
 				// Displays an error message

@@ -391,10 +391,10 @@ public class AcideMenuBar extends JMenuBar {
 			AcideMenuItemConfiguration setPaths = grammar.getItem(AcideGrammarMenu.SET_PATHS_NAME);
 			setPaths.setVisible(AcideMenuConfiguration.getInstance().getIsDisplayed(AcideGrammarMenu.SET_PATHS_NAME));
 
-			// AcideMenuItemConfiguration autoAnalysis =
-			// grammar.getItem(AcideGrammarMenu.AUTO_ANALYSIS_NAME);
-			// autoAnalysis.setVisible(AcideMenuConfiguration.getInstance()
-			// .getIsDisplayed(AcideGrammarMenu.AUTO_ANALYSIS_NAME));
+			AcideMenuItemConfiguration autoAnalysis =
+			grammar.getItem(AcideGrammarMenu.AUTO_ANALYSIS_NAME);
+			autoAnalysis.setVisible(AcideMenuConfiguration.getInstance()
+			.getIsDisplayed(AcideGrammarMenu.AUTO_ANALYSIS_NAME));
 
 			AcideMenuItemConfiguration compiler = configuration.getItem(AcideConfigurationMenu.COMPILER_NAME);
 			compiler.setVisible(
@@ -682,10 +682,10 @@ public class AcideMenuBar extends JMenuBar {
 				setPaths.setVisible(
 						AcideMenuConfiguration.getInstance().getIsDisplayed(AcideGrammarMenu.SET_PATHS_NAME));
 
-				// AcideMenuItemConfiguration autoAnaylisis =
-				// grammar.getItem(AcideGrammarMenu.AUTO_ANALYSIS_NAME);
-				// autoAnaylisis.setVisible(AcideMenuConfiguration.getInstance()
-				// .getIsDisplayed(AcideGrammarMenu.AUTO_ANALYSIS_NAME));
+				AcideMenuItemConfiguration autoAnaylisis =
+				grammar.getItem(AcideGrammarMenu.AUTO_ANALYSIS_NAME);
+				autoAnaylisis.setVisible(AcideMenuConfiguration.getInstance()
+				.getIsDisplayed(AcideGrammarMenu.AUTO_ANALYSIS_NAME));
 
 			} else {
 
@@ -806,24 +806,24 @@ public class AcideMenuBar extends JMenuBar {
 				setPaths.setParameter("None");
 				// setPaths.setCommand("");
 
-				// AcideMenuItemConfiguration autoAnalysis;
-				// if (grammar.hasItem(AcideGrammarMenu.AUTO_ANALYSIS_NAME)){
-				// autoAnalysis =
-				// grammar.getItem(AcideGrammarMenu.AUTO_ANALYSIS_NAME);
-				// AcideMenuConfiguration.getInstance().setIsDisplayed(AcideGrammarMenu.AUTO_ANALYSIS_NAME,
-				// autoAnalysis.isVisible());
-				//
-				// }else{
-				// autoAnalysis = new
-				// AcideMenuItemConfiguration(AcideGrammarMenu.AUTO_ANALYSIS_NAME);
-				// autoAnalysis.setVisible(AcideMenuConfiguration.getInstance()
-				// .getIsDisplayed(AcideGrammarMenu.AUTO_ANALYSIS_NAME));
-				// autoAnalysis.setCommand("$AUTO_ANALYSIS");
-				// grammar.insertObject(autoAnalysis);
-				// }
-				// autoAnalysis.setErasable(false);
-				// autoAnalysis.setParameter("None");
-				// //autoAnalysis.setCommand("");
+				AcideMenuItemConfiguration autoAnalysis;
+				if (grammar.hasItem(AcideGrammarMenu.AUTO_ANALYSIS_NAME)){
+					autoAnalysis =
+							grammar.getItem(AcideGrammarMenu.AUTO_ANALYSIS_NAME);
+					AcideMenuConfiguration.getInstance().setIsDisplayed(AcideGrammarMenu.AUTO_ANALYSIS_NAME,
+							autoAnalysis.isVisible());
+				
+				}else{
+					autoAnalysis = new
+							AcideMenuItemConfiguration(AcideGrammarMenu.AUTO_ANALYSIS_NAME);
+					autoAnalysis.setVisible(AcideMenuConfiguration.getInstance()
+							.getIsDisplayed(AcideGrammarMenu.AUTO_ANALYSIS_NAME));
+					autoAnalysis.setCommand("$AUTO_ANALYSIS");
+					grammar.insertObject(autoAnalysis);
+				}
+				autoAnalysis.setErasable(false);
+				autoAnalysis.setParameter("None");
+				//autoAnalysis.setCommand("");
 
 				AcideMenuItemsConfiguration.getInstance().getSubmenu(AcideConfigurationMenu.CONFIGURATION_MENU_NAME)
 						.getItemsManager().onlyOne(AcideConfigurationMenu.GRAMMAR_NAME);

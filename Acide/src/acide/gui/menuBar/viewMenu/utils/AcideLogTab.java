@@ -49,6 +49,7 @@ import acide.configuration.lexicon.AcideLexiconConfiguration;
 import acide.files.AcideFileManager;
 import acide.files.project.AcideProjectFileType;
 import acide.gui.mainWindow.AcideMainWindow;
+import acide.process.parser.AcideGrammarAnalyzer;
 
 /**
  * ACIDE - A Configurable IDE log tab to display in the file editor panel.
@@ -76,6 +77,8 @@ public class AcideLogTab {
 
 		if (_logFileContent != null) {
 
+			AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer("");
+			
 			// Creates the lexicon configuration
 			AcideLexiconConfiguration lexiconConfiguration = new AcideLexiconConfiguration();
 
@@ -104,7 +107,7 @@ public class AcideLogTab {
 					.updateTabbedPane("Log", _logFileContent, false,
 							AcideProjectFileType.NORMAL, 0, 0, 1,
 							lexiconConfiguration, currentGrammarConfiguration,
-							previousGrammarConfiguration);
+							previousGrammarConfiguration, analyzer);
 		}
 	}
 
