@@ -76,7 +76,6 @@ public class AcideFileEditorCaretListener implements CaretListener {
 
 		// Updates the active text edition area
 		updateActiveTextEditionArea();
-
 		// Updates the status bar
 		updateStatusBar(caretEvent);
 

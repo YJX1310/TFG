@@ -88,7 +88,7 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 			// gets the tabbed pane
 			JTabbedPane tabbedPane = AcideMainWindow.getInstance()
 					.getFileEditorManager().getTabbedPane();
-
+			
 			// makes sure that the tabbed pane is valid
 			if (tabbedPane == null)
 				return;

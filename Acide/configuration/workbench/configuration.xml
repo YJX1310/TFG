@@ -7,7 +7,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\aggregates.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>1716</__caretPosition>
+            <__caretPosition>38</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
@@ -17,7 +17,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\bom.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>2228</__caretPosition>
+            <__caretPosition>2348</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
@@ -27,7 +27,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\family.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>465</__caretPosition>
+            <__caretPosition>390</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
@@ -37,7 +37,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\family.ra</__path>
             <__type>Normal</__type>
-            <__caretPosition>559</__caretPosition>
+            <__caretPosition>214</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/ra.xml</__lexiconConfiguration>
@@ -47,7 +47,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\family.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>530</__caretPosition>
+            <__caretPosition>405</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
@@ -57,7 +57,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\relop.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>92</__caretPosition>
+            <__caretPosition>67</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
@@ -97,7 +97,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\e5.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>0</__caretPosition>
+            <__caretPosition>45</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
@@ -107,7 +107,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\pets_trust.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>0</__caretPosition>
+            <__caretPosition>319</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
@@ -117,7 +117,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\DLDebugger\example1.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>233</__caretPosition>
+            <__caretPosition>212</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
@@ -147,7 +147,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\DLDebugger\orbits1.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>221</__caretPosition>
+            <__caretPosition>125</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>src/acide/process/parser/grammar/lexicalCategories.xml</__lexiconConfiguration>
@@ -177,7 +177,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\aggregates.ra</__path>
             <__type>Normal</__type>
-            <__caretPosition>0</__caretPosition>
+            <__caretPosition>1707</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/ra.xml</__lexiconConfiguration>
@@ -187,10 +187,10 @@
         </__list>
       </__list>
     </__fileEditorPanelConfigurationList>
-    <__selectedFileEditorPanelName>orbits1.dl</__selectedFileEditorPanelName>
+    <__selectedFileEditorPanelName>aggregates.ra</__selectedFileEditorPanelName>
     <__fontName>Monospaced.plain</__fontName>
     <__fontStyle>0</__fontStyle>
-    <__fontSize>12</__fontSize>
+    <__fontSize>21</__fontSize>
     <__foregroundColor>
       <red>0</red>
       <green>0</green>

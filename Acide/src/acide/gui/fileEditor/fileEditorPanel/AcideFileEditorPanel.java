@@ -64,6 +64,7 @@ import acide.configuration.lexicon.AcideLexiconConfiguration;
 import acide.configuration.workbench.AcideWorkbenchConfiguration;
 import acide.gui.consolePanel.AcideConsolePanel;
 import acide.gui.fileEditor.fileEditorManager.utils.gui.AcideLineNumberComponent2;
+import acide.gui.fileEditor.fileEditorPanel.errorpopup.AcidefileEditorPanelErrorpopup;
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.AcideFileEditorTextEditionArea;
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideFileEditorStyledDocument;
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideTextComponent;
@@ -111,6 +112,10 @@ public class AcideFileEditorPanel extends JPanel {
 	 * ACIDE - A Configurable IDE file editor panel popup menu.
 	 */
 	private AcideFileEditorPopupMenu _popupMenu;
+	/**
+	 * ACIDE - A Configurable IDE file editor panel error pop up windows
+	 */
+	private AcidefileEditorPanelErrorpopup _errorpopup;
 	/**
 	 * ACIDE - A Configurable IDE file editor panel styled document for the files.
 	 */
@@ -231,8 +236,13 @@ public class AcideFileEditorPanel extends JPanel {
 			// Adds the document listener to the styled document
 			_styledDocument.addDocumentListener(_documentListener);
 
+			// creates the error message windows
+			_errorpopup=new AcidefileEditorPanelErrorpopup();
+
 			// Builds the popup menu
 			buildPopupMenu();
+			
+			
 
 			// Creates the number of text editors
 			for (int index = 0; index < NUM_TEXT_EDITORS; index++) {
@@ -689,6 +699,11 @@ public class AcideFileEditorPanel extends JPanel {
 	public AcideFileEditorPopupMenu getPopupMenu() {
 		return _popupMenu;
 	}
+	
+	public AcidefileEditorPanelErrorpopup getErrorPopup() {
+		return _errorpopup;
+	}
+	
 
 	/**
 	 * Returns true if the opened file in the editor is the new file and false in

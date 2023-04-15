@@ -48,12 +48,33 @@ import acide.configuration.project.AcideProjectConfiguration;
 import acide.files.project.AcideProjectFile;
 import acide.gui.fileEditor.fileEditorManager.utils.logic.AcideElementMatcher;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
+import acide.gui.fileEditor.fileEditorPanel.errorpopup.AcidefileEditorPanelErrorpopup;
 import acide.gui.mainWindow.AcideMainWindow;
 
+import java.awt.Color;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+import java.text.BreakIterator;
+import java.util.HashMap;
 
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.JToolTip;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.Element;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
+import javax.swing.text.Utilities;
 import javax.swing.tree.TreePath;
 
 import acide.log.AcideLog;
@@ -64,14 +85,14 @@ import acide.log.AcideLog;
  * @version 0.11
  * @see MouseAdapter
  */
-public class AcideFileEditorMouseListener extends MouseAdapter {
+public class AcideFileEditorMouseListener extends MouseAdapter  {
 
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see java.awt.event.MouseAdapter#mouseClicked(java.awt.event.MouseEvent)
 	 */
-	@Override
+
 	public void mouseClicked(MouseEvent mouseEvent) {
 
 		// Highlights the matching elements
@@ -79,8 +100,36 @@ public class AcideFileEditorMouseListener extends MouseAdapter {
 
 		// Selects the explorer tree node if any
 		selectExplorerTreeNode();
-	}
+		AcideFileEditorPanel selectedFileEditorPanelIndex = AcideMainWindow
+				.getInstance().getFileEditorManager()
+				.getSelectedFileEditorPanel();
+		Point punto=mouseEvent.getPoint();
+		StyledDocument doc = selectedFileEditorPanelIndex.getActiveTextEditionArea().getStyledDocument();
+		int offset = selectedFileEditorPanelIndex.getActiveTextEditionArea().viewToModel(punto);
+		Element palabra = doc.getCharacterElement(offset);
+		int inicioPalabra = palabra.getStartOffset(); // posición de inicio de la palabra a resaltar
+		int finPalabra = palabra.getEndOffset(); // posición del final de la palabra
+		try {
+			String textoPalabra = doc.getText(inicioPalabra, finPalabra - inicioPalabra);
+			System.out.println(textoPalabra);
+		} catch (BadLocationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SimpleAttributeSet attrs = new SimpleAttributeSet();
+		StyleConstants.setBackground(attrs, Color.YELLOW); // establecer el color de fondo de la palabra resaltada
+		doc.setCharacterAttributes(inicioPalabra, finPalabra - inicioPalabra, attrs, true); // resaltar la palabra
 
+		
+	}
+	
+    
+    public void mouseExited(MouseEvent mouseEvent) {
+    	
+
+    }
+
+	
 	/**
 	 * Highlights the matching elements.
 	 */
@@ -120,7 +169,12 @@ public class AcideFileEditorMouseListener extends MouseAdapter {
 				exception.printStackTrace();
 			}
 		}
+
 	}
+	
+
+	
+
 
 	/**
 	 * Searches for the node in the explorer tree and selects it if exists on
