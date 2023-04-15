@@ -60,6 +60,7 @@ import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.listeners.
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.listeners.AcideFileEditorFocusListener;
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.listeners.AcideFileEditorKeyboardListener;
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.listeners.AcideFileEditorMouseListener;
+import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.listeners.AcideFileEditorMouseMotionListener;
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.listeners.AcideFileEditorScrollPaneKeyListener;
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.listeners.AcideFileEditorScrollPaneMouseListener;
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.listeners.AcideInsertKeyListener;
@@ -347,6 +348,9 @@ public class AcideFileEditorTextEditionArea {
 
 		// Sets the ACIDE - A Configurable IDE file editor panel mouse listener
 		_textComponent.addMouseListener(new AcideFileEditorMouseListener());
+		
+		// Sets the ACIDE - A Configurable IDE file editor panel mouse motion listener
+		_textComponent.addMouseMotionListener(new AcideFileEditorMouseMotionListener());
 
 		// Adds the ACIDE - A Configurable IDE file editor panel document
 		// listener
