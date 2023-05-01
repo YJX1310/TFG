@@ -183,8 +183,6 @@ public class AcideExplorerPanelMouseListener extends MouseAdapter {
 								.getInstance().getIndexOfFile(
 										currentProjectFile.getAbsolutePath());
 
-						AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer(fileContent);
-						
 						// Gets the predefined lexicon configuration
 						AcideLexiconConfiguration lexiconConfiguration = AcideWorkbenchConfiguration
 								.getInstance()
@@ -220,7 +218,7 @@ public class AcideExplorerPanelMouseListener extends MouseAdapter {
 												.getType(), 0, 0, 1,
 										lexiconConfiguration,
 										currentGrammarConfiguration,
-										previousGrammarConfiguration, analyzer);
+										previousGrammarConfiguration);
 
 						// Sets the file as opened in the project
 						// configuration

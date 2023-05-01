@@ -73,7 +73,7 @@ import acide.process.parser.AcideGrammarFileCreationProcess;
  * except in the action listener of the closing buttons in the tabbed pane.
  * </p>
  * 
- * @version 0.11
+ * @version 0.20
  * @see ChangeListener
  */
 public class AcideFileEditorManagerChangeListener implements ChangeListener {
@@ -144,28 +144,44 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 					.getFileEditorManager().getSelectedFileEditorPanel()
 					.getStyledDocument().getDefaultRootElement();
 			
-			AcideByteFileManager.getInstance().processGrammarJar(selectedFileEditorPanel
-					.getCurrentGrammarConfiguration().getPath());
-			
-			AcideGrammarFileCreationProcess a = new AcideGrammarFileCreationProcess(AcideMainWindow
-					.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
-					.getCurrentGrammarConfiguration().getPath(), false, 
-					AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
-			
-			a.run();
-			
-			// Get the file editor panel analyzer
-			AcideGrammarAnalyzer analyzer = selectedFileEditorPanel.getGrammarAnalyzer();
-			analyzer.setText(activeTextPane.getText());
-			
-			// Analyze the text
-			analyzer.analyzeText();
-			
-			// Print the errors
-			for(HashMap.Entry<String, String> entry : analyzer.getErrors().entrySet()) {
-			    String key = entry.getKey();
-			    String value = entry.getValue();
-			    System.out.println(key + ": " +value);
+			// If auto-analysis is activated then
+			if(AcideMainWindow.getInstance()
+					.getMenu().getConfigurationMenu()
+					.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem()
+					.isSelected()) {
+				
+				String lock = "";
+				
+				// Process the current grammar
+				AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
+						.getCurrentGrammarConfiguration().getPath());
+				
+				AcideGrammarFileCreationProcess fileCreationProcess = new AcideGrammarFileCreationProcess(AcideMainWindow
+						.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
+						.getCurrentGrammarConfiguration().getPath(), false, 
+						AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
+				
+				fileCreationProcess.setLock(lock);
+				
+				// Starts the process
+				fileCreationProcess.start();
+				
+				// Get grammar analyzer
+				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
+				
+				analyzer.setLock(lock);
+				
+				// Analyze the text
+				analyzer.start();
+				
+				/*
+				// Print the errors
+				for(HashMap.Entry<String, String> entry : analyzer.getErrors().entrySet()) {
+				    String key = entry.getKey();
+				    String value = entry.getValue();
+				    System.out.println(key + ": " +value);
+				}
+				*/
 			}
 
 			// Gets its number of lines

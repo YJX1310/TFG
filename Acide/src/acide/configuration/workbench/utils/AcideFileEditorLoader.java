@@ -218,8 +218,6 @@ public class AcideFileEditorLoader {
 
 					fileContent = AcideFileManager.getInstance().applyCodification(
 							projectFile.getAbsolutePath(), ubis.getBOM().toString());
-					
-					AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer(fileContent);
 
 					// Gets the predefined lexicon configuration
 					AcideLexiconConfiguration lexiconConfiguration = AcideWorkbenchConfiguration
@@ -250,7 +248,7 @@ public class AcideFileEditorLoader {
 									fileContent, true, projectFile.getType(),
 									0, 0, 1, lexiconConfiguration,
 									currentGrammarConfiguration,
-									previousGrammarConfiguration, analyzer);
+									previousGrammarConfiguration);
 					
 					//Set encoding for each file
 					AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel().changeEncode(ubis.getBOM().toString());
@@ -324,8 +322,6 @@ public class AcideFileEditorLoader {
 					fileContent = AcideFileManager.getInstance().applyCodification(
 							fileEditorConfiguration.getFileAt(index).getPath(), ubis.getBOM().toString());
 
-					AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer(fileContent);
-					
 					// Creates the lexicon configuration
 					AcideLexiconConfiguration lexiconConfiguration = new AcideLexiconConfiguration();
 
@@ -367,7 +363,7 @@ public class AcideFileEditorLoader {
 											.getActiveTextEditionArea(),
 									lexiconConfiguration,
 									currentGrammarConfiguration,
-									previousGrammarConfiguration, analyzer);
+									previousGrammarConfiguration);
 					
 					//Set encoding for each file
 					AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel().changeEncode(ubis.getBOM().toString());

@@ -138,8 +138,6 @@ public class AcideNewFileMenuItemListener implements ActionListener {
 	}
 
 	private static void createNewDoc(String name) {
-				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer("");
-				
 				// Creates the lexicon configuration
 				AcideLexiconConfiguration lexiconConfiguration = new AcideLexiconConfiguration();
 
@@ -168,7 +166,7 @@ public class AcideNewFileMenuItemListener implements ActionListener {
 		.updateTabbedPane(name, "", true,
 				AcideProjectFileType.NORMAL, 0, 0, 1,
 				lexiconConfiguration, currentGrammarConfiguration,
-				previousGrammarConfiguration, analyzer);
+				previousGrammarConfiguration);
 	
 	//Set encoding for each file
 	AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel().changeEncode("windows-1252");

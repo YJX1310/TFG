@@ -51,13 +51,18 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -67,13 +72,18 @@ import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 import javax.swing.border.TitledBorder;
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
 import acide.configuration.grammar.AcideGrammarConfiguration;
+import acide.configuration.lexicon.AcideLexiconConfiguration;
+import acide.configuration.lexicon.delimiters.AcideLexiconDelimitersManager;
+import acide.configuration.lexicon.tokens.AcideLexiconTokenGroup;
+import acide.configuration.lexicon.tokens.AcideLexiconTokenManager;
 import acide.files.AcideFileManager;
-import acide.files.bytes.AcideByteFileManager;
 import acide.files.utils.AcideFileOperation;
 import acide.files.utils.AcideFileTarget;
 import acide.files.utils.AcideFileType;
-import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.listeners.AcideWindowClosingListener;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
@@ -85,7 +95,7 @@ import acide.resources.AcideResourceManager;
 /**
  * ACIDE - A Configurable IDE grammar configuration window.
  * 
- * @version 0.11
+ * @version 0.20
  * @see JFrame
  */
 public class AcideGrammarConfigurationWindow extends JFrame {
@@ -149,15 +159,24 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 	 */
 	private JButton _cancelButton;
 	/**
+	 * ACIDE - A Configurable IDE grammar configuration window load lexicon
+	 * button.
+	 */
+	private JButton _loadLexiconButton;
+	/**
+	 * ACIDE - A Configurable IDE grammar configuration combo box with all lexicon.
+	 */
+	private JComboBox<ComboBoxItem> _lexiconCbBox;
+	/**
 	 * ACIDE - A Configurable IDE grammar configuration window load categories
 	 * button.
 	 */
-	private JButton _loadCategoriesButton;
+	//private JButton _loadCategoriesButton;
 	/**
 	 * ACIDE - A Configurable IDE grammar configuration window save categories
 	 * button.
 	 */
-	private JButton _saveCategoriesButton;
+	//private JButton _saveCategoriesButton;
 	/**
 	 * ACIDE - A Configurable IDE grammar configuration window load rules
 	 * button.
@@ -284,7 +303,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 				
 				// Gets its content
 				String fileContent = AcideFileManager.getInstance().load(
-						"src/acide/process/parser/grammar/lexicalCategories.xml");
+						"src/acide/process/parser/grammar/lexicalCategories.txt");
 
 				if (fileContent != null)
 					// Updates the categories text area
@@ -414,21 +433,35 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 		_cancelButton.setToolTipText(AcideLanguageManager.getInstance()
 				.getLabels().getString("s182"));
 
+		// Creates the load lexicon button
+		_loadLexiconButton = new JButton(AcideLanguageManager.getInstance()
+				.getLabels().getString("s196"));
+		
+		// Set the load lexicon tool tip text
+		_loadLexiconButton.setToolTipText(AcideLanguageManager.getInstance()
+				.getLabels().getString("s197"));
+		
+		// Creates the combo box
+		_lexiconCbBox = new JComboBox<ComboBoxItem>();
+		
+		// Add items to the combo box
+		getAllLexicon();
+		
 		// Creates the load categories button
-		_loadCategoriesButton = new JButton(AcideLanguageManager.getInstance()
-				.getLabels().getString("s192"));
+//		_loadCategoriesButton = new JButton(AcideLanguageManager.getInstance()
+//				.getLabels().getString("s192"));
 
 		// Sets the load categories tool tip text
-		_loadCategoriesButton.setToolTipText(AcideLanguageManager.getInstance()
-				.getLabels().getString("s193"));
+//		_loadCategoriesButton.setToolTipText(AcideLanguageManager.getInstance()
+//				.getLabels().getString("s193"));
 
 		// Creates the save categories button
-		_saveCategoriesButton = new JButton(AcideLanguageManager.getInstance()
-				.getLabels().getString("s194"));
+//		_saveCategoriesButton = new JButton(AcideLanguageManager.getInstance()
+//				.getLabels().getString("s194"));
 
 		// Sets the save categories button tool tip text
-		_saveCategoriesButton.setToolTipText(AcideLanguageManager.getInstance()
-				.getLabels().getString("s195"));
+//		_saveCategoriesButton.setToolTipText(AcideLanguageManager.getInstance()
+//				.getLabels().getString("s195"));
 
 		// Creates the load rules button
 		_loadRulesButton = new JButton(AcideLanguageManager.getInstance()
@@ -479,11 +512,17 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 		constraints.gridy = 1;
 		constraints.anchor = GridBagConstraints.EAST;
 
+		// Adds lexicon combo box to the categories button panel
+		_categoriesButtonPanel.add(_lexiconCbBox);
+		
+		// Adds the new lexicon button to the categories button panel
+		_categoriesButtonPanel.add(_loadLexiconButton);
+		
 		// Adds the load categories button to the categories button panel
-		_categoriesButtonPanel.add(_loadCategoriesButton);
+//		_categoriesButtonPanel.add(_loadCategoriesButton);
 
 		// Adds the save categories button to the categories button panel
-		_categoriesButtonPanel.add(_saveCategoriesButton);
+//		_categoriesButtonPanel.add(_saveCategoriesButton);
 
 		// Adds the categories button panel to the categories panel
 		_categoriesPanel.add(_categoriesButtonPanel, constraints);
@@ -566,13 +605,16 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 		// Sets the save rules button action listener
 		_saveRulesButton.addActionListener(new SaveRulesButtonAction());
 
+		// Set the load lexicon button action listener
+		_loadLexiconButton.addActionListener(new LoadLexiconButtonAction());
+		
 		// Sets the load categories button action listener
-		_loadCategoriesButton
-				.addActionListener(new LoadCategoriesButtonAction());
+//		_loadCategoriesButton
+//				.addActionListener(new LoadCategoriesButtonAction());
 
 		// Sets the save categories button action listener
-		_saveCategoriesButton
-				.addActionListener(new SaveCategoriesButtonAction());
+//		_saveCategoriesButton
+//				.addActionListener(new SaveCategoriesButtonAction());
 
 		// Sets the window closing listener
 		addWindowListener(new AcideWindowClosingListener());
@@ -596,7 +638,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 		// Closes the window
 		dispose();
-
+		
 		// Brings the main window to the front
 		AcideMainWindow.getInstance().setAlwaysOnTop(true);
 
@@ -608,7 +650,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 	 * ACIDE - A Configurable IDE grammar configuration window accept button
 	 * action listener.
 	 * 
-	 * @version 0.11
+	 * @version 0.20
 	 * @see ActionListener
 	 */
 	class AcceptButtonAction implements ActionListener {
@@ -628,6 +670,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			int index = textContent.indexOf(";");
 			String firstLine = "grammar Expr;";
 			textContent = firstLine + textContent.substring(index + 1);
+			textContent += System.lineSeparator() + _categoriesTextArea.getText();
 			
 			// Saves the Expr.g4 file
 			boolean isSaved = AcideFileManager.getInstance().write("Expr.g4",
@@ -636,12 +679,12 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			// Saves the lexical categories file
 			isSaved = isSaved
 					&& AcideFileManager.getInstance().write(
-							"src/acide/process/parser/grammar/lexicalCategories.xml",
+							AcideGrammarFileCreationProcess.DEFAULT_PATH +"lexicalCategories.txt",
 							_categoriesTextArea.getText());
 
 			// Saves the syntax rules file
 			isSaved = isSaved
-					&& AcideFileManager.getInstance().write("src/acide/process/parser/grammar/syntaxRules.txt",
+					&& AcideFileManager.getInstance().write(AcideGrammarFileCreationProcess.DEFAULT_PATH + "syntaxRules.txt",
 							_rulesTextArea.getText());
 
 			if (isSaved)
@@ -681,32 +724,38 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 					+ newGrammarName;
 
 			try {
-
+				String lock = "";
+				
 				// Creates the process for the grammar file creation
 				AcideGrammarFileCreationProcess process = new AcideGrammarFileCreationProcess(
 						newGrammarPath, _verboseProcessCheckBox.isSelected(), action, true);
 
+				process.setLock(lock);
+				
 				// Starts the process
 				process.start();
-
-				// Get the selected File editor panel
-				AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
-						.getFileEditorManager().getSelectedFileEditorPanel();
 				
-				// Get the file editor panel analyzer
-				AcideGrammarAnalyzer analyzer = selectedFileEditorPanel.getGrammarAnalyzer();
-				analyzer.setText(selectedFileEditorPanel.getActiveTextEditionArea().getText());
-				
-				// Analyze the text
-				analyzer.analyzeText();
-				
-				// Print the errors
-				for(HashMap.Entry<String, String> entry : analyzer.getErrors().entrySet()) {
-				    String key = entry.getKey();
-				    String value = entry.getValue();
-				    System.out.println(key + ": " +value);
+				// If auto-analysis is activated then
+				if(AcideMainWindow.getInstance()
+						.getMenu().getConfigurationMenu()
+						.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem()
+						.isSelected()) {
+					// Get the file editor panel analyzer
+					AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();;
+					
+					analyzer.setLock(lock);
+					
+					// Analyze the text
+					analyzer.start();
+					
+					/*
+					// Print the errors
+					for(HashMap.Entry<String, String> entry : analyzer.getErrors().entrySet()) {
+					    String key = entry.getKey();
+					    String value = entry.getValue();
+					    System.out.println(key + ": " +value);
+					}*/
 				}
-				
 			} catch (Exception exception) {
 
 				// Displays an error message
@@ -831,91 +880,162 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			}
 		}
 	}
+	
+	/**
+	 * ACIDE - A Configurable IDE grammar configuration window load lexicon
+	 * button action listener.
+	 * 
+	 * @version 0.20
+	 * @see ActionListener
+	 */
+	class LoadLexiconButtonAction implements ActionListener{
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.
+		 * ActionEvent)
+		 */
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			try {
+				// Creates the file input stream
+				FileInputStream fileInputStream = new FileInputStream(((ComboBoxItem)_lexiconCbBox.getSelectedItem()).get_path());
+
+				// Creates the XStream object
+				XStream xstream = new XStream(new DomDriver());
+				
+				// Gets the lexicon configuration from the XML file
+				AcideLexiconConfiguration lexiconConfiguration = (AcideLexiconConfiguration)xstream.fromXML(fileInputStream);
+				
+				// Gets the token manager from the lexicon configuration
+				AcideLexiconTokenManager tokens = lexiconConfiguration.getTokenTypeManager();
+				
+				// Gets the delimiters manager from the lexicon configuration
+				AcideLexiconDelimitersManager delimiters =  lexiconConfiguration.getDelimitersManager();
+				
+				// Parser the token and the delimiter of the lexicon
+				TreeMap<String, String> res = new TreeMap<String, String>();
+				for(int i = 0; i < tokens.getSize(); i++) {
+					AcideLexiconTokenGroup group = tokens.getTokenGroupAt(i);
+					for(int j = 0; j < group.getSize(); j++) {
+						String token = group.getTokenAt(j).toString();
+						if(!res.containsKey(token)) 
+							res.put(token, "'" + token + "';");
+					}
+				}
+				
+				for(int i = 0; i < delimiters.getSize(); i++) {
+					String delimiter = delimiters.getDelimiterAt(i).toString();
+					if(!res.containsKey(delimiter))
+						res.put(delimiter, "'" + delimiter + "';");
+				}
+				
+				// Order the content
+				String text = "";
+				// Print the errors
+				for(HashMap.Entry<String, String> entry : res.entrySet()) {
+				    String key = entry.getKey();
+				    String value = entry.getValue();
+				    text += key + ": \t\t" + value + "\n";
+				}
+				
+				// Append the content to the _categoriesTextArea
+				_categoriesTextArea.setText(_categoriesTextArea.getText() + text);
+				
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		
+	}
 
 	/**
 	 * ACIDE - A Configurable IDE grammar configuration window load categories
 	 * button action listener.
 	 * 
-	 * @version 0.11
+	 * @version 0.20
 	 * @see ActionListener
 	 */
-	class LoadCategoriesButtonAction implements ActionListener {
-
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.
-		 * ActionEvent)
-		 */
-		@Override
-		public void actionPerformed(ActionEvent actionEvent) {
-
-			// Asks for the file path to the user
-			String absolutePath = AcideFileManager.getInstance().askForFile(
-					AcideFileOperation.OPEN, AcideFileTarget.FILES,
-					AcideFileType.FILE, "", null);
-
-			if (absolutePath != null) {
-
-				// Loads the file content
-				String fileContent = AcideFileManager.getInstance().load(
-						absolutePath);
-
-				// Updates the categories text area
-				_categoriesTextArea.setText(fileContent);
-
-				// Updates the log
-				AcideLog.getLog().info(
-						AcideLanguageManager.getInstance().getLabels()
-								.getString("s201"));
-			}
-		}
-	}
+	
+//	class LoadCategoriesButtonAction implements ActionListener {
+//
+//		/*
+//		 * (non-Javadoc)
+//		 * 
+//		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.
+//		 * ActionEvent)
+//		 */
+//		@Override
+//		public void actionPerformed(ActionEvent actionEvent) {
+//
+//			// Asks for the file path to the user
+//			String absolutePath = AcideFileManager.getInstance().askForFile(
+//					AcideFileOperation.OPEN, AcideFileTarget.FILES,
+//					AcideFileType.FILE, "", null);
+//
+//			if (absolutePath != null) {
+//
+//				// Loads the file content
+//				String fileContent = AcideFileManager.getInstance().load(
+//						absolutePath);
+//
+//				// Updates the categories text area
+//				_categoriesTextArea.setText(fileContent);
+//
+//				// Updates the log
+//				AcideLog.getLog().info(
+//						AcideLanguageManager.getInstance().getLabels()
+//								.getString("s201"));
+//			}
+//		}
+//	}
 
 	/**
 	 * ACIDE - A Configurable IDE grammar configuration window save categories
 	 * button action listener.
 	 * 
-	 * @version 0.11
+	 * @version 0.20
 	 * @see ActionListener
 	 */
-	class SaveCategoriesButtonAction implements ActionListener {
-
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.
-		 * ActionEvent)
-		 */
-		@Override
-		public void actionPerformed(ActionEvent actionEvent) {
-
-			// Asks for the file path to the user
-			String absolutePath = AcideFileManager.getInstance().askForFile(
-					AcideFileOperation.SAVE, AcideFileTarget.FILES,
-					AcideFileType.FILE, "", null);
-
-			if (absolutePath != null) {
-
-				// Tries to save the file content
-				boolean isSaved = AcideFileManager.getInstance().write(
-						absolutePath, _categoriesTextArea.getText());
-
-				// If it was saved
-				if (isSaved)
-					// Updates the log
-					AcideLog.getLog().info(
-							AcideLanguageManager.getInstance().getLabels()
-									.getString("s204")
-									+ absolutePath);
-				else
-					// Updates the log
-					AcideLog.getLog().info(
-							AcideLanguageManager.getInstance().getLabels()
-									.getString("s205"));
-			}
-		}
-	}
+//	class SaveCategoriesButtonAction implements ActionListener {
+//
+//		/*
+//		 * (non-Javadoc)
+//		 * 
+//		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.
+//		 * ActionEvent)
+//		 */
+//		@Override
+//		public void actionPerformed(ActionEvent actionEvent) {
+//
+//			// Asks for the file path to the user
+//			String absolutePath = AcideFileManager.getInstance().askForFile(
+//					AcideFileOperation.SAVE, AcideFileTarget.FILES,
+//					AcideFileType.FILE, "", null);
+//
+//			if (absolutePath != null) {
+//
+//				// Tries to save the file content
+//				boolean isSaved = AcideFileManager.getInstance().write(
+//						absolutePath, _categoriesTextArea.getText());
+//
+//				// If it was saved
+//				if (isSaved)
+//					// Updates the log
+//					AcideLog.getLog().info(
+//							AcideLanguageManager.getInstance().getLabels()
+//									.getString("s204")
+//									+ absolutePath);
+//				else
+//					// Updates the log
+//					AcideLog.getLog().info(
+//							AcideLanguageManager.getInstance().getLabels()
+//									.getString("s205"));
+//			}
+//		}
+//	}
 
 	/**
 	 * ACIDE - A Configurable IDE grammar configuration window escape key
@@ -943,6 +1063,57 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 			// Closes the window
 			closeWindow();
+		}
+	}
+	
+	/**
+	 * ACIDE - A Configurable IDE grammar configuration window combo box item
+	 * class.
+	 * 
+	 * @version 0.20
+	 * 
+	 */
+	class ComboBoxItem{
+		/**
+		 * ACIDE - A Configurable IDE grammar configuration window combo box item
+		 * name.
+		 */
+		private String _name;
+		/**
+		 * ACIDE - A Configurable IDE grammar configuration window combo box item
+		 * path.
+		 */
+		private String _path;
+		/**
+		 * Creates a new ACIDE - A Configurable IDE grammar configuration window 
+		 * combo box item.
+		 */
+		public ComboBoxItem(String n, String p) {
+			_name = n;
+			_path = p;
+		}
+		
+
+		public String get_path() {
+			return _path;
+		}
+
+		@Override
+        public String toString() {
+            return _name;
+        }
+	}
+	
+	/**
+	 * Get lexicon for the ACIDE - A Configurable IDE grammar
+	 * configuration window JComboBox.
+	 */
+	private void getAllLexicon() {
+		File files = new File(AcideLexiconConfiguration.DEFAULT_PATH);
+		for(File file: files.listFiles()) {
+			if(file.isFile() && file.getName().contains(".xml")) {
+				_lexiconCbBox.addItem(new ComboBoxItem(file.getName(), file.getPath()));
+			}
 		}
 	}
 }

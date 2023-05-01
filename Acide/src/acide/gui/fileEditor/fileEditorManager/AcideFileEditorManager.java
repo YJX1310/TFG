@@ -254,8 +254,7 @@ public class AcideFileEditorManager extends JPanel {
 			int activeTextEditionArea,
 			AcideLexiconConfiguration lexiconConfiguration,
 			AcideGrammarConfiguration currentGrammarConfiguration,
-			AcideGrammarConfiguration previousGrammarConfiguration,
-			AcideGrammarAnalyzer analyzer) {
+			AcideGrammarConfiguration previousGrammarConfiguration) {
 
 		// Checks if the file is already opened
 		int tabPosition = -1;
@@ -284,7 +283,7 @@ public class AcideFileEditorManager extends JPanel {
 			addTab(fileName, filePath, isEditable, fileType,
 					activeTextEditionArea, splitPaneDividerLocation,
 					lexiconConfiguration, currentGrammarConfiguration,
-					previousGrammarConfiguration, analyzer);
+					previousGrammarConfiguration);
 
 			/*
 			 * Once the tabbed pane and tabbed pane UI are updated, the file
@@ -346,15 +345,14 @@ public class AcideFileEditorManager extends JPanel {
 			int splitPaneDividerLocation,
 			AcideLexiconConfiguration lexiconConfiguration,
 			AcideGrammarConfiguration currentGrammarConfiguration,
-			AcideGrammarConfiguration previousGrammarConfiguration,
-			AcideGrammarAnalyzer analyzer) {
+			AcideGrammarConfiguration previousGrammarConfiguration) {
 
 		// Creates the file editor panel
 		AcideFileEditorPanel fileEditorPanel = new AcideFileEditorPanel(
 				filePath, isEditable, new File(filePath).lastModified(),
 				new File(filePath).length(), activeTextEditionArea,
 				splitPaneDividerLocation, lexiconConfiguration,
-				currentGrammarConfiguration, previousGrammarConfiguration, analyzer);
+				currentGrammarConfiguration, previousGrammarConfiguration);
 
 		// Configures and adds the tab to the tabbed pane based on the file type
 		switch (fileType) {

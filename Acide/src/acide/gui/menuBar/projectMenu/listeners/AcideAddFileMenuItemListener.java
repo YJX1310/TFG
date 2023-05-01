@@ -245,8 +245,6 @@ public class AcideAddFileMenuItemListener implements ActionListener {
 				AcideMainWindow.getInstance().getStatusBar()
 						.setStatusMessage(projectFile.getAbsolutePath());
 
-				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer(fileContent);
-				
 				// Gets the predefined lexicon configuration
 				AcideLexiconConfiguration lexiconConfiguration = AcideWorkbenchConfiguration
 						.getInstance()
@@ -276,7 +274,7 @@ public class AcideAddFileMenuItemListener implements ActionListener {
 								fileContent, true, projectFileType, 0, 0, 1,
 								lexiconConfiguration,
 								currentGrammarConfiguration,
-								previousGrammarConfiguration, analyzer);
+								previousGrammarConfiguration);
 			}
 		} else {
 

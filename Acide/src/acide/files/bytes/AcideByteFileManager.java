@@ -59,6 +59,7 @@ import javax.swing.JOptionPane;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
+import acide.process.parser.AcideGrammarFileCreationProcess;
 
 /**
  * ACIDE - A Configurable IDE byte file manager.
@@ -315,11 +316,11 @@ public class AcideByteFileManager {
 	 * @param source
 	 *            source path.
 	 */
-	public void processGrammarJar(String source) {
+	public void processGrammarFile(String source) {
 		
 		String exprFile = "Expr.g4";
-		String syntaxFile = "src/acide/process/parser/grammar/syntaxRules.txt";
-		String lexicalFile = "src/acide/process/parser/grammar/lexicalCategories.xml";
+		String syntaxFile = AcideGrammarFileCreationProcess.DEFAULT_PATH + "syntaxRules.txt";
+		String lexicalFile = AcideGrammarFileCreationProcess.DEFAULT_PATH + "lexicalCategories.txt";
 		
         String syntaxContent = "";
         String lexicalContent = "";
@@ -381,8 +382,8 @@ public class AcideByteFileManager {
 	 * @param target
 	 */
 	public void saveGrammar(String target) {
-		String syntaxFile = "src/acide/process/parser/grammar/syntaxRules.txt";
-		String lexicalFile = "src/acide/process/parser/grammar/lexicalCategories.xml";
+		String syntaxFile = AcideGrammarFileCreationProcess.DEFAULT_PATH + "syntaxRules.txt";
+		String lexicalFile = AcideGrammarFileCreationProcess.DEFAULT_PATH + "lexicalCategories.txt";
 		
 		// Creates the file content
 		String textContent = "header{\npackage acide.process.parser.grammar;\n}\n";
