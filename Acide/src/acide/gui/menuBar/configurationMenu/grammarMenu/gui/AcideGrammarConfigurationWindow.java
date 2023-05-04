@@ -741,7 +741,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 						.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem()
 						.isSelected()) {
 					// Get the file editor panel analyzer
-					AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();;
+					AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
 					
 					analyzer.setLock(lock);
 					

@@ -58,6 +58,7 @@ import javax.swing.text.StyledDocument;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.fileEditor.fileEditorPanel.errorpopup.AcidefileEditorPanelErrorpopup;
 import acide.gui.mainWindow.AcideMainWindow;
+import acide.process.parser.AcideGrammarAnalyzer;
 /**
  * ACIDE - A Configurable IDE file editor text edition area error highlighter.
  * 
@@ -96,9 +97,9 @@ public class AcideHighlightError {
 				StyleContext styleContext = StyleContext.getDefaultStyleContext();
 				Style customStyle = styleContext.addStyle("custom", null);
 				customStyle.addAttributes(underlineStyle);
-
+				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
 				// Subrayar cada palabra en rojo
-				for (HashMap.Entry<String, String> entry : selectedFileEditorPanelIndex.getGrammarAnalyzer().getErrors()
+				for (HashMap.Entry<String, String> entry : analyzer.getErrors()
 						.entrySet()) {
 					// Obtener la línea y columna de inicio de la palabra
 					String[] parts = entry.getKey().split(":");

@@ -112,20 +112,22 @@ public class AcideFileEditorMouseMotionListener implements MouseMotionListener {
                     	 listadedelimitadores.add(delimiter);
                     	 }
                      }
-                 Character xddd=text.charAt(wordStart - 1);
-                 boolean contiene=delimiters.getList().getList().contains(text.charAt(wordStart - 1));
-                if(!delimiters.getList().getList().contains(text.charAt(wordStart))&&wordStart>0) {
+                /*if(!delimiters.getList().getList().contains(text.charAt(wordStart))&&wordStart>0) {
                     while (!delimiters.getList().getList().contains(text.charAt(wordStart-1))) {
                         wordStart--;
                     }
-                }
+                }*/
+                 while (wordStart > 0 && Character.isLetterOrDigit(text.charAt(wordStart - 1))) {
+                     Character xddd=text.charAt(wordStart - 1);
+                     wordStart--;
+                 }
                 int column = wordStart - selectedFileEditorPanelIndex.getActiveTextEditionArea().getDocument().getDefaultRootElement().getElement(line - 1).getStartOffset() + 1;
                 String word = text.substring(wordStart, offset);
                 String posicion=line + ":" + (column-1);
                 System.out.println(posicion);
-                HashMap<String,String> a=selectedFileEditorPanelIndex.getGrammarAnalyzer().getErrors();
-                if(selectedFileEditorPanelIndex.getGrammarAnalyzer().getErrors().containsKey(posicion)) {
-                    selectedFileEditorPanelIndex.getErrorPopup().SetErrorLabel(selectedFileEditorPanelIndex.getGrammarAnalyzer().getErrors().get(posicion));     
+                AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
+                if(analyzer.getErrors().containsKey(posicion)) {
+                    selectedFileEditorPanelIndex.getErrorPopup().SetErrorLabel(analyzer.getErrors().get(posicion));     
                     selectedFileEditorPanelIndex.getErrorPopup().setVisible(true);
                     selectedFileEditorPanelIndex.getErrorPopup().pack();
                 }
