@@ -65,7 +65,7 @@ import acide.process.parser.AcideGrammarFileCreationProcess;
 /**
  * ACIDE - A Configurable IDE load grammar menu item listener.
  * 
- * @version 0.11
+ * @version 0.20
  * @see ActionListener
  */
 public class AcideLoadGrammarMenuItemListener implements ActionListener {
@@ -91,33 +91,46 @@ public class AcideLoadGrammarMenuItemListener implements ActionListener {
 				new AcideFileExtensionFilterManager(new String[] { ".txt" },
 						AcideLanguageManager.getInstance().getLabels()
 								.getString("s270")));
-		if(absolutePath != null) {			
-			//Extract the content for "syntaxRules.txt", "lexicalCategories.txt" and "Expr.g4"
-			AcideByteFileManager.getInstance().processGrammarJar(absolutePath);
+		
+		// If the path is not null
+		if(absolutePath != null) {
+
+			String lock = "";
+			
+			// Process the file grammar
+			AcideByteFileManager.getInstance().processGrammarFile(absolutePath);
 			
 			AcideGrammarFileCreationProcess process = new AcideGrammarFileCreationProcess(
 					absolutePath, false, AcideLanguageManager.getInstance().getLabels()
 					.getString("s35"), true);
 			
+			process.setLock(lock);
+			
 			// Starts the process
 			process.start();
 			
-			// Get the selected file editor panel
-			AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
-							.getFileEditorManager().getSelectedFileEditorPanel();
-			
-			// Get the file editor panel analyzer
-			AcideGrammarAnalyzer analyzer = selectedFileEditorPanel.getGrammarAnalyzer();
-			analyzer.setText(selectedFileEditorPanel.getActiveTextEditionArea().getText());
-			
-			// Analyze the text
-			analyzer.analyzeText();
-			
-			// Print the errors
-			for(HashMap.Entry<String, String> entry : analyzer.getErrors().entrySet()) {
-			    String key = entry.getKey();
-			    String value = entry.getValue();
-			    System.out.println(key + ": " +value);
+			// If auto-analysis is activated then
+			if(AcideMainWindow.getInstance()
+					.getMenu().getConfigurationMenu()
+					.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem()
+					.isSelected()) {
+				
+				// Get the file editor panel analyzer
+				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
+				
+				analyzer.setLock(lock);
+				
+				// Analyze the text
+				analyzer.start();
+				
+				/*
+				// Print the errorsç
+				for(HashMap.Entry<String, String> entry : analyzer.getErrors().entrySet()) {
+				    String key = entry.getKey();
+				    String value = entry.getValue();
+				    System.out.println(key + ": " +value);
+				}
+				*/
 			}
 		}
 	}

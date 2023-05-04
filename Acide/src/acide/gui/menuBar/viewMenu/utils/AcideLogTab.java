@@ -77,8 +77,6 @@ public class AcideLogTab {
 
 		if (_logFileContent != null) {
 
-			AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer("");
-			
 			// Creates the lexicon configuration
 			AcideLexiconConfiguration lexiconConfiguration = new AcideLexiconConfiguration();
 
@@ -107,7 +105,7 @@ public class AcideLogTab {
 					.updateTabbedPane("Log", _logFileContent, false,
 							AcideProjectFileType.NORMAL, 0, 0, 1,
 							lexiconConfiguration, currentGrammarConfiguration,
-							previousGrammarConfiguration, analyzer);
+							previousGrammarConfiguration);
 		}
 	}
 

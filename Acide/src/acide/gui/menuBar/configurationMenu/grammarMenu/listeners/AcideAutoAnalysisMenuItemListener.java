@@ -46,15 +46,21 @@ package acide.gui.menuBar.configurationMenu.grammarMenu.listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 import javax.swing.JCheckBoxMenuItem;
 
+import acide.files.bytes.AcideByteFileManager;
+import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.mainWindow.AcideMainWindow;
+import acide.language.AcideLanguageManager;
+import acide.process.parser.AcideGrammarAnalyzer;
+import acide.process.parser.AcideGrammarFileCreationProcess;
 
 /**																
  * ACIDE - A Configurable IDE auto analysis check box menu item listener.										
  *					
- * @version 0.11	
+ * @version 0.20	
  * @see ActionListener																													
  */
 public class AcideAutoAnalysisMenuItemListener implements ActionListener{
@@ -71,8 +77,34 @@ public class AcideAutoAnalysisMenuItemListener implements ActionListener{
 		// Gets the new value of the checkBox
 		boolean selected = ((JCheckBoxMenuItem)actionEvent
 				.getSource()).isSelected();
-		if(selected)
-			System.out.println("Activado");
+		if(selected) {
+			String lock = "";
+			
+			// Gets the selected file editor panel
+			AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
+					.getFileEditorManager().getSelectedFileEditorPanel();
+			
+			// Process the current grammar
+			AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
+					.getCurrentGrammarConfiguration().getPath());
+			
+			AcideGrammarFileCreationProcess fileCreationProcess = new AcideGrammarFileCreationProcess(AcideMainWindow
+					.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
+					.getCurrentGrammarConfiguration().getPath(), false, 
+					AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
+			
+			fileCreationProcess.setLock(lock);
+			
+			// Analyze the text
+			fileCreationProcess.start();
+			
+			// Get the file editor panel analyzer
+			AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
+			
+			analyzer.setLock(lock);
+			
+			analyzer.start();
+		}
 		else
 			System.out.println("Desactivado");
 		

@@ -166,10 +166,6 @@ public class AcideFileEditorPanel extends JPanel {
 	 * ACIDE - A Configurable IDE file editor panel current grammar configuration.
 	 */
 	private AcideGrammarConfiguration _currentGrammarConfiguration;
-	/**
-	 * ACIDE - A Configurable IDE file editor panel grammar analyzer.
-	 */
-	private AcideGrammarAnalyzer _grammarAnalyzer;
 	
 	/**
 	 * Current encode format
@@ -193,7 +189,7 @@ public class AcideFileEditorPanel extends JPanel {
 	public AcideFileEditorPanel(String filePath, boolean isEditable, long lastChange, long lastSize,
 			int activeTextEditionAreaIndex, int splitPaneDividerLocation,
 			AcideLexiconConfiguration lexiconConfiguration, AcideGrammarConfiguration currentGrammarConfiguration,
-			AcideGrammarConfiguration previousGrammarConfiguration, AcideGrammarAnalyzer analyzer) {
+			AcideGrammarConfiguration previousGrammarConfiguration) {
 
 		super();
 
@@ -222,8 +218,6 @@ public class AcideFileEditorPanel extends JPanel {
 
 			// Stores the previous grammar configuration
 			_previousGrammarConfiguration = previousGrammarConfiguration;
-			
-			_grammarAnalyzer = analyzer;
 
 			// Updates the log
 			AcideLog.getLog().info(AcideLanguageManager.getInstance().getLabels().getString("s317"));
@@ -956,7 +950,4 @@ public class AcideFileEditorPanel extends JPanel {
 		return this.encodeFormat;
 	}
 	
-	public AcideGrammarAnalyzer getGrammarAnalyzer() {
-		return _grammarAnalyzer;
-	}
 }
