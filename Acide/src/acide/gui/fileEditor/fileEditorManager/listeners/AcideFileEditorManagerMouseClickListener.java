@@ -45,6 +45,7 @@
 package acide.gui.fileEditor.fileEditorManager.listeners;
 
 import acide.files.AcideFileManager;
+import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.mainWindow.AcideMainWindow;
 
 import java.awt.Cursor;
@@ -72,6 +73,9 @@ public class AcideFileEditorManagerMouseClickListener extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent mouseEvent) {
 		dispatchEvent(mouseEvent);
+		AcideMainWindow.getInstance().getFileEditorManager()
+	            .getSelectedFileEditorPanel().getErrorPopup().setVisible(false);
+		
 	}
 
 	/*

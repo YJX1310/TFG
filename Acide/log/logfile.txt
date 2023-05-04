@@ -1,180 +1,130 @@
-14 abr 2023 13:36:10,601 [main] INFO  LogAcide - Using your system's LookAndFeel
-14 abr 2023 13:36:10,718 [AWT-EventQueue-0] INFO  LogAcide - Initiating application...
-14 abr 2023 13:36:10,718 [AWT-EventQueue-0] INFO  LogAcide - Loading the ACIDE - A Configurable IDE - Workbench Configuration
-14 abr 2023 13:36:10,976 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Lexicon Assigner Configuration
-14 abr 2023 13:36:10,976 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Lexicon Assigner Configuration
-14 abr 2023 13:36:11,712 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Tool Bar Configuration
-14 abr 2023 13:36:11,722 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Menu Configuration
-14 abr 2023 13:36:11,726 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Language Configuration
-14 abr 2023 13:36:11,726 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Explorer Configuration
-14 abr 2023 13:36:11,748 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Main Window...
-14 abr 2023 13:36:11,763 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Menu...
-14 abr 2023 13:36:11,808 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu Configuration loaded: .\configuration\menu\lastModified.menuConfig
-14 abr 2023 13:36:11,869 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu Configuration loaded: .\configuration\menu\defaultAllOn.xml
-14 abr 2023 13:36:12,067 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,069 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,072 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,074 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,077 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,079 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,081 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,083 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,085 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,088 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,090 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,092 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,094 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,096 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,099 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,100 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,102 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-14 abr 2023 13:36:12,103 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu created
-14 abr 2023 13:36:12,116 [AWT-EventQueue-0] INFO  LogAcide - Menu Listeners established
-14 abr 2023 13:36:12,120 [AWT-EventQueue-0] INFO  LogAcide - Generating the tree of the working directory
-14 abr 2023 13:36:12,146 [AWT-EventQueue-0] INFO  LogAcide - Tree of the working directory generated
-14 abr 2023 13:36:12,158 [AWT-EventQueue-0] INFO  LogAcide - Creating exit of text... 
-14 abr 2023 13:36:12,181 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:12,182 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:12,196 [AWT-EventQueue-0] INFO  LogAcide - Exit of created text 
-14 abr 2023 13:36:12,217 [AWT-EventQueue-0] INFO  LogAcide - Generating the tree of the database directory
-14 abr 2023 13:36:12,227 [AWT-EventQueue-0] INFO  LogAcide - Tree of the working directory generated
-14 abr 2023 13:36:12,395 [AWT-EventQueue-0] INFO  LogAcide - Initializing icons...
-14 abr 2023 13:36:12,402 [AWT-EventQueue-0] INFO  LogAcide - Icons created
-14 abr 2023 13:36:12,402 [AWT-EventQueue-0] INFO  LogAcide - Icons created
-14 abr 2023 13:36:12,403 [AWT-EventQueue-0] INFO  LogAcide - Initializing the ACIDE - A Configurable IDE - Tool Bar...
-14 abr 2023 13:36:12,406 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Tool Bar created
-14 abr 2023 13:36:12,406 [AWT-EventQueue-0] INFO  LogAcide - Initializing the ACIDE - A Configurable IDE - Tool Bar...
-14 abr 2023 13:36:12,407 [AWT-EventQueue-0] INFO  LogAcide - Icons created
-14 abr 2023 13:36:12,408 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Tool Bar created
-14 abr 2023 13:36:12,416 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Main Window created
-14 abr 2023 13:36:12,419 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Debug Configuration
-14 abr 2023 13:36:12,427 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Console Configuration
-14 abr 2023 13:36:12,435 [AWT-EventQueue-0] ERROR LogAcide - 
-14 abr 2023 13:36:12,465 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Recent Files Configuration
-14 abr 2023 13:36:12,470 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Recent Projects Configuration
-14 abr 2023 13:36:12,472 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - File Editor Configuration
-14 abr 2023 13:36:12,711 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:12,712 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:12,713 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:12,766 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:12,928 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:12,929 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:12,929 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:12,935 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:13,054 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:13,054 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:13,054 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:13,059 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:13,132 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:13,132 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:13,132 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:13,139 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:13,203 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:13,203 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:13,203 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:13,208 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:13,262 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:13,262 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:13,263 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:13,267 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:13,330 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:13,331 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:13,331 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:13,337 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:13,409 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:13,409 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:13,409 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:13,415 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:13,733 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:13,733 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:13,733 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:13,739 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:13,802 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:13,802 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:13,803 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:13,806 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:13,868 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:13,868 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:13,868 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:13,873 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:13,943 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:13,943 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:13,943 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:13,947 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:13,991 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:13,991 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:13,991 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:13,995 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:14,071 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:14,071 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:14,071 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:14,075 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:14,297 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:14,297 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:14,297 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:14,301 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:14,363 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:14,363 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:14,363 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:14,367 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:14,445 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:14,445 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:14,446 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:14,449 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:14,536 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-14 abr 2023 13:36:14,536 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-14 abr 2023 13:36:14,536 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-14 abr 2023 13:36:14,540 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-14 abr 2023 13:36:14,600 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Main Window Configuration
-14 abr 2023 13:36:16,064 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.g4
-14 abr 2023 13:36:16,065 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully Expr.g4
-14 abr 2023 13:36:16,066 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.interp
-14 abr 2023 13:36:16,068 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully Expr.interp
-14 abr 2023 13:36:16,069 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.tokens
-14 abr 2023 13:36:16,070 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully Expr.tokens
-14 abr 2023 13:36:16,071 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprBaseListener.java
-14 abr 2023 13:36:16,072 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully ExprBaseListener.java
-14 abr 2023 13:36:16,073 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.interp
-14 abr 2023 13:36:16,073 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully ExprLexer.interp
-14 abr 2023 13:36:16,074 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.java
-14 abr 2023 13:36:16,075 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully ExprLexer.java
-14 abr 2023 13:36:16,077 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.tokens
-14 abr 2023 13:36:16,077 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully ExprLexer.tokens
-14 abr 2023 13:36:16,079 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprListener.java
-14 abr 2023 13:36:16,079 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully ExprListener.java
-14 abr 2023 13:36:16,081 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprParser.java
-14 abr 2023 13:36:16,081 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully ExprParser.java
-14 abr 2023 13:36:16,086 [AWT-EventQueue-0] INFO  LogAcide - Grammar successfully loaded C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\newGrammar.jar
-14 abr 2023 13:36:16,126 [AWT-EventQueue-0] INFO  LogAcide - Grammatical analysis done
-14 abr 2023 13:39:02,183 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: .\examples\DLDebugger\orbits1.dl
-14 abr 2023 13:39:02,184 [AWT-EventQueue-0] INFO  LogAcide - File .\examples\DLDebugger\orbits1.dlsaved successfully
-14 abr 2023 13:39:02,260 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: .\examples\DLDebugger\orbits1.dl
-14 abr 2023 13:39:02,261 [AWT-EventQueue-0] INFO  LogAcide - File .\examples\DLDebugger\orbits1.dlsaved successfully
-14 abr 2023 13:39:02,331 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: .\examples\DLDebugger\orbits1.dl
-14 abr 2023 13:39:02,331 [AWT-EventQueue-0] INFO  LogAcide - File .\examples\DLDebugger\orbits1.dlsaved successfully
-14 abr 2023 13:39:03,646 [AWT-EventQueue-0] ERROR LogAcide - Error generated by executing the command antlr4: 
-error(99): Expr.g4::: grammar Expr has no rules
-
-14 abr 2023 13:39:03,649 [AWT-EventQueue-0] INFO  LogAcide - Grammatical analysis done
-14 abr 2023 13:39:04,991 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.g4
-14 abr 2023 13:39:04,992 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully Expr.g4
-14 abr 2023 13:39:04,993 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.interp
-14 abr 2023 13:39:04,994 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully Expr.interp
-14 abr 2023 13:39:04,995 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/Expr.tokens
-14 abr 2023 13:39:04,995 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully Expr.tokens
-14 abr 2023 13:39:04,996 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprBaseListener.java
-14 abr 2023 13:39:04,997 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully ExprBaseListener.java
-14 abr 2023 13:39:04,998 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.interp
-14 abr 2023 13:39:04,998 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully ExprLexer.interp
-14 abr 2023 13:39:04,999 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.java
-14 abr 2023 13:39:04,999 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully ExprLexer.java
-14 abr 2023 13:39:05,000 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprLexer.tokens
-14 abr 2023 13:39:05,000 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully ExprLexer.tokens
-14 abr 2023 13:39:05,001 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprListener.java
-14 abr 2023 13:39:05,002 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully ExprListener.java
-14 abr 2023 13:39:05,003 [AWT-EventQueue-0] INFO  LogAcide - Grammar file saved successfully src/acide/process/parser/grammar/ExprParser.java
-14 abr 2023 13:39:05,003 [AWT-EventQueue-0] INFO  LogAcide - Grammar file deleted successfully ExprParser.java
-14 abr 2023 13:39:05,007 [AWT-EventQueue-0] INFO  LogAcide - Grammar successfully loaded C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\newGrammar.jar
-14 abr 2023 13:39:05,009 [AWT-EventQueue-0] INFO  LogAcide - Grammatical analysis done
-14 abr 2023 13:47:44,372 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: .\examples\DLDebugger\orbits1.dl
-14 abr 2023 13:47:44,372 [AWT-EventQueue-0] INFO  LogAcide - File .\examples\DLDebugger\orbits1.dlsaved successfully
+27 abr 2023 10:56:17,774 [main] INFO  LogAcide - Using your system's LookAndFeel
+27 abr 2023 10:56:17,910 [AWT-EventQueue-0] INFO  LogAcide - Initiating application...
+27 abr 2023 10:56:17,910 [AWT-EventQueue-0] INFO  LogAcide - Loading the ACIDE - A Configurable IDE - Workbench Configuration
+27 abr 2023 10:56:18,174 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Lexicon Assigner Configuration
+27 abr 2023 10:56:18,174 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Lexicon Assigner Configuration
+27 abr 2023 10:56:19,122 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Tool Bar Configuration
+27 abr 2023 10:56:19,138 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Menu Configuration
+27 abr 2023 10:56:19,150 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Language Configuration
+27 abr 2023 10:56:19,150 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Explorer Configuration
+27 abr 2023 10:56:19,174 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Main Window...
+27 abr 2023 10:56:19,190 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Menu...
+27 abr 2023 10:56:19,234 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu Configuration loaded: .\configuration\menu\lastModified.menuConfig
+27 abr 2023 10:56:19,287 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu Configuration loaded: .\configuration\menu\defaultAllOn.xml
+27 abr 2023 10:56:19,459 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,463 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,463 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,467 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,471 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,471 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,475 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,475 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,475 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,479 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,479 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,483 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,483 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,487 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,487 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,491 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,491 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+27 abr 2023 10:56:19,495 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu created
+27 abr 2023 10:56:19,507 [AWT-EventQueue-0] INFO  LogAcide - Menu Listeners established
+27 abr 2023 10:56:19,507 [AWT-EventQueue-0] INFO  LogAcide - Generating the tree of the working directory
+27 abr 2023 10:56:19,535 [AWT-EventQueue-0] INFO  LogAcide - Tree of the working directory generated
+27 abr 2023 10:56:19,547 [AWT-EventQueue-0] INFO  LogAcide - Creating exit of text... 
+27 abr 2023 10:56:19,567 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:19,567 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:19,583 [AWT-EventQueue-0] INFO  LogAcide - Exit of created text 
+27 abr 2023 10:56:19,603 [AWT-EventQueue-0] INFO  LogAcide - Generating the tree of the database directory
+27 abr 2023 10:56:19,615 [AWT-EventQueue-0] INFO  LogAcide - Tree of the working directory generated
+27 abr 2023 10:56:19,775 [AWT-EventQueue-0] INFO  LogAcide - Initializing icons...
+27 abr 2023 10:56:19,783 [AWT-EventQueue-0] INFO  LogAcide - Icons created
+27 abr 2023 10:56:19,783 [AWT-EventQueue-0] INFO  LogAcide - Icons created
+27 abr 2023 10:56:19,783 [AWT-EventQueue-0] INFO  LogAcide - Initializing the ACIDE - A Configurable IDE - Tool Bar...
+27 abr 2023 10:56:19,787 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Tool Bar created
+27 abr 2023 10:56:19,787 [AWT-EventQueue-0] INFO  LogAcide - Initializing the ACIDE - A Configurable IDE - Tool Bar...
+27 abr 2023 10:56:19,787 [AWT-EventQueue-0] INFO  LogAcide - Icons created
+27 abr 2023 10:56:19,787 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Tool Bar created
+27 abr 2023 10:56:19,795 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Main Window created
+27 abr 2023 10:56:19,799 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Debug Configuration
+27 abr 2023 10:56:19,803 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Console Configuration
+27 abr 2023 10:56:19,814 [AWT-EventQueue-0] ERROR LogAcide - 
+27 abr 2023 10:56:19,849 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Recent Files Configuration
+27 abr 2023 10:56:19,857 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Recent Projects Configuration
+27 abr 2023 10:56:19,857 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - File Editor Configuration
+27 abr 2023 10:56:20,025 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:20,025 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:20,025 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:20,079 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:20,215 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:20,219 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:20,219 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:20,223 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:20,350 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:20,350 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:20,350 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:20,354 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:20,443 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:20,443 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:20,443 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:20,447 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:20,519 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:20,519 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:20,519 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:20,523 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:20,583 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:20,583 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:20,583 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:20,587 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:20,663 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:20,663 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:20,663 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:20,667 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:20,735 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:20,735 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:20,735 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:20,739 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:21,075 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:21,075 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:21,075 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:21,083 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:21,143 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:21,143 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:21,143 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:21,151 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:21,213 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:21,213 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:21,213 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:21,221 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:21,316 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:21,316 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:21,316 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:21,328 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:21,441 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:21,441 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:21,441 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:21,449 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:21,561 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:21,565 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:21,565 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:21,569 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:21,765 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:21,765 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:21,765 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:21,769 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:21,829 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:21,829 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:21,829 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:21,833 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:21,917 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:21,917 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:21,917 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:21,921 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:21,977 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
+27 abr 2023 10:56:21,977 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+27 abr 2023 10:56:21,977 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+27 abr 2023 10:56:21,981 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
+27 abr 2023 10:56:21,989 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Main Window Configuration
+27 abr 2023 10:56:22,714 [AWT-EventQueue-0] ERROR LogAcide - Cannot run program ""C:\Program": CreateProcess error=2, El sistema no puede encontrar el archivo especificado
+27 abr 2023 10:56:22,763 [AWT-EventQueue-0] INFO  LogAcide - Grammatical analysis done

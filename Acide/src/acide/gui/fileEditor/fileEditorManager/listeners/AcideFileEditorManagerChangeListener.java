@@ -39,6 +39,7 @@
  */
 package acide.gui.fileEditor.fileEditorManager.listeners;
 
+import java.awt.Color;
 import java.util.HashMap;
 
 import javax.swing.JTabbedPane;
@@ -48,11 +49,16 @@ import javax.swing.event.ChangeListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Element;
 import javax.swing.text.JTextComponent;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
+import javax.swing.text.StyledDocument;
 import javax.swing.text.Utilities;
 
 import acide.configuration.workbench.AcideWorkbenchConfiguration;
 import acide.files.bytes.AcideByteFileManager;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
+import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideHighlightError;
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideTextComponent;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
@@ -82,25 +88,24 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * javax.swing.event.ChangeListener#stateChanged(javax.swing.event.ChangeEvent
-	 * )
+	 * javax.swing.event.ChangeListener#stateChanged(javax.swing.event.ChangeEvent )
 	 */
+	//private AcideMainWindow main= new AcideMainWindow();
 	@Override
 	public void stateChanged(ChangeEvent changeEvent) {
 
 		if (AcideWorkbenchConfiguration.getInstance().isWorkbenchLoaded()) {
-			
+
 			// gets the tabbed pane
-			JTabbedPane tabbedPane = AcideMainWindow.getInstance()
-					.getFileEditorManager().getTabbedPane();
-			
+			JTabbedPane tabbedPane = AcideMainWindow.getInstance().getFileEditorManager().getTabbedPane();
+
 			// makes sure that the tabbed pane is valid
 			if (tabbedPane == null)
 				return;
 
 			// Updates the status bar
 			updateStatusBar(tabbedPane);
-			
+
 			SwingUtilities.invokeLater(new Runnable() {
 
 				@Override
@@ -116,112 +121,85 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 	 * Updates the number of lines and the line and column message in the status
 	 * bar.
 	 * 
-	 * @param tabbedPane
-	 *            tabbed pane.
+	 * @param tabbedPane tabbed pane.
 	 */
 	public void updateStatusBar(JTabbedPane tabbedPane) {
 
 		if (tabbedPane.getSelectedIndex() != -1) {
 
 			// Gets the selected file editor panel
-			AcideFileEditorPanel selectedFileEditorPanel = (AcideFileEditorPanel) tabbedPane
-					.getSelectedComponent();
+			AcideFileEditorPanel selectedFileEditorPanel = (AcideFileEditorPanel) tabbedPane.getSelectedComponent();
 
 			// Gets the active text edition area
-			AcideTextComponent activeTextPane = selectedFileEditorPanel
-					.getActiveTextEditionArea();
+			AcideTextComponent activeTextPane = selectedFileEditorPanel.getActiveTextEditionArea();
 
 			// Gets the line of the caret position
-			int caretLine = getCaretLine(activeTextPane.getCaretPosition(),
-					activeTextPane);
+			int caretLine = getCaretLine(activeTextPane.getCaretPosition(), activeTextPane);
 
 			// Gets the column of the caret position
-			int caretColumn = getCaretColumn(activeTextPane.getCaretPosition(),
-					activeTextPane);
+			int caretColumn = getCaretColumn(activeTextPane.getCaretPosition(), activeTextPane);
 
 			// Gets the root element from the styled document
-			Element rootElement = AcideMainWindow.getInstance()
-					.getFileEditorManager().getSelectedFileEditorPanel()
+			Element rootElement = AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
 					.getStyledDocument().getDefaultRootElement();
-			
-			AcideByteFileManager.getInstance().processGrammarJar(selectedFileEditorPanel
-					.getCurrentGrammarConfiguration().getPath());
-			
-			AcideGrammarFileCreationProcess a = new AcideGrammarFileCreationProcess(AcideMainWindow
-					.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
-					.getCurrentGrammarConfiguration().getPath(), false, 
-					AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
-			
+
+			AcideByteFileManager.getInstance()
+					.processGrammarJar(selectedFileEditorPanel.getCurrentGrammarConfiguration().getPath());
+
+			AcideGrammarFileCreationProcess a = new AcideGrammarFileCreationProcess(
+					AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
+							.getCurrentGrammarConfiguration().getPath(),
+					false, AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
+
 			a.run();
-			
+
 			// Get the file editor panel analyzer
 			AcideGrammarAnalyzer analyzer = selectedFileEditorPanel.getGrammarAnalyzer();
 			analyzer.setText(activeTextPane.getText());
 			
 			// Analyze the text
 			analyzer.analyzeText();
-			
-			// Print the errors
-			for(HashMap.Entry<String, String> entry : analyzer.getErrors().entrySet()) {
-			    String key = entry.getKey();
-			    String value = entry.getValue();
-			    System.out.println(key + ": " +value);
-			}
 
+			// Print the errors
+			for (HashMap.Entry<String, String> entry : analyzer.getErrors().entrySet()) {
+				String key = entry.getKey();
+				String value = entry.getValue();
+				System.out.println(key + ": " + value);
+			}
+			AcideHighlightError highlighterros=AcideHighlightError.getInstance();
+			highlighterros.ErrorHighLight();
+			
+			
 			// Gets its number of lines
 			int numLines = rootElement.getElementCount();
 
 			// Updates the line and column message in the status
 			// bar
-			AcideMainWindow
-					.getInstance()
-					.getStatusBar()
-					.setLineAndColumnMessage(
-							(caretLine + 1) + ":" + (caretColumn + 1));
+			AcideMainWindow.getInstance().getStatusBar()
+					.setLineAndColumnMessage((caretLine + 1) + ":" + (caretColumn + 1));
 
 			// Updates the number of lines message in the status bar
-			AcideMainWindow
-					.getInstance()
-					.getStatusBar()
-					.setNumberOfLinesMessage(
-							AcideLanguageManager.getInstance().getLabels()
-									.getString("s1001")
-									+ numLines);
+			AcideMainWindow.getInstance().getStatusBar().setNumberOfLinesMessage(
+					AcideLanguageManager.getInstance().getLabels().getString("s1001") + numLines);
 
 			// Updates the lexicon message in the status bar
-			AcideMainWindow
-					.getInstance()
-					.getStatusBar()
-					.setLexiconMessage(
-							AcideLanguageManager.getInstance().getLabels()
-									.getString("s449")
-									+ " "
-									+ selectedFileEditorPanel
-											.getLexiconConfiguration()
-											.getName());
+			AcideMainWindow.getInstance().getStatusBar()
+					.setLexiconMessage(AcideLanguageManager.getInstance().getLabels().getString("s449") + " "
+							+ selectedFileEditorPanel.getLexiconConfiguration().getName());
 
 			// Updates the grammar message in the status bar
-			AcideMainWindow
-					.getInstance()
-					.getStatusBar()
-					.setGrammarMessage(
-							AcideLanguageManager.getInstance().getLabels()
-									.getString("s248")
-									+ " "
-									+ selectedFileEditorPanel
-											.getCurrentGrammarConfiguration()
-											.getName());
+			AcideMainWindow.getInstance().getStatusBar()
+					.setGrammarMessage(AcideLanguageManager.getInstance().getLabels().getString("s248") + " "
+							+ selectedFileEditorPanel.getCurrentGrammarConfiguration().getName());
 
 		} else {
 
 			// Updates the line and column message in the status
 			// bar
-			AcideMainWindow.getInstance().getStatusBar()
-					.setLineAndColumnMessage(" ");
+			AcideMainWindow.getInstance().getStatusBar().setLineAndColumnMessage(" ");
 
 			// Updates the number of lines message in the status bar
-			AcideMainWindow.getInstance().getStatusBar()
-					.setNumberOfLinesMessage(" ");
+			AcideMainWindow.getInstance().getStatusBar().setNumberOfLinesMessage(" ");
 
 			// Updates the lexicon message in the status bar
 			AcideMainWindow.getInstance().getStatusBar().setLexiconMessage(" ");
@@ -231,17 +209,14 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 		}
 
 		// Updates the status message in the status bar
-		AcideMainWindow.getInstance().getStatusBar()
-				.updateStatusMessageFromFileEditor();
+		AcideMainWindow.getInstance().getStatusBar().updateStatusMessageFromFileEditor();
 	}
 
 	/**
 	 * Returns the caret line in the selected file editor text area.
 	 * 
-	 * @param caretPosition
-	 *            current caret position.
-	 * @param textPane
-	 *            file editor text area.
+	 * @param caretPosition current caret position.
+	 * @param textPane      file editor text area.
 	 * 
 	 * @return the caret line in the selected file editor text area.
 	 */
@@ -262,21 +237,24 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 		return line - 1;
 	}
 
+
+	
+		
+
+	
+
 	/**
 	 * Returns the caret column in the selected file editor text area.
 	 * 
-	 * @param caretPosition
-	 *            current caret position.
-	 * @param textPane
-	 *            file editor text area.
+	 * @param caretPosition current caret position.
+	 * @param textPane      file editor text area.
 	 * 
 	 * @return the caret column in the selected file editor text area.
 	 */
 	public static int getCaretColumn(int caretPosition, JTextComponent textPane) {
 
 		try {
-			return caretPosition
-					- Utilities.getRowStart(textPane, caretPosition);
+			return caretPosition - Utilities.getRowStart(textPane, caretPosition);
 		} catch (BadLocationException exception) {
 
 			// Updates the log

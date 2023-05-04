@@ -7,7 +7,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\aggregates.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>1716</__caretPosition>
+            <__caretPosition>970</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
@@ -17,7 +17,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\bom.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>2228</__caretPosition>
+            <__caretPosition>1989</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
@@ -27,7 +27,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\family.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>465</__caretPosition>
+            <__caretPosition>140</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
@@ -37,9 +37,9 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\family.ra</__path>
             <__type>Normal</__type>
-            <__caretPosition>559</__caretPosition>
-            <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
-            <__activeTextEditionArea>1</__activeTextEditionArea>
+            <__caretPosition>88</__caretPosition>
+            <__splitPaneDividerLocation>548</__splitPaneDividerLocation>
+            <__activeTextEditionArea>0</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/ra.xml</__lexiconConfiguration>
             <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
             <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
@@ -57,7 +57,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\relop.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>92</__caretPosition>
+            <__caretPosition>113</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
@@ -77,7 +77,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\SQLDebugger\awards1.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>4278</__caretPosition>
+            <__caretPosition>301</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
@@ -87,7 +87,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\flights.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>534</__caretPosition>
+            <__caretPosition>22</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
@@ -117,7 +117,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\DLDebugger\example1.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>233</__caretPosition>
+            <__caretPosition>152</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
@@ -127,7 +127,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\DLDebugger\example1.dl.b.pl</__path>
             <__type>Normal</__type>
-            <__caretPosition>759</__caretPosition>
+            <__caretPosition>1040</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/default.xml</__lexiconConfiguration>
@@ -137,7 +137,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\DLDebugger\example3.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>2064</__caretPosition>
+            <__caretPosition>2367</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
@@ -147,30 +147,20 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\DLDebugger\orbits1.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>159</__caretPosition>
+            <__caretPosition>316</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
-            <__lexiconConfiguration>src/acide/process/parser/grammar/lexicalCategories.xml</__lexiconConfiguration>
+            <__lexiconConfiguration>./configuration/lexicon/default.xml</__lexiconConfiguration>
             <__previousGrammarConfiguration>./configuration/grammars/newGrammar.jar</__previousGrammarConfiguration>
             <__currentGrammarConfiguration>C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\newGrammar.jar</__currentGrammarConfiguration>
           </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\SQLDebugger\example1.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>194</__caretPosition>
+            <__caretPosition>138</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
-            <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
-            <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
-          </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
-          <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
-            <__path>.\examples\orbits.dl</__path>
-            <__type>Normal</__type>
-            <__caretPosition>202</__caretPosition>
-            <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
-            <__activeTextEditionArea>1</__activeTextEditionArea>
-            <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
             <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
             <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
           </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
@@ -184,13 +174,23 @@
             <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
             <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
           </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+          <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+            <__path>New1</__path>
+            <__type>Normal</__type>
+            <__caretPosition>1</__caretPosition>
+            <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
+            <__activeTextEditionArea>1</__activeTextEditionArea>
+            <__lexiconConfiguration>./configuration/lexicon/default.xml</__lexiconConfiguration>
+            <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
+            <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
+          </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
         </__list>
       </__list>
     </__fileEditorPanelConfigurationList>
-    <__selectedFileEditorPanelName>orbits1.dl</__selectedFileEditorPanelName>
+    <__selectedFileEditorPanelName>example3.dl</__selectedFileEditorPanelName>
     <__fontName>Monospaced.plain</__fontName>
     <__fontStyle>0</__fontStyle>
-    <__fontSize>12</__fontSize>
+    <__fontSize>15</__fontSize>
     <__foregroundColor>
       <red>0</red>
       <green>0</green>

@@ -49,6 +49,7 @@ import acide.files.project.AcideProjectFile;
 import acide.gui.fileEditor.fileEditorManager.utils.logic.AcideElementMatcher;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.fileEditor.fileEditorPanel.errorpopup.AcidefileEditorPanelErrorpopup;
+import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideHighlightError;
 import acide.gui.mainWindow.AcideMainWindow;
 
 import java.awt.Color;
@@ -92,43 +93,16 @@ public class AcideFileEditorMouseListener extends MouseAdapter  {
 	 * 
 	 * @see java.awt.event.MouseAdapter#mouseClicked(java.awt.event.MouseEvent)
 	 */
-
+	 
 	public void mouseClicked(MouseEvent mouseEvent) {
 
 		// Highlights the matching elements
 		highlightMatchingElements(mouseEvent);
-
+		
 		// Selects the explorer tree node if any
 		selectExplorerTreeNode();
-		AcideFileEditorPanel selectedFileEditorPanelIndex = AcideMainWindow
-				.getInstance().getFileEditorManager()
-				.getSelectedFileEditorPanel();
-		Point punto=mouseEvent.getPoint();
-		StyledDocument doc = selectedFileEditorPanelIndex.getActiveTextEditionArea().getStyledDocument();
-		int offset = selectedFileEditorPanelIndex.getActiveTextEditionArea().viewToModel(punto);
-		Element palabra = doc.getCharacterElement(offset);
-		int inicioPalabra = palabra.getStartOffset(); // posición de inicio de la palabra a resaltar
-		int finPalabra = palabra.getEndOffset(); // posición del final de la palabra
-		try {
-			String textoPalabra = doc.getText(inicioPalabra, finPalabra - inicioPalabra);
-			System.out.println(textoPalabra);
-		} catch (BadLocationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		SimpleAttributeSet attrs = new SimpleAttributeSet();
-		StyleConstants.setBackground(attrs, Color.YELLOW); // establecer el color de fondo de la palabra resaltada
-		doc.setCharacterAttributes(inicioPalabra, finPalabra - inicioPalabra, attrs, true); // resaltar la palabra
-
 		
 	}
-	
-    
-    public void mouseExited(MouseEvent mouseEvent) {
-    	
-
-    }
-
 	
 	/**
 	 * Highlights the matching elements.
@@ -169,6 +143,7 @@ public class AcideFileEditorMouseListener extends MouseAdapter  {
 				exception.printStackTrace();
 			}
 		}
+
 
 	}
 	
@@ -227,4 +202,7 @@ public class AcideFileEditorMouseListener extends MouseAdapter  {
 					.setSelectionPath(currentSelection);
 		}
 	}
+	
+
+	
 }

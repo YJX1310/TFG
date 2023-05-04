@@ -2,7 +2,7 @@
 % Rafael Caballero-Rold\'an, 2007
 pepe
 star(sun).
-
+orbits(juan.)
 orbits(earth, sun).
 orbits(moon, earth).
 orbits(X,Y) :- 

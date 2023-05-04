@@ -46,6 +46,7 @@ package acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.HashMap;
 import java.util.Hashtable;
 
 import javax.swing.SwingUtilities;
@@ -57,7 +58,10 @@ import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.Element;
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
+import javax.swing.text.StyledDocument;
 
 import acide.configuration.lexicon.AcideLexiconConfiguration;
 import acide.configuration.lexicon.tokens.AcideLexiconTokenGroup;
@@ -909,5 +913,43 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 	 */
 	public AcideLexiconConfiguration getLexiconConfiguration() {
 		return _lexiconConfiguration;
+	}
+	
+	private void HighLightErros(){
+		// Crear un objeto StyleContext para manejar los estilos
+					StyleContext styleContext = StyleContext.getDefaultStyleContext();
+
+					// Crear un objeto Style para el estilo de subrayado rojo
+					Style redUnderline = styleContext.addStyle("RedUnderline", null);
+					redUnderline.addAttribute(StyleConstants.Foreground, Color.RED);
+					redUnderline.addAttribute(StyleConstants.Underline, Boolean.TRUE);
+
+					// Obtener el documento del JTextPane
+				/*	StyledDocument document = selectedFileEditorPanel.getStyledDocument();
+
+					// Obtener el texto completo del JTextPane
+					String text = selectedFileEditorPanel.getActiveTextEditionArea().getText();
+					
+
+					// Subrayar cada palabra en rojo
+					for (HashMap.Entry<String, String> entry : analyzer.getErrors().entrySet()) {
+					    // Obtener la línea y columna de inicio de la palabra
+					    String[] parts = entry.getKey().split(":");
+					    int line = Integer.parseInt(parts[0]) - 1;
+					    int column = Integer.parseInt(parts[1]);
+
+					    // Calcular la posición de inicio y fin de la palabra
+					    int start = document.getDefaultRootElement().getElement(line).getStartOffset() + column;
+					    int end = text.indexOf(" ", start);
+					    int newline = text.indexOf("\n", start);
+					    if (end == -1 || (newline != -1 && newline < end)) {
+					        end = newline;
+					    }
+					    if (end == -1) {
+					        end = text.length();
+					    }
+
+					    // Aplicar el estilo de subrayado rojo a la palabra
+					    //document.setCharacterAttributes(start, end - start, redUnderline, false);*/
 	}
 }

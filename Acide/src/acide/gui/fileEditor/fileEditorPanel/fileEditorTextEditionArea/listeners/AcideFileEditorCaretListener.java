@@ -46,6 +46,7 @@ package acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.listeners
 
 import acide.gui.fileEditor.fileEditorManager.utils.logic.AcideElementMatcher;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
+import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideHighlightError;
 import acide.gui.mainWindow.AcideMainWindow;
 
 import javax.swing.event.CaretEvent;
@@ -71,9 +72,12 @@ public class AcideFileEditorCaretListener implements CaretListener {
 	 * javax.swing.event.CaretListener#caretUpdate(javax.swing.event.CaretEvent
 	 * )
 	 */
+
+
 	@Override
 	public void caretUpdate(CaretEvent caretEvent) {
-
+		
+		AcideHighlightError errorhighlighter=AcideHighlightError.getInstance();
 		// Updates the active text edition area
 		updateActiveTextEditionArea();
 		// Updates the status bar
@@ -81,6 +85,8 @@ public class AcideFileEditorCaretListener implements CaretListener {
 
 		// Updates the matching element
 		updateMatchingElement();
+		//Update error red underline
+		errorhighlighter.ErrorHighLight();
 	}
 
 	/**
@@ -152,7 +158,9 @@ public class AcideFileEditorCaretListener implements CaretListener {
 	 * elements are removed and added afterwards.
 	 */
 	public void updateMatchingElement() {
-
+		
+		
+		
 		// Get selected file editor panel
 		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow
 				.getInstance().getFileEditorManager()
@@ -170,6 +178,7 @@ public class AcideFileEditorCaretListener implements CaretListener {
 			// Sets the matching element position as -1
 			selectedFileEditorPanel.getTextEditionPanelList().get(0)
 					.setMatchingElementPosition(-1);
+			
 		}
 
 		// If the second edition text area has a matching element
@@ -184,6 +193,7 @@ public class AcideFileEditorCaretListener implements CaretListener {
 			// Sets the matching brace position as -1
 			selectedFileEditorPanel.getTextEditionPanelList().get(1)
 					.setMatchingElementPosition(-1);
+
 		}
 
 		try {
@@ -254,6 +264,7 @@ public class AcideFileEditorCaretListener implements CaretListener {
 									selectedFileEditorPanel
 											.getTextEditionPanelList().get(1)
 											.getMatchingElementPosition());
+
 				}
 			}
 		} catch (BadLocationException exception) {

@@ -89,7 +89,7 @@ public class AcideFileEditorKeyboardListener extends KeyAdapter {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see java.awt.event.KeyAdapter#keyPressed(java.awt.event.KeyEvent)
+	 * @see java.awt.event.KeyAdapter#keyPressed(java.awt.event.KeyEveznt)
 	 */
 
 	/*private static void executeTimeSplash() {
