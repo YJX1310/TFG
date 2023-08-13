@@ -51,6 +51,7 @@ import java.awt.Font;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
@@ -166,7 +167,15 @@ public class AcideFileEditorPanel extends JPanel {
 	 * ACIDE - A Configurable IDE file editor panel current grammar configuration.
 	 */
 	private AcideGrammarConfiguration _currentGrammarConfiguration;
-	
+	/**
+	 * ACIDE - A Configurable IDE file editor panel errors.
+	 */
+	private HashMap<String, String> _errors;
+	/**
+	 * ACIDE - A Configurable IDE file editor panel analyze the entire
+	 * text or a fragment of text.
+	 */
+	private boolean _firstTime;
 	/**
 	 * Current encode format
 	 */
@@ -197,6 +206,10 @@ public class AcideFileEditorPanel extends JPanel {
 
 			// Sets the layout
 			setLayout(new BorderLayout());
+			
+			_firstTime = true;
+			
+			_errors = new HashMap<String, String>();
 
 			// Stores the active text edition area index
 			_activeTextEditionAreaIndex = activeTextEditionAreaIndex;
@@ -948,6 +961,22 @@ public class AcideFileEditorPanel extends JPanel {
 	
 	public String getEncode() {
 		return this.encodeFormat;
+	}
+
+	public HashMap<String, String> get_errors() {
+		return _errors;
+	}	
+	
+	public void setErrors(HashMap<String, String> _errors) {
+		this._errors = _errors;
+	}
+
+	public boolean isFirstTime() {
+		return _firstTime;
+	}
+
+	public void setFirstTime(boolean _firstTime) {
+		this._firstTime = _firstTime;
 	}
 	
 }

@@ -51,9 +51,12 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.TreeMap;
 
@@ -81,9 +84,11 @@ import acide.configuration.lexicon.delimiters.AcideLexiconDelimitersManager;
 import acide.configuration.lexicon.tokens.AcideLexiconTokenGroup;
 import acide.configuration.lexicon.tokens.AcideLexiconTokenManager;
 import acide.files.AcideFileManager;
+import acide.files.bytes.AcideByteFileManager;
 import acide.files.utils.AcideFileOperation;
 import acide.files.utils.AcideFileTarget;
 import acide.files.utils.AcideFileType;
+import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.listeners.AcideWindowClosingListener;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
@@ -439,7 +444,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 		
 		// Set the load lexicon tool tip text
 		_loadLexiconButton.setToolTipText(AcideLanguageManager.getInstance()
-				.getLabels().getString("s197"));
+				.getLabels().getString("s193"));
 		
 		// Creates the combo box
 		_lexiconCbBox = new JComboBox<ComboBoxItem>();
@@ -708,21 +713,21 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			// Selects the action
 			String action = "";
 			if (_isForModifying){
-				newGrammarName = "lastModified.jar";
+				newGrammarName = "lastModified.txt";
 				action = AcideLanguageManager.getInstance().getLabels()
 				.getString("s29");				
 			}
 			else {
-				newGrammarName = "newGrammar.jar";
+				newGrammarName = "newGrammar.txt";
 				action = AcideLanguageManager.getInstance().getLabels()
 				.getString("s30");				
 			}
 			
-
 			// Selects the new grammar path
-			String newGrammarPath = AcideGrammarConfiguration.DEFAULT_PATH
-					+ newGrammarName;
-
+			String newGrammarPath = AcideGrammarConfiguration.DEFAULT_PATH + newGrammarName;
+			
+			// Save the grammar
+			AcideByteFileManager.getInstance().saveGrammar(newGrammarPath);
 			try {
 				String lock = "";
 				
@@ -740,6 +745,13 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 						.getMenu().getConfigurationMenu()
 						.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem()
 						.isSelected()) {
+					
+					// Gets the selected file editor panel
+					AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
+							.getSelectedFileEditorPanel();
+					
+					selectedFileEditorPanel.setFirstTime(true);
+					
 					// Get the file editor panel analyzer
 					AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
 					
@@ -820,13 +832,41 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 					AcideFileType.FILE, "", null);
 
 			if (absolutePath != null) {
-
-				// Loads the file content
-				String fileContent = AcideFileManager.getInstance().load(
-						absolutePath);
-
-				// Updates the rules text area with the file content
-				_rulesTextArea.setText(fileContent);
+		        String syntaxContent = "";
+		        String lexicalContent = "";
+		        boolean syntax = false;
+		        boolean lexical = false;
+		        
+		        // Read contents of source
+		        try {
+		            BufferedReader reader = new BufferedReader(new FileReader(absolutePath));
+		            String line;
+		            while ((line = reader.readLine()) != null) {
+		            	if(line.equals("class ExprLexer extends Lexer;")){
+		            		lexical = true;
+		            		continue;
+		            	}
+		            	if(line.equals("class ExprParser extends Parser;")) {
+		            		lexical = false;
+		            		syntax = true;
+		            		continue;
+		            	}
+		            	if(syntax)
+		            		syntaxContent += line + "\n";
+		            	if(lexical)
+		            		lexicalContent += line + "\n";
+		            }
+		            reader.close();
+		        } catch (IOException e) {
+		        	// Updates the log
+		        	AcideLog.getLog().error(e.getMessage());
+		        }
+				
+				// Updates the rules text area with the syntax content
+				_rulesTextArea.setText(syntaxContent);
+				
+				// Updates the lexical text area with the lexical content
+				_categoriesTextArea.setText(lexicalContent);
 
 				// Updates the log
 				AcideLog.getLog().info(

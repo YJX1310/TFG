@@ -115,6 +115,12 @@ public class AcideLoadGrammarMenuItemListener implements ActionListener {
 					.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem()
 					.isSelected()) {
 				
+				// Gets the selected file editor panel
+				AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
+						.getSelectedFileEditorPanel();
+				
+				selectedFileEditorPanel.setFirstTime(true);
+				
 				// Get the file editor panel analyzer
 				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
 				

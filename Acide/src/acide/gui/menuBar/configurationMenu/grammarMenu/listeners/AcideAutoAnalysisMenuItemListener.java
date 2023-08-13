@@ -77,12 +77,13 @@ public class AcideAutoAnalysisMenuItemListener implements ActionListener{
 		// Gets the new value of the checkBox
 		boolean selected = ((JCheckBoxMenuItem)actionEvent
 				.getSource()).isSelected();
+		
+		// Gets the selected file editor panel
+		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
+				.getFileEditorManager().getSelectedFileEditorPanel();
+		
 		if(selected) {
 			String lock = "";
-			
-			// Gets the selected file editor panel
-			AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
-					.getFileEditorManager().getSelectedFileEditorPanel();
 			
 			// Process the current grammar
 			AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
@@ -105,8 +106,11 @@ public class AcideAutoAnalysisMenuItemListener implements ActionListener{
 			
 			analyzer.start();
 		}
-		else
+		else {
 			System.out.println("Desactivado");
+			selectedFileEditorPanel.setFirstTime(true);
+			selectedFileEditorPanel.setErrors(new HashMap<String, String>());
+		}
 		
 		AcideMainWindow.getInstance()
 		.getMenu().getConfigurationMenu()

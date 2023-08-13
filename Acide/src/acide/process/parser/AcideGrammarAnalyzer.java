@@ -44,12 +44,12 @@
  */
 package acide.process.parser;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 
 import org.antlr.v4.runtime.ANTLRErrorListener;
 import org.antlr.v4.runtime.CharStream;
@@ -58,6 +58,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.TokenSource;
 import org.antlr.v4.runtime.TokenStream;
 
+import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.main.AcideMain;
 import acide.process.parser.grammar.ExprLexer;
@@ -74,10 +75,6 @@ public class AcideGrammarAnalyzer extends Thread{
 	 */
 	private String _text;
 	/**
-	 * ACIDE - A Configurable IDE grammar analyzer lexer.
-	 */
-	private ExprLexer _lexer;
-	/**
 	 * ACIDE - A Configurable IDE grammar analyzer lexer object.
 	 */
 	private Object _Olexer;
@@ -90,10 +87,6 @@ public class AcideGrammarAnalyzer extends Thread{
 	 */
 	private CommonTokenStream _token;
 	/**
-	 * ACIDE - A Configurable IDE grammar analyzer parser.
-	 */
-	private ExprParser _parser;
-	/**
 	 * ACIDE - A Configurable IDE grammar analyzer parser object.
 	 */
 	private Object _Oparser;
@@ -104,7 +97,7 @@ public class AcideGrammarAnalyzer extends Thread{
 	/**
 	 * ACIDE - A Configurable IDE grammar analyzer errors.
 	 */
-	private HashMap<String, String> _errors;
+//	private HashMap<String, String> _errors;
 	/**
 	 * Creates a new ACIDE - A Configurable IDE grammar analyzer.
 	 */
@@ -122,9 +115,14 @@ public class AcideGrammarAnalyzer extends Thread{
 			if (name.equals("acide.process.parser.grammar.ExprLexer")) {
 				try {
 					InputStream is = AcideMain.class.getClassLoader().getResourceAsStream("acide/process/parser/grammar/ExprLexer.class");
-					byte[] buf = new byte[1000000];
-					int len = is.read(buf);
-					return defineClass(name, buf, 0, len);
+					ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			        byte[] buffer = new byte[4096];
+			        int bytesRead;
+			        while ((bytesRead = is.read(buffer)) != -1) {
+			            baos.write(buffer, 0, bytesRead);
+			        }
+			        byte[] classBytes = baos.toByteArray();
+			        return defineClass(name, classBytes, 0, classBytes.length);
 				} catch (IOException e) {
 					throw new ClassNotFoundException("", e);
 				}
@@ -132,9 +130,14 @@ public class AcideGrammarAnalyzer extends Thread{
 			else if(name.equals("acide.process.parser.grammar.ExprParser")) {
 				try {
 					InputStream is = AcideMain.class.getClassLoader().getResourceAsStream("acide/process/parser/grammar/ExprParser.class");
-					byte[] buf = new byte[1000000];
-					int len = is.read(buf);
-					return defineClass(name, buf, 0, len);
+					ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			        byte[] buffer = new byte[4096];
+			        int bytesRead;
+			        while ((bytesRead = is.read(buffer)) != -1) {
+			            baos.write(buffer, 0, bytesRead);
+			        }
+			        byte[] classBytes = baos.toByteArray();
+			        return defineClass(name, classBytes, 0, classBytes.length);
 				} catch (IOException e) {
 					throw new ClassNotFoundException("", e);
 				}
@@ -154,32 +157,8 @@ public class AcideGrammarAnalyzer extends Thread{
 		// Store the text
 		_text = text;
 		
-		// Initialize the error
-		_errors = new HashMap<String, String>();
-		
-		/*
 		try {
-			// Crear una instancia de URLClassLoader para cargar clases desde un directorio específico
-			@SuppressWarnings("resource")
-			URLClassLoader classLoader = new URLClassLoader(new URL[]{new File("out/production/Acide/acide/process/parser/grammar/ExprLexer.class").toURI().toURL()});
-			
-			// Cargar la clase dinámicamente utilizando el class loader
-			@SuppressWarnings("unchecked")
-			//Class<ExprLexer> dynamicClass = (Class<ExprLexer>) classLoader.loadClass("acide.process.parser.grammar.ExprLexer");
-			Class<ExprLexer> dynamicClass = (Class<ExprLexer>) Class.forName("acide.process.parser.grammar.ExprLexer");
-			// Obtener una instancia del constructor que recibe dos parámetros de tipo int y String
-			Constructor<ExprLexer> constructor = dynamicClass.getConstructor(CharStream.class);
-			
-			// Crear una nueva instancia de la clase cargada dinámicamente utilizando el constructor con parámetros
-			_lexer = constructor.newInstance(CharStreams.fromString(_text));
-			_lexer.getAllTokens();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		*/
-		
-		try {
-			myErrorListener errorListener = new myErrorListener(_errors);
+			myErrorListener errorListener = new myErrorListener(AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel().get_errors());
 			
 			// Create lexer class
 			_Clexer = new TestClassLoader().loadClass("acide.process.parser.grammar.ExprLexer");
@@ -218,28 +197,6 @@ public class AcideGrammarAnalyzer extends Thread{
 			e.printStackTrace();
 		}
 		
-		/*
-		try {
-			// Crear una instancia de URLClassLoader para cargar clases desde un directorio específico
-			@SuppressWarnings("resource")
-			URLClassLoader classLoader = new URLClassLoader(new URL[]{new File("out/production/Acide/acide/process/parser/grammar/ExprParser.class").toURI().toURL()});
-			
-			// Cargar la clase dinámicamente utilizando el class loader
-			@SuppressWarnings("unchecked")
-			//Class<ExprParser> dynamicClass = (Class<ExprParser>) classLoader.loadClass("acide.process.parser.grammar.ExprParser");
-			Class<ExprParser> dynamicClass = (Class<ExprParser>) Class.forName("acide.process.parser.grammar.ExprParser");
-
-			// Obtener una instancia del constructor que recibe dos parámetros de tipo int y String
-			Constructor<ExprParser> constructor = dynamicClass.getConstructor(TokenStream.class);
-			
-			// Crear una nueva instancia de la clase cargada dinámicamente utilizando el constructor con parámetros
-			_parser = constructor.newInstance(_token);
-			_parser.getRuleNames();
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		*/
 		// Create the parser
 		//_parser = new ExprParser(_token);
 
@@ -271,19 +228,25 @@ public class AcideGrammarAnalyzer extends Thread{
 	 * 
 	 * @see java.lang.Thread#run()
 	 */
-    @Override
-    public void run() {
-    synchronized (_lock) {
-        try {
-          _lock.wait();
-          constructor(AcideMainWindow.getInstance()
-					.getFileEditorManager().getSelectedFileEditorPanel().getActiveTextEditionArea().getText());
-          analyzeText();
-        } catch (InterruptedException e) {
-          e.printStackTrace();
-        }
-      }
-    }
+	@Override
+	public void run() {
+		synchronized (_lock) {
+			try {
+				_lock.wait();
+
+				// Gets the selected file editor panel
+				AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
+						.getSelectedFileEditorPanel();
+				if(selectedFileEditorPanel.isFirstTime()) {
+					constructor(AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
+							.getActiveTextEditionArea().getText());
+					analyzeText();
+				}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	/**
 	 * Analyze the entire text according to the grammar rules
@@ -333,19 +296,6 @@ public class AcideGrammarAnalyzer extends Thread{
 	public void setLock(Object lock) {
 		_lock = lock;
 	}
-	
-	/**
-	 * Returns the ACIDE - A Configurable IDE grammar analyzer grammar mistakes.
-	 * 
-	 * @return the ACIDE - A Configurable IDE grammar analyzer grammar mistakes.
-	 */
-	public HashMap<String, String> getErrors(){
-		return _errors;
-	}
-	
-	public void setErrors(HashMap<String, String> _errors) {
-		this._errors = _errors;
-	}
 
 	/**
 	 * Returns the ACIDE - A Configurable IDE grammar analyzer grammar text.
@@ -359,32 +309,4 @@ public class AcideGrammarAnalyzer extends Thread{
 	public void setText(String _text) {
 		constructor(_text);
 	}
-
-	/**
-	 * Returns the ACIDE - A Configurable IDE grammar analyzer grammar lexer.
-	 * 
-	 * @return the ACIDE - A Configurable IDE grammar analyzer grammar lexer.
-	 */
-	public ExprLexer getLexer() {
-		return _lexer;
-	}
-
-	public void setLexer(ExprLexer _lexer) {
-		this._lexer = _lexer;
-	}
-
-	/**
-	 * Returns the ACIDE - A Configurable IDE grammar analyzer grammar parser.
-	 * 
-	 * @return the ACIDE - A Configurable IDE grammar analyzer grammar parser.
-	 */
-	public ExprParser getParser() {
-		return _parser;
-	}
-
-	public void setParser(ExprParser _parser) {
-		this._parser = _parser;
-	}
-	
-	
 }

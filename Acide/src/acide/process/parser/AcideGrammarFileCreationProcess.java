@@ -297,7 +297,6 @@ public class AcideGrammarFileCreationProcess extends Thread {
 	private void executeAntlr() throws Exception {
 
 		String javaPath = null;
-		int exitValue;
 
 		try {
 
@@ -345,28 +344,30 @@ public class AcideGrammarFileCreationProcess extends Thread {
 
 			// Executes the command
 			process = Runtime.getRuntime().exec("\"" + javaPath + "\" -jar ./lib/antlr-4.7.1-complete.jar Expr.g4");
-
-
-			// Waits for the process to finish
-			exitValue = process.waitFor();
-			if(exitValue != 0) {
-				BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-				StringBuilder errorMessage = new StringBuilder();
-				String line;
+			
+			BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+			StringBuilder errorMessage = new StringBuilder();
+			String line;
+			errorMessage.append(System.lineSeparator());
+			while ((line = errorReader.readLine()) != null) {
+				errorMessage.append(line);
 				errorMessage.append(System.lineSeparator());
-				while ((line = errorReader.readLine()) != null) {
-					errorMessage.append(line);
-					errorMessage.append(System.lineSeparator());
-				}
+			}
+			//System.out.println(errorMessage);
+			
+			// Waits for the process to finish
+			int exitValue = process.waitFor();
+            //System.out.println("Process exitValue: " + exitValue);
+            if(exitValue != 0) {
 				throw new Exception(AcideLanguageManager.getInstance().getLabels()
 						.getString("s2428") + errorMessage.toString());
-			}
-			else {
+            }
+            else {
 				// Updates the progress window
 				AcideProgressWindow.getInstance().setText(
 						AcideLanguageManager.getInstance().getLabels()
 								.getString("s1050"));
-			}
+            }
 		} catch (Exception exception) {
 
 			// Updates the progress window

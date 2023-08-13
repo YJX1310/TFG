@@ -1,130 +1,242 @@
-04 may 2023 19:48:53,958 [main] INFO  LogAcide - Using your system's LookAndFeel
-04 may 2023 19:48:54,060 [AWT-EventQueue-0] INFO  LogAcide - Initiating application...
-04 may 2023 19:48:54,060 [AWT-EventQueue-0] INFO  LogAcide - Loading the ACIDE - A Configurable IDE - Workbench Configuration
-04 may 2023 19:48:54,279 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Lexicon Assigner Configuration
-04 may 2023 19:48:54,279 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Lexicon Assigner Configuration
-04 may 2023 19:48:54,968 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Tool Bar Configuration
-04 may 2023 19:48:54,978 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Menu Configuration
-04 may 2023 19:48:54,982 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Language Configuration
-04 may 2023 19:48:54,982 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Explorer Configuration
-04 may 2023 19:48:55,000 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Main Window...
-04 may 2023 19:48:55,012 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Menu...
-04 may 2023 19:48:55,054 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu Configuration loaded: .\configuration\menu\lastModified.menuConfig
-04 may 2023 19:48:55,100 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu Configuration loaded: .\configuration\menu\defaultAllOn.xml
-04 may 2023 19:48:55,246 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,248 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,250 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,252 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,255 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,256 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,258 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,259 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,260 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,262 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,263 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,265 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,266 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,268 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,269 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,271 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,272 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
-04 may 2023 19:48:55,273 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu created
-04 may 2023 19:48:55,284 [AWT-EventQueue-0] INFO  LogAcide - Menu Listeners established
-04 may 2023 19:48:55,287 [AWT-EventQueue-0] INFO  LogAcide - Generating the tree of the working directory
-04 may 2023 19:48:55,307 [AWT-EventQueue-0] INFO  LogAcide - Tree of the working directory generated
-04 may 2023 19:48:55,315 [AWT-EventQueue-0] INFO  LogAcide - Creating exit of text... 
-04 may 2023 19:48:55,327 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:55,327 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:55,335 [AWT-EventQueue-0] INFO  LogAcide - Exit of created text 
-04 may 2023 19:48:55,354 [AWT-EventQueue-0] INFO  LogAcide - Generating the tree of the database directory
-04 may 2023 19:48:55,363 [AWT-EventQueue-0] INFO  LogAcide - Tree of the working directory generated
-04 may 2023 19:48:55,504 [AWT-EventQueue-0] INFO  LogAcide - Initializing icons...
-04 may 2023 19:48:55,511 [AWT-EventQueue-0] INFO  LogAcide - Icons created
-04 may 2023 19:48:55,511 [AWT-EventQueue-0] INFO  LogAcide - Icons created
-04 may 2023 19:48:55,511 [AWT-EventQueue-0] INFO  LogAcide - Initializing the ACIDE - A Configurable IDE - Tool Bar...
-04 may 2023 19:48:55,515 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Tool Bar created
-04 may 2023 19:48:55,515 [AWT-EventQueue-0] INFO  LogAcide - Initializing the ACIDE - A Configurable IDE - Tool Bar...
-04 may 2023 19:48:55,515 [AWT-EventQueue-0] INFO  LogAcide - Icons created
-04 may 2023 19:48:55,516 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Tool Bar created
-04 may 2023 19:48:55,524 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Main Window created
-04 may 2023 19:48:55,525 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Debug Configuration
-04 may 2023 19:48:55,529 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Console Configuration
-04 may 2023 19:48:55,536 [AWT-EventQueue-0] ERROR LogAcide - 
-04 may 2023 19:48:55,559 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Recent Files Configuration
-04 may 2023 19:48:55,566 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Recent Projects Configuration
-04 may 2023 19:48:55,567 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - File Editor Configuration
-04 may 2023 19:48:55,628 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:55,630 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:55,630 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:55,675 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:55,802 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:55,802 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:55,802 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:55,807 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:55,919 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:55,919 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:55,920 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:55,924 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:55,988 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:55,989 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:55,989 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:55,992 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:56,060 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:56,061 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:56,061 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:56,064 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:56,135 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:56,135 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:56,136 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:56,139 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:56,199 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:56,199 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:56,199 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:56,205 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:56,290 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:56,291 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:56,291 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:56,295 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:56,557 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:56,557 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:56,557 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:56,561 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:56,619 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:56,619 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:56,619 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:56,624 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:56,682 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:56,682 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:56,682 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:56,686 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:56,761 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:56,762 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:56,762 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:56,767 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:56,814 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:56,815 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:56,815 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:56,818 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:56,885 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:56,885 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:56,885 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:56,889 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:57,097 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:57,097 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:57,097 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:57,101 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:57,167 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:57,168 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:57,168 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:57,171 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:57,222 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:57,222 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:57,222 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:57,225 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:57,265 [AWT-EventQueue-0] INFO  LogAcide - Creating text editor...
-04 may 2023 19:48:57,266 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
-04 may 2023 19:48:57,266 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
-04 may 2023 19:48:57,269 [AWT-EventQueue-0] INFO  LogAcide - Created text editor
-04 may 2023 19:48:57,319 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Main Window Configuration
-04 may 2023 19:49:01,522 [AWT-EventQueue-0] ERROR LogAcide - C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.txt (El sistema no puede encontrar la ruta especificada)
-04 may 2023 19:49:01,545 [Thread-8] ERROR LogAcide - Cannot run program ""C:\Program": CreateProcess error=2, El sistema no puede encontrar el archivo especificado
+13 ago 2023 18:49:37,735 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$CatchTypeContext.class
+13 ago 2023 18:49:37,736 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ClassBodyContext.class
+13 ago 2023 18:49:37,737 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ClassBodyContext.class
+13 ago 2023 18:49:37,738 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ClassBodyDeclarationContext.class
+13 ago 2023 18:49:37,738 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ClassBodyDeclarationContext.class
+13 ago 2023 18:49:37,741 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ClassCreatorRestContext.class
+13 ago 2023 18:49:37,741 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ClassCreatorRestContext.class
+13 ago 2023 18:49:37,742 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ClassDeclarationContext.class
+13 ago 2023 18:49:37,742 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ClassDeclarationContext.class
+13 ago 2023 18:49:37,743 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ClassOrInterfaceModifierContext.class
+13 ago 2023 18:49:37,743 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ClassOrInterfaceModifierContext.class
+13 ago 2023 18:49:37,744 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ClassOrInterfaceTypeContext.class
+13 ago 2023 18:49:37,744 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ClassOrInterfaceTypeContext.class
+13 ago 2023 18:49:37,745 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ClassTypeContext.class
+13 ago 2023 18:49:37,745 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ClassTypeContext.class
+13 ago 2023 18:49:37,746 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$CompactConstructorDeclarationContext.class
+13 ago 2023 18:49:37,746 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$CompactConstructorDeclarationContext.class
+13 ago 2023 18:49:37,747 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$CompilationUnitContext.class
+13 ago 2023 18:49:37,748 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$CompilationUnitContext.class
+13 ago 2023 18:49:37,749 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ConstantDeclaratorContext.class
+13 ago 2023 18:49:37,749 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ConstantDeclaratorContext.class
+13 ago 2023 18:49:37,750 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ConstDeclarationContext.class
+13 ago 2023 18:49:37,750 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ConstDeclarationContext.class
+13 ago 2023 18:49:37,751 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ConstructorDeclarationContext.class
+13 ago 2023 18:49:37,751 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ConstructorDeclarationContext.class
+13 ago 2023 18:49:37,753 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$CreatedNameContext.class
+13 ago 2023 18:49:37,754 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$CreatedNameContext.class
+13 ago 2023 18:49:37,755 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$CreatorContext.class
+13 ago 2023 18:49:37,755 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$CreatorContext.class
+13 ago 2023 18:49:37,756 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$DefaultValueContext.class
+13 ago 2023 18:49:37,757 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$DefaultValueContext.class
+13 ago 2023 18:49:37,758 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ElementValueArrayInitializerContext.class
+13 ago 2023 18:49:37,758 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ElementValueArrayInitializerContext.class
+13 ago 2023 18:49:37,759 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ElementValueContext.class
+13 ago 2023 18:49:37,759 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ElementValueContext.class
+13 ago 2023 18:49:37,760 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ElementValuePairContext.class
+13 ago 2023 18:49:37,760 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ElementValuePairContext.class
+13 ago 2023 18:49:37,761 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ElementValuePairsContext.class
+13 ago 2023 18:49:37,762 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ElementValuePairsContext.class
+13 ago 2023 18:49:37,762 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$EnhancedForControlContext.class
+13 ago 2023 18:49:37,763 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$EnhancedForControlContext.class
+13 ago 2023 18:49:37,764 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$EnumBodyDeclarationsContext.class
+13 ago 2023 18:49:37,764 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$EnumBodyDeclarationsContext.class
+13 ago 2023 18:49:37,765 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$EnumConstantContext.class
+13 ago 2023 18:49:37,765 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$EnumConstantContext.class
+13 ago 2023 18:49:37,766 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$EnumConstantsContext.class
+13 ago 2023 18:49:37,766 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$EnumConstantsContext.class
+13 ago 2023 18:49:37,767 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$EnumDeclarationContext.class
+13 ago 2023 18:49:37,767 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$EnumDeclarationContext.class
+13 ago 2023 18:49:37,768 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ExplicitGenericInvocationContext.class
+13 ago 2023 18:49:37,769 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ExplicitGenericInvocationContext.class
+13 ago 2023 18:49:37,770 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ExplicitGenericInvocationSuffixContext.class
+13 ago 2023 18:49:37,770 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ExplicitGenericInvocationSuffixContext.class
+13 ago 2023 18:49:37,771 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ExpressionContext.class
+13 ago 2023 18:49:37,771 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ExpressionContext.class
+13 ago 2023 18:49:37,772 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ExpressionListContext.class
+13 ago 2023 18:49:37,772 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ExpressionListContext.class
+13 ago 2023 18:49:37,773 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$FieldDeclarationContext.class
+13 ago 2023 18:49:37,773 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$FieldDeclarationContext.class
+13 ago 2023 18:49:37,774 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$FinallyBlockContext.class
+13 ago 2023 18:49:37,774 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$FinallyBlockContext.class
+13 ago 2023 18:49:37,775 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$FloatLiteralContext.class
+13 ago 2023 18:49:37,775 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$FloatLiteralContext.class
+13 ago 2023 18:49:37,776 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ForControlContext.class
+13 ago 2023 18:49:37,776 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ForControlContext.class
+13 ago 2023 18:49:37,777 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ForInitContext.class
+13 ago 2023 18:49:37,777 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ForInitContext.class
+13 ago 2023 18:49:37,778 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$FormalParameterContext.class
+13 ago 2023 18:49:37,778 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$FormalParameterContext.class
+13 ago 2023 18:49:37,779 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$FormalParameterListContext.class
+13 ago 2023 18:49:37,780 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$FormalParameterListContext.class
+13 ago 2023 18:49:37,781 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$FormalParametersContext.class
+13 ago 2023 18:49:37,781 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$FormalParametersContext.class
+13 ago 2023 18:49:37,782 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$GenericConstructorDeclarationContext.class
+13 ago 2023 18:49:37,782 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$GenericConstructorDeclarationContext.class
+13 ago 2023 18:49:37,783 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$GenericInterfaceMethodDeclarationContext.class
+13 ago 2023 18:49:37,783 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$GenericInterfaceMethodDeclarationContext.class
+13 ago 2023 18:49:37,784 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$GenericMethodDeclarationContext.class
+13 ago 2023 18:49:37,784 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$GenericMethodDeclarationContext.class
+13 ago 2023 18:49:37,786 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$GuardedPatternContext.class
+13 ago 2023 18:49:37,786 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$GuardedPatternContext.class
+13 ago 2023 18:49:37,787 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$IdentifierContext.class
+13 ago 2023 18:49:37,788 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$IdentifierContext.class
+13 ago 2023 18:49:37,789 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ImportDeclarationContext.class
+13 ago 2023 18:49:37,789 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ImportDeclarationContext.class
+13 ago 2023 18:49:37,790 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$InnerCreatorContext.class
+13 ago 2023 18:49:37,791 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$InnerCreatorContext.class
+13 ago 2023 18:49:37,792 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$IntegerLiteralContext.class
+13 ago 2023 18:49:37,792 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$IntegerLiteralContext.class
+13 ago 2023 18:49:37,793 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$InterfaceBodyContext.class
+13 ago 2023 18:49:37,793 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$InterfaceBodyContext.class
+13 ago 2023 18:49:37,794 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$InterfaceBodyDeclarationContext.class
+13 ago 2023 18:49:37,794 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$InterfaceBodyDeclarationContext.class
+13 ago 2023 18:49:37,795 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$InterfaceCommonBodyDeclarationContext.class
+13 ago 2023 18:49:37,795 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$InterfaceCommonBodyDeclarationContext.class
+13 ago 2023 18:49:37,796 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$InterfaceDeclarationContext.class
+13 ago 2023 18:49:37,796 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$InterfaceDeclarationContext.class
+13 ago 2023 18:49:37,797 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$InterfaceMemberDeclarationContext.class
+13 ago 2023 18:49:37,797 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$InterfaceMemberDeclarationContext.class
+13 ago 2023 18:49:37,798 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$InterfaceMethodDeclarationContext.class
+13 ago 2023 18:49:37,798 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$InterfaceMethodDeclarationContext.class
+13 ago 2023 18:49:37,799 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$InterfaceMethodModifierContext.class
+13 ago 2023 18:49:37,799 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$InterfaceMethodModifierContext.class
+13 ago 2023 18:49:37,800 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$LambdaBodyContext.class
+13 ago 2023 18:49:37,800 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$LambdaBodyContext.class
+13 ago 2023 18:49:37,801 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$LambdaExpressionContext.class
+13 ago 2023 18:49:37,801 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$LambdaExpressionContext.class
+13 ago 2023 18:49:37,802 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$LambdaLVTIListContext.class
+13 ago 2023 18:49:37,803 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$LambdaLVTIListContext.class
+13 ago 2023 18:49:37,803 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$LambdaLVTIParameterContext.class
+13 ago 2023 18:49:37,804 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$LambdaLVTIParameterContext.class
+13 ago 2023 18:49:37,804 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$LambdaParametersContext.class
+13 ago 2023 18:49:37,805 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$LambdaParametersContext.class
+13 ago 2023 18:49:37,805 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$LastFormalParameterContext.class
+13 ago 2023 18:49:37,805 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$LastFormalParameterContext.class
+13 ago 2023 18:49:37,806 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$LiteralContext.class
+13 ago 2023 18:49:37,806 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$LiteralContext.class
+13 ago 2023 18:49:37,807 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$LocalTypeDeclarationContext.class
+13 ago 2023 18:49:37,807 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$LocalTypeDeclarationContext.class
+13 ago 2023 18:49:37,808 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$LocalVariableDeclarationContext.class
+13 ago 2023 18:49:37,809 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$LocalVariableDeclarationContext.class
+13 ago 2023 18:49:37,809 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$MemberDeclarationContext.class
+13 ago 2023 18:49:37,810 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$MemberDeclarationContext.class
+13 ago 2023 18:49:37,810 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$MethodBodyContext.class
+13 ago 2023 18:49:37,811 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$MethodBodyContext.class
+13 ago 2023 18:49:37,812 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$MethodCallContext.class
+13 ago 2023 18:49:37,812 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$MethodCallContext.class
+13 ago 2023 18:49:37,813 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$MethodDeclarationContext.class
+13 ago 2023 18:49:37,813 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$MethodDeclarationContext.class
+13 ago 2023 18:49:37,814 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ModifierContext.class
+13 ago 2023 18:49:37,814 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ModifierContext.class
+13 ago 2023 18:49:37,815 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ModuleBodyContext.class
+13 ago 2023 18:49:37,816 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ModuleBodyContext.class
+13 ago 2023 18:49:37,816 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ModuleDeclarationContext.class
+13 ago 2023 18:49:37,817 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ModuleDeclarationContext.class
+13 ago 2023 18:49:37,817 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ModuleDirectiveContext.class
+13 ago 2023 18:49:37,818 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ModuleDirectiveContext.class
+13 ago 2023 18:49:37,820 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$NonWildcardTypeArgumentsContext.class
+13 ago 2023 18:49:37,821 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$NonWildcardTypeArgumentsContext.class
+13 ago 2023 18:49:37,822 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$NonWildcardTypeArgumentsOrDiamondContext.class
+13 ago 2023 18:49:37,822 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$NonWildcardTypeArgumentsOrDiamondContext.class
+13 ago 2023 18:49:37,823 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$PackageDeclarationContext.class
+13 ago 2023 18:49:37,824 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$PackageDeclarationContext.class
+13 ago 2023 18:49:37,824 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ParExpressionContext.class
+13 ago 2023 18:49:37,824 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ParExpressionContext.class
+13 ago 2023 18:49:37,825 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$PatternContext.class
+13 ago 2023 18:49:37,826 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$PatternContext.class
+13 ago 2023 18:49:37,826 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$PrimaryContext.class
+13 ago 2023 18:49:37,827 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$PrimaryContext.class
+13 ago 2023 18:49:37,827 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$PrimitiveTypeContext.class
+13 ago 2023 18:49:37,827 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$PrimitiveTypeContext.class
+13 ago 2023 18:49:37,828 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$QualifiedNameContext.class
+13 ago 2023 18:49:37,829 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$QualifiedNameContext.class
+13 ago 2023 18:49:37,830 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$QualifiedNameListContext.class
+13 ago 2023 18:49:37,830 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$QualifiedNameListContext.class
+13 ago 2023 18:49:37,831 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ReceiverParameterContext.class
+13 ago 2023 18:49:37,831 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ReceiverParameterContext.class
+13 ago 2023 18:49:37,832 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$RecordBodyContext.class
+13 ago 2023 18:49:37,832 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$RecordBodyContext.class
+13 ago 2023 18:49:37,833 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$RecordComponentContext.class
+13 ago 2023 18:49:37,833 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$RecordComponentContext.class
+13 ago 2023 18:49:37,833 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$RecordComponentListContext.class
+13 ago 2023 18:49:37,834 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$RecordComponentListContext.class
+13 ago 2023 18:49:37,834 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$RecordDeclarationContext.class
+13 ago 2023 18:49:37,835 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$RecordDeclarationContext.class
+13 ago 2023 18:49:37,835 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$RecordHeaderContext.class
+13 ago 2023 18:49:37,836 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$RecordHeaderContext.class
+13 ago 2023 18:49:37,836 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$RequiresModifierContext.class
+13 ago 2023 18:49:37,836 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$RequiresModifierContext.class
+13 ago 2023 18:49:37,837 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ResourceContext.class
+13 ago 2023 18:49:37,838 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ResourceContext.class
+13 ago 2023 18:49:37,838 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ResourcesContext.class
+13 ago 2023 18:49:37,839 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ResourcesContext.class
+13 ago 2023 18:49:37,839 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$ResourceSpecificationContext.class
+13 ago 2023 18:49:37,840 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$ResourceSpecificationContext.class
+13 ago 2023 18:49:37,841 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$StatementContext.class
+13 ago 2023 18:49:37,841 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$StatementContext.class
+13 ago 2023 18:49:37,842 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$SuperSuffixContext.class
+13 ago 2023 18:49:37,842 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$SuperSuffixContext.class
+13 ago 2023 18:49:37,843 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$SwitchBlockStatementGroupContext.class
+13 ago 2023 18:49:37,843 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$SwitchBlockStatementGroupContext.class
+13 ago 2023 18:49:37,843 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$SwitchExpressionContext.class
+13 ago 2023 18:49:37,844 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$SwitchExpressionContext.class
+13 ago 2023 18:49:37,844 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$SwitchLabelContext.class
+13 ago 2023 18:49:37,845 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$SwitchLabelContext.class
+13 ago 2023 18:49:37,845 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$SwitchLabeledRuleContext.class
+13 ago 2023 18:49:37,846 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$SwitchLabeledRuleContext.class
+13 ago 2023 18:49:37,846 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$SwitchRuleOutcomeContext.class
+13 ago 2023 18:49:37,847 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$SwitchRuleOutcomeContext.class
+13 ago 2023 18:49:37,848 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$TypeArgumentContext.class
+13 ago 2023 18:49:37,848 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$TypeArgumentContext.class
+13 ago 2023 18:49:37,849 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$TypeArgumentsContext.class
+13 ago 2023 18:49:37,849 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$TypeArgumentsContext.class
+13 ago 2023 18:49:37,850 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$TypeArgumentsOrDiamondContext.class
+13 ago 2023 18:49:37,850 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$TypeArgumentsOrDiamondContext.class
+13 ago 2023 18:49:37,851 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$TypeBoundContext.class
+13 ago 2023 18:49:37,851 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$TypeBoundContext.class
+13 ago 2023 18:49:37,852 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$TypeDeclarationContext.class
+13 ago 2023 18:49:37,852 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$TypeDeclarationContext.class
+13 ago 2023 18:49:37,854 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$TypeIdentifierContext.class
+13 ago 2023 18:49:37,854 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$TypeIdentifierContext.class
+13 ago 2023 18:49:37,855 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$TypeListContext.class
+13 ago 2023 18:49:37,855 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$TypeListContext.class
+13 ago 2023 18:49:37,856 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$TypeParameterContext.class
+13 ago 2023 18:49:37,856 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$TypeParameterContext.class
+13 ago 2023 18:49:37,857 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$TypeParametersContext.class
+13 ago 2023 18:49:37,857 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$TypeParametersContext.class
+13 ago 2023 18:49:37,858 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$TypeTypeContext.class
+13 ago 2023 18:49:37,858 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$TypeTypeContext.class
+13 ago 2023 18:49:37,859 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$TypeTypeOrVoidContext.class
+13 ago 2023 18:49:37,859 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$TypeTypeOrVoidContext.class
+13 ago 2023 18:49:37,860 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$VariableDeclaratorContext.class
+13 ago 2023 18:49:37,860 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$VariableDeclaratorContext.class
+13 ago 2023 18:49:37,862 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$VariableDeclaratorIdContext.class
+13 ago 2023 18:49:37,862 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$VariableDeclaratorIdContext.class
+13 ago 2023 18:49:37,863 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$VariableDeclaratorsContext.class
+13 ago 2023 18:49:37,863 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$VariableDeclaratorsContext.class
+13 ago 2023 18:49:37,864 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$VariableInitializerContext.class
+13 ago 2023 18:49:37,864 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$VariableInitializerContext.class
+13 ago 2023 18:49:37,865 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser$VariableModifierContext.class
+13 ago 2023 18:49:37,865 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser$VariableModifierContext.class
+13 ago 2023 18:49:37,866 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./out/production/Acide/acide/process/parser/grammar/ExprParser.class
+13 ago 2023 18:49:37,872 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser.class
+13 ago 2023 18:49:37,873 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./src/acide/process/parser/grammar/Expr.g4
+13 ago 2023 18:49:37,874 [Thread-21] INFO  LogAcide - Grammar file deleted successfully Expr.g4
+13 ago 2023 18:49:37,875 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./src/acide/process/parser/grammar/Expr.interp
+13 ago 2023 18:49:37,875 [Thread-21] INFO  LogAcide - Grammar file deleted successfully Expr.interp
+13 ago 2023 18:49:37,876 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./src/acide/process/parser/grammar/Expr.tokens
+13 ago 2023 18:49:37,876 [Thread-21] INFO  LogAcide - Grammar file deleted successfully Expr.tokens
+13 ago 2023 18:49:37,877 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./src/acide/process/parser/grammar/ExprBaseListener.java
+13 ago 2023 18:49:37,878 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprBaseListener.java
+13 ago 2023 18:49:37,879 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./src/acide/process/parser/grammar/ExprLexer.interp
+13 ago 2023 18:49:37,879 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprLexer.interp
+13 ago 2023 18:49:37,880 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./src/acide/process/parser/grammar/ExprLexer.java
+13 ago 2023 18:49:37,881 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprLexer.java
+13 ago 2023 18:49:37,882 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./src/acide/process/parser/grammar/ExprLexer.tokens
+13 ago 2023 18:49:37,882 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprLexer.tokens
+13 ago 2023 18:49:37,883 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./src/acide/process/parser/grammar/ExprListener.java
+13 ago 2023 18:49:37,883 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprListener.java
+13 ago 2023 18:49:37,885 [Thread-21] INFO  LogAcide - Grammar file saved successfully ./src/acide/process/parser/grammar/ExprParser.java
+13 ago 2023 18:49:37,885 [Thread-21] INFO  LogAcide - Grammar file deleted successfully ExprParser.java
+13 ago 2023 18:49:37,885 [Thread-21] INFO  LogAcide - Grammar successfully loaded C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\lastModified.txt

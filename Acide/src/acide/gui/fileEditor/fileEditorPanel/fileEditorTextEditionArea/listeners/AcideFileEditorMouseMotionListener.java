@@ -125,9 +125,10 @@ public class AcideFileEditorMouseMotionListener implements MouseMotionListener {
                 String word = text.substring(wordStart, offset);
                 String posicion=line + ":" + (column-1);
                 System.out.println(posicion);
-                AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
-                if(analyzer.getErrors().containsKey(posicion)) {
-                    selectedFileEditorPanelIndex.getErrorPopup().SetErrorLabel(analyzer.getErrors().get(posicion));     
+				
+                HashMap<String, String> errors = selectedFileEditorPanelIndex.get_errors();
+                if(errors.containsKey(posicion)) {
+                    selectedFileEditorPanelIndex.getErrorPopup().SetErrorLabel(errors.get(posicion));     
                     selectedFileEditorPanelIndex.getErrorPopup().setVisible(true);
                     selectedFileEditorPanelIndex.getErrorPopup().pack();
                 }

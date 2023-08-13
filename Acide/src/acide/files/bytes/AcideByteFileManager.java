@@ -369,7 +369,7 @@ public class AcideByteFileManager {
             syntaxContent = "grammar Expr;\n" + String.join("\n", Arrays.copyOfRange(lines, 1, lines.length));
             
             BufferedWriter g4Writer = new BufferedWriter(new FileWriter(exprFile));
-            g4Writer.write(syntaxContent);
+            g4Writer.write(syntaxContent + "\n" + lexicalContent);
             g4Writer.close();
         } catch (IOException e) {
         	// Updates the log
