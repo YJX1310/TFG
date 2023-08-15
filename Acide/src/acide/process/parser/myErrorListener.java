@@ -49,6 +49,7 @@ import java.util.HashMap;
 import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
+import org.antlr.v4.runtime.Token;
 
 /**
  * ACIDE - A Configurable IDE antlr error listener.
@@ -64,6 +65,10 @@ public class myErrorListener extends BaseErrorListener {
   @Override
   public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine, String msg, RecognitionException e) {
 	  _errors.put(line + ":" + charPositionInLine, msg);
-	  System.out.println("Error de sintaxis en la línea " + line + ":" + charPositionInLine + " - " + msg);
+	  Token token = (Token) offendingSymbol;
+      String offendingWord = token.getText();
+
+      System.out.println("La palabra \"" +offendingWord + "\"" + "  tiene un error en la línea " + line + ":" + charPositionInLine + " - " + msg);
+	  
   }
 }

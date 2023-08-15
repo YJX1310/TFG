@@ -128,15 +128,6 @@ public class AcideLoadGrammarMenuItemListener implements ActionListener {
 				
 				// Analyze the text
 				analyzer.start();
-				
-				/*
-				// Print the errorsç
-				for(HashMap.Entry<String, String> entry : analyzer.getErrors().entrySet()) {
-				    String key = entry.getKey();
-				    String value = entry.getValue();
-				    System.out.println(key + ": " +value);
-				}
-				*/
 			}
 		}
 	}

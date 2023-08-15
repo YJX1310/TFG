@@ -277,6 +277,7 @@ public class AcideByteFileManager {
 	 * 
 	 * @param source
 	 *            source path.
+	 * @version 0.20
 	 */
 	public void addPackage(String source) {
 		
@@ -315,6 +316,7 @@ public class AcideByteFileManager {
 	 * 
 	 * @param source
 	 *            source path.
+	 * @version 0.20
 	 */
 	public void processGrammarFile(String source) {
 		
@@ -380,6 +382,8 @@ public class AcideByteFileManager {
 	/**
 	 * Save the grammar with specific format in to the "target" file
 	 * @param target
+	 * 			target path.
+	 * @version 0.20
 	 */
 	public void saveGrammar(String target) {
 		String syntaxFile = AcideGrammarFileCreationProcess.DEFAULT_PATH + "syntaxRules.txt";
@@ -423,7 +427,7 @@ public class AcideByteFileManager {
         }
         
         // Append the grammatical contents
-        textContent +=  syntaxContent;
+        textContent +=  "grammar Expr;" + System.lineSeparator() + syntaxContent;
 
         // Write the extracted substring to the target file
         try {

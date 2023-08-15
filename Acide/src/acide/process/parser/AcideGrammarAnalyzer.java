@@ -149,9 +149,10 @@ public class AcideGrammarAnalyzer extends Thread{
 	}
 	
 	/**
-	 * Prepare the lexer and the parser of antlr4
+	 * ACIDE - A Configurable IDE grammar analyzer prepare the lexer and the parser of antlr4
 	 * @param text
 	 *            the text to analyze
+	 * @version 0.20           
 	 */
 	private void constructor(String text) {
 		// Store the text
@@ -230,33 +231,44 @@ public class AcideGrammarAnalyzer extends Thread{
 	 */
 	@Override
 	public void run() {
-		synchronized (_lock) {
-			try {
-				_lock.wait();
-
-				// Gets the selected file editor panel
-				AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
-						.getSelectedFileEditorPanel();
-				if(selectedFileEditorPanel.isFirstTime()) {
-					constructor(AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
-							.getActiveTextEditionArea().getText());
-					analyzeText();
+		// Gets the selected file editor panel
+		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
+				.getSelectedFileEditorPanel();
+		
+		if(_lock != null) {
+			synchronized (_lock) {
+				try {
+					_lock.wait();
+					if(selectedFileEditorPanel.isFirstTime()) {
+						constructor(AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
+								.getActiveTextEditionArea().getText());
+						analyzeText();
+					}
+				} catch (InterruptedException e) {
+					e.printStackTrace();
 				}
-			} catch (InterruptedException e) {
-				e.printStackTrace();
 			}
 		}
+		else {
+			if(selectedFileEditorPanel.isFirstTime()) {
+				constructor(AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
+						.getActiveTextEditionArea().getText());
+				analyzeText();
+			}
+		}
+		
 	}
 	
 	/**
-	 * Analyze the entire text according to the grammar rules
+	 * ACIDE - A Configurable IDE grammar analyzer analyze the entire text according to the grammar rules
+	 * @version 0.20
 	 */
 	public void analyzeText() {
 		try {
 			Method geRulesNames = _Cparser.getMethod("getRuleNames");
 			Object[] rulesName = (Object[]) geRulesNames.invoke(_Oparser);
-			for(Object a: rulesName)
-				System.out.println(a.toString());
+			//for(Object a: rulesName)
+			//	System.out.println(a.toString());
 			_Cparser.getMethod(rulesName[0].toString()).invoke(_Oparser);
 		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			// TODO Auto-generated catch block

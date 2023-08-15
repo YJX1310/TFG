@@ -670,12 +670,12 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 		public void actionPerformed(ActionEvent actionEvent) {
 
 			// Creates the file content
-			String textContent = _rulesTextArea.getText();
+			String textContent = "grammar Expr;" + System.lineSeparator() + System.lineSeparator() +_rulesTextArea.getText() + _categoriesTextArea.getText();
 
-			int index = textContent.indexOf(";");
-			String firstLine = "grammar Expr;";
-			textContent = firstLine + textContent.substring(index + 1);
-			textContent += System.lineSeparator() + _categoriesTextArea.getText();
+			//int index = textContent.indexOf(";");
+			//String firstLine = "grammar Expr;";
+			//textContent = firstLine + textContent.substring(index + 1);
+			//textContent += System.lineSeparator() + _categoriesTextArea.getText();
 			
 			// Saves the Expr.g4 file
 			boolean isSaved = AcideFileManager.getInstance().write("Expr.g4",

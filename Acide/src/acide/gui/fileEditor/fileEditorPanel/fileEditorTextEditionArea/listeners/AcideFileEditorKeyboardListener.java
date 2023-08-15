@@ -47,26 +47,18 @@ package acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.listeners
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Cursor;
-import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.SwingUtilities;
-
+import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.gui.toolBarPanel.consolePanelToolBar.AcideSendFileToConsoleButtonAction;
-import acide.gui.splashImageScreen.AcideImageSplashScreenWindow;
-import acide.gui.splashScreen.AcideSplashScreenWindow;
+import acide.process.parser.AcideGrammarAnalyzer;
 
 /**
  * ACIDE - A Configurable IDE file editor text edition area keyboard listener.
  * 
- * @version 0.11
+ * @version 0.20
  * @see FocusListener
  */
 public class AcideFileEditorKeyboardListener extends KeyAdapter {
@@ -237,6 +229,29 @@ public class AcideFileEditorKeyboardListener extends KeyAdapter {
 
 		}
 		AcideFileEditorKeyboardListener.acideWindow.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		
+		// If it is enter
+		if(keyEvent.getKeyCode() == KeyEvent.VK_ENTER) {
+			// If auto-analysis is activated then
+			if(AcideMainWindow.getInstance()
+					.getMenu().getConfigurationMenu()
+					.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem()
+					.isSelected()) {
+				
+				// Gets the selected file editor panel
+				AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
+						.getSelectedFileEditorPanel();
+				
+				selectedFileEditorPanel.setErrors(new HashMap<String, String>());
+				selectedFileEditorPanel.setFirstTime(true);
+				
+				// Get the file editor panel analyzer
+				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
+				
+				// Analyze the text
+				analyzer.start();
+			}
+		}
 
 	}
 }
