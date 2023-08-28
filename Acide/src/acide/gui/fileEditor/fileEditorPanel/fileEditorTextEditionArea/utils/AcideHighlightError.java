@@ -49,6 +49,7 @@ import java.util.HashMap;
 
 import javax.swing.SwingUtilities;
 import javax.swing.event.CaretListener;
+import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
@@ -58,6 +59,7 @@ import javax.swing.text.StyledDocument;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.fileEditor.fileEditorPanel.errorpopup.AcidefileEditorPanelErrorpopup;
 import acide.gui.mainWindow.AcideMainWindow;
+import acide.log.AcideLog;
 import acide.process.parser.AcideGrammarAnalyzer;
 /**
  * ACIDE - A Configurable IDE file editor text edition area error highlighter.
@@ -85,6 +87,7 @@ public class AcideHighlightError {
 
 				AcideFileEditorPanel selectedFileEditorPanelIndex = AcideMainWindow.getInstance().getFileEditorManager()
 						.getSelectedFileEditorPanel();
+				
 				// Obtener el documento del JTextPane
 				StyledDocument document = selectedFileEditorPanelIndex.getStyledDocument();
 				String text = selectedFileEditorPanelIndex.getActiveTextEditionArea().getText();
@@ -97,31 +100,52 @@ public class AcideHighlightError {
 				StyleContext styleContext = StyleContext.getDefaultStyleContext();
 				Style customStyle = styleContext.addStyle("custom", null);
 				customStyle.addAttributes(underlineStyle);
-				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
 				// Subrayar cada palabra en rojo
-				for (HashMap.Entry<String, String> entry : analyzer.getErrors()
+				for (HashMap.Entry<String, String> entry : AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel().get_errors()
 						.entrySet()) {
 					// Obtener la línea y columna de inicio de la palabra
 					String[] parts = entry.getKey().split(":");
-					int line = Integer.parseInt(parts[0]) - 1;
-					int column = Integer.parseInt(parts[1]);
-
+					int startLine = Integer.parseInt(parts[0]) - 1;
+					int startColumn = Integer.parseInt(parts[1]);
+					int endColumn=Integer.parseInt(parts[2]);
 					// Calcular la posición de inicio y fin de la palabra
-					int start = document.getDefaultRootElement().getElement(line).getStartOffset() + column;
-					int end = text.indexOf(" ", start);
-					int newline = text.indexOf("\n", start);
-					if (end == -1 || (newline != -1 && newline < end)) {
-						end = newline;
-					}
-					if (end == -1) {
-						end = text.length();
-					}
-
+					int start = document.getDefaultRootElement().getElement(startLine).getStartOffset() + startColumn;
+					int end = document.getDefaultRootElement().getElement(startLine).getStartOffset() + endColumn;
 					// Aplicar el estilo de subrayado rojo a la palabra
-					document.setCharacterAttributes(start, end - start, customStyle, false);
+					document.setCharacterAttributes(start, end - start, customStyle, true);
 
 				}
 			}
 		});
 	}
+	public void clearErrorHighlight() {
+	    
+	        AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
+	                .getSelectedFileEditorPanel();
+	        StyledDocument document = selectedFileEditorPanel.getStyledDocument();
+
+	        // Eliminar los atributos de estilo del documento
+	        SimpleAttributeSet emptyStyle = new SimpleAttributeSet();
+	        for (HashMap.Entry<String, String> entry : AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel().get_errors()
+					.entrySet()) {
+				// Obtener la línea y columna de inicio de la palabra
+				String[] parts = entry.getKey().split(":");
+				int startLine = Integer.parseInt(parts[0]) - 1;
+				int startColumn = Integer.parseInt(parts[1]);
+				int endColumn=Integer.parseInt(parts[2]);
+				// Calcular la posición de inicio y fin de la palabra
+				int start = document.getDefaultRootElement().getElement(startLine).getStartOffset() + startColumn;
+				int end = document.getDefaultRootElement().getElement(startLine).getStartOffset() + endColumn;
+				// Aplicar el estilo de subrayado rojo a la palabra
+				document.setCharacterAttributes(start, end - start, emptyStyle, true);
+				try {
+					selectedFileEditorPanel.getStyledDocument().processChangedLines(0, document.getLength());
+				} catch (BadLocationException e) {
+					// Updates the log
+		            AcideLog.getLog().error(e.getMessage());
+				}
+			}
+	    
+	}
+
 }

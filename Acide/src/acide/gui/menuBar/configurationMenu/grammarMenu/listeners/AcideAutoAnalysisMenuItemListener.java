@@ -52,6 +52,7 @@ import javax.swing.JCheckBoxMenuItem;
 
 import acide.files.bytes.AcideByteFileManager;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
+import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideHighlightError;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.process.parser.AcideGrammarAnalyzer;
@@ -81,6 +82,7 @@ public class AcideAutoAnalysisMenuItemListener implements ActionListener{
 		// Gets the selected file editor panel
 		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
 				.getFileEditorManager().getSelectedFileEditorPanel();
+		AcideHighlightError errorhighlighter=AcideHighlightError.getInstance();
 		
 		if(selected) {
 			String lock = "";
@@ -105,9 +107,13 @@ public class AcideAutoAnalysisMenuItemListener implements ActionListener{
 			analyzer.setLock(lock);
 			
 			analyzer.start();
+			
+			
 		}
 		else {
 			System.out.println("Desactivado");
+			HashMap<String, String> xddd=selectedFileEditorPanel.get_errors();
+			errorhighlighter.clearErrorHighlight();
 			selectedFileEditorPanel.setFirstTime(true);
 			selectedFileEditorPanel.setErrors(new HashMap<String, String>());
 		}

@@ -64,10 +64,9 @@ public class myErrorListener extends BaseErrorListener {
 	
   @Override
   public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine, String msg, RecognitionException e) {
-	  _errors.put(line + ":" + charPositionInLine, msg);
 	  Token token = (Token) offendingSymbol;
       String offendingWord = token.getText();
-
+      _errors.put(line + ":" + charPositionInLine+ ":" + (offendingWord.length()+charPositionInLine), msg);
       System.out.println("La palabra \"" +offendingWord + "\"" + "  tiene un error en la línea " + line + ":" + charPositionInLine + " - " + msg);
 	  
   }

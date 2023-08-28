@@ -7,12 +7,12 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\aggregates.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>1716</__caretPosition>
+            <__caretPosition>1303</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
-            <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
-            <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
+            <__previousGrammarConfiguration>./configuration/grammars/newGrammar.txt</__previousGrammarConfiguration>
+            <__currentGrammarConfiguration>./configuration/grammars/lastModified.txt</__currentGrammarConfiguration>
           </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\bom.dl</__path>
@@ -97,7 +97,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\e5.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>0</__caretPosition>
+            <__caretPosition>139</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
@@ -107,7 +107,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\pets_trust.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>0</__caretPosition>
+            <__caretPosition>87</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
@@ -127,7 +127,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\DLDebugger\example1.dl.b.pl</__path>
             <__type>Normal</__type>
-            <__caretPosition>759</__caretPosition>
+            <__caretPosition>219</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/default.xml</__lexiconConfiguration>
@@ -147,7 +147,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\DLDebugger\orbits1.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>124</__caretPosition>
+            <__caretPosition>76</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/c++.xml</__lexiconConfiguration>
@@ -167,7 +167,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\orbits.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>0</__caretPosition>
+            <__caretPosition>300</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/default.xml</__lexiconConfiguration>
@@ -187,7 +187,7 @@
         </__list>
       </__list>
     </__fileEditorPanelConfigurationList>
-    <__selectedFileEditorPanelName>orbits1.dl</__selectedFileEditorPanelName>
+    <__selectedFileEditorPanelName>aggregates.sql</__selectedFileEditorPanelName>
     <__fontName>Monospaced.plain</__fontName>
     <__fontStyle>0</__fontStyle>
     <__fontSize>12</__fontSize>
@@ -207,7 +207,7 @@
     <__automaticIndent>true</__automaticIndent>
     <__maximumLinesToConsole>30</__maximumLinesToConsole>
     <__lineWrapping>true</__lineWrapping>
-    <__sendToConsoleConfirmation>false</__sendToConsoleConfirmation>
+    <__sendToConsoleConfirmation>true</__sendToConsoleConfirmation>
     <__tabSize>8</__tabSize>
     <__spaceSelected>false</__spaceSelected>
   </__fileEditorConfiguration>

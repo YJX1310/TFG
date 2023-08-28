@@ -92,88 +92,28 @@ public class AcideFileEditorMouseMotionListener implements MouseMotionListener {
             	AcideFileEditorPanel selectedFileEditorPanelIndex = AcideMainWindow.getInstance().getFileEditorManager()
                         .getSelectedFileEditorPanel();
                 // Mostrar el mensaje después de que el temporizador haya transcurrido un segundo
-
                 Point punto = _lastMousePosition;
                 int offset = selectedFileEditorPanelIndex.getActiveTextEditionArea().viewToModel(punto);
-                String text=selectedFileEditorPanelIndex.getActiveTextEditionArea().getText();
                 int line = selectedFileEditorPanelIndex.getActiveTextEditionArea().getDocument().getDefaultRootElement().getElementIndex(offset) + 1;
-                int wordStart = offset;
-
-                AcideLexiconConfiguration lexiconConfiguration = AcideMainWindow.getInstance()
-						.getFileEditorManager()
-						.getSelectedFileEditorPanel().getLexiconConfiguration();
-                AcideLexiconDelimitersManager delimiters =  lexiconConfiguration.getDelimitersManager();
-                
-                Set<String> listadedelimitadores = new HashSet<String>();
-
-                 for(int i = 0; i < delimiters.getSize(); i++) {
-                	 String delimiter =delimiters.getDelimiterAt(i);
-                     if(!listadedelimitadores.contains(delimiter)) {
-                    	 listadedelimitadores.add(delimiter);
-                    	 }
-                     }
-                /*if(!delimiters.getList().getList().contains(text.charAt(wordStart))&&wordStart>0) {
-                    while (!delimiters.getList().getList().contains(text.charAt(wordStart-1))) {
-                        wordStart--;
-                    }
-                }*/
-                 while (wordStart > 0 && Character.isLetterOrDigit(text.charAt(wordStart - 1))) {
-                     Character xddd=text.charAt(wordStart - 1);
-                     wordStart--;
-                 }
-                int column = wordStart - selectedFileEditorPanelIndex.getActiveTextEditionArea().getDocument().getDefaultRootElement().getElement(line - 1).getStartOffset() + 1;
-                String word = text.substring(wordStart, offset);
-                String posicion=line + ":" + (column-1);
-                System.out.println(posicion);
+                int column = offset - selectedFileEditorPanelIndex.getActiveTextEditionArea().getDocument().getDefaultRootElement().getElement(line - 1).getStartOffset() + 1;
+                //String posicion=line + ":" + (column);
+                //System.out.println(posicion);
 				
                 HashMap<String, String> errors = selectedFileEditorPanelIndex.get_errors();
-                if(errors.containsKey(posicion)) {
-                    selectedFileEditorPanelIndex.getErrorPopup().SetErrorLabel(errors.get(posicion));     
-                    selectedFileEditorPanelIndex.getErrorPopup().setVisible(true);
-                    selectedFileEditorPanelIndex.getErrorPopup().pack();
-                }
-                
-                /*try {
-                    Element root = selectedFileEditorPanelIndex.getActiveTextEditionArea().getDocument()
-                        .getDefaultRootElement();
-                    int inicioLinea = Utilities.getRowStart(selectedFileEditorPanelIndex.getActiveTextEditionArea(), offset);
-                    int indiceElemento = root.getElementIndex(inicioLinea);
-                    linea = indiceElemento +1;
-                    columna = offset - inicioLinea;
-
-                    Document doc = selectedFileEditorPanelIndex.getActiveTextEditionArea().getDocument();
-                    Element palabra = ((StyledDocument) doc).getCharacterElement(offset);
-                    
-                    int inicioPalabra = palabra.getStartOffset();
-                    Element parrafo = ((StyledDocument) doc).getParagraphElement(inicioPalabra);
-                    int inicioParrafo = parrafo.getStartOffset();
-                    int inicioPalabraMod = inicioPalabra;
-                    for (int i = inicioPalabra - 1; i >= inicioParrafo; i--) {
-                        if (doc.getText(i, 1).matches("\\s")) { // Comprobamos si el carácter es un espacio en blanco o un carácter de control.
-                            inicioPalabraMod = i + 1;
-                            break;
-                        }
-                    }
-
-                    int inicioLineaPalabra = Utilities.getRowStart(selectedFileEditorPanelIndex.getActiveTextEditionArea(),
-                            inicioPalabraMod);
-                    int columnaInicioPalabra = inicioPalabraMod - inicioLineaPalabra;
-                    
-                    // Mostrar un cuadro de diálogo con la información relevante
-                    String posicion=(linea) + ":" + columnaInicioPalabra;
-                    System.out.println((linea+1)+":"+columna);
-                    System.out.println(posicion);
-                    HashMap<String,String> a=selectedFileEditorPanelIndex.getGrammarAnalyzer().getErrors();
-                    if(selectedFileEditorPanelIndex.getGrammarAnalyzer().getErrors().containsKey(posicion)) {
-                        selectedFileEditorPanelIndex.getErrorPopup().SetErrorLabel(selectedFileEditorPanelIndex.getGrammarAnalyzer().getErrors().get(posicion));     
-                        selectedFileEditorPanelIndex.getErrorPopup().setVisible(true);
-                        selectedFileEditorPanelIndex.getErrorPopup().pack();
-                    }
-             
-
-                } catch (BadLocationException ex) {
-                    ex.printStackTrace();
-                }*/
+				for (HashMap.Entry<String, String> entry : errors.entrySet()) {
+					// Obtener la línea y columna de inicio de la palabra
+					String[] parts = entry.getKey().split(":");
+					int wordLine = Integer.parseInt(parts[0]);
+					int wordnColumnStart = Integer.parseInt(parts[1]);
+					int wordColumnEnd=Integer.parseInt(parts[2]);
+	                if((line==wordLine)&&(column>=wordnColumnStart)&&(column<=wordColumnEnd)) {
+	                    selectedFileEditorPanelIndex.getErrorPopup().SetErrorLabel(entry.getValue());     
+	                    selectedFileEditorPanelIndex.getErrorPopup().setVisible(true);
+	                    selectedFileEditorPanelIndex.getErrorPopup().pack();
+	                }
+					
+				}
+				
             }
         });
     	_timer.setRepeats(false);
