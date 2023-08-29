@@ -1,4 +1,4 @@
-// Generated from Expr.g4 by ANTLR 4.7.1
+// Generated from Expr.g4 by ANTLR 4.13.0
 package acide.process.parser.grammar;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -8,113 +8,53 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface ExprListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link ExprParser#parse}.
+	 * Enter a parse tree produced by {@link ExprParser#program}.
 	 * @param ctx the parse tree
 	 */
-	void enterParse(ExprParser.ParseContext ctx);
+	void enterProgram(ExprParser.ProgramContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ExprParser#parse}.
+	 * Exit a parse tree produced by {@link ExprParser#program}.
 	 * @param ctx the parse tree
 	 */
-	void exitParse(ExprParser.ParseContext ctx);
+	void exitProgram(ExprParser.ProgramContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ExprParser#statement}.
+	 * Enter a parse tree produced by {@link ExprParser#stat}.
 	 * @param ctx the parse tree
 	 */
-	void enterStatement(ExprParser.StatementContext ctx);
+	void enterStat(ExprParser.StatContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ExprParser#statement}.
+	 * Exit a parse tree produced by {@link ExprParser#stat}.
 	 * @param ctx the parse tree
 	 */
-	void exitStatement(ExprParser.StatementContext ctx);
+	void exitStat(ExprParser.StatContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ExprParser#starStatement}.
+	 * Enter a parse tree produced by {@link ExprParser#def}.
 	 * @param ctx the parse tree
 	 */
-	void enterStarStatement(ExprParser.StarStatementContext ctx);
+	void enterDef(ExprParser.DefContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ExprParser#starStatement}.
+	 * Exit a parse tree produced by {@link ExprParser#def}.
 	 * @param ctx the parse tree
 	 */
-	void exitStarStatement(ExprParser.StarStatementContext ctx);
+	void exitDef(ExprParser.DefContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ExprParser#orbitsStatement}.
+	 * Enter a parse tree produced by {@link ExprParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterOrbitsStatement(ExprParser.OrbitsStatementContext ctx);
+	void enterExpr(ExprParser.ExprContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ExprParser#orbitsStatement}.
+	 * Exit a parse tree produced by {@link ExprParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitOrbitsStatement(ExprParser.OrbitsStatementContext ctx);
+	void exitExpr(ExprParser.ExprContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ExprParser#satelliteStatement}.
+	 * Enter a parse tree produced by {@link ExprParser#func}.
 	 * @param ctx the parse tree
 	 */
-	void enterSatelliteStatement(ExprParser.SatelliteStatementContext ctx);
+	void enterFunc(ExprParser.FuncContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ExprParser#satelliteStatement}.
+	 * Exit a parse tree produced by {@link ExprParser#func}.
 	 * @param ctx the parse tree
 	 */
-	void exitSatelliteStatement(ExprParser.SatelliteStatementContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ExprParser#planetStatement}.
-	 * @param ctx the parse tree
-	 */
-	void enterPlanetStatement(ExprParser.PlanetStatementContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ExprParser#planetStatement}.
-	 * @param ctx the parse tree
-	 */
-	void exitPlanetStatement(ExprParser.PlanetStatementContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ExprParser#intermediateStatement}.
-	 * @param ctx the parse tree
-	 */
-	void enterIntermediateStatement(ExprParser.IntermediateStatementContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ExprParser#intermediateStatement}.
-	 * @param ctx the parse tree
-	 */
-	void exitIntermediateStatement(ExprParser.IntermediateStatementContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ExprParser#orbitsPredicate}.
-	 * @param ctx the parse tree
-	 */
-	void enterOrbitsPredicate(ExprParser.OrbitsPredicateContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ExprParser#orbitsPredicate}.
-	 * @param ctx the parse tree
-	 */
-	void exitOrbitsPredicate(ExprParser.OrbitsPredicateContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ExprParser#notIntermediatePredicate}.
-	 * @param ctx the parse tree
-	 */
-	void enterNotIntermediatePredicate(ExprParser.NotIntermediatePredicateContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ExprParser#notIntermediatePredicate}.
-	 * @param ctx the parse tree
-	 */
-	void exitNotIntermediatePredicate(ExprParser.NotIntermediatePredicateContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ExprParser#notStarPredicate}.
-	 * @param ctx the parse tree
-	 */
-	void enterNotStarPredicate(ExprParser.NotStarPredicateContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ExprParser#notStarPredicate}.
-	 * @param ctx the parse tree
-	 */
-	void exitNotStarPredicate(ExprParser.NotStarPredicateContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ExprParser#starPredicate}.
-	 * @param ctx the parse tree
-	 */
-	void enterStarPredicate(ExprParser.StarPredicateContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ExprParser#starPredicate}.
-	 * @param ctx the parse tree
-	 */
-	void exitStarPredicate(ExprParser.StarPredicateContext ctx);
+	void exitFunc(ExprParser.FuncContext ctx);
 }

@@ -1,11 +1,4 @@
-grammar Expr
-
-prog:   (expr NEWLINE)* ;
-expr:   expr ('*'|'/') expr
-    |   expr ('+'|'-') expr
-    |   INT
-    |   '(' expr ')'
-    ;
-NEWLINE : [\r\n]+ ;
-INT     : [0-9]+ ;
-
+grammar Expr;
+expr: INT | expr op=('-'|'+') expr;
+INT: [0-9]+;
+WS: [ \t\r\n]+ -> skip;

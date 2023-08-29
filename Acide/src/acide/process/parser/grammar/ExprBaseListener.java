@@ -1,4 +1,4 @@
-// Generated from Expr.g4 by ANTLR 4.7.1
+// Generated from Expr.g4 by ANTLR 4.13.0
 package acide.process.parser.grammar;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -10,139 +10,68 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
+@SuppressWarnings("CheckReturnValue")
 public class ExprBaseListener implements ExprListener {
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParse(ExprParser.ParseContext ctx) { }
+	@Override public void enterProgram(ExprParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParse(ExprParser.ParseContext ctx) { }
+	@Override public void exitProgram(ExprParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatement(ExprParser.StatementContext ctx) { }
+	@Override public void enterStat(ExprParser.StatContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatement(ExprParser.StatementContext ctx) { }
+	@Override public void exitStat(ExprParser.StatContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStarStatement(ExprParser.StarStatementContext ctx) { }
+	@Override public void enterDef(ExprParser.DefContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStarStatement(ExprParser.StarStatementContext ctx) { }
+	@Override public void exitDef(ExprParser.DefContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOrbitsStatement(ExprParser.OrbitsStatementContext ctx) { }
+	@Override public void enterExpr(ExprParser.ExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOrbitsStatement(ExprParser.OrbitsStatementContext ctx) { }
+	@Override public void exitExpr(ExprParser.ExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSatelliteStatement(ExprParser.SatelliteStatementContext ctx) { }
+	@Override public void enterFunc(ExprParser.FuncContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSatelliteStatement(ExprParser.SatelliteStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterPlanetStatement(ExprParser.PlanetStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitPlanetStatement(ExprParser.PlanetStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterIntermediateStatement(ExprParser.IntermediateStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitIntermediateStatement(ExprParser.IntermediateStatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterOrbitsPredicate(ExprParser.OrbitsPredicateContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitOrbitsPredicate(ExprParser.OrbitsPredicateContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterNotIntermediatePredicate(ExprParser.NotIntermediatePredicateContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNotIntermediatePredicate(ExprParser.NotIntermediatePredicateContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterNotStarPredicate(ExprParser.NotStarPredicateContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNotStarPredicate(ExprParser.NotStarPredicateContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterStarPredicate(ExprParser.StarPredicateContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitStarPredicate(ExprParser.StarPredicateContext ctx) { }
+	@Override public void exitFunc(ExprParser.FuncContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -60,6 +60,7 @@ import org.antlr.v4.runtime.TokenStream;
 
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.mainWindow.AcideMainWindow;
+import acide.log.AcideLog;
 import acide.main.AcideMain;
 import acide.process.parser.grammar.ExprLexer;
 import acide.process.parser.grammar.ExprParser;
@@ -124,6 +125,8 @@ public class AcideGrammarAnalyzer extends Thread{
 			        byte[] classBytes = baos.toByteArray();
 			        return defineClass(name, classBytes, 0, classBytes.length);
 				} catch (IOException e) {
+					// Updates the log
+					AcideLog.getLog().error(e.getMessage());
 					throw new ClassNotFoundException("", e);
 				}
 			}
@@ -139,6 +142,8 @@ public class AcideGrammarAnalyzer extends Thread{
 			        byte[] classBytes = baos.toByteArray();
 			        return defineClass(name, classBytes, 0, classBytes.length);
 				} catch (IOException e) {
+					// Updates the log
+					AcideLog.getLog().error(e.getMessage());
 					throw new ClassNotFoundException("", e);
 				}
 			}
@@ -195,7 +200,8 @@ public class AcideGrammarAnalyzer extends Thread{
 			_Cparser.getMethod("addErrorListener", ANTLRErrorListener.class).invoke(_Oparser, errorListener);
 
 		} catch(Exception e) {
-			e.printStackTrace();
+			// Updates the log
+			AcideLog.getLog().error(e.getMessage());
 		}
 		
 		// Create the parser
@@ -239,18 +245,19 @@ public class AcideGrammarAnalyzer extends Thread{
 			synchronized (_lock) {
 				try {
 					_lock.wait();
-					if(selectedFileEditorPanel.isFirstTime()) {
+					if(selectedFileEditorPanel.get_grammarDelimiter().equals("")) {
 						constructor(AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
 								.getActiveTextEditionArea().getText());
 						analyzeText();
 					}
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					// Updates the log
+					AcideLog.getLog().error(e.getMessage());
 				}
 			}
 		}
 		else {
-			if(selectedFileEditorPanel.isFirstTime()) {
+			if(!selectedFileEditorPanel.get_grammarDelimiter().equals("")) {
 				constructor(AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
 						.getActiveTextEditionArea().getText());
 				analyzeText();
@@ -271,8 +278,8 @@ public class AcideGrammarAnalyzer extends Thread{
 			//	System.out.println(a.toString());
 			_Cparser.getMethod(rulesName[0].toString()).invoke(_Oparser);
 		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// Updates the log
+			AcideLog.getLog().error(e.getMessage());
 		}
 		
 		//_Cparser.getMethod(name, parameterTypes)

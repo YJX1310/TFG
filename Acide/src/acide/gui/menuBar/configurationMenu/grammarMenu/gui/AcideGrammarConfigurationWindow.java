@@ -72,8 +72,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.border.TitledBorder;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
@@ -123,9 +127,17 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 	 */
 	private JPanel _rulesPanel;
 	/**
+	 * ACIDE - A Configurable IDE grammar configuration window delimiter panel.
+	 */
+	private JPanel _delimiterPanel;
+	/**
 	 * ACIDE - A Configurable IDE grammar configuration window button panel.
 	 */
 	private JPanel _buttonPanel;
+	/**
+	 * ACIDE - A Configurable IDE grammar configuration window delimiter text field.
+	 */
+	private JTextField _delimiterTxt;
 	/**
 	 * ACIDE - A Configurable IDE grammar configuration window categories button
 	 * panel.
@@ -197,13 +209,11 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 	 * check box.
 	 */
 	private JCheckBox _verboseProcessCheckBox;
-
 	/**
 	 * ACIDE - A Configurable IDE grammar configuration window is for modifying
 	 * flag.
 	 */
 	private boolean _isForModifying;
-
 	/**
 	 * Creates a new ACIDE - A Configurable IDE grammar configuration window.
 	 * 
@@ -316,6 +326,14 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 				// Gets its content
 				fileContent = AcideFileManager.getInstance().load(
+						"src/acide/process/parser/grammar/delimiter.txt");
+				
+				if (!fileContent.equals(""))
+					// Updates the statement delimiter deleting \n
+					_delimiterTxt.setText(String.valueOf(fileContent.charAt(0)));
+				
+				// Gets its content
+				fileContent = AcideFileManager.getInstance().load(
 						"src/acide/process/parser/grammar/syntaxRules.txt");
 
 				if (fileContent != null)
@@ -391,6 +409,15 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 				AcideLanguageManager.getInstance().getLabels()
 						.getString("s176"), TitledBorder.LEADING,
 				TitledBorder.DEFAULT_POSITION));
+		
+		// Creates the delimiter panel
+		_delimiterPanel = new JPanel(new GridBagLayout());
+		
+		// Sets the delimiter panel border
+		_delimiterPanel.setBorder(BorderFactory.createTitledBorder(null,
+				AcideLanguageManager.getInstance().getLabels()
+						.getString("s2435"), TitledBorder.LEADING,
+				TitledBorder.DEFAULT_POSITION));
 
 		// Creates the button panel
 		_buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -400,7 +427,16 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 		// Creates the rules button panel
 		_rulesButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-
+		
+		// Creates the delimiter text field
+		_delimiterTxt = new JTextField();
+		
+		_delimiterTxt.setDocument(new JTextFieldLimit(1));
+		
+		// Sets the delimiter text field tool tip text
+		_delimiterTxt.setToolTipText(AcideLanguageManager.getInstance()
+				.getLabels().getString("s2436"));
+		
 		// Creates the categories text area
 		_categoriesTextArea = new JTextArea();
 
@@ -497,7 +533,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 		// Sets the layout
 		setLayout(new GridBagLayout());
-
+		
 		// Adds the components to the window with the layout
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.BOTH;
@@ -510,6 +546,13 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 		// Adds the categories panel to the categories scroll pane
 		_categoriesPanel.add(_categoriesScrollPane, constraints);
+		
+		constraints.fill = GridBagConstraints.BOTH;
+		constraints.anchor = GridBagConstraints.EAST;
+		constraints.ipadx = 300;
+		constraints.ipady = 5;
+		
+		_delimiterPanel.add(_delimiterTxt, constraints);
 
 		constraints.fill = GridBagConstraints.NONE;
 		constraints.ipadx = 0;
@@ -561,7 +604,8 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 		// Adds the cancel button to the button panel
 		_buttonPanel.add(_cancelButton);
-
+		
+		
 		constraints.fill = GridBagConstraints.BOTH;
 		constraints.anchor = GridBagConstraints.CENTER;
 		constraints.weightx = 0.5;
@@ -575,6 +619,13 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 		// Adds the rules panel to the window
 		add(_rulesPanel, constraints);
+		constraints.fill = GridBagConstraints.NONE;
+		constraints.anchor = GridBagConstraints.WEST;
+		constraints.gridx = 0;
+		constraints.gridy = 1;
+		
+		add(_delimiterPanel, constraints);
+		
 		constraints.fill = GridBagConstraints.NONE;
 		constraints.anchor = GridBagConstraints.EAST;
 		constraints.weightx = 0;
@@ -677,6 +728,9 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			//textContent = firstLine + textContent.substring(index + 1);
 			//textContent += System.lineSeparator() + _categoriesTextArea.getText();
 			
+			// Saves the delimiter file
+			AcideFileManager.getInstance().write("delimiter.txt", _delimiterTxt.getText());
+			
 			// Saves the Expr.g4 file
 			boolean isSaved = AcideFileManager.getInstance().write("Expr.g4",
 					textContent);
@@ -727,7 +781,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			String newGrammarPath = AcideGrammarConfiguration.DEFAULT_PATH + newGrammarName;
 			
 			// Save the grammar
-			AcideByteFileManager.getInstance().saveGrammar(newGrammarPath);
+			// AcideByteFileManager.getInstance().saveGrammar(newGrammarPath);
 			try {
 				String lock = "";
 				
@@ -740,17 +794,17 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 				// Starts the process
 				process.start();
 				
+				// Gets the selected file editor panel
+				AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
+						.getSelectedFileEditorPanel();
+				
+				selectedFileEditorPanel.set_grammarDelimiter(_delimiterTxt.getText());
+				
 				// If auto-analysis is activated then
 				if(AcideMainWindow.getInstance()
 						.getMenu().getConfigurationMenu()
 						.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem()
 						.isSelected()) {
-					
-					// Gets the selected file editor panel
-					AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
-							.getSelectedFileEditorPanel();
-					
-					selectedFileEditorPanel.setFirstTime(true);
 					
 					// Get the file editor panel analyzer
 					AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
@@ -973,15 +1027,14 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 				
 				// Order the content
 				String text = "";
-				// Print the errors
 				for(HashMap.Entry<String, String> entry : res.entrySet()) {
 				    String key = entry.getKey();
 				    String value = entry.getValue();
-				    text += key + ": \t\t" + value + "\n";
+				    text += String.format("%-15s: \t %s\n", key, value); 
 				}
 				
-				// Append the content to the _categoriesTextArea
-				_categoriesTextArea.setText(_categoriesTextArea.getText() + text);
+				// Set the content to the _categoriesTextArea
+				_categoriesTextArea.setText(text);
 				
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
@@ -1143,6 +1196,32 @@ public class AcideGrammarConfigurationWindow extends JFrame {
             return _name;
         }
 	}
+	
+	/**
+	 * ACIDE - A Configurable IDE grammar configuration window text field limit
+	 * class.
+	 * 
+	 * @version 0.20
+	 */
+	class JTextFieldLimit extends PlainDocument {
+		/**
+		 * ACIDE - A Configurable IDE grammar configuration window text field limit
+		 */
+		  private int limit;
+
+		  JTextFieldLimit(int limit) {
+		   super();
+		   this.limit = limit;
+		   }
+
+		  public void insertString( int offset, String  str, AttributeSet attr ) throws BadLocationException {
+		    if (str == null) return;
+
+		    if ((getLength() + str.length()) <= limit) {
+		      super.insertString(offset, str, attr);
+		    }
+		  }
+		}
 	
 	/**
 	 * Get lexicon for the ACIDE - A Configurable IDE grammar

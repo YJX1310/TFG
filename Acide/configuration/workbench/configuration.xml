@@ -7,12 +7,12 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\aggregates.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>1716</__caretPosition>
+            <__caretPosition>64</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
-            <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
-            <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
+            <__previousGrammarConfiguration>./configuration/grammars/newGrammar.txt</__previousGrammarConfiguration>
+            <__currentGrammarConfiguration>C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\newGrammar.txt</__currentGrammarConfiguration>
           </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\bom.dl</__path>
@@ -137,7 +137,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\DLDebugger\example3.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>1892</__caretPosition>
+            <__caretPosition>1675</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
@@ -147,19 +147,19 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\DLDebugger\orbits1.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>124</__caretPosition>
+            <__caretPosition>156</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
-            <__activeTextEditionArea>1</__activeTextEditionArea>
+            <__activeTextEditionArea>0</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/c++.xml</__lexiconConfiguration>
             <__previousGrammarConfiguration>./configuration/grammars/newGrammar.txt</__previousGrammarConfiguration>
-            <__currentGrammarConfiguration>./configuration/grammars/newGrammar.txt</__currentGrammarConfiguration>
+            <__currentGrammarConfiguration>C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.txt</__currentGrammarConfiguration>
           </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\SQLDebugger\example1.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>194</__caretPosition>
+            <__caretPosition>171</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
-            <__activeTextEditionArea>1</__activeTextEditionArea>
+            <__activeTextEditionArea>0</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
             <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
             <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
@@ -187,7 +187,7 @@
         </__list>
       </__list>
     </__fileEditorPanelConfigurationList>
-    <__selectedFileEditorPanelName>orbits1.dl</__selectedFileEditorPanelName>
+    <__selectedFileEditorPanelName>aggregates.sql</__selectedFileEditorPanelName>
     <__fontName>Monospaced.plain</__fontName>
     <__fontStyle>0</__fontStyle>
     <__fontSize>12</__fontSize>

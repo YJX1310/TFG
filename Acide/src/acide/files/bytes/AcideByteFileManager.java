@@ -56,6 +56,7 @@ import java.util.Arrays;
 
 import javax.swing.JOptionPane;
 
+import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
@@ -312,7 +313,7 @@ public class AcideByteFileManager {
 	/**
 	 * Extract grammar and lexer rule form source.
 	 * Write the grammar rule to "syntaxRules.txt", the lexer rule to "lexicalCategories.txt"
-	 * and generate "Expr.g4" with the grammar rule.
+	 * , the delimiter to "delimiter.txt" and generate "Expr.g4" with grammar and lexer rule.
 	 * 
 	 * @param source
 	 *            source path.
@@ -323,17 +324,23 @@ public class AcideByteFileManager {
 		String exprFile = "Expr.g4";
 		String syntaxFile = AcideGrammarFileCreationProcess.DEFAULT_PATH + "syntaxRules.txt";
 		String lexicalFile = AcideGrammarFileCreationProcess.DEFAULT_PATH + "lexicalCategories.txt";
+		String delimiterFile = AcideGrammarFileCreationProcess.DEFAULT_PATH + "delimiter.txt";
 		
         String syntaxContent = "";
         String lexicalContent = "";
+        String delimiterContent = "";
+        
         boolean syntax = false;
         boolean lexical = false;
+        boolean delimiter = false;
         
         // Read contents of source
         try {
             BufferedReader reader = new BufferedReader(new FileReader(source));
             String line;
             while ((line = reader.readLine()) != null) {
+            	if(line.equals("grammar Expr;"))
+            		continue;
             	if(line.equals("class ExprLexer extends Lexer;")){
             		lexical = true;
             		continue;
@@ -343,6 +350,13 @@ public class AcideByteFileManager {
             		syntax = true;
             		continue;
             	}
+            	if(line.equals("Statement delimiter;")) {
+            		delimiter = true;
+            		syntax = false;
+            		continue;
+            	}
+            	if(delimiter)
+            		delimiterContent = line;
             	if(syntax)
             		syntaxContent += line + "\n";
             	if(lexical)
@@ -354,7 +368,11 @@ public class AcideByteFileManager {
         	AcideLog.getLog().error(e.getMessage());
         }
         
-        
+		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
+				.getSelectedFileEditorPanel();
+		
+		selectedFileEditorPanel.set_grammarDelimiter(delimiterContent);
+		
         try {
         	// Write the "syntaxContent" to the syntaxFile
             BufferedWriter syntaxWriter = new BufferedWriter(new FileWriter(syntaxFile));
@@ -366,9 +384,15 @@ public class AcideByteFileManager {
             lexicalWriter.write(lexicalContent);
             lexicalWriter.close();
             
+        	// Write the "delimiterContent" to the delimiterFile
+            BufferedWriter delimiterWriter = new BufferedWriter(new FileWriter(delimiterFile));
+            delimiterWriter.write(delimiterContent);
+            delimiterWriter.close();
+            
             // Write the "syntaxContent" to the exprFile
-            String[] lines = syntaxContent.split("\\r?\\n");
-            syntaxContent = "grammar Expr;\n" + String.join("\n", Arrays.copyOfRange(lines, 1, lines.length));
+            //String[] lines = syntaxContent.split("\\r?\\n");
+            //syntaxContent = "grammar Expr;\n" + String.join("\n", Arrays.copyOfRange(lines, 1, lines.length));
+            syntaxContent = "grammar Expr;\n" + syntaxContent;
             
             BufferedWriter g4Writer = new BufferedWriter(new FileWriter(exprFile));
             g4Writer.write(syntaxContent + "\n" + lexicalContent);
@@ -388,20 +412,20 @@ public class AcideByteFileManager {
 	public void saveGrammar(String target) {
 		String syntaxFile = AcideGrammarFileCreationProcess.DEFAULT_PATH + "syntaxRules.txt";
 		String lexicalFile = AcideGrammarFileCreationProcess.DEFAULT_PATH + "lexicalCategories.txt";
+		String delimiterFile = AcideGrammarFileCreationProcess.DEFAULT_PATH + "delimiter.txt";
 		
 		// Creates the file content
 		String textContent = "header{\npackage acide.process.parser.grammar;\n}\n";
 		textContent += "class ExprLexer extends Lexer;\n";
 		
-		String syntaxContent = "";
-		String lexicalContent = "";
+		String content = "";
 		
         // Read contents of lexicalFile
         try {
             BufferedReader reader = new BufferedReader(new FileReader(lexicalFile));
             String line;
             while ((line = reader.readLine()) != null) {
-            	lexicalContent += line + "\n";
+            	content += line + "\n";
             }
             reader.close();
         } catch (IOException e) {
@@ -410,15 +434,17 @@ public class AcideByteFileManager {
         }
 		
         // Append the lexical contents
-        textContent += lexicalContent;
+        textContent += content;
         textContent += "\nclass ExprParser extends Parser;\n";
+        
+        content = "";
         
         // Read contents of syntaxFile
         try {
             BufferedReader reader = new BufferedReader(new FileReader(syntaxFile));
             String line;
             while ((line = reader.readLine()) != null) {
-            		syntaxContent += line + "\n";
+            	content += line + "\n";
             }
             reader.close();
         } catch (IOException e) {
@@ -427,8 +453,26 @@ public class AcideByteFileManager {
         }
         
         // Append the grammatical contents
-        textContent +=  "grammar Expr;" + System.lineSeparator() + syntaxContent;
+        textContent +=  "grammar Expr;" + System.lineSeparator() + content;
 
+        content = "";
+        
+        // Read contents of delimiterFile
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(delimiterFile));
+            String line;
+            while ((line = reader.readLine()) != null) {
+            	content += line + "\n";
+            }
+            reader.close();
+        } catch (IOException e) {
+        	// Updates the log
+        	AcideLog.getLog().error(e.getMessage());
+        }
+        
+        // Append the delimiter
+        textContent += "\nStatement delimiter;\n" + content;
+        
         // Write the extracted substring to the target file
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(target));

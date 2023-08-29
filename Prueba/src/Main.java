@@ -7,22 +7,54 @@ import java.io.RandomAccessFile;
 
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.BaseErrorListener;
+import org.antlr.v4.runtime.BufferedTokenStream;
+import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonToken;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.TokenSource;
+import org.antlr.v4.runtime.misc.Interval;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String text = "Linea 1;Linea 2\nLinea 3";
-		int index = text.indexOf(";");
-		String firstLine = "Nueva l�nea 1;\n";
-		String modifiedText = firstLine + text.substring(index + 1);
 		
-		System.out.println(modifiedText);
+		/*
+		 try { Runtime.getRuntime().
+		 exec("java -jar ./src/antlr-4.7.1-complete.jar ./src/Expr.g4"); } catch
+		 (IOException e) { e.printStackTrace();}
+		 */
+		CharStream input = CharStreams.fromString("1+2-3");
+        ExprLexer lexer = new ExprLexer(input);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        ExprParser parser = new ExprParser(tokens);
+
+     // Realizamos el análisis sintáctico del texto inicial
+        ParseTree tree = parser.expr();
+
+        // Mostramos el resultado del análisis
+        System.out.println("Resultado del análisis inicial: " + tree.toStringTree(parser));
+
+        // Realizamos el análisis incremental del texto adicional
+        String textToAdd = "+4";
+        input = CharStreams.fromString(textToAdd);
+        lexer.setInputStream(input);
+
+        // Creamos un nuevo ParseTree a partir del texto adicional
+        ParseTree newTree = parser.expr();
+
+        // Añadimos el nuevo ParseTree como hijo del último nodo del ParseTree anterior
+        ParserRuleContext rootContext = (ParserRuleContext) tree;
+        ParseTree lastChild = rootContext.getChild(rootContext.getChildCount() - 1);
+        ((ParserRuleContext) lastChild.getParent()).addAnyChild(newTree);
+
+        // Mostramos el resultado del análisis incremental
+        System.out.println("Resultado del análisis incremental: " + tree.toStringTree(parser));
 		/*
 		String newLine = "grammar Expr";
 
@@ -56,7 +88,7 @@ public class Main {
 			@Override
 			public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line,
 					int charPositionInLine, String msg, RecognitionException e) {
-				System.err.println("Error de sintaxis en la l�nea " + line + ":" + charPositionInLine + " - " + msg);
+				System.err.println("Error de sintaxis en la l�nea " + line + ":" + charPositionInLine + " - " + msg);
 			}
 		});
 		parser.removeErrorListeners();
@@ -95,7 +127,7 @@ public class Main {
 		/*
 		 * try { System.out.print("\""); RandomAccessFile file = new RandomAccessFile(
 		 * "C:\\Users\\34642\\eclipse\\TFG\\Github\\Prueba\\src\\prueba.txt", "rw");
-		 * file.seek(40); // mueve el cursor a la posici�n 10
+		 * file.seek(40); // mueve el cursor a la posici�n 10
 		 * file.writeChars("package acide.process.parser.grammar;"); file.close(); }
 		 * catch (IOException e) { e.printStackTrace(); }
 		 */
@@ -111,11 +143,8 @@ public class Main {
 		 * } catch (IOException e1) { // TODO Auto-generated catch block
 		 * System.out.println(e1.getMessage()); }
 		 */
-		/*
-		 * try { Runtime.getRuntime().
-		 * exec("java -jar antlr-4.7.1-complete.jar -visitor Expr.g4"); } catch
-		 * (IOException e) { // TODO Auto-generated catch block e.printStackTrace(); }
-		 */
+	
 	}
+	
 
 }

@@ -83,11 +83,12 @@ public class AcideAutoAnalysisMenuItemListener implements ActionListener{
 				.getFileEditorManager().getSelectedFileEditorPanel();
 		
 		if(selected) {
+			
 			String lock = "";
 			
 			// Process the current grammar
-			AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
-					.getCurrentGrammarConfiguration().getPath());
+			//AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
+			//		.getCurrentGrammarConfiguration().getPath());
 			
 			AcideGrammarFileCreationProcess fileCreationProcess = new AcideGrammarFileCreationProcess(AcideMainWindow
 					.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
@@ -107,11 +108,10 @@ public class AcideAutoAnalysisMenuItemListener implements ActionListener{
 			analyzer.start();
 		}
 		else {
-			System.out.println("Desactivado");
-			selectedFileEditorPanel.setFirstTime(true);
 			selectedFileEditorPanel.setErrors(new HashMap<String, String>());
 		}
 		
+		// Set the new value of the checkBox
 		AcideMainWindow.getInstance()
 		.getMenu().getConfigurationMenu()
 		.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem().setSelected(selected);

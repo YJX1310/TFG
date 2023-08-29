@@ -4,7 +4,7 @@ package acide.process.parser.grammar;
 class ExprLexer extends Lexer;
 
 class ExprParser extends Parser;
-grammar Orbits;
+grammar Expr;
 
 parse: statement+;
 

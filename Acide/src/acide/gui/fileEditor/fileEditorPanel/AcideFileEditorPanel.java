@@ -80,7 +80,7 @@ import acide.process.parser.AcideGrammarAnalyzer;
 /**
  * ACIDE - A Configurable IDE file editor panel.
  * 
- * @version 0.11
+ * @version 0.20
  * @see JPanel
  */
 public class AcideFileEditorPanel extends JPanel {
@@ -172,10 +172,9 @@ public class AcideFileEditorPanel extends JPanel {
 	 */
 	private HashMap<String, String> _errors;
 	/**
-	 * ACIDE - A Configurable IDE file editor panel analyze the entire
-	 * text or a fragment of text.
+	 * ACIDE - A Configurable IDE file editor panel delimiter.
 	 */
-	private boolean _firstTime;
+	private String _grammarDelimiter;
 	/**
 	 * Current encode format
 	 */
@@ -207,8 +206,7 @@ public class AcideFileEditorPanel extends JPanel {
 			// Sets the layout
 			setLayout(new BorderLayout());
 			
-			_firstTime = true;
-			
+			// Initialize the error
 			_errors = new HashMap<String, String>();
 
 			// Stores the active text edition area index
@@ -971,12 +969,13 @@ public class AcideFileEditorPanel extends JPanel {
 		this._errors = _errors;
 	}
 
-	public boolean isFirstTime() {
-		return _firstTime;
+	public String get_grammarDelimiter() {
+		return _grammarDelimiter;
 	}
 
-	public void setFirstTime(boolean _firstTime) {
-		this._firstTime = _firstTime;
+	public void set_grammarDelimiter(String _grammarDelimiter) {
+		this._grammarDelimiter = _grammarDelimiter;
 	}
+	
 	
 }

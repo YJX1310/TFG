@@ -1,28 +1,42 @@
 grammar Expr;
-parse: statement+;
+program
+    : stat EOF
+    | def EOF
+    ;
 
-statement: starStatement | orbitsStatement | satelliteStatement | planetStatement | intermediateStatement;
+stat: ID '=' expr ';'
+    | expr ';'
+    ;
 
-starStatement: 'star' '(' ID ')' '.' ;
+def : ID '(' ID (',' ID)* ')' '{' stat* '}' ;
 
-orbitsStatement: 'orbits' '(' ID ',' ID ')' '.' | 'orbits' '(' ID ',' ID ')' ':-' orbitsPredicate '.' ;
+expr: ID
+    | INT
+    | func
+    | 'not' expr
+    | expr 'and' expr
+    | expr 'or' expr
+    ;
 
-satelliteStatement: 'satellite' '(' ID ',' ID ')' ':-' orbitsPredicate ',' notIntermediatePredicate ',' notStarPredicate '.' ;
+func : ID '(' expr (',' expr)* ')' ;
 
-planetStatement: 'planet' '(' ID ')' ':-' orbitsPredicate ',' starPredicate ',' notIntermediatePredicate '.' ;
 
-intermediateStatement: 'intermediate' '(' ID ',' ID ')' ':-' orbitsPredicate ',' orbitsPredicate '.' ;
 
-orbitsPredicate: 'orbits' '(' ID ',' ID ')';
 
-notIntermediatePredicate: 'not' '(' 'intermediate' '(' ID ',' ID ')' ')';
+AND : 'and' ;
+OR : 'or' ;
+NOT : 'not' ;
+EQ : '=' ;
+COMMA : ',' ;
+SEMI : ';' ;
+LPAREN : '(' ;
+RPAREN : ')' ;
+LCURLY : '{' ;
+RCURLY : '}' ;
 
-notStarPredicate: 'not' '(' 'star' '(' ID ')' ')';
+INT : [0-9]+ ;
+ID: [a-zA-Z_][a-zA-Z_0-9]* ;
+WS: [ \t\n\r\f]+ -> skip ;
 
-starPredicate: 'star' '(' ID ')';
-
-ID: [a-zA-Z]+;
-WS: [ \t\r\n]+ -> skip;
-COMMENT : '%' ~[\r\n]* -> skip ;
 
 
