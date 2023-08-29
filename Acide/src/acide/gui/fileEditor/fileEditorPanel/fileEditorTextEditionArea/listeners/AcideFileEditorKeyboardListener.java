@@ -238,7 +238,6 @@ public class AcideFileEditorKeyboardListener extends KeyAdapter {
 				// Remove the previous error highlighting
 				errorhighlighter.clearErrorHighlight();
 				selectedFileEditorPanel.setErrors(new HashMap<String, String>());
-				selectedFileEditorPanel.setFirstTime(true);
 
 				// Get the file editor panel analyzer
 				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
@@ -260,7 +259,6 @@ public class AcideFileEditorKeyboardListener extends KeyAdapter {
 						// Remove the previous error highlighting
 						errorhighlighter.clearErrorHighlight();
 						selectedFileEditorPanel.setErrors(new HashMap<String, String>());
-						selectedFileEditorPanel.setFirstTime(true);
 
 						// Get the file editor panel analyzer
 						AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
