@@ -97,7 +97,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\e5.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>0</__caretPosition>
+            <__caretPosition>139</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
@@ -107,7 +107,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\pets_trust.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>0</__caretPosition>
+            <__caretPosition>87</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
@@ -127,7 +127,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\DLDebugger\example1.dl.b.pl</__path>
             <__type>Normal</__type>
-            <__caretPosition>759</__caretPosition>
+            <__caretPosition>219</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/default.xml</__lexiconConfiguration>
@@ -167,7 +167,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\orbits.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>0</__caretPosition>
+            <__caretPosition>300</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/default.xml</__lexiconConfiguration>
@@ -207,7 +207,7 @@
     <__automaticIndent>true</__automaticIndent>
     <__maximumLinesToConsole>30</__maximumLinesToConsole>
     <__lineWrapping>true</__lineWrapping>
-    <__sendToConsoleConfirmation>false</__sendToConsoleConfirmation>
+    <__sendToConsoleConfirmation>true</__sendToConsoleConfirmation>
     <__tabSize>8</__tabSize>
     <__spaceSelected>false</__spaceSelected>
   </__fileEditorConfiguration>

@@ -1,3 +1,4 @@
+
 29 ago 2023 21:30:58,680 [main] INFO  LogAcide - Using your system's LookAndFeel
 29 ago 2023 21:30:58,809 [AWT-EventQueue-0] INFO  LogAcide - Initiating application...
 29 ago 2023 21:30:58,810 [AWT-EventQueue-0] INFO  LogAcide - Loading the ACIDE - A Configurable IDE - Workbench Configuration

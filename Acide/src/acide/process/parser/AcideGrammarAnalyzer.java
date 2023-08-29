@@ -59,6 +59,7 @@ import org.antlr.v4.runtime.TokenSource;
 import org.antlr.v4.runtime.TokenStream;
 
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
+import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideHighlightError;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.log.AcideLog;
 import acide.main.AcideMain;
@@ -281,6 +282,8 @@ public class AcideGrammarAnalyzer extends Thread{
 			// Updates the log
 			AcideLog.getLog().error(e.getMessage());
 		}
+		AcideHighlightError errorhighlighter=AcideHighlightError.getInstance();
+		errorhighlighter.ErrorHighLight();
 		
 		//_Cparser.getMethod(name, parameterTypes)
 		/*

@@ -62,9 +62,12 @@ import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
+import javax.swing.text.Utilities;
 
 import acide.configuration.lexicon.AcideLexiconConfiguration;
 import acide.configuration.lexicon.tokens.AcideLexiconTokenGroup;
+import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
+import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
 
@@ -89,8 +92,8 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 	 */
 	private MutableAttributeSet _normalAttributeSet;
 	/**
-	 * ACIDE - A Configurable IDE styled document single remarks mutable
-	 * attribute set.
+	 * ACIDE - A Configurable IDE styled document single remarks mutable attribute
+	 * set.
 	 */
 	private MutableAttributeSet _singleRemarksAttributeSet;
 	/**
@@ -117,13 +120,11 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 	public AcideFileEditorStyledDocument(AcideLexiconConfiguration lexiconConfiguration) {
 
 		super();
-		
+
 		try {
 
 			// Updates the log
-			AcideLog.getLog().info(
-					AcideLanguageManager.getInstance().getLabels()
-							.getString("s321"));
+			AcideLog.getLog().info(AcideLanguageManager.getInstance().getLabels().getString("s321"));
 
 			// Gets the default root element
 			_rootElement = getDefaultRootElement();
@@ -138,16 +139,12 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 		catch (Exception exception) {
 
 			// Updates the log
-			AcideLog.getLog().info(
-					AcideLanguageManager.getInstance().getLabels()
-							.getString("s322"));
+			AcideLog.getLog().info(AcideLanguageManager.getInstance().getLabels().getString("s322"));
 			exception.printStackTrace();
 		}
 
 		// Updates the log
-		AcideLog.getLog().info(
-				AcideLanguageManager.getInstance().getLabels()
-						.getString("s323"));
+		AcideLog.getLog().info(AcideLanguageManager.getInstance().getLabels().getString("s323"));
 	}
 
 	/**
@@ -181,30 +178,30 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 
 		// Builds the attribute sets
 		buildAttributeSets();
-		
+
 		try {
 
 			// Changes the styled document
 			processChangedLines(0, getLength());
-					
+
 		} catch (BadLocationException exception) {
 
 			// Updates the log
 			AcideLog.getLog().error(exception.getMessage());
 			exception.printStackTrace();
 		}
-		
+
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see javax.swing.text.AbstractDocument#insertString(int,
-	 * java.lang.String, javax.swing.text.AttributeSet)
+	 * @see javax.swing.text.AbstractDocument#insertString(int, java.lang.String,
+	 * javax.swing.text.AttributeSet)
 	 */
 	@Override
-	public void insertString(final int offset, final String string,
-			AttributeSet attributeSet) throws BadLocationException {
+	public void insertString(final int offset, final String string, AttributeSet attributeSet)
+			throws BadLocationException {
 
 		/*
 		 * if(string.equals("{")) string = addMatchingBrace(offset);
@@ -215,7 +212,7 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 
 		// Changes the styled document
 		processChangedLines(offset, string.length());
-				
+
 	}
 
 	/*
@@ -235,8 +232,7 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * javax.swing.text.AbstractDocument#fireInsertUpdate(javax.swing.event.
+	 * @see javax.swing.text.AbstractDocument#fireInsertUpdate(javax.swing.event.
 	 * DocumentEvent)
 	 */
 	@Override
@@ -247,8 +243,7 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 		try {
 
 			// Changes the styled document
-			processChangedLines(documentEvent.getOffset(),
-					documentEvent.getLength());
+			processChangedLines(documentEvent.getOffset(), documentEvent.getLength());
 		} catch (BadLocationException exception) {
 
 			// Updates the log
@@ -260,20 +255,17 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * javax.swing.text.AbstractDocument#fireRemoveUpdate(javax.swing.event.
+	 * @see javax.swing.text.AbstractDocument#fireRemoveUpdate(javax.swing.event.
 	 * DocumentEvent)
 	 */
 	@Override
 	protected void fireRemoveUpdate(DocumentEvent documentEvent) {
 
 		super.fireRemoveUpdate(documentEvent);
-
 		try {
 
 			// Changes the styled document
-			processChangedLines(documentEvent.getOffset(),
-					documentEvent.getLength());
+			processChangedLines(documentEvent.getOffset(), documentEvent.getLength());
 		} catch (BadLocationException exception) {
 
 			// Updates the log
@@ -283,17 +275,14 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 	}
 
 	/**
-	 * Determines how many lines have been changed, then apply highlighting to
-	 * each line.
+	 * Determines how many lines have been changed, then apply highlighting to each
+	 * line.
 	 * 
-	 * @param offset
-	 *            offset to apply.
-	 * @param length
-	 *            highlighting length.
+	 * @param offset offset to apply.
+	 * @param length highlighting length.
 	 * @throws BadLocationException
 	 */
-	public void processChangedLines(final int offset, final int length)
-			throws BadLocationException {
+	public void processChangedLines(final int offset, final int length) throws BadLocationException {
 
 		// Gets the text content
 		final String content = getText(0, getLength());
@@ -304,7 +293,7 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 
 		// Does the actual highlighting line by line
 		for (int line = startLine; line <= endLine; line++) {
-			
+
 			// Applies the highlighting
 			applyHighlighting(content, line);
 
@@ -314,20 +303,17 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 				// Applies the remark highlighting
 				applyRemarkStyle(line);
 		}
-		
+
 	}
 
 	/**
 	 * Parses the line to determine the appropriate highlighting.
 	 * 
-	 * @param content
-	 *            file content.
-	 * @param line
-	 *            line to parse.
+	 * @param content file content.
+	 * @param line    line to parse.
 	 * @throws BadLocationException
 	 */
-	private void applyHighlighting(String content, int line)
-			throws BadLocationException {
+	private void applyHighlighting(String content, int line) throws BadLocationException {
 
 		// Avoids exceptions
 		if (_rootElement.getElement(line) != null) {
@@ -349,8 +335,7 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 				endOffset = contentLength - 1;
 
 			// set normal attributes for the line
-			setCharacterAttributes(startOffset, lineLength,
-					_normalAttributeSet, true);
+			setCharacterAttributes(startOffset, lineLength, _normalAttributeSet, true);
 
 			// check for tokens for the highlighting
 			applyStyles(content, startOffset, endOffset);
@@ -360,20 +345,16 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 	/**
 	 * Parses the line in order to apply the different token styles.
 	 * 
-	 * @param content
-	 *            file content.
-	 * @param offsetStart
-	 *            offset start.
-	 * @param offsetEnd
-	 *            offset end.
+	 * @param content     file content.
+	 * @param offsetStart offset start.
+	 * @param offsetEnd   offset end.
 	 */
 	private void applyStyles(String content, int offsetStart, int offsetEnd) {
-		
+
 		while (offsetStart <= offsetEnd) {
 
 			// skip the delimiters to find the start of a new token
-			while (isDelimiter(content.substring(offsetStart, offsetStart + 1),
-					offsetStart, content)) {
+			while (isDelimiter(content.substring(offsetStart, offsetStart + 1), offsetStart, content)) {
 				if (offsetStart < offsetEnd)
 					offsetStart++;
 				else
@@ -387,25 +368,20 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 	/**
 	 * Applies the token style for the next token in the file content.
 	 * 
-	 * @param content
-	 *            file content.
-	 * @param startOffset
-	 *            start offset.
-	 * @param endOffset
-	 *            end offset.
+	 * @param content     file content.
+	 * @param startOffset start offset.
+	 * @param endOffset   end offset.
 	 * 
 	 * @return the position to continue to explore from.
 	 */
-	private int applyNextTokenStyle(String content, int startOffset,
-			int endOffset) {
-		
+	private int applyNextTokenStyle(String content, int startOffset, int endOffset) {
+
 		// Gets the end of the token
 		int endOfToken = startOffset + 1;
 
 		// Looks for the next delimiter
 		while (endOfToken <= endOffset) {
-			if (isDelimiter(content.substring(endOfToken, endOfToken + 1),
-					endOfToken, content))
+			if (isDelimiter(content.substring(endOfToken, endOfToken + 1), endOfToken, content))
 				break;
 			endOfToken++;
 		}
@@ -420,8 +396,7 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 		if (index != -1)
 
 			// Applies the keyword style
-			setCharacterAttributes(startOffset, endOfToken - startOffset,
-					_keywordAttributeSet[index - 1], false);
+			setCharacterAttributes(startOffset, endOfToken - startOffset, _keywordAttributeSet[index - 1], false);
 
 		return endOfToken + 1;
 	}
@@ -429,24 +404,18 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 	/**
 	 * Checks if a character given as a parameter is a delimiter or not.
 	 * 
-	 * @param character
-	 *            character to check.
-	 * @param characterPostion
-	 *            character position.
-	 * @param content
-	 *            text content.
+	 * @param character        character to check.
+	 * @param characterPostion character position.
+	 * @param content          text content.
 	 * 
 	 * @return true if it is a delimiter and false in other case.
 	 */
-	protected boolean isDelimiter(String character, int characterPostion,
-			String content) {
+	protected boolean isDelimiter(String character, int characterPostion, String content) {
 
-		for (int index = 0; index < _lexiconConfiguration
-				.getDelimitersManager().getSize(); index++) {
+		for (int index = 0; index < _lexiconConfiguration.getDelimitersManager().getSize(); index++) {
 
 			// Gets the delimiter
-			String delimiter = _lexiconConfiguration.getDelimitersManager()
-					.getDelimiterAt(index);
+			String delimiter = _lexiconConfiguration.getDelimitersManager().getDelimiterAt(index);
 
 			// If it is the white space
 			if (Character.isWhitespace(character.charAt(0)))
@@ -458,18 +427,12 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 
 			while (delimiter.indexOf(character, position) != -1) {
 
-				if (((characterPostion - delimiter.indexOf(character, position) + delimiter
-						.length()) <= content.length())
-						&& (characterPostion
-								- delimiter.indexOf(character, position) >= 0)) {
+				if (((characterPostion - delimiter.indexOf(character, position) + delimiter.length()) <= content
+						.length()) && (characterPostion - delimiter.indexOf(character, position) >= 0)) {
 
 					// Gets the delimiter
-					String delimiterAux = content.substring(
-							characterPostion
-									- delimiter.indexOf(character, position),
-							characterPostion
-									- delimiter.indexOf(character, position)
-									+ delimiter.length());
+					String delimiterAux = content.substring(characterPostion - delimiter.indexOf(character, position),
+							characterPostion - delimiter.indexOf(character, position) + delimiter.length());
 
 					if (delimiterAux.equals(delimiter)) {
 
@@ -480,13 +443,8 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 						if (delimiterPosition != -1) {
 
 							// Applies the keyword style
-							setCharacterAttributes(
-									characterPostion
-											- delimiter.indexOf(character,
-													position),
-									delimiterAux.length(),
-									_keywordAttributeSet[delimiterPosition - 1],
-									false);
+							setCharacterAttributes(characterPostion - delimiter.indexOf(character, position),
+									delimiterAux.length(), _keywordAttributeSet[delimiterPosition - 1], false);
 						}
 						return true;
 					}
@@ -506,8 +464,7 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 	 * case.
 	 * </p>
 	 * 
-	 * @param token
-	 *            token to check.
+	 * @param token token to check.
 	 * 
 	 * @return the index + 1 in the keyword list.
 	 */
@@ -523,8 +480,7 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 
 		while (!found && index < _keywords.length) {
 
-			if (!_lexiconConfiguration.getTokenTypeManager()
-					.getTokenGroupAt(index).isCaseSensitive()) {
+			if (!_lexiconConfiguration.getTokenTypeManager().getTokenGroupAt(index).isCaseSensitive()) {
 				token = token.toLowerCase();
 			} else {
 				token = tokenAux;
@@ -544,8 +500,7 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 	/**
 	 * Adds a "\n}" or "\n)" or "\n]" to the text.
 	 * 
-	 * @param offset
-	 *            offset.
+	 * @param offset offset.
 	 * 
 	 * @return the new text generated.
 	 * 
@@ -570,8 +525,7 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 				break;
 		}
 
-		return "{\n" + whiteSpace.toString() + whiteSpace.toString() + "\n"
-				+ whiteSpace.toString() + "}";
+		return "{\n" + whiteSpace.toString() + whiteSpace.toString() + "\n" + whiteSpace.toString() + "}";
 	}
 
 	/**
@@ -597,14 +551,12 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 	/**
 	 * Applies the remark style to the file content given as a parameter.
 	 * 
-	 * @param line
-	 *            current line.
+	 * @param line current line.
 	 */
 	private void applyRemarkStyle(int line) {
 
 		// Gets the remark content
-		String remarkContent = _lexiconConfiguration.getRemarksManager()
-				.getSymbol();
+		String remarkContent = _lexiconConfiguration.getRemarksManager().getSymbol();
 
 		String text = "";
 
@@ -630,8 +582,7 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 					if (position >= 0)
 
 						// Applies the remark style
-						setCharacterAttributes(startOffset + position,
-								lineLength - position,
+						setCharacterAttributes(startOffset + position, lineLength - position,
 								_singleRemarksAttributeSet, true);
 				} catch (BadLocationException exception) {
 
@@ -646,18 +597,17 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 	/**
 	 * Adds the element highlighting in the position given as a parameter.
 	 * 
-	 * @param position
-	 *            brace position to be inserted.
+	 * @param position brace position to be inserted.
 	 */
 	public void addHighlightElement(final int position) {
 
 		/*
 		 * Prevents the java.lang.IllegalStateException: Attempt to mutate in
-		 * notification cause the exception is thrown because you can't make
-		 * changes to text inside an event handler that is being notified of
-		 * changes to the text (because of the possibilities for endless
-		 * recursion). The text is locked against modifications while handling a
-		 * modification (character entry in this case).
+		 * notification cause the exception is thrown because you can't make changes to
+		 * text inside an event handler that is being notified of changes to the text
+		 * (because of the possibilities for endless recursion). The text is locked
+		 * against modifications while handling a modification (character entry in this
+		 * case).
 		 */
 		SwingUtilities.invokeLater(new Runnable() {
 
@@ -670,8 +620,7 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 			public void run() {
 				try {
 					if ((position + 1) < getLength()) {
-						setCharacterAttributes(position, 1,
-								_matchingElementsAttributeSet, true);
+						setCharacterAttributes(position, 1, _matchingElementsAttributeSet, true);
 					}
 				} catch (Exception exception) {
 
@@ -681,7 +630,7 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 				}
 			}
 		});
-		
+
 	}
 
 	/**
@@ -692,8 +641,7 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 	 * It consist of set that position in the style that it had before.
 	 * </p>
 	 * 
-	 * @param offset
-	 *            brace position to be removed.
+	 * @param offset brace position to be removed.
 	 */
 	public void removeHighlightElement(final int offset) {
 
@@ -716,22 +664,18 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 					if (index != -1)
 
 						// Applies the keyword style
-						setCharacterAttributes(offset, 1,
-								_keywordAttributeSet[index - 1], true);
+						setCharacterAttributes(offset, 1, _keywordAttributeSet[index - 1], true);
 					else
 
 						// Applies the normal style
-						setCharacterAttributes(offset, 1, _normalAttributeSet,
-								true);
+						setCharacterAttributes(offset, 1, _normalAttributeSet, true);
 
 					/*
-					 * IMPORTANT: With this call to the method we guarantee that
-					 * If it is at a line which contains remarks, apply the
-					 * remarks and deletes the highlighting related to the
-					 * matching brace perfectly.
+					 * IMPORTANT: With this call to the method we guarantee that If it is at a line
+					 * which contains remarks, apply the remarks and deletes the highlighting
+					 * related to the matching brace perfectly.
 					 */
-					processChangedLines(offset, _rootElement.getDocument()
-							.getLength());
+					processChangedLines(offset, _rootElement.getDocument().getLength());
 
 				} catch (Exception exception) {
 
@@ -749,22 +693,18 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 	public void buildKeywordAttributeSet() {
 
 		// Creates the keyword attribute set
-		_keywordAttributeSet = new MutableAttributeSet[_lexiconConfiguration
-				.getTokenTypeManager().getSize()];
+		_keywordAttributeSet = new MutableAttributeSet[_lexiconConfiguration.getTokenTypeManager().getSize()];
 
 		// Adds the keywords to the attribute set list
-		for (int index = 0; index < _lexiconConfiguration.getTokenTypeManager()
-				.getSize(); index++) {
+		for (int index = 0; index < _lexiconConfiguration.getTokenTypeManager().getSize(); index++) {
 
 			_keywordAttributeSet[index] = new SimpleAttributeSet();
 
 			// Gets the token group from the list
-			AcideLexiconTokenGroup tokenGroup = _lexiconConfiguration
-					.getTokenTypeManager().getTokenGroupAt(index);
+			AcideLexiconTokenGroup tokenGroup = _lexiconConfiguration.getTokenTypeManager().getTokenGroupAt(index);
 
 			// Foreground color as defines the token type of the list
-			StyleConstants.setForeground(_keywordAttributeSet[index],
-					tokenGroup.getColor());
+			StyleConstants.setForeground(_keywordAttributeSet[index], tokenGroup.getColor());
 
 			switch (tokenGroup.getFontStyle()) {
 
@@ -788,18 +728,15 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 		}
 
 		// Creates the keywords hash map
-		_keywords = new Hashtable[_lexiconConfiguration.getTokenTypeManager()
-				.getSize()];
+		_keywords = new Hashtable[_lexiconConfiguration.getTokenTypeManager().getSize()];
 		Object dummyObject = new Object();
 
-		for (int index1 = 0; index1 < _lexiconConfiguration
-				.getTokenTypeManager().getSize(); index1++) {
+		for (int index1 = 0; index1 < _lexiconConfiguration.getTokenTypeManager().getSize(); index1++) {
 
 			_keywords[index1] = new Hashtable<String, Object>();
 
 			// Gets the token type from the list
-			AcideLexiconTokenGroup tokenType = _lexiconConfiguration
-					.getTokenTypeManager().getTokenGroupAt(index1);
+			AcideLexiconTokenGroup tokenType = _lexiconConfiguration.getTokenTypeManager().getTokenGroupAt(index1);
 
 			for (int index2 = 0; index2 < tokenType.getSize(); index2++) {
 
@@ -825,12 +762,10 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 		_matchingElementsAttributeSet = new SimpleAttributeSet();
 
 		// Sets its foreground color in black
-		StyleConstants
-				.setForeground(_matchingElementsAttributeSet, Color.BLACK);
+		StyleConstants.setForeground(_matchingElementsAttributeSet, Color.BLACK);
 
 		// Sets its background color in yellow
-		StyleConstants.setBackground(_matchingElementsAttributeSet,
-				Color.YELLOW);
+		StyleConstants.setBackground(_matchingElementsAttributeSet, Color.YELLOW);
 
 		// Sets its style to bold
 		StyleConstants.setBold(_matchingElementsAttributeSet, true);
@@ -838,14 +773,13 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 
 	/**
 	 * <p>
-	 * Builds and configure the normal attribute set. In this case it is
-	 * important to mention that if some style is applied to the attribute set
-	 * then it will affect directly on the file editor configuration.
+	 * Builds and configure the normal attribute set. In this case it is important
+	 * to mention that if some style is applied to the attribute set then it will
+	 * affect directly on the file editor configuration.
 	 * </p>
 	 * <p>
-	 * For instance, if we are interested in changing the foreground color, then
-	 * it is mandatory not to add the foreground property to the normal
-	 * attribute set.
+	 * For instance, if we are interested in changing the foreground color, then it
+	 * is mandatory not to add the foreground property to the normal attribute set.
 	 * </p>
 	 */
 	public void buildNormaAttributeSet() {
@@ -864,8 +798,7 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 
 		// Set its foreground color as defines the remarks manager in the
 		// lexicon configuration
-		StyleConstants.setForeground(_singleRemarksAttributeSet,
-				_lexiconConfiguration.getRemarksManager().getColor());
+		StyleConstants.setForeground(_singleRemarksAttributeSet, _lexiconConfiguration.getRemarksManager().getColor());
 
 		switch (_lexiconConfiguration.getRemarksManager().getFontStyle()) {
 
@@ -893,63 +826,23 @@ public class AcideFileEditorStyledDocument extends DefaultStyledDocument {
 	}
 
 	/**
-	 * Sets a new value to the ACIDE - A Configurable IDE styled document
-	 * lexicon configuration.
+	 * Sets a new value to the ACIDE - A Configurable IDE styled document lexicon
+	 * configuration.
 	 * 
-	 * @param lexiconConfiguration
-	 *            new value to set.
+	 * @param lexiconConfiguration new value to set.
 	 */
-	public void setLexiconConfiguration(
-			AcideLexiconConfiguration lexiconConfiguration) {
+	public void setLexiconConfiguration(AcideLexiconConfiguration lexiconConfiguration) {
 		_lexiconConfiguration = lexiconConfiguration;
 	}
 
 	/**
-	 * Returns the ACIDE - A Configurable IDE styled document lexicon
-	 * configuration.
+	 * Returns the ACIDE - A Configurable IDE styled document lexicon configuration.
 	 * 
-	 * @return the ACIDE - A Configurable IDE styled document lexicon
-	 *         configuration.
+	 * @return the ACIDE - A Configurable IDE styled document lexicon configuration.
 	 */
 	public AcideLexiconConfiguration getLexiconConfiguration() {
 		return _lexiconConfiguration;
 	}
-	
-	private void HighLightErros(){
-		// Crear un objeto StyleContext para manejar los estilos
-					StyleContext styleContext = StyleContext.getDefaultStyleContext();
 
-					// Crear un objeto Style para el estilo de subrayado rojo
-					Style redUnderline = styleContext.addStyle("RedUnderline", null);
-					redUnderline.addAttribute(StyleConstants.Foreground, Color.RED);
-					redUnderline.addAttribute(StyleConstants.Underline, Boolean.TRUE);
 
-					// Obtener el documento del JTextPane
-				/*	StyledDocument document = selectedFileEditorPanel.getStyledDocument();
-
-					// Obtener el texto completo del JTextPane
-					String text = selectedFileEditorPanel.getActiveTextEditionArea().getText();
-					
-
-					// Subrayar cada palabra en rojo
-					for (HashMap.Entry<String, String> entry : analyzer.getErrors().entrySet()) {
-					    // Obtener la línea y columna de inicio de la palabra
-					    String[] parts = entry.getKey().split(":");
-					    int line = Integer.parseInt(parts[0]) - 1;
-					    int column = Integer.parseInt(parts[1]);
-
-					    // Calcular la posición de inicio y fin de la palabra
-					    int start = document.getDefaultRootElement().getElement(line).getStartOffset() + column;
-					    int end = text.indexOf(" ", start);
-					    int newline = text.indexOf("\n", start);
-					    if (end == -1 || (newline != -1 && newline < end)) {
-					        end = newline;
-					    }
-					    if (end == -1) {
-					        end = text.length();
-					    }
-
-					    // Aplicar el estilo de subrayado rojo a la palabra
-					    //document.setCharacterAttributes(start, end - start, redUnderline, false);*/
-	}
 }

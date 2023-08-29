@@ -77,16 +77,16 @@ public class AcideFileEditorCaretListener implements CaretListener {
 	@Override
 	public void caretUpdate(CaretEvent caretEvent) {
 		
-		//AcideHighlightError errorhighlighter=AcideHighlightError.getInstance();
+		AcideHighlightError errorhighlighter=AcideHighlightError.getInstance();
 		// Updates the active text edition area
 		updateActiveTextEditionArea();
 		// Updates the status bar
 		updateStatusBar(caretEvent);
 
 		// Updates the matching element
+		errorhighlighter.ErrorHighLight();
 		updateMatchingElement();
 		//Update error red underline
-		//errorhighlighter.ErrorHighLight();
 	}
 
 	/**
