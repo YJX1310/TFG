@@ -70,14 +70,18 @@ import acide.process.parser.AcideGrammarAnalyzer;
 public class AcideHighlightError {
 
 	private static AcideHighlightError _instance;
-
+	/**
+	 * Return the unique AcideHighlightError instance.
+	 */
 	public static AcideHighlightError getInstance() {
 
 		if (_instance == null)
 			_instance = new AcideHighlightError();
 		return _instance;
 	}
-
+	/**
+	 * Highlights the matching elements.
+	 */
 	public void ErrorHighLight() {
 		
 		SwingUtilities.invokeLater(new Runnable() {
@@ -90,12 +94,11 @@ public class AcideHighlightError {
 				
 				// Obtener el documento del JTextPane
 				StyledDocument document = selectedFileEditorPanelIndex.getStyledDocument();
-				String text = selectedFileEditorPanelIndex.getActiveTextEditionArea().getText();
 				// Crear un estilo personalizado con subrayado rojo
 				SimpleAttributeSet underlineStyle = new SimpleAttributeSet();
 				StyleConstants.setForeground(underlineStyle, Color.RED);
 				StyleConstants.setUnderline(underlineStyle, true);
-
+				
 				// Agregar el estilo personalizado a un nuevo estilo de carácter
 				StyleContext styleContext = StyleContext.getDefaultStyleContext();
 				Style customStyle = styleContext.addStyle("custom", null);
@@ -105,46 +108,56 @@ public class AcideHighlightError {
 						.entrySet()) {
 					// Obtener la línea y columna de inicio de la palabra
 					String[] parts = entry.getKey().split(":");
-					int startLine = Integer.parseInt(parts[0]) - 1;
+					int startLine = Integer.parseInt(parts[0])-1 ;
 					int startColumn = Integer.parseInt(parts[1]);
-					int endColumn=Integer.parseInt(parts[2]);
-					// Calcular la posición de inicio y fin de la palabra
-					int start = document.getDefaultRootElement().getElement(startLine).getStartOffset() + startColumn;
-					int end = document.getDefaultRootElement().getElement(startLine).getStartOffset() + endColumn;
-					// Aplicar el estilo de subrayado rojo a la palabra
-					document.setCharacterAttributes(start, end - start, customStyle, true);
+					int endColumn=Integer.parseInt(parts[2])+startColumn;
+					try {
+						int start = document.getDefaultRootElement().getElement(startLine).getStartOffset() + startColumn;
+						int end = document.getDefaultRootElement().getElement(startLine).getStartOffset() + endColumn;
+						document.setCharacterAttributes(start, end - start, customStyle, true);
+					} catch (NullPointerException e) {
+					    // Manejo de la excepción
+					    System.err.println("Se ha producido una NullPointerException. Detalles: " + e.getMessage());
+					    e.printStackTrace(); // Esto muestra el rastro de la pila en la consola
+					    // Puedes realizar otras acciones aquí según tus necesidades
+					}
 
 				}
 			}
 		});
 	}
+	/**
+	 * Clear all error Highlightings.
+	 */
 	public void clearErrorHighlight() {
 	    
 	        AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
 	                .getSelectedFileEditorPanel();
 	        StyledDocument document = selectedFileEditorPanel.getStyledDocument();
-
 	        // Eliminar los atributos de estilo del documento
 	        SimpleAttributeSet emptyStyle = new SimpleAttributeSet();
-	        for (HashMap.Entry<String, String> entry : AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel().get_errors()
+	        document.setCharacterAttributes(0, document.getLength(), emptyStyle, true);
+	        /*for (HashMap.Entry<String, String> entry : AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel().get_errors()
 					.entrySet()) {
 				// Obtener la línea y columna de inicio de la palabra
 				String[] parts = entry.getKey().split(":");
 				int startLine = Integer.parseInt(parts[0]) - 1;
 				int startColumn = Integer.parseInt(parts[1]);
-				int endColumn=Integer.parseInt(parts[2]);
+				int endColumn=Integer.parseInt(parts[2])+startColumn;
 				// Calcular la posición de inicio y fin de la palabra
+				int a =document.getDefaultRootElement().getElementCount();
+				System.out.println(document.getDefaultRootElement().getElement(startLine).toString());
 				int start = document.getDefaultRootElement().getElement(startLine).getStartOffset() + startColumn;
 				int end = document.getDefaultRootElement().getElement(startLine).getStartOffset() + endColumn;
 				// Aplicar el estilo de subrayado rojo a la palabra
 				document.setCharacterAttributes(start, end - start, emptyStyle, true);
-				try {
-					selectedFileEditorPanel.getStyledDocument().processChangedLines(0, document.getLength());
-				} catch (BadLocationException e) {
-					// Updates the log
-		            AcideLog.getLog().error(e.getMessage());
-				}
-			}
+			}*/
+	        try {
+	        	selectedFileEditorPanel.getStyledDocument().processChangedLines(0, document.getLength());
+	        } catch (BadLocationException e) {
+	        	// Updates the log
+	        	AcideLog.getLog().error(e.getMessage());
+	        }
 	    
 	}
 

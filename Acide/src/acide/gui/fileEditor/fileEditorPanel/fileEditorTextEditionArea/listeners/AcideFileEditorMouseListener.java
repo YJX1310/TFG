@@ -53,6 +53,7 @@ import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.Acid
 import acide.gui.mainWindow.AcideMainWindow;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -103,6 +104,27 @@ public class AcideFileEditorMouseListener extends MouseAdapter  {
 		selectExplorerTreeNode();
 		
 	}
+	/**
+	 * Disable the error popup
+	 */
+	@Override 
+    public void mouseExited(MouseEvent event) {
+         Timer _timer = null;
+         
+    	_timer = new Timer(600, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	Component oppositeComponent = event.getComponent();
+
+            	AcideFileEditorPanel selectedFileEditorPanelIndex = AcideMainWindow.getInstance().getFileEditorManager()
+                        .getSelectedFileEditorPanel();
+                 if (oppositeComponent == null || oppositeComponent != selectedFileEditorPanelIndex.getActiveTextEditionArea()) {            
+                	 selectedFileEditorPanelIndex.getErrorPopup().setVisible(false);
+                 }
+            }
+        });
+    	_timer.start();
+    	_timer.setRepeats(false);
+    }
 	
 	/**
 	 * Highlights the matching elements.

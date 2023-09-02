@@ -1,7 +1,7 @@
-/abolish
-/multiline on
+
 CREATE TABLE t(a INT, b INT);
 CREATE TABLE s(b INT, c INT);
+
 INSERT INTO t VALUES (1,1);
 INSERT INTO t VALUES (2,2);
 INSERT INTO s VALUES (1,1);

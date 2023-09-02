@@ -711,7 +711,11 @@ public class AcideFileEditorPanel extends JPanel {
 	public AcideFileEditorPopupMenu getPopupMenu() {
 		return _popupMenu;
 	}
-	
+	/**
+	 * Returns the ACIDE - A Configurable IDE file editor panel error popup .
+	 * 
+	 * @return the ACIDE - A Configurable IDE file editor panel error popup .
+	 */
 	public AcidefileEditorPanelErrorpopup getErrorPopup() {
 		return _errorpopup;
 	}

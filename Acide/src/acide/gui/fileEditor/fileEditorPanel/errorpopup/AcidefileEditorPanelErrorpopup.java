@@ -58,21 +58,34 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 
 import acide.language.AcideLanguageManager;
 
-
+/**
+ * ACIDE - A Configurable IDE file editor panel error popup.
+ * 
+ * @version 0.20
+ * @see JFrame
+ */
 
 
 public class AcidefileEditorPanelErrorpopup extends JFrame{
+	/**
+	 * ACIDE - A Configurable IDE line AcidefileEditorPanelErrorpopup class serial version UID.
+	 */
+	private static final long serialVersionUID = 1L;
 	//Atributos de la clase
 	 private static AcidefileEditorPanelErrorpopup _instance;
 	 private JLabel _textError = new JLabel("");
 	 
-	public AcidefileEditorPanelErrorpopup() { //Constructor con parametro;
+	public AcidefileEditorPanelErrorpopup() {
+		// Builds the popup menu components
 		initGUI();
 	}
-
+	/**
+	 * Builds the ACIDE - A Configurable IDE file editor error popup components.
+	 */
 	private void initGUI() {
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		ImageIcon erroricon = new ImageIcon("resources/icons/menu/project/deleteFile.png");
@@ -92,6 +105,9 @@ public class AcidefileEditorPanelErrorpopup extends JFrame{
 		setUndecorated(true);
 
 	}
+	/**
+	 * @return the ACIDE - A Configurable IDE AcidefileEditorPanelErrorpopup class instance.
+	 */
 	public static AcidefileEditorPanelErrorpopup getInstance() {
 		
 		if (_instance == null)

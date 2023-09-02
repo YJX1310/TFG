@@ -87,25 +87,22 @@ public class AcideFileEditorMouseMotionListener implements MouseMotionListener {
     private Point _lastMousePosition;
    
     public AcideFileEditorMouseMotionListener() {
-    	_timer = new Timer(1000, new ActionListener() {
+    	_timer = new Timer(500, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                // Mostrar el mensaje después de que el temporizador haya transcurrido un segundo
             	AcideFileEditorPanel selectedFileEditorPanelIndex = AcideMainWindow.getInstance().getFileEditorManager()
                         .getSelectedFileEditorPanel();
-                // Mostrar el mensaje después de que el temporizador haya transcurrido un segundo
                 Point punto = _lastMousePosition;
                 int offset = selectedFileEditorPanelIndex.getActiveTextEditionArea().viewToModel(punto);
                 int line = selectedFileEditorPanelIndex.getActiveTextEditionArea().getDocument().getDefaultRootElement().getElementIndex(offset) + 1;
                 int column = offset - selectedFileEditorPanelIndex.getActiveTextEditionArea().getDocument().getDefaultRootElement().getElement(line - 1).getStartOffset() + 1;
-                //String posicion=line + ":" + (column);
-                //System.out.println(posicion);
-				
                 HashMap<String, String> errors = selectedFileEditorPanelIndex.get_errors();
 				for (HashMap.Entry<String, String> entry : errors.entrySet()) {
 					// Obtener la línea y columna de inicio de la palabra
 					String[] parts = entry.getKey().split(":");
 					int wordLine = Integer.parseInt(parts[0]);
 					int wordnColumnStart = Integer.parseInt(parts[1]);
-					int wordColumnEnd=Integer.parseInt(parts[2]);
+					int wordColumnEnd=Integer.parseInt(parts[2])+wordnColumnStart;
 	                if((line==wordLine)&&(column>=wordnColumnStart)&&(column<=wordColumnEnd)) {
 	                    selectedFileEditorPanelIndex.getErrorPopup().SetErrorLabel(entry.getValue());     
 	                    selectedFileEditorPanelIndex.getErrorPopup().setVisible(true);
@@ -124,12 +121,13 @@ public class AcideFileEditorMouseMotionListener implements MouseMotionListener {
     	AcideFileEditorPanel selectedFileEditorPanelIndex = AcideMainWindow.getInstance().getFileEditorManager()
                 .getSelectedFileEditorPanel();
         Point currentMousePosition = mouseEvent.getPoint();
+        selectedFileEditorPanelIndex.getErrorPopup().setVisible(false);
         if (_lastMousePosition == null) {
         	_lastMousePosition = currentMousePosition;
         } else if (!_lastMousePosition.equals(currentMousePosition)) {
             // Si el ratón se ha movido, reinicia el temporizador
-        	selectedFileEditorPanelIndex.getErrorPopup().setVisible(false);
         	selectedFileEditorPanelIndex.getErrorPopup().setLocation(mouseEvent.getLocationOnScreen());
+        	//selectedFileEditorPanelIndex.getErrorPopup().setLocation(mouseEvent.getX(), mouseEvent.getX());
         	_lastMousePosition = currentMousePosition;
         	_timer.restart();
             

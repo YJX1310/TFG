@@ -1,12 +1,10 @@
---
--- Aggregates
---
--- SQL Formulation
---
 
-/multiline on
+
+CREATE or replace table employee(name string, department string, salary int);
 
 create or replace table employee(name string, department string, salary int);
+hola
+
 insert into employee values('anderson','accounting',1200);
 insert into employee values('andrews','accounting',1200);
 insert into employee values('arlingon','accounting',1000);
@@ -19,9 +17,9 @@ insert into employee values('smith','sales',1000);
 insert into employee values('steel','sales',1020);
 insert into employee values('sullivan','sales',null);
 select * from employee;
-select count(*) from employee;
+select count() from employee;
 select count(salary) from employee;
-select count(*),count(salary),min(salary),max(salary),sum(salary),avg(salary),times(salary) 
+select count(),count(salary),min(salary),max(salary),sum(salary),avg(salary),times(salary) 
   from employee;
 select * from employee where name = (select min(name) from employee);
 select min(name),max(name),avg(salary) from employee;

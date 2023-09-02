@@ -76,6 +76,7 @@ import acide.gui.debugPanel.AcideDebugPanel;
 import acide.gui.explorerPanel.AcideExplorerPanel;
 import acide.gui.fileEditor.fileEditorManager.AcideFileEditorManager;
 import acide.gui.graphPanel.AcideGraphPanel;
+import acide.gui.mainWindow.listeners.AcideMainWindowFocusListener;
 import acide.gui.mainWindow.listeners.AcideMainWindowMouseListener;
 import acide.gui.mainWindow.listeners.AcideMainWindowWindowListener;
 import acide.gui.mainWindow.utils.AcideLastElementOnFocus;
@@ -433,7 +434,8 @@ public class AcideMainWindow extends JFrame {
 		// Adds the window listener to the ACIDE - A Configurable IDE main
 		// window
 		addWindowListener(new AcideMainWindowWindowListener());
-
+		// Adds the window focus listener to the ACIDE - A Configurable IDE main
+		addWindowFocusListener(new AcideMainWindowFocusListener());
 		// Creates the mouse listener for the Drag and Drop action between panels
 		AcideMainWindowMouseListener mouse = new AcideMainWindowMouseListener(this);
 

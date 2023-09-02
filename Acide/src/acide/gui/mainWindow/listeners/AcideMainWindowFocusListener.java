@@ -42,60 +42,53 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.listeners;
+package acide.gui.mainWindow.listeners;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 
 import javax.swing.Timer;
 
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
-import acide.gui.fileEditor.fileEditorPanel.errorpopup.AcidefileEditorPanelErrorpopup;
 import acide.gui.mainWindow.AcideMainWindow;
-import acide.gui.mainWindow.utils.AcideLastElementOnFocus;
-
 /**
- * ACIDE - A Configurable IDE file editor text edition area focus listener.
+ * ACIDE - A Configurable IDE Main Window Focus Listener
  * 
- * @version 0.11
- * @see FocusListener
+ * version 0.20
+ * see @WindowFocusListener
  */
-public class AcideFileEditorFocusListener implements FocusListener {
+public class AcideMainWindowFocusListener implements WindowFocusListener {
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see java.awt.event.FocusListener#focusGained(java.awt.event.FocusEvent)
+	 * @see java.awt.event.FocusListener#focusGained(java.awt.event. FocusEvent)
 	 */
+
 	@Override
-	public void focusGained(FocusEvent focusEvent) {
-		// Dispatches the event
-		dispatchEvent(focusEvent);
-	}
+	public void windowGainedFocus(WindowEvent e) {
+		// TODO Auto-generated method stub
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.awt.event.FocusListener#focusLost(java.awt.event.FocusEvent)
-	 */
+	}
 	/**
 	 * Disable the error popup
 	 */
 	@Override
-	public void focusLost(FocusEvent focusEvent) {
-		// Dispatches the event
-		dispatchEvent(focusEvent);
+	public void windowLostFocus(WindowEvent focusEvent) {
+		
+		
          Timer _timer = null;
     	_timer = new Timer(500, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
             	AcideFileEditorPanel selectedFileEditorPanelIndex = AcideMainWindow.getInstance().getFileEditorManager()
                         .getSelectedFileEditorPanel();
-                 Component oppositeComponent = focusEvent.getOppositeComponent();
+                 Component oppositeComponent = focusEvent.getOppositeWindow();
                  if (oppositeComponent == null || oppositeComponent != selectedFileEditorPanelIndex.getErrorPopup()) {            
                 	 selectedFileEditorPanelIndex.getErrorPopup().setVisible(false);
                  }
@@ -104,17 +97,5 @@ public class AcideFileEditorFocusListener implements FocusListener {
     	_timer.start();
     	_timer.setRepeats(false);
 	}
-	
-	/**
-	 * Dispatches the focus event.
-	 * 
-	 * @param focusEvent
-	 *            focus event.
-	 */
-	private void dispatchEvent(FocusEvent focusEvent) {
 
-		// Updates the last element on focus in the main window
-		AcideMainWindow.getInstance().setLastElementOnFocus(
-				AcideLastElementOnFocus.FILE_EDITOR);
-	}
 }
