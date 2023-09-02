@@ -216,6 +216,7 @@ fragment HEX_DIGIT: [0-9A-F];
 fragment DIGIT:     [0-9];
 
 
+
 class ExprParser extends Parser;
 grammar Expr;
 
@@ -1098,4 +1099,7 @@ any_name:
     | keyword
     | STRING_LITERAL
     | OPEN_PAR any_name CLOSE_PAR
+;
+
+Statement delimiter;
 ;
