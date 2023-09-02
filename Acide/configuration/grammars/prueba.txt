@@ -31,3 +31,6 @@ starPredicate: 'star' '(' ID ')';
 ID: [a-zA-Z]+;
 WS: [ \t\r\n]+ -> skip;
 COMMENT : '%' ~[\r\n]* -> skip ;
+
+Statement delimiter;
+;

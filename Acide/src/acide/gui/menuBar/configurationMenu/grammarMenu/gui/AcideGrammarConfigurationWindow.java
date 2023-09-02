@@ -87,12 +87,14 @@ import acide.configuration.lexicon.AcideLexiconConfiguration;
 import acide.configuration.lexicon.delimiters.AcideLexiconDelimitersManager;
 import acide.configuration.lexicon.tokens.AcideLexiconTokenGroup;
 import acide.configuration.lexicon.tokens.AcideLexiconTokenManager;
+import acide.files.AcideFileExtensionFilterManager;
 import acide.files.AcideFileManager;
 import acide.files.bytes.AcideByteFileManager;
 import acide.files.utils.AcideFileOperation;
 import acide.files.utils.AcideFileTarget;
 import acide.files.utils.AcideFileType;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
+import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideHighlightError;
 import acide.gui.listeners.AcideWindowClosingListener;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
@@ -719,17 +721,26 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 		 */
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
+			
+			AcideHighlightError errorhighlighter = AcideHighlightError.getInstance();
+			
+			// Gets the selected file editor panel
+			AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
+					.getFileEditorManager().getSelectedFileEditorPanel();
+			
+			// Clear all the errors highlights
+			errorhighlighter.clearErrorHighlight();
+			selectedFileEditorPanel.setErrors(new HashMap<String, String>());
+			
 
 			// Creates the file content
-			String textContent = "grammar Expr;" + System.lineSeparator() + System.lineSeparator() +_rulesTextArea.getText() + _categoriesTextArea.getText();
+			String textContent = "grammar Expr;" + System.lineSeparator() +_rulesTextArea.getText()
+			+ System.lineSeparator() + _categoriesTextArea.getText();
 
 			//int index = textContent.indexOf(";");
 			//String firstLine = "grammar Expr;";
 			//textContent = firstLine + textContent.substring(index + 1);
 			//textContent += System.lineSeparator() + _categoriesTextArea.getText();
-			
-			// Saves the delimiter file
-			AcideFileManager.getInstance().write("delimiter.txt", _delimiterTxt.getText());
 			
 			// Saves the Expr.g4 file
 			boolean isSaved = AcideFileManager.getInstance().write("Expr.g4",
@@ -745,6 +756,11 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			isSaved = isSaved
 					&& AcideFileManager.getInstance().write(AcideGrammarFileCreationProcess.DEFAULT_PATH + "syntaxRules.txt",
 							_rulesTextArea.getText());
+			
+			// Saves the delimiter file
+			isSaved = isSaved 
+					&&	AcideFileManager.getInstance().write(AcideGrammarFileCreationProcess.DEFAULT_PATH + "delimiter.txt",
+								_delimiterTxt.getText());
 
 			if (isSaved)
 
@@ -794,10 +810,6 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 				// Starts the process
 				process.start();
 				
-				// Gets the selected file editor panel
-				AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
-						.getSelectedFileEditorPanel();
-				
 				selectedFileEditorPanel.set_grammarDelimiter(_delimiterTxt.getText());
 				
 				// If auto-analysis is activated then
@@ -813,14 +825,6 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 					
 					// Analyze the text
 					analyzer.start();
-					
-					/*
-					// Print the errors
-					for(HashMap.Entry<String, String> entry : analyzer.getErrors().entrySet()) {
-					    String key = entry.getKey();
-					    String value = entry.getValue();
-					    System.out.println(key + ": " +value);
-					}*/
 				}
 			} catch (Exception exception) {
 
@@ -866,7 +870,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 	 * ACIDE - A Configurable IDE grammar configuration window load rules button
 	 * action listener.
 	 * 
-	 * @version 0.11
+	 * @version 0.20
 	 * @see ActionListener
 	 */
 	class LoadRulesButtonAction implements ActionListener {
@@ -888,14 +892,19 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			if (absolutePath != null) {
 		        String syntaxContent = "";
 		        String lexicalContent = "";
+		        String delimiterContent = "";
+		        
 		        boolean syntax = false;
 		        boolean lexical = false;
+		        boolean delimiter = false;
 		        
 		        // Read contents of source
 		        try {
 		            BufferedReader reader = new BufferedReader(new FileReader(absolutePath));
 		            String line;
 		            while ((line = reader.readLine()) != null) {
+		            	if(line.equals("grammar Expr;"))
+		            		continue;
 		            	if(line.equals("class ExprLexer extends Lexer;")){
 		            		lexical = true;
 		            		continue;
@@ -905,6 +914,13 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 		            		syntax = true;
 		            		continue;
 		            	}
+		            	if(line.equals("Statement delimiter;")) {
+		            		delimiter = true;
+		            		syntax = false;
+		            		continue;
+		            	}
+		            	if(delimiter)
+		            		delimiterContent = line;
 		            	if(syntax)
 		            		syntaxContent += line + "\n";
 		            	if(lexical)
@@ -921,6 +937,12 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 				
 				// Updates the lexical text area with the lexical content
 				_categoriesTextArea.setText(lexicalContent);
+				
+				// If delimiter content is empty
+				if(!delimiterContent.equals(""))
+					delimiterContent = String.valueOf(delimiterContent.charAt(0));
+				
+				_delimiterTxt.setText(delimiterContent);
 
 				// Updates the log
 				AcideLog.getLog().info(
@@ -951,13 +973,28 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			// Asks for the file path to the user
 			String absolutePath = AcideFileManager.getInstance().askForFile(
 					AcideFileOperation.SAVE, AcideFileTarget.FILES,
-					AcideFileType.FILE, "", null);
+					AcideFileType.FILE, "", new AcideFileExtensionFilterManager(new String[] { ".txt" },
+							AcideLanguageManager.getInstance().getLabels()
+							.getString("s270")));
 
 			if (absolutePath != null) {
 
+				// If it does not contains the .txt extension
+				if (!absolutePath.endsWith(".txt"))
+					// Adds it
+					absolutePath += ".txt";
+				
+				// Creates the file content
+				String textContent = "header{\npackage acide.process.parser.grammar;\n}\n";
+				textContent += "class ExprLexer extends Lexer;\n";
+				textContent += _categoriesTextArea.getText();
+				textContent += "\nclass ExprParser extends Parser;\n";
+				textContent += "grammar Expr;" + System.lineSeparator() +_rulesTextArea.getText();
+				textContent += "\nStatement delimiter;\n" + _delimiterTxt.getText();
+				
 				// Tries to save the file content
 				boolean isSaved = AcideFileManager.getInstance().write(
-						absolutePath, _rulesTextArea.getText());
+						absolutePath, textContent);
 
 				// If it was saved successfully
 				if (isSaved)
@@ -1036,9 +1073,9 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 				// Set the content to the _categoriesTextArea
 				_categoriesTextArea.setText(text);
 				
-			} catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			} catch (FileNotFoundException e) {
+				// Updates the log
+				AcideLog.getLog().error(e.getMessage());
 			}
 		}
 		

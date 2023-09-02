@@ -138,7 +138,7 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 			// Gets the column of the caret position
 			int caretColumn = getCaretColumn(activeTextPane.getCaretPosition(),
 					activeTextPane);
-
+			
 			// Gets the root element from the styled document
 			Element rootElement = AcideMainWindow.getInstance()
 					.getFileEditorManager().getSelectedFileEditorPanel()
@@ -174,14 +174,6 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 				// Analyze the text
 				analyzer.start();
 				
-				/*
-				// Print the errors
-				for(HashMap.Entry<String, String> entry : analyzer.getErrors().entrySet()) {
-				    String key = entry.getKey();
-				    String value = entry.getValue();
-				    System.out.println(key + ": " +value);
-				}
-				*/
 			}
 
 			// Gets its number of lines

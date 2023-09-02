@@ -97,10 +97,6 @@ public class AcideGrammarAnalyzer extends Thread{
 	 */
 	private Class<?> _Cparser;
 	/**
-	 * ACIDE - A Configurable IDE grammar analyzer errors.
-	 */
-//	private HashMap<String, String> _errors;
-	/**
 	 * Creates a new ACIDE - A Configurable IDE grammar analyzer.
 	 */
 	private Object _lock;
@@ -246,11 +242,9 @@ public class AcideGrammarAnalyzer extends Thread{
 			synchronized (_lock) {
 				try {
 					_lock.wait();
-					if(selectedFileEditorPanel.get_grammarDelimiter().equals("")) {
-						constructor(AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
-								.getActiveTextEditionArea().getText());
-						analyzeText();
-					}
+					constructor(AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
+							.getActiveTextEditionArea().getText());
+					analyzeText();
 				} catch (InterruptedException e) {
 					// Updates the log
 					AcideLog.getLog().error(e.getMessage());
@@ -258,11 +252,11 @@ public class AcideGrammarAnalyzer extends Thread{
 			}
 		}
 		else {
-			if(!selectedFileEditorPanel.get_grammarDelimiter().equals("")) {
+			if(selectedFileEditorPanel.get_grammarDelimiter().equals("")) {
 				constructor(AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
 						.getActiveTextEditionArea().getText());
-				analyzeText();
 			}
+			analyzeText();
 		}
 		
 	}

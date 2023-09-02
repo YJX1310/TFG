@@ -56,6 +56,7 @@ import acide.files.utils.AcideFileOperation;
 import acide.files.utils.AcideFileTarget;
 import acide.files.utils.AcideFileType;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
+import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideHighlightError;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
@@ -115,9 +116,15 @@ public class AcideLoadGrammarMenuItemListener implements ActionListener {
 					.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem()
 					.isSelected()) {
 				
+				AcideHighlightError errorhighlighter=AcideHighlightError.getInstance();
+				
 				// Gets the selected file editor panel
-				AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
-						.getSelectedFileEditorPanel();
+				AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
+						.getFileEditorManager().getSelectedFileEditorPanel();
+				
+				// Clear all the errors highlights
+				errorhighlighter.clearErrorHighlight();
+				selectedFileEditorPanel.setErrors(new HashMap<String, String>());
 				
 				// Get the file editor panel analyzer
 				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();

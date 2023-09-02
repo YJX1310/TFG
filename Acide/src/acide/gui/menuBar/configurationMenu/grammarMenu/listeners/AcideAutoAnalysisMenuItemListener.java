@@ -89,8 +89,8 @@ public class AcideAutoAnalysisMenuItemListener implements ActionListener{
 			String lock = "";
 			
 			// Process the current grammar
-			//AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
-			//		.getCurrentGrammarConfiguration().getPath());
+			AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
+					.getCurrentGrammarConfiguration().getPath());
 			
 			AcideGrammarFileCreationProcess fileCreationProcess = new AcideGrammarFileCreationProcess(AcideMainWindow
 					.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
@@ -99,7 +99,7 @@ public class AcideAutoAnalysisMenuItemListener implements ActionListener{
 			
 			fileCreationProcess.setLock(lock);
 			
-			// Analyze the text
+			// Starts the process
 			fileCreationProcess.start();
 			
 			// Get the file editor panel analyzer
@@ -107,12 +107,11 @@ public class AcideAutoAnalysisMenuItemListener implements ActionListener{
 			
 			analyzer.setLock(lock);
 			
+			// Analyze the text
 			analyzer.start();
-			
-			
 		}
 		else {
-			HashMap<String, String> xddd=selectedFileEditorPanel.get_errors();
+			// Clear all the errors highlights
 			errorhighlighter.clearErrorHighlight();
 			selectedFileEditorPanel.setErrors(new HashMap<String, String>());
 		}
@@ -121,6 +120,5 @@ public class AcideAutoAnalysisMenuItemListener implements ActionListener{
 		AcideMainWindow.getInstance()
 		.getMenu().getConfigurationMenu()
 		.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem().setSelected(selected);
-
 	}
 }

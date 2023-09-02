@@ -368,10 +368,17 @@ public class AcideByteFileManager {
         	AcideLog.getLog().error(e.getMessage());
         }
         
+        // Gets the selected file editor panel
 		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
 				.getSelectedFileEditorPanel();
 		
+		// If delimiter content is empty
+		if(!delimiterContent.equals(""))
+			delimiterContent = String.valueOf(delimiterContent.charAt(0));
+		
+		// Set the grammar delimiter of selected file editor panel
 		selectedFileEditorPanel.set_grammarDelimiter(delimiterContent);
+		
 		
         try {
         	// Write the "syntaxContent" to the syntaxFile
@@ -394,6 +401,7 @@ public class AcideByteFileManager {
             //syntaxContent = "grammar Expr;\n" + String.join("\n", Arrays.copyOfRange(lines, 1, lines.length));
             syntaxContent = "grammar Expr;\n" + syntaxContent;
             
+            // Write the rules to Expr.g4
             BufferedWriter g4Writer = new BufferedWriter(new FileWriter(exprFile));
             g4Writer.write(syntaxContent + "\n" + lexicalContent);
             g4Writer.close();
