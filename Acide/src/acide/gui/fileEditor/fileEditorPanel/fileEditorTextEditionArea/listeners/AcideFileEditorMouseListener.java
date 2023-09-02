@@ -104,6 +104,9 @@ public class AcideFileEditorMouseListener extends MouseAdapter  {
 		selectExplorerTreeNode();
 		
 	}
+	/**
+	 * Disable the error popup
+	 */
 	@Override 
     public void mouseExited(MouseEvent event) {
          Timer _timer = null;
@@ -117,7 +120,6 @@ public class AcideFileEditorMouseListener extends MouseAdapter  {
                  if (oppositeComponent == null || oppositeComponent != selectedFileEditorPanelIndex.getActiveTextEditionArea()) {            
                 	 selectedFileEditorPanelIndex.getErrorPopup().setVisible(false);
                  }
-                 //AcideFileEditorTextEditionArea
             }
         });
     	_timer.start();

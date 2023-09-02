@@ -82,6 +82,9 @@ public class AcideFileEditorFocusListener implements FocusListener {
 	 * 
 	 * @see java.awt.event.FocusListener#focusLost(java.awt.event.FocusEvent)
 	 */
+	/**
+	 * Disable the error popup
+	 */
 	@Override
 	public void focusLost(FocusEvent focusEvent) {
 		// Dispatches the event

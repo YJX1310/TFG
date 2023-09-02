@@ -259,6 +259,9 @@ public class AcideMainWindowMouseListener extends MouseAdapter {
 		// only display a hand if the cursor is over the items
 		acideWindow.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 	}
+	/**
+	 * Disable the error popup
+	 */
 	@Override 
     public void mouseExited(MouseEvent e) {
         super.mouseExited(e);

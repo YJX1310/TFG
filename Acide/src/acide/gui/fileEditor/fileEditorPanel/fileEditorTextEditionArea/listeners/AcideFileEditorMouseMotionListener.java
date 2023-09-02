@@ -89,9 +89,9 @@ public class AcideFileEditorMouseMotionListener implements MouseMotionListener {
     public AcideFileEditorMouseMotionListener() {
     	_timer = new Timer(500, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                // Mostrar el mensaje después de que el temporizador haya transcurrido un segundo
             	AcideFileEditorPanel selectedFileEditorPanelIndex = AcideMainWindow.getInstance().getFileEditorManager()
                         .getSelectedFileEditorPanel();
-                // Mostrar el mensaje después de que el temporizador haya transcurrido un segundo
                 Point punto = _lastMousePosition;
                 int offset = selectedFileEditorPanelIndex.getActiveTextEditionArea().viewToModel(punto);
                 int line = selectedFileEditorPanelIndex.getActiveTextEditionArea().getDocument().getDefaultRootElement().getElementIndex(offset) + 1;

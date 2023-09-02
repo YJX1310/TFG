@@ -434,6 +434,7 @@ public class AcideMainWindow extends JFrame {
 		// Adds the window listener to the ACIDE - A Configurable IDE main
 		// window
 		addWindowListener(new AcideMainWindowWindowListener());
+		// Adds the window focus listener to the ACIDE - A Configurable IDE main
 		addWindowFocusListener(new AcideMainWindowFocusListener());
 		// Creates the mouse listener for the Drag and Drop action between panels
 		AcideMainWindowMouseListener mouse = new AcideMainWindowMouseListener(this);

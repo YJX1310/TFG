@@ -7,7 +7,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\aggregates.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>1</__caretPosition>
+            <__caretPosition>77</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
@@ -107,7 +107,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\pets_trust.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>153</__caretPosition>
+            <__caretPosition>0</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
@@ -122,7 +122,7 @@
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
             <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
-            <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
+            <__currentGrammarConfiguration>C:\Users\Iván\Desktop\TFG\TFG\Acide\configuration\grammars\SQLite.txt</__currentGrammarConfiguration>
           </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\DLDebugger\example1.dl.b.pl</__path>
@@ -147,9 +147,9 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\DLDebugger\orbits1.dl</__path>
             <__type>Normal</__type>
-            <__caretPosition>156</__caretPosition>
+            <__caretPosition>67</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
-            <__activeTextEditionArea>0</__activeTextEditionArea>
+            <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/c++.xml</__lexiconConfiguration>
             <__previousGrammarConfiguration>./configuration/grammars/newGrammar.txt</__previousGrammarConfiguration>
             <__currentGrammarConfiguration>C:\Users\34642\eclipse\TFG\Github\Acide\configuration\grammars\prueba.txt</__currentGrammarConfiguration>
@@ -157,7 +157,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\SQLDebugger\example1.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>156</__caretPosition>
+            <__caretPosition>61</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
@@ -197,7 +197,7 @@
         </__list>
       </__list>
     </__fileEditorPanelConfigurationList>
-    <__selectedFileEditorPanelName>aggregates.sql</__selectedFileEditorPanelName>
+    <__selectedFileEditorPanelName>pets_trust.sql</__selectedFileEditorPanelName>
     <__fontName>Monospaced.plain</__fontName>
     <__fontStyle>0</__fontStyle>
     <__fontSize>12</__fontSize>

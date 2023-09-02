@@ -70,14 +70,18 @@ import acide.process.parser.AcideGrammarAnalyzer;
 public class AcideHighlightError {
 
 	private static AcideHighlightError _instance;
-
+	/**
+	 * Return the unique AcideHighlightError instance.
+	 */
 	public static AcideHighlightError getInstance() {
 
 		if (_instance == null)
 			_instance = new AcideHighlightError();
 		return _instance;
 	}
-
+	/**
+	 * Highlights the matching elements.
+	 */
 	public void ErrorHighLight() {
 		
 		SwingUtilities.invokeLater(new Runnable() {
@@ -122,6 +126,9 @@ public class AcideHighlightError {
 			}
 		});
 	}
+	/**
+	 * Clear all error Highlightings.
+	 */
 	public void clearErrorHighlight() {
 	    
 	        AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
