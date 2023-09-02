@@ -44,9 +44,17 @@
  */
 package acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.listeners;
 
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
 
+import javax.swing.Timer;
+
+import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
+import acide.gui.fileEditor.fileEditorPanel.errorpopup.AcidefileEditorPanelErrorpopup;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.gui.mainWindow.utils.AcideLastElementOnFocus;
 
@@ -78,8 +86,22 @@ public class AcideFileEditorFocusListener implements FocusListener {
 	public void focusLost(FocusEvent focusEvent) {
 		// Dispatches the event
 		dispatchEvent(focusEvent);
-	}
+         Timer _timer = null;
+    	_timer = new Timer(500, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
 
+            	AcideFileEditorPanel selectedFileEditorPanelIndex = AcideMainWindow.getInstance().getFileEditorManager()
+                        .getSelectedFileEditorPanel();
+                 Component oppositeComponent = focusEvent.getOppositeComponent();
+                 if (oppositeComponent == null || oppositeComponent != selectedFileEditorPanelIndex.getErrorPopup()) {            
+                	 selectedFileEditorPanelIndex.getErrorPopup().setVisible(false);
+                 }
+            }
+        });
+    	_timer.start();
+    	_timer.setRepeats(false);
+	}
+	
 	/**
 	 * Dispatches the focus event.
 	 * 

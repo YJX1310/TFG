@@ -258,7 +258,7 @@ public class AcideGrammarAnalyzer extends Thread{
 			}
 		}
 		else {
-			if(!selectedFileEditorPanel.get_grammarDelimiter().equals("")) {
+			if(selectedFileEditorPanel.get_grammarDelimiter().equals("")) {
 				constructor(AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
 						.getActiveTextEditionArea().getText());
 				analyzeText();

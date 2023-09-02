@@ -89,8 +89,8 @@ public class AcideAutoAnalysisMenuItemListener implements ActionListener{
 			String lock = "";
 			
 			// Process the current grammar
-			//AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
-			//		.getCurrentGrammarConfiguration().getPath());
+			AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
+					.getCurrentGrammarConfiguration().getPath());
 			
 			AcideGrammarFileCreationProcess fileCreationProcess = new AcideGrammarFileCreationProcess(AcideMainWindow
 					.getInstance().getFileEditorManager().getSelectedFileEditorPanel()

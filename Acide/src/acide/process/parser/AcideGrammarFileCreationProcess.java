@@ -335,7 +335,7 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		// Updates the progress window
 		AcideProgressWindow
 				.getInstance()
-				.setText("\"" + javaPath + "\" -jar ./lib/antlr-4.13.0-complete.jar Expr.g4");
+				.setText("\"" + javaPath + "\" -jar ./lib/antlr-4.7.1-complete.jar Expr.g4");
 
 		// Executes antlr to generate the files which will be at the .jar
 		Process process = null;
@@ -343,7 +343,7 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		try {
 
 			// Executes the command
-			process = Runtime.getRuntime().exec("\"" + javaPath + "\" -jar ./lib/antlr-4.13.0-complete.jar Expr.g4");
+			process = Runtime.getRuntime().exec("\"" + javaPath + "\" -jar ./lib/antlr-4.7.1-complete.jar Expr.g4");
 			
 			BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
 			StringBuilder errorMessage = new StringBuilder();
@@ -490,12 +490,12 @@ public class AcideGrammarFileCreationProcess extends Thread {
 
 		// Updates the progress window
 		AcideProgressWindow.getInstance().setText(
-				"\"" + javacPath + "\" -cp .;./lib/antlr-4.13.0-complete.jar *.java");
+				"\"" + javacPath + "\" -cp .;./lib/antlr-4.7.1-complete.jar *.java");
 
 		Process process = null;
 		try {
 			// Executes the command
-			process = Runtime.getRuntime().exec("\"" + javacPath + "\" -cp .;./lib/antlr-4.13.0-complete.jar *.java");
+			process = Runtime.getRuntime().exec("\"" + javacPath + "\" -cp .;./lib/antlr-4.7.1-complete.jar *.java");
 			// Executes the command
 			//process = Runtime.getRuntime().exec(
 			//		"\"" + javacPath + "\" -cp . .\\*.java -d .");

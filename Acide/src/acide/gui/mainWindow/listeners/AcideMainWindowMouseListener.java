@@ -48,11 +48,16 @@ import java.awt.Color;
 
 import java.awt.Component;
 import java.awt.Cursor;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.JSplitPane;
+import javax.swing.Timer;
 import javax.swing.border.MatteBorder;
 
 import acide.configuration.project.AcideProjectConfiguration;
@@ -61,6 +66,7 @@ import acide.gui.databasePanel.AcideDataBasePanel;
 import acide.gui.debugPanel.AcideDebugPanel;
 import acide.gui.explorerPanel.AcideExplorerPanel;
 import acide.gui.fileEditor.fileEditorManager.utils.gui.AcideDragAndDropTabbedPane;
+import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.graphPanel.AcideGraphPanel;
 import acide.gui.mainWindow.AcideMainWindow;
 
@@ -253,6 +259,21 @@ public class AcideMainWindowMouseListener extends MouseAdapter {
 		// only display a hand if the cursor is over the items
 		acideWindow.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 	}
+	@Override 
+    public void mouseExited(MouseEvent e) {
+        super.mouseExited(e);
+         Timer _timer = null;
+    	_timer = new Timer(500, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	AcideFileEditorPanel selectedFileEditorPanelIndex = AcideMainWindow.getInstance().getFileEditorManager()
+                        .getSelectedFileEditorPanel();
+	             selectedFileEditorPanelIndex.getErrorPopup().setVisible(false);
+	
+            }
+        });
+    	_timer.start();
+    	_timer.setRepeats(false);
+    }
 	
 	/**
 	 * Changes the ACIDE - A Configurable IDE color of the border of 
