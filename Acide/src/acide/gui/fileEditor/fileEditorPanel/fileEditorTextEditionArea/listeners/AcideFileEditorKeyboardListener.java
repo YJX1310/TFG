@@ -74,7 +74,6 @@ public class AcideFileEditorKeyboardListener extends KeyAdapter {
 	int arr[] = new int[2];
 
 	private static AcideMainWindow acideWindow;
-
 //	private static JProgressBar _progress;
 
 	/**
@@ -84,6 +83,7 @@ public class AcideFileEditorKeyboardListener extends KeyAdapter {
 
 	public AcideFileEditorKeyboardListener() {
 		AcideFileEditorKeyboardListener.acideWindow = AcideMainWindow.getInstance();
+
 	}
 
 	/*
@@ -228,31 +228,34 @@ public class AcideFileEditorKeyboardListener extends KeyAdapter {
 	@Override
 	public void keyPressed(KeyEvent keyEvent) {
 		// Gets the selected file editor panel
-		AcideFileEditorPanel  selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel();
-		
+		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
+				.getSelectedFileEditorPanel();
+
 		AcideHighlightError errorhighlighter = AcideHighlightError.getInstance();
 		// Remove the previous error highlighting
+		
+		if (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
+				.getAutoAnalysisCheckBoxMenuItem().isSelected()) {
 		errorhighlighter.clearErrorHighlight();
 		selectedFileEditorPanel.setErrors(new HashMap<String, String>());
-		
+		selectedFileEditorPanel.getErrorPopup().setVisible(false);
+		}
 		// Get the delimiter
 		String delimiter = selectedFileEditorPanel.get_grammarDelimiter();
-		String m = selectedFileEditorPanel.getTextEditionAreaContent();
-		if(delimiter.equals("")) {
-			// If it is enter
-			if (keyEvent.getKeyCode() == KeyEvent.VK_ENTER) {
-				// If auto-analysis is activated then
-				if (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-						.getAutoAnalysisCheckBoxMenuItem().isSelected()) {
+		if (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
+				.getAutoAnalysisCheckBoxMenuItem().isSelected()) {
+			if (delimiter == null || delimiter.equals("")) {
+				// If it is enter
+				if (keyEvent.getKeyCode() == KeyEvent.VK_ENTER) {
+					// If auto-analysis is activated then
+
 					// Get the file editor panel analyzer
 					AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
 					// Analyze the text
 					analyzer.start();
+
 				}
-			}
-			if (keyEvent.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-				if (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-						.getAutoAnalysisCheckBoxMenuItem().isSelected()) {
+				if (keyEvent.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
 					int caretPosition = selectedFileEditorPanel.getActiveTextEditionArea().getCaretPosition();
 					int line = selectedFileEditorPanel.getActiveTextEditionArea().getDocument().getDefaultRootElement()
 							.getElementIndex(caretPosition) + 1;
@@ -261,247 +264,224 @@ public class AcideFileEditorKeyboardListener extends KeyAdapter {
 					if (column == 0) {
 						AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
 						analyzer.start();
+
 					}
 				}
-			}
-		}
-		else {	        
-	        if(delimiter.charAt(0) == keyEvent.getKeyChar()) {
-	        	
-	        	// Get the fragment of text to analyze
-	        	int endCaretPosition = selectedFileEditorPanel.getActiveTextEditionArea().getCaretPosition();
-	        	int startCaretPosition = selectedFileEditorPanel.getActiveTextEditionArea().getCaretPosition() - 1;
-	        	
-	        	try {
-	        		// Find the previos delimiter to obtain de fragment of text
-					while(startCaretPosition >= 0 && selectedFileEditorPanel.getActiveTextEditionArea()
-							.getText(startCaretPosition, 1).charAt(0) != keyEvent.getKeyChar()) {
-						startCaretPosition--;
-					}
-		        	
-					// Get the file editor panel analyzer
-					AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
-					
-					String text = selectedFileEditorPanel.getActiveTextEditionArea()
-							.getText(startCaretPosition + 1, endCaretPosition - startCaretPosition) + delimiter;
-					analyzer.setText(text);
-					
-					// Analyze the text
-					analyzer.start();
-					
-				} catch (BadLocationException e) {
-					// Updates the log
-		            AcideLog.getLog().error(e.getMessage());
-				}
-	        }
-		}
-		 
-		
-		/*if (keyEvent.getKeyCode() == KeyEvent.VK_DELETE) {
-			if (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-					.getAutoAnalysisCheckBoxMenuItem().isSelected()) {
-				AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
-						.getSelectedFileEditorPanel();
-				Caret caret = selectedFileEditorPanel.getActiveTextEditionArea().getCaret();
-				String m = selectedFileEditorPanel.getTextEditionAreaContent();
-				int caretPosition = caret.getDot();
-				try {
-					int lineStartOffset = Utilities.getRowStart(selectedFileEditorPanel.getActiveTextEditionArea(),
-							caretPosition);
-					String deletedCharacter = selectedFileEditorPanel.getActiveTextEditionArea().getText(caretPosition,
-							1);
-					
-					if (deletedCharacter.equals("\n")) {
-						AcideHighlightError errorhighlighter = AcideHighlightError.getInstance(); 																									
-						errorhighlighter.clearErrorHighlight();
-						selectedFileEditorPanel.setErrors(new HashMap<String, String>());
-						AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
-						analyzer.start();
-					}
-				} catch (BadLocationException e) {
-					AcideLog.getLog().error(e.getMessage());
-				}
-			}
-		}*/
-		/*if (keyEvent.getKeyCode() == KeyEvent.VK_DELETE) {
-			if (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-					.getAutoAnalysisCheckBoxMenuItem().isSelected()) {
-				AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
-						.getSelectedFileEditorPanel();
-				Caret caret = selectedFileEditorPanel.getActiveTextEditionArea().getCaret();
-				String m = selectedFileEditorPanel.getTextEditionAreaContent();
-				int caretPosition = caret.getDot();
-				try {
-					int lineStartOffset = Utilities.getRowStart(selectedFileEditorPanel.getActiveTextEditionArea(),
-							caretPosition);
-					String deletedCharacter = selectedFileEditorPanel.getActiveTextEditionArea().getText(caretPosition,
-							1);
-					
-					if (deletedCharacter.equals("\n")) {
-						AcideHighlightError errorhighlighter = AcideHighlightError.getInstance(); 																									
-						errorhighlighter.clearErrorHighlight();
-						selectedFileEditorPanel.setErrors(new HashMap<String, String>());
-						AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
-						analyzer.start();
-					}
-				} catch (BadLocationException e) {
-					AcideLog.getLog().error(e.getMessage());
-				}
-			}
-		}*/
-		
-		// para actualizar posicion la lista de errores en caso de pulsar Delete
-		/*if (keyEvent.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-			if (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-					.getAutoAnalysisCheckBoxMenuItem().isSelected()) {
-				AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
-						.getSelectedFileEditorPanel();
-				int caretPosition = selectedFileEditorPanel.getActiveTextEditionArea().getCaretPosition();
-				int line = selectedFileEditorPanel.getActiveTextEditionArea().getDocument().getDefaultRootElement()
-						.getElementIndex(caretPosition) + 1;
-				int column = caretPosition - selectedFileEditorPanel.getActiveTextEditionArea().getDocument()
-						.getDefaultRootElement().getElement(line - 1).getStartOffset();
-				
-				int linestart=selectedFileEditorPanel.getActiveTextEditionArea().getDocument().getDefaultRootElement()
-						.getElementIndex(selectedFileEditorPanel.getActiveTextEditionArea().getSelectionStart()) + 1;
-				int columnstart=selectedFileEditorPanel.getActiveTextEditionArea().getSelectionStart()
-						-selectedFileEditorPanel.getActiveTextEditionArea().getDocument()
-						.getDefaultRootElement().getElement(linestart - 1).getStartOffset();
-				
-				int lineend=selectedFileEditorPanel.getActiveTextEditionArea().getDocument().getDefaultRootElement()
-						.getElementIndex(selectedFileEditorPanel.getActiveTextEditionArea().getSelectionEnd()) + 1;
-				int columnend=selectedFileEditorPanel.getActiveTextEditionArea().getSelectionEnd()
-						-selectedFileEditorPanel.getActiveTextEditionArea().getDocument()
-						.getDefaultRootElement().getElement(lineend - 1).getStartOffset();
-				
-				if (line!=1 || column >0) {
-					HashMap<String, String> errors = selectedFileEditorPanel.get_errors();
-					HashMap<String, String> errorsUpdated = new HashMap<String, String>();
-					Iterator<HashMap.Entry<String, String>> iterator = errors.entrySet().iterator();
+			} else {
+				if (delimiter.charAt(0) == keyEvent.getKeyChar()) {
 
-					while (iterator.hasNext()) {
-						HashMap.Entry<String, String> entry = iterator.next();
-						String[] parts = entry.getKey().split(":");
-						int wordLine = Integer.parseInt(parts[0]);
-						int wordnColumnStart = Integer.parseInt(parts[1]);
-						int errorLengh = Integer.parseInt(parts[2]);
-						int wordnColumnEnd = Integer.parseInt(parts[2]) + wordnColumnStart;
-						String msg = entry.getValue();
-						if (column == 0) {
-							if (wordLine > line) {
+					// Get the fragment of text to analyze
+					int endCaretPosition = selectedFileEditorPanel.getActiveTextEditionArea().getCaretPosition();
+					int startCaretPosition = selectedFileEditorPanel.getActiveTextEditionArea().getCaretPosition() - 1;
 
-								wordLine--;
-								String errorActualido = wordLine + ":" + wordnColumnStart + ":" + errorLengh;
-								errorsUpdated.put(errorActualido, msg);
-							} 
-							else if(wordLine<line){
-								errorsUpdated.put(entry.getKey(), msg);
-								
-							}
-							else if (wordLine == line) {
-								Element root = selectedFileEditorPanel.getActiveTextEditionArea().getDocument()
-										.getDefaultRootElement();
-								Element lineElement;
-								if (line == 1) {
-									lineElement = root.getElement(line - 1);
-								} else {
-
-									lineElement = root.getElement(line - 2);
-								}
-
-								int startOffset = lineElement.getStartOffset();
-								int endOffset = lineElement.getEndOffset();
-								int length = endOffset - startOffset;
-								if (length == 1) {
-									wordLine--;
-									String errorActualido = wordLine + ":" + wordnColumnStart + ":" + errorLengh;
-									errorsUpdated.put(errorActualido, msg);
-
-								} else if (length > 1) {
-									wordnColumnStart += (length-1);
-									wordLine--;
-									String errorActualido = wordLine + ":" + wordnColumnStart + ":" + errorLengh;
-									errorsUpdated.put(errorActualido, msg);
-								}
-
-							}
-						} else if (column > 0) {
-							// cuando borras en las posiciones del error
-							if (line == wordLine && column > wordnColumnStart && column <= wordnColumnEnd) {
-								continue;
-							} else if (line == wordLine && column <= wordnColumnStart) {
-								wordnColumnStart --;
-								String errorActualido = wordLine + ":" + wordnColumnStart + ":" + errorLengh;
-								errorsUpdated.put(errorActualido, msg);
-
-							}else if (line == wordLine && column > wordnColumnEnd) {
-								errorsUpdated.put(entry.getKey(), msg);
-							}
-							else if (line<wordLine) {
-								errorsUpdated.put(entry.getKey(), msg);
-							}
-							else if (line>wordLine) {
-								errorsUpdated.put(entry.getKey(), msg);
-							}
-							
-
+					try {
+						// Find the previos delimiter to obtain de fragment of text
+						while (startCaretPosition >= 0 && selectedFileEditorPanel.getActiveTextEditionArea()
+								.getText(startCaretPosition, 1).charAt(0) != keyEvent.getKeyChar()) {
+							startCaretPosition--;
 						}
 
-					}
-					selectedFileEditorPanel.setErrors(errorsUpdated);
-				}
+						// Get the file editor panel analyzer
+						AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
+						String text = selectedFileEditorPanel.getActiveTextEditionArea().getText(startCaretPosition + 1,
+								endCaretPosition - startCaretPosition-1)+keyEvent.getKeyChar();	
+						String deletedCharacter = selectedFileEditorPanel.getActiveTextEditionArea().getText(startCaretPosition+1,1);
+						int line = selectedFileEditorPanel.getActiveTextEditionArea().getDocument().getDefaultRootElement()
+								.getElementIndex(startCaretPosition+1) + 1;
+						int column = (startCaretPosition+1) - selectedFileEditorPanel.getActiveTextEditionArea().getDocument()
+								.getDefaultRootElement().getElement(line - 1).getStartOffset();
+						if(column==0) {
+							for(int i=0;i<line-1;i++) {
+								text="\n"+text;
+							}
+						}
+						else if (column !=0) {
+							for(int i=0;i<column;i++) {
+								text=" "+text;
+							}
+							System.out.println(text);
+							for(int i=0;i<line-1;i++) {
+								text="\n"+text;
+							}
+							System.out.println(text);
+						}
+						analyzer.setText(text);
+						
+						// Analyze the text
+						analyzer.start();
+						
 
+					} catch (BadLocationException e) {
+						// Updates the log
+						AcideLog.getLog().error(e.getMessage());
+					}
+				}
 			}
 		}
-		// para actualizar posicion la lista de errores en caso de pulsar Enter
-		/*if (keyEvent.getKeyCode() == KeyEvent.VK_ENTER) {
-			if (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-					.getAutoAnalysisCheckBoxMenuItem().isSelected()) {
-				AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
-						.getSelectedFileEditorPanel();
-				int caretPosition = selectedFileEditorPanel.getActiveTextEditionArea().getCaretPosition();
-				int line = selectedFileEditorPanel.getActiveTextEditionArea().getDocument().getDefaultRootElement()
-						.getElementIndex(caretPosition) + 1;
-				int column = caretPosition - selectedFileEditorPanel.getActiveTextEditionArea().getDocument()
-						.getDefaultRootElement().getElement(line - 1).getStartOffset();
-				HashMap<String, String> errors = selectedFileEditorPanel.get_errors();
-				HashMap<String, String> errorsUpdated = new HashMap<String, String>();
-				Iterator<HashMap.Entry<String, String>> iterator = errors.entrySet().iterator();
-				while (iterator.hasNext()) {
-					HashMap.Entry<String, String> entry = iterator.next();
-					String[] parts = entry.getKey().split(":");
-					String msg = entry.getValue();
-					int wordLine = Integer.parseInt(parts[0]);
-					int wordnColumnStart = Integer.parseInt(parts[1]);
-					int errorLengh = Integer.parseInt(parts[2]) ;
-					int wordnColumnEnd = Integer.parseInt(parts[2]) + wordnColumnStart;
-					if (line == wordLine && column > wordnColumnStart && column <= wordnColumnEnd) {
-						continue;
-					}
-					else if(wordLine<line) {
-						errorsUpdated.put(entry.getKey(), msg);
-					}
-					else if(wordLine==line&&wordnColumnStart<column) {
-						errorsUpdated.put(entry.getKey(), msg);
-					}
-					else if (wordLine >= line&&column==0||wordLine > line) {
-						wordLine++;
-						String errorActualido = wordLine + ":" + wordnColumnStart + ":" + errorLengh;
-						errorsUpdated.put(errorActualido, msg);
-					}
-					
-					else if(wordLine==line&&column<wordnColumnEnd) {
-						wordLine++;
-						String errorActualido = wordLine + ":" + (wordnColumnStart-column) + ":" + errorLengh;
-						errorsUpdated.put(errorActualido, msg);
-					}
 
+		/*
+		 * if (keyEvent.getKeyCode() == KeyEvent.VK_DELETE) { if
+		 * (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().
+		 * getGrammarMenu() .getAutoAnalysisCheckBoxMenuItem().isSelected()) {
+		 * AcideFileEditorPanel selectedFileEditorPanel =
+		 * AcideMainWindow.getInstance().getFileEditorManager()
+		 * .getSelectedFileEditorPanel(); Caret caret =
+		 * selectedFileEditorPanel.getActiveTextEditionArea().getCaret(); String m =
+		 * selectedFileEditorPanel.getTextEditionAreaContent(); int caretPosition =
+		 * caret.getDot(); try { int lineStartOffset =
+		 * Utilities.getRowStart(selectedFileEditorPanel.getActiveTextEditionArea(),
+		 * caretPosition); String deletedCharacter =
+		 * selectedFileEditorPanel.getActiveTextEditionArea().getText(caretPosition, 1);
+		 * 
+		 * if (deletedCharacter.equals("\n")) { AcideHighlightError errorhighlighter =
+		 * AcideHighlightError.getInstance(); errorhighlighter.clearErrorHighlight();
+		 * selectedFileEditorPanel.setErrors(new HashMap<String, String>());
+		 * AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer(); analyzer.start();
+		 * } } catch (BadLocationException e) { AcideLog.getLog().error(e.getMessage());
+		 * } } }
+		 */
+		/*
+		 * if (keyEvent.getKeyCode() == KeyEvent.VK_DELETE) { if
+		 * (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().
+		 * getGrammarMenu() .getAutoAnalysisCheckBoxMenuItem().isSelected()) {
+		 * AcideFileEditorPanel selectedFileEditorPanel =
+		 * AcideMainWindow.getInstance().getFileEditorManager()
+		 * .getSelectedFileEditorPanel(); Caret caret =
+		 * selectedFileEditorPanel.getActiveTextEditionArea().getCaret(); String m =
+		 * selectedFileEditorPanel.getTextEditionAreaContent(); int caretPosition =
+		 * caret.getDot(); try { int lineStartOffset =
+		 * Utilities.getRowStart(selectedFileEditorPanel.getActiveTextEditionArea(),
+		 * caretPosition); String deletedCharacter =
+		 * selectedFileEditorPanel.getActiveTextEditionArea().getText(caretPosition, 1);
+		 * 
+		 * if (deletedCharacter.equals("\n")) { AcideHighlightError errorhighlighter =
+		 * AcideHighlightError.getInstance(); errorhighlighter.clearErrorHighlight();
+		 * selectedFileEditorPanel.setErrors(new HashMap<String, String>());
+		 * AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer(); analyzer.start();
+		 * } } catch (BadLocationException e) { AcideLog.getLog().error(e.getMessage());
+		 * } } }
+		 */
 
-				}
-				selectedFileEditorPanel.setErrors(errorsUpdated);
-
-			}
-		}*/
+		// para actualizar posicion la lista de errores en caso de pulsar Delete
+		/*
+		 * if (keyEvent.getKeyCode() == KeyEvent.VK_BACK_SPACE) { if
+		 * (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().
+		 * getGrammarMenu() .getAutoAnalysisCheckBoxMenuItem().isSelected()) {
+		 * AcideFileEditorPanel selectedFileEditorPanel =
+		 * AcideMainWindow.getInstance().getFileEditorManager()
+		 * .getSelectedFileEditorPanel(); int caretPosition =
+		 * selectedFileEditorPanel.getActiveTextEditionArea().getCaretPosition(); int
+		 * line = selectedFileEditorPanel.getActiveTextEditionArea().getDocument().
+		 * getDefaultRootElement() .getElementIndex(caretPosition) + 1; int column =
+		 * caretPosition -
+		 * selectedFileEditorPanel.getActiveTextEditionArea().getDocument()
+		 * .getDefaultRootElement().getElement(line - 1).getStartOffset();
+		 * 
+		 * int
+		 * linestart=selectedFileEditorPanel.getActiveTextEditionArea().getDocument().
+		 * getDefaultRootElement()
+		 * .getElementIndex(selectedFileEditorPanel.getActiveTextEditionArea().
+		 * getSelectionStart()) + 1; int
+		 * columnstart=selectedFileEditorPanel.getActiveTextEditionArea().
+		 * getSelectionStart()
+		 * -selectedFileEditorPanel.getActiveTextEditionArea().getDocument()
+		 * .getDefaultRootElement().getElement(linestart - 1).getStartOffset();
+		 * 
+		 * int lineend=selectedFileEditorPanel.getActiveTextEditionArea().getDocument().
+		 * getDefaultRootElement()
+		 * .getElementIndex(selectedFileEditorPanel.getActiveTextEditionArea().
+		 * getSelectionEnd()) + 1; int
+		 * columnend=selectedFileEditorPanel.getActiveTextEditionArea().getSelectionEnd(
+		 * ) -selectedFileEditorPanel.getActiveTextEditionArea().getDocument()
+		 * .getDefaultRootElement().getElement(lineend - 1).getStartOffset();
+		 * 
+		 * if (line!=1 || column >0) { HashMap<String, String> errors =
+		 * selectedFileEditorPanel.get_errors(); HashMap<String, String> errorsUpdated =
+		 * new HashMap<String, String>(); Iterator<HashMap.Entry<String, String>>
+		 * iterator = errors.entrySet().iterator();
+		 * 
+		 * while (iterator.hasNext()) { HashMap.Entry<String, String> entry =
+		 * iterator.next(); String[] parts = entry.getKey().split(":"); int wordLine =
+		 * Integer.parseInt(parts[0]); int wordnColumnStart =
+		 * Integer.parseInt(parts[1]); int errorLengh = Integer.parseInt(parts[2]); int
+		 * wordnColumnEnd = Integer.parseInt(parts[2]) + wordnColumnStart; String msg =
+		 * entry.getValue(); if (column == 0) { if (wordLine > line) {
+		 * 
+		 * wordLine--; String errorActualido = wordLine + ":" + wordnColumnStart + ":" +
+		 * errorLengh; errorsUpdated.put(errorActualido, msg); } else if(wordLine<line){
+		 * errorsUpdated.put(entry.getKey(), msg);
+		 * 
+		 * } else if (wordLine == line) { Element root =
+		 * selectedFileEditorPanel.getActiveTextEditionArea().getDocument()
+		 * .getDefaultRootElement(); Element lineElement; if (line == 1) { lineElement =
+		 * root.getElement(line - 1); } else {
+		 * 
+		 * lineElement = root.getElement(line - 2); }
+		 * 
+		 * int startOffset = lineElement.getStartOffset(); int endOffset =
+		 * lineElement.getEndOffset(); int length = endOffset - startOffset; if (length
+		 * == 1) { wordLine--; String errorActualido = wordLine + ":" + wordnColumnStart
+		 * + ":" + errorLengh; errorsUpdated.put(errorActualido, msg);
+		 * 
+		 * } else if (length > 1) { wordnColumnStart += (length-1); wordLine--; String
+		 * errorActualido = wordLine + ":" + wordnColumnStart + ":" + errorLengh;
+		 * errorsUpdated.put(errorActualido, msg); }
+		 * 
+		 * } } else if (column > 0) { // cuando borras en las posiciones del error if
+		 * (line == wordLine && column > wordnColumnStart && column <= wordnColumnEnd) {
+		 * continue; } else if (line == wordLine && column <= wordnColumnStart) {
+		 * wordnColumnStart --; String errorActualido = wordLine + ":" +
+		 * wordnColumnStart + ":" + errorLengh; errorsUpdated.put(errorActualido, msg);
+		 * 
+		 * }else if (line == wordLine && column > wordnColumnEnd) {
+		 * errorsUpdated.put(entry.getKey(), msg); } else if (line<wordLine) {
+		 * errorsUpdated.put(entry.getKey(), msg); } else if (line>wordLine) {
+		 * errorsUpdated.put(entry.getKey(), msg); }
+		 * 
+		 * 
+		 * }
+		 * 
+		 * } selectedFileEditorPanel.setErrors(errorsUpdated); }
+		 * 
+		 * } } // para actualizar posicion la lista de errores en caso de pulsar Enter
+		 * /*if (keyEvent.getKeyCode() == KeyEvent.VK_ENTER) { if
+		 * (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().
+		 * getGrammarMenu() .getAutoAnalysisCheckBoxMenuItem().isSelected()) {
+		 * AcideFileEditorPanel selectedFileEditorPanel =
+		 * AcideMainWindow.getInstance().getFileEditorManager()
+		 * .getSelectedFileEditorPanel(); int caretPosition =
+		 * selectedFileEditorPanel.getActiveTextEditionArea().getCaretPosition(); int
+		 * line = selectedFileEditorPanel.getActiveTextEditionArea().getDocument().
+		 * getDefaultRootElement() .getElementIndex(caretPosition) + 1; int column =
+		 * caretPosition -
+		 * selectedFileEditorPanel.getActiveTextEditionArea().getDocument()
+		 * .getDefaultRootElement().getElement(line - 1).getStartOffset();
+		 * HashMap<String, String> errors = selectedFileEditorPanel.get_errors();
+		 * HashMap<String, String> errorsUpdated = new HashMap<String, String>();
+		 * Iterator<HashMap.Entry<String, String>> iterator =
+		 * errors.entrySet().iterator(); while (iterator.hasNext()) {
+		 * HashMap.Entry<String, String> entry = iterator.next(); String[] parts =
+		 * entry.getKey().split(":"); String msg = entry.getValue(); int wordLine =
+		 * Integer.parseInt(parts[0]); int wordnColumnStart =
+		 * Integer.parseInt(parts[1]); int errorLengh = Integer.parseInt(parts[2]) ; int
+		 * wordnColumnEnd = Integer.parseInt(parts[2]) + wordnColumnStart; if (line ==
+		 * wordLine && column > wordnColumnStart && column <= wordnColumnEnd) {
+		 * continue; } else if(wordLine<line) { errorsUpdated.put(entry.getKey(), msg);
+		 * } else if(wordLine==line&&wordnColumnStart<column) {
+		 * errorsUpdated.put(entry.getKey(), msg); } else if (wordLine >=
+		 * line&&column==0||wordLine > line) { wordLine++; String errorActualido =
+		 * wordLine + ":" + wordnColumnStart + ":" + errorLengh;
+		 * errorsUpdated.put(errorActualido, msg); }
+		 * 
+		 * else if(wordLine==line&&column<wordnColumnEnd) { wordLine++; String
+		 * errorActualido = wordLine + ":" + (wordnColumnStart-column) + ":" +
+		 * errorLengh; errorsUpdated.put(errorActualido, msg); }
+		 * 
+		 * 
+		 * } selectedFileEditorPanel.setErrors(errorsUpdated);
+		 * 
+		 * } }
+		 */
 
 	}
 }

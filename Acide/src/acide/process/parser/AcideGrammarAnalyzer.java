@@ -51,6 +51,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import javax.swing.text.BadLocationException;
+
 import org.antlr.v4.runtime.ANTLRErrorListener;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
@@ -68,10 +70,11 @@ import acide.process.parser.grammar.ExprParser;
 
 /**
  * ACIDE - A Configurable IDE grammar analyzer.
+ * 
  * @version 0.20
  * @see Thread
  */
-public class AcideGrammarAnalyzer extends Thread{
+public class AcideGrammarAnalyzer extends Thread {
 	/**
 	 * ACIDE - A Configurable IDE grammar analyzer text to analyze.
 	 */
@@ -100,44 +103,45 @@ public class AcideGrammarAnalyzer extends Thread{
 	 * Creates a new ACIDE - A Configurable IDE grammar analyzer.
 	 */
 	private Object _lock;
-	
+
 	public AcideGrammarAnalyzer() {
-		
+
 	}
-	
+
 	static class TestClassLoader extends ClassLoader {
 
 		@Override
 		public Class<?> loadClass(String name) throws ClassNotFoundException {
-		
+
 			if (name.equals("acide.process.parser.grammar.ExprLexer")) {
 				try {
-					InputStream is = AcideMain.class.getClassLoader().getResourceAsStream("acide/process/parser/grammar/ExprLexer.class");
+					InputStream is = AcideMain.class.getClassLoader()
+							.getResourceAsStream("acide/process/parser/grammar/ExprLexer.class");
 					ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			        byte[] buffer = new byte[4096];
-			        int bytesRead;
-			        while ((bytesRead = is.read(buffer)) != -1) {
-			            baos.write(buffer, 0, bytesRead);
-			        }
-			        byte[] classBytes = baos.toByteArray();
-			        return defineClass(name, classBytes, 0, classBytes.length);
+					byte[] buffer = new byte[4096];
+					int bytesRead;
+					while ((bytesRead = is.read(buffer)) != -1) {
+						baos.write(buffer, 0, bytesRead);
+					}
+					byte[] classBytes = baos.toByteArray();
+					return defineClass(name, classBytes, 0, classBytes.length);
 				} catch (IOException e) {
 					// Updates the log
 					AcideLog.getLog().error(e.getMessage());
 					throw new ClassNotFoundException("", e);
 				}
-			}
-			else if(name.equals("acide.process.parser.grammar.ExprParser")) {
+			} else if (name.equals("acide.process.parser.grammar.ExprParser")) {
 				try {
-					InputStream is = AcideMain.class.getClassLoader().getResourceAsStream("acide/process/parser/grammar/ExprParser.class");
+					InputStream is = AcideMain.class.getClassLoader()
+							.getResourceAsStream("acide/process/parser/grammar/ExprParser.class");
 					ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			        byte[] buffer = new byte[4096];
-			        int bytesRead;
-			        while ((bytesRead = is.read(buffer)) != -1) {
-			            baos.write(buffer, 0, bytesRead);
-			        }
-			        byte[] classBytes = baos.toByteArray();
-			        return defineClass(name, classBytes, 0, classBytes.length);
+					byte[] buffer = new byte[4096];
+					int bytesRead;
+					while ((bytesRead = is.read(buffer)) != -1) {
+						baos.write(buffer, 0, bytesRead);
+					}
+					byte[] classBytes = baos.toByteArray();
+					return defineClass(name, classBytes, 0, classBytes.length);
 				} catch (IOException e) {
 					// Updates the log
 					AcideLog.getLog().error(e.getMessage());
@@ -145,86 +149,84 @@ public class AcideGrammarAnalyzer extends Thread{
 				}
 			}
 			return getParent().loadClass(name);
-		
+
 		}
 
 	}
-	
+
 	/**
-	 * ACIDE - A Configurable IDE grammar analyzer prepare the lexer and the parser of antlr4
-	 * @param text
-	 *            the text to analyze
-	 * @version 0.20           
+	 * ACIDE - A Configurable IDE grammar analyzer prepare the lexer and the parser
+	 * of antlr4
+	 * 
+	 * @param text the text to analyze
+	 * @version 0.20
 	 */
 	private void constructor(String text) {
 		// Store the text
 		_text = text;
-		
+
 		try {
-			myErrorListener errorListener = new myErrorListener(AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel().get_errors());
-			
+			myErrorListener errorListener = new myErrorListener(
+					AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel().get_errors());
+
 			// Create lexer class
 			_Clexer = new TestClassLoader().loadClass("acide.process.parser.grammar.ExprLexer");
-			
+
 			// Create lexer constructor
 			Constructor<ExprLexer> constructor = (Constructor<ExprLexer>) _Clexer.getConstructor(CharStream.class);
-			
+
 			// Create lexer object
 			_Olexer = constructor.newInstance(CharStreams.fromString(_text));
-			
+
 			// Invoke lexer class removeErrorListeners()
 			_Clexer.getMethod("removeErrorListeners").invoke(_Olexer);
-			
+
 			// Invoke lexer class addErrorListener(ANTLRErrorListener obj)
 			_Clexer.getMethod("addErrorListener", ANTLRErrorListener.class).invoke(_Olexer, errorListener);
 
 			// Create the token
-			_token = new CommonTokenStream((TokenSource) _Olexer); 
-			
+			_token = new CommonTokenStream((TokenSource) _Olexer);
+
 			// Create parser class
 			_Cparser = new TestClassLoader().loadClass("acide.process.parser.grammar.ExprParser");
-			
+
 			// Create parser constructor
 			Constructor<ExprParser> constructor1 = (Constructor<ExprParser>) _Cparser.getConstructor(TokenStream.class);
-			
+
 			// Create parser object
 			_Oparser = constructor1.newInstance(_token);
 
 			// Invoke parser class removeErrorListeners()
 			_Cparser.getMethod("removeErrorListeners").invoke(_Oparser);
-			
+
 			// Invoke parser class addErrorListener(ANTLRErrorListener obj)
 			_Cparser.getMethod("addErrorListener", ANTLRErrorListener.class).invoke(_Oparser, errorListener);
 
-		} catch(Exception e) {
+		} catch (Exception e) {
 			// Updates the log
 			AcideLog.getLog().error(e.getMessage());
 		}
-		
+
 		// Create the parser
-		//_parser = new ExprParser(_token);
+		// _parser = new ExprParser(_token);
 
 		// Set the error listener for the lexer
 		/*
-		_lexer.removeErrorListeners();
-		_lexer.addErrorListener(new BaseErrorListener() {
-			@Override
-			public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line,
-					int charPositionInLine, String msg, RecognitionException e) {
-				_errors.put(line + ":" + charPositionInLine, msg);
-			}
-		});
-		myErrorListener a = new myErrorListener();
-		_lexer.addErrorListener(a);
-		// Set the error listener for the parser
-		_parser.removeErrorListeners();
-		_parser.addErrorListener(new BaseErrorListener() {
-			@Override
-			public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line,
-					int charPositionInLine, String msg, RecognitionException e) {
-				_errors.put(line + ":" + charPositionInLine, msg);
-			}
-		});*/
+		 * _lexer.removeErrorListeners(); _lexer.addErrorListener(new
+		 * BaseErrorListener() {
+		 * 
+		 * @Override public void syntaxError(Recognizer<?, ?> recognizer, Object
+		 * offendingSymbol, int line, int charPositionInLine, String msg,
+		 * RecognitionException e) { _errors.put(line + ":" + charPositionInLine, msg);
+		 * } }); myErrorListener a = new myErrorListener(); _lexer.addErrorListener(a);
+		 * // Set the error listener for the parser _parser.removeErrorListeners();
+		 * _parser.addErrorListener(new BaseErrorListener() {
+		 * 
+		 * @Override public void syntaxError(Recognizer<?, ?> recognizer, Object
+		 * offendingSymbol, int line, int charPositionInLine, String msg,
+		 * RecognitionException e) { _errors.put(line + ":" + charPositionInLine, msg);
+		 * } });
+		 */
 	}
 
 	/*
@@ -238,77 +240,85 @@ public class AcideGrammarAnalyzer extends Thread{
 		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
 				.getSelectedFileEditorPanel();
 		
-		if(_lock != null) {
+		String text = AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
+				.getActiveTextEditionArea().getText();
+		int endoffset = AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
+				.getActiveTextEditionArea().getDocument().getLength();
+		try {
+			//para omitir los saltos de linea al final del texto.
+			String xd = selectedFileEditorPanel.getActiveTextEditionArea().getDocument().getText(endoffset, 1);
+			while (endoffset >= 0 && xd.equals("\n")) {
+				endoffset--;
+				xd = selectedFileEditorPanel.getActiveTextEditionArea().getDocument().getText(endoffset, 1);
+			}
+			 text = selectedFileEditorPanel.getActiveTextEditionArea().getDocument().getText(0, endoffset+1);
+		} catch (BadLocationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		if (_lock != null) {
 			synchronized (_lock) {
 				try {
 					_lock.wait();
-					constructor(AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
-							.getActiveTextEditionArea().getText());
+					constructor(text);
 					analyzeText();
 				} catch (InterruptedException e) {
 					// Updates the log
 					AcideLog.getLog().error(e.getMessage());
 				}
 			}
-		}
-		else {
-			if(selectedFileEditorPanel.get_grammarDelimiter().equals("")) {
-				constructor(AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
-						.getActiveTextEditionArea().getText());
+		} else {
+			if (selectedFileEditorPanel.get_grammarDelimiter().equals("")) {
+				constructor(text);
 			}
 			analyzeText();
 		}
-		
+
 	}
-	
+
 	/**
-	 * ACIDE - A Configurable IDE grammar analyzer analyze the entire text according to the grammar rules
+	 * ACIDE - A Configurable IDE grammar analyzer analyze the entire text according
+	 * to the grammar rules
+	 * 
 	 * @version 0.20
 	 */
 	public void analyzeText() {
 		try {
 			Method geRulesNames = _Cparser.getMethod("getRuleNames");
 			Object[] rulesName = (Object[]) geRulesNames.invoke(_Oparser);
-			//for(Object a: rulesName)
-			//	System.out.println(a.toString());
+			// for(Object a: rulesName)
+			// System.out.println(a.toString());
 			_Cparser.getMethod(rulesName[0].toString()).invoke(_Oparser);
-		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException e) {
 			// Updates the log
 			AcideLog.getLog().error(e.getMessage());
 		}
-		AcideHighlightError errorhighlighter=AcideHighlightError.getInstance();
+		AcideHighlightError errorhighlighter = AcideHighlightError.getInstance();
 		errorhighlighter.ErrorHighLight();
-		
-		//_Cparser.getMethod(name, parameterTypes)
+
+		// _Cparser.getMethod(name, parameterTypes)
 		/*
-		try {
-			for(int i = 0; i < _parser.getRuleNames().length; i++)
-				System.out.println(_parser.getRuleNames()[i]);
-			ParseTree tree = (ParseTree)_parser.getClass().getMethod(_parser.getRuleNames()[0]).invoke(_parser);
-			_token.seek(0);
-			System.out.println("Parse Tree: "
-					  + tree.toStringTree(_parser));
-			// Updates the log
-			AcideLog.getLog().info(
-					AcideLanguageManager.getInstance().getLabels()
-							.getString("s2433"));
-			
-			// Print the errors
-			for(HashMap.Entry<String, String> entry : _errors.entrySet()) {
-			    String key = entry.getKey();
-			    String value = entry.getValue();
-			    System.out.println(key + ": " +value);
-			}
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
-				| SecurityException e1) {
-			// Updates the log
-			AcideLog.getLog().error(
-					AcideLanguageManager.getInstance().getLabels()
-							.getString("Analyze text error: " + e1.getMessage()));
-			e1.printStackTrace();
-		}*/
+		 * try { for(int i = 0; i < _parser.getRuleNames().length; i++)
+		 * System.out.println(_parser.getRuleNames()[i]); ParseTree tree =
+		 * (ParseTree)_parser.getClass().getMethod(_parser.getRuleNames()[0]).invoke(
+		 * _parser); _token.seek(0); System.out.println("Parse Tree: " +
+		 * tree.toStringTree(_parser)); // Updates the log AcideLog.getLog().info(
+		 * AcideLanguageManager.getInstance().getLabels() .getString("s2433"));
+		 * 
+		 * // Print the errors for(HashMap.Entry<String, String> entry :
+		 * _errors.entrySet()) { String key = entry.getKey(); String value =
+		 * entry.getValue(); System.out.println(key + ": " +value); } } catch
+		 * (IllegalAccessException | IllegalArgumentException |
+		 * InvocationTargetException | NoSuchMethodException | SecurityException e1) {
+		 * // Updates the log AcideLog.getLog().error(
+		 * AcideLanguageManager.getInstance().getLabels()
+		 * .getString("Analyze text error: " + e1.getMessage())); e1.printStackTrace();
+		 * }
+		 */
 	}
-	
+
 	public void setLock(Object lock) {
 		_lock = lock;
 	}

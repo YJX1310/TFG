@@ -1,5 +1,4 @@
 
-options { caseInsensitive = true; }
 parse: (sql_stmt_list)* EOF
 ;
 
@@ -879,4 +878,9 @@ any_name:
     | STRING_LITERAL
     | OPEN_PAR any_name CLOSE_PAR
 ;
+
+
+
+
+
 
