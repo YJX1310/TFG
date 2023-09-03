@@ -72,11 +72,13 @@ public class AcideFileEditorCaretListener implements CaretListener {
 	 * javax.swing.event.CaretListener#caretUpdate(javax.swing.event.CaretEvent
 	 * )
 	 */
-
+	private String previustext="";
 
 	@Override
 	public void caretUpdate(CaretEvent caretEvent) {
 		
+        AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
+                .getSelectedFileEditorPanel();
 		//AcideHighlightError errorhighlighter=AcideHighlightError.getInstance();
 		// Updates the active text edition area
 		updateActiveTextEditionArea();
@@ -86,8 +88,16 @@ public class AcideFileEditorCaretListener implements CaretListener {
 		// Updates the matching element
 		updateMatchingElement();
 		
+		
 		//errorhighlighter.ErrorHighLight();
 		//Update error red underline
+		if(previustext.equals(selectedFileEditorPanel.getTextEditionAreaContent())) {
+			AcideHighlightError errorhighlighter=AcideHighlightError.getInstance();
+			errorhighlighter.ErrorHighLight();
+		}
+		else {
+			previustext=selectedFileEditorPanel.getTextEditionAreaContent();
+		}
 	}
 
 	/**
@@ -265,7 +275,9 @@ public class AcideFileEditorCaretListener implements CaretListener {
 									selectedFileEditorPanel
 											.getTextEditionPanelList().get(1)
 											.getMatchingElementPosition());
-
+					if (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
+							.getAutoAnalysisCheckBoxMenuItem().isSelected()) {
+					}
 				}
 			}
 		} catch (BadLocationException exception) {

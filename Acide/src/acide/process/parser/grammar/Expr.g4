@@ -1,6 +1,5 @@
 grammar Expr;
 
-options { caseInsensitive = true; }
 parse: (sql_stmt_list)* EOF
 ;
 
@@ -882,6 +881,11 @@ any_name:
 ;
 
 
+
+
+
+
+
 SCOL:      ';';
 DOT:       '.';
 OPEN_PAR:  '(';
@@ -1094,6 +1098,11 @@ UNEXPECTED_CHAR: .;
 
 fragment HEX_DIGIT: [0-9A-F];
 fragment DIGIT:     [0-9];
+
+
+
+
+
 
 
 
