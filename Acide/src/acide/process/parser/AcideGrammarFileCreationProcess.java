@@ -50,6 +50,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 import acide.files.AcideFileManager;
 import acide.files.bytes.AcideByteFileManager;
@@ -268,10 +270,28 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		else {
 			//	If the display message flag is true then
 			if(_displayMessage)
-				// Displays a message
-				JOptionPane.showMessageDialog(
-						AcideMainWindow.getInstance(),
-						message, title, type);
+				if(type == JOptionPane.INFORMATION_MESSAGE) {
+					// Displays a message
+					JOptionPane.showMessageDialog(
+							AcideMainWindow.getInstance(),
+							message, title, type);
+				}
+				else {
+					
+			        JTextArea textArea = new JTextArea(10, 80);
+			        textArea.setWrapStyleWord(true);
+			        textArea.setLineWrap(true);
+			        textArea.setText(message);
+			        textArea.setEditable(false);
+
+			        JScrollPane scrollPane = new JScrollPane(textArea);
+			        
+					// Displays a message
+					JOptionPane.showMessageDialog(
+							AcideMainWindow.getInstance(),
+							scrollPane, title, type);
+				}
+
 			
 			// Enables the main window
 			AcideMainWindow.getInstance().setEnabled(true);

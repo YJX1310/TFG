@@ -102,6 +102,12 @@ public class AcideSaveAsGrammarMenuItemListener implements ActionListener {
 				// Save the grammar
 				AcideByteFileManager.getInstance().saveGrammar(absolutePath);
 
+				// Displays a message
+				JOptionPane.showMessageDialog(
+						AcideMainWindow.getInstance(), AcideLanguageManager.getInstance()
+						.getLabels().getString("s2432"), AcideLanguageManager.getInstance()
+						.getLabels().getString("s2431"), JOptionPane.INFORMATION_MESSAGE);
+				
 				// Updates the current grammar configuration path
 				AcideMainWindow.getInstance().getFileEditorManager()
 						.getSelectedFileEditorPanel()

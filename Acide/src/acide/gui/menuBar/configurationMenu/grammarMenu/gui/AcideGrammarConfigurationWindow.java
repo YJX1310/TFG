@@ -797,7 +797,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			String newGrammarPath = AcideGrammarConfiguration.DEFAULT_PATH + newGrammarName;
 			
 			// Save the grammar
-			// AcideByteFileManager.getInstance().saveGrammar(newGrammarPath);
+			AcideByteFileManager.getInstance().saveGrammar(newGrammarPath);
 			try {
 				String lock = "";
 				
