@@ -79,7 +79,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 /**
  * ACIDE - A Configurable IDE console menu items configuration.
  * 
- * @version 0.11
+ * @version 0.20
  */
 public class AcideMenuItemsConfiguration {
 	
@@ -1443,6 +1443,13 @@ public class AcideMenuItemsConfiguration {
 		autoAnalysis.setVisible(true);
 		autoAnalysis.setCommand("$AUTO_ANALYSIS");
 		result.insertObject(autoAnalysis);
+		
+		//ANALYZE TEXT
+		AcideMenuItemConfiguration analyzeText = new AcideMenuItemConfiguration(AcideGrammarMenu.ANALYZE_TEXT_NAME);
+		analyzeText.setErasable(false);
+		analyzeText.setVisible(false);
+		analyzeText.setCommand("$ANALYZE_TEXT");
+		result.insertObject(analyzeText);
 		
 		return result;
 	}

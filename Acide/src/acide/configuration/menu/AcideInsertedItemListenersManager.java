@@ -82,6 +82,7 @@ import acide.gui.menuBar.configurationMenu.fileEditor.listeners.AcideLineWrappin
 import acide.gui.menuBar.configurationMenu.fileEditor.listeners.AcideMaximumLinesToConsoleMenuItemListener;
 import acide.gui.menuBar.configurationMenu.fileEditor.listeners.AcidePreferencesMenuItemListener;
 import acide.gui.menuBar.configurationMenu.fileEditor.listeners.AcideSendToConsoleConfirmationMenuItemListener;
+import acide.gui.menuBar.configurationMenu.grammarMenu.listeners.AcideAnalyzeTextMenuItemListener;
 import acide.gui.menuBar.configurationMenu.grammarMenu.listeners.AcideAutoAnalysisMenuItemListener;
 import acide.gui.menuBar.configurationMenu.grammarMenu.listeners.AcideLoadGrammarMenuItemListener;
 import acide.gui.menuBar.configurationMenu.grammarMenu.listeners.AcideModifyGrammaMenuItemrListener;
@@ -166,7 +167,7 @@ import acide.language.AcideLanguageManager;
 /**																
  * ACIDE - A Configurable IDE inserted items listeners manager.
  *					
- * @version 0.14																														
+ * @version 0.20																													
  */
 public class AcideInsertedItemListenersManager {
 	/**
@@ -534,6 +535,9 @@ public class AcideInsertedItemListenersManager {
 			break;
 		case 550:
 			AcideShowNameFieldsTypesMenuItemListener.action(event);
+			break;
+		case 551:
+			AcideAnalyzeTextMenuItemListener.action(event);
 			break;
 		case 601:
 			AcideShowHelpMenuItemListener.action(event);
