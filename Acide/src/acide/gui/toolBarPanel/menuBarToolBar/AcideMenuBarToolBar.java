@@ -67,7 +67,7 @@ import acide.log.AcideLog;
  * 
  * Its buttons execute internal commands to ACIDE - A Configurable IDE.
  * 
- * @version 0.11
+ * @version 0.20
  * @see ArrayList
  */
 public class AcideMenuBarToolBar extends ArrayList<Component> {
@@ -109,6 +109,11 @@ public class AcideMenuBarToolBar extends ArrayList<Component> {
 	 */
 	private static final String SAVE_PROJECT = "./resources/icons/toolBar/saveProject.png";
 	/**
+	 * ACIDE - A Configurable IDE menu bar tool bar analyze text button image
+	 * icon.
+	 */
+	private static final String ANALYZE_TEXT = "./resources/icons/toolBar/analyze.png";
+	/**
 	 * ACIDE - A Configurable IDE menu bar tool bar new file button.
 	 */
 	private static JButton _newFileButton;
@@ -136,6 +141,10 @@ public class AcideMenuBarToolBar extends ArrayList<Component> {
 	 * ACIDE - A Configurable IDE menu bar tool bar save project button.
 	 */
 	private static JButton _saveProjectButton;
+	/**
+	 * ACIDE - A Configurable IDE menu bar tool bar analyze text button.
+	 */
+	private static JButton _analyzeTextButton;
 
 	/**
 	 * Creates a new ACIDE - A Configurable IDE menu bar tool bar.
@@ -225,6 +234,12 @@ public class AcideMenuBarToolBar extends ArrayList<Component> {
 
 		// Adds a separator to the menu bar tool bar
 		add(Box.createRigidArea(new Dimension(5, 5)));
+		
+		// Adds the analyze text button to the menu bar tool bar
+		add(_analyzeTextButton);
+		
+		// Adds a separator to the menu bar tool bar
+		add(Box.createRigidArea(new Dimension(5, 5)));
 	}
 
 	/**
@@ -310,6 +325,17 @@ public class AcideMenuBarToolBar extends ArrayList<Component> {
 
 		// Disables the save project button
 		_saveProjectButton.setEnabled(false);
+		
+		// Creates the analyze text button
+		_analyzeTextButton = new JButton(new ImageIcon(ANALYZE_TEXT));
+		
+		// Sets the analyze text button tool tip text
+		_analyzeTextButton.setToolTipText(AcideLanguageManager.getInstance()
+				.getLabels().getString("s2437"));
+		
+		// Sets its border painted as false
+		_analyzeTextButton.setBorderPainted(false);
+
 
 		/*
 		 * JButton analyzeSintButton = new JButton(labels.getString("s206"));
@@ -371,6 +397,9 @@ public class AcideMenuBarToolBar extends ArrayList<Component> {
 		// Sets the save project button mouse listener
 		_saveProjectButton
 				.addMouseListener(new SaveProjectButtonMouseListener());
+		
+		_analyzeTextButton
+				.addMouseListener(new analizyTextButtonMouseListener());
 	}
 
 	/**
@@ -1167,6 +1196,98 @@ public class AcideMenuBarToolBar extends ArrayList<Component> {
 			// Does the save project menu item action
 			AcideMainWindow.getInstance().getMenu().getProjectMenu()
 					.getSaveProjectMenuItem().doClick();
+
+			// Sets the focus in the last element on focus in ACIDE - A
+			// Configurable IDE
+			AcideLastElementOnFocus
+					.setFocusOnLastElementOnFocus(AcideMainWindow.getInstance()
+							.getLastElementOnFocus());
+		}
+	}
+	
+	/**
+	 * ACIDE - A Configurable IDE menu bar tool bar analyze file button mouse
+	 * listener
+	 * 
+	 * @version 0.20
+	 * @see MouseListener
+	 */
+	class analizyTextButtonMouseListener implements MouseListener {
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent
+		 * )
+		 */
+		@Override
+		public void mouseReleased(MouseEvent mouseEvent) {
+
+			// Dispatches the event
+			dispatchEvent(mouseEvent);
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent )
+		 */
+		@Override
+		public void mousePressed(MouseEvent mouseEvent) {
+
+			// Dispatches the event
+			dispatchEvent(mouseEvent);
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent )
+		 */
+		@Override
+		public void mouseExited(MouseEvent mouseEvent) {
+				_saveProjectButton.setBorderPainted(false);
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent )
+		 */
+		@Override
+		public void mouseEntered(MouseEvent mouseEvent) {
+				_saveProjectButton.setBorderPainted(true);
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent )
+		 */
+		@Override
+		public void mouseClicked(MouseEvent mouseEvent) {
+
+			// Dispatches the event
+			dispatchEvent(mouseEvent);
+		}
+
+		/**
+		 * Dispatches the mouse event.
+		 * 
+		 * @param mouseEvent
+		 *            mouse event.
+		 */
+		public void dispatchEvent(MouseEvent mouseEvent) {
+
+			// Does the open file menu item action
+			AcideMainWindow.getInstance().getMenu().getConfigurationMenu()
+					.getGrammarMenu().getAnalyzeTextMenuItem().doClick();
+
 
 			// Sets the focus in the last element on focus in ACIDE - A
 			// Configurable IDE

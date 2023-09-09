@@ -600,6 +600,22 @@
                           <__erasable>false</__erasable>
                           <__image></__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
+                        <acide.configuration.menu.AcideMenuItemConfiguration>
+                          <__command>$AUTO_ANALYSIS</__command>
+                          <__parameter>None</__parameter>
+                          <__name>Auto-Analysis</__name>
+                          <__visible>true</__visible>
+                          <__erasable>false</__erasable>
+                          <__image></__image>
+                        </acide.configuration.menu.AcideMenuItemConfiguration>
+                        <acide.configuration.menu.AcideMenuItemConfiguration>
+                          <__command>$ANALYZE_TEXT</__command>
+                          <__parameter>None</__parameter>
+                          <__name>Analyze Text</__name>
+                          <__visible>false</__visible>
+                          <__erasable>false</__erasable>
+                          <__image></__image>
+                        </acide.configuration.menu.AcideMenuItemConfiguration>
                       </__list>
                     </__list>
                   </__itemsManager>
@@ -824,7 +840,7 @@
                           <__command>$NODES_COLOR</__command>
                           <__parameter>None</__parameter>
                           <__name>Node Color</__name>
-                          <__visible>true</__visible>
+                          <__visible>false</__visible>
                           <__erasable>false</__erasable>
                           <__image>         </__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
@@ -832,7 +848,7 @@
                           <__command>$SHOW_LABELS</__command>
                           <__parameter>None</__parameter>
                           <__name>Show Labels</__name>
-                          <__visible>true</__visible>
+                          <__visible>false</__visible>
                           <__erasable>false</__erasable>
                           <__image>         </__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
@@ -840,7 +856,7 @@
                           <__command>$NODES_SIZE</__command>
                           <__parameter>None</__parameter>
                           <__name>Node Size</__name>
-                          <__visible>true</__visible>
+                          <__visible>false</__visible>
                           <__erasable>false</__erasable>
                           <__image>         </__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
@@ -852,7 +868,7 @@
                                   <__command>$NODES_SHAPE_CIRCLE</__command>
                                   <__parameter>None</__parameter>
                                   <__name>Circle</__name>
-                                  <__visible>true</__visible>
+                                  <__visible>false</__visible>
                                   <__erasable>false</__erasable>
                                   <__image>      </__image>
                                 </acide.configuration.menu.AcideMenuItemConfiguration>
@@ -860,7 +876,7 @@
                                   <__command>$NODES_SHAPE_SQUARE</__command>
                                   <__parameter>None</__parameter>
                                   <__name>Square</__name>
-                                  <__visible>true</__visible>
+                                  <__visible>false</__visible>
                                   <__erasable>false</__erasable>
                                   <__image>      </__image>
                                 </acide.configuration.menu.AcideMenuItemConfiguration>
@@ -868,7 +884,7 @@
                             </__list>
                           </__itemsManager>
                           <__name>Node Shape</__name>
-                          <__visible>true</__visible>
+                          <__visible>false</__visible>
                           <__erasable>false</__erasable>
                           <__image></__image>
                         </acide.configuration.menu.AcideMenuSubmenuConfiguration>
@@ -880,7 +896,7 @@
                                   <__command>$ARROW_COLOR_DIRECT</__command>
                                   <__parameter>None</__parameter>
                                   <__name>Direct</__name>
-                                  <__visible>true</__visible>
+                                  <__visible>false</__visible>
                                   <__erasable>false</__erasable>
                                   <__image>      </__image>
                                 </acide.configuration.menu.AcideMenuItemConfiguration>
@@ -932,7 +948,7 @@
                     </__list>
                   </__itemsManager>
                   <__name>Graph Panel</__name>
-                  <__visible>true</__visible>
+                  <__visible>false</__visible>
                   <__erasable>false</__erasable>
                   <__image></__image>
                 </acide.configuration.menu.AcideMenuSubmenuConfiguration>
