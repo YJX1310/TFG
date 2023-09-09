@@ -73,8 +73,7 @@ public class AcideFileEditorManagerMouseClickListener extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent mouseEvent) {
 		dispatchEvent(mouseEvent);
-		AcideMainWindow.getInstance().getFileEditorManager()
-	            .getSelectedFileEditorPanel().getErrorPopup().setVisible(false);
+		AcideMainWindow.getInstance().getErrorPopup().setVisible(false);
 		
 	}
 

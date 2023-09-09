@@ -53,6 +53,7 @@ import javax.swing.text.Utilities;
 import acide.configuration.workbench.AcideWorkbenchConfiguration;
 import acide.files.bytes.AcideByteFileManager;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
+import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideHighlightError;
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideTextComponent;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
@@ -88,6 +89,7 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 	@Override
 	public void stateChanged(ChangeEvent changeEvent) {
 
+		
 		if (AcideWorkbenchConfiguration.getInstance().isWorkbenchLoaded()) {
 			
 			// gets the tabbed pane
@@ -149,6 +151,11 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 					.getMenu().getConfigurationMenu()
 					.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem()
 					.isSelected()) {
+				if(!selectedFileEditorPanel.get_errors().isEmpty()) {
+					AcideHighlightError errorhighlighter = AcideHighlightError.getInstance();
+					errorhighlighter.clearErrorHighlight();
+					selectedFileEditorPanel.setErrors(new HashMap<String,String>());
+				}
 				
 				String lock = "";
 				

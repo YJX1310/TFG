@@ -238,7 +238,7 @@ public class AcideFileEditorKeyboardListener extends KeyAdapter {
 				.getAutoAnalysisCheckBoxMenuItem().isSelected()) {
 		errorhighlighter.clearErrorHighlight();
 		selectedFileEditorPanel.setErrors(new HashMap<String, String>());
-		selectedFileEditorPanel.getErrorPopup().setVisible(false);
+		AcideMainWindow.getInstance().getErrorPopup().setVisible(false);
 		}
 		// Get the delimiter
 		String delimiter = selectedFileEditorPanel.get_grammarDelimiter();

@@ -75,6 +75,7 @@ import acide.gui.databasePanel.AcideDataBasePanel;
 import acide.gui.debugPanel.AcideDebugPanel;
 import acide.gui.explorerPanel.AcideExplorerPanel;
 import acide.gui.fileEditor.fileEditorManager.AcideFileEditorManager;
+import acide.gui.fileEditor.fileEditorPanel.errorpopup.AcidefileEditorPanelErrorpopup;
 import acide.gui.graphPanel.AcideGraphPanel;
 import acide.gui.mainWindow.listeners.AcideMainWindowFocusListener;
 import acide.gui.mainWindow.listeners.AcideMainWindowMouseListener;
@@ -139,6 +140,10 @@ public class AcideMainWindow extends JFrame {
 	 * ACIDE - A Configurable IDE main window status bar.
 	 */
 	private AcideStatusBar _statusBar;
+	/**
+	 * ACIDE - A Configurable IDE file editor panel error pop up windows
+	 */
+	private AcidefileEditorPanelErrorpopup _errorpopup;
 	/**
 	 * ACIDE - A Configurable IDE main window explorer panel.
 	 */
@@ -398,6 +403,9 @@ public class AcideMainWindow extends JFrame {
 
 		// Sets the Split pane positions
 		setPanelPositions();
+		
+		// creates the error message windows
+		_errorpopup=new AcidefileEditorPanelErrorpopup();
 
 	}
 
@@ -861,6 +869,10 @@ public class AcideMainWindow extends JFrame {
 			panel = _horizontalGraphSplitPanel;
 
 		return panel;
+	}
+	
+	public AcidefileEditorPanelErrorpopup getErrorPopup() {
+		return _errorpopup;
 	}
 
 	/**
