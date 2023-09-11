@@ -231,93 +231,83 @@ public class AcideFileEditorKeyboardListener extends KeyAdapter {
 		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
 				.getSelectedFileEditorPanel();
 
-		AcideHighlightError errorhighlighter = AcideHighlightError.getInstance();
-		// Remove the previous error highlighting
-		
-		if (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-				.getAutoAnalysisCheckBoxMenuItem().isSelected()) {
-		errorhighlighter.clearErrorHighlight();
-		selectedFileEditorPanel.setErrors(new HashMap<String, String>());
+		AcideHighlightError.getInstance().clearErrorHighlight();
 		selectedFileEditorPanel.getErrorPopup().setVisible(false);
-		}
+		
 		// Get the delimiter
 		String delimiter = selectedFileEditorPanel.get_grammarDelimiter();
 		if (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-				.getAutoAnalysisCheckBoxMenuItem().isSelected()) {
-			if (delimiter == null || delimiter.equals("")) {
-				// If it is enter
-				if (keyEvent.getKeyCode() == KeyEvent.VK_ENTER) {
-					// If auto-analysis is activated then
+				.getAnalyzeMenu().getCompleteTextAnalysisCheckBoxMenuItem().isSelected()) {
+			// If it is enter
+			if (keyEvent.getKeyCode() == KeyEvent.VK_ENTER) {
+				// Get the file editor panel analyzer
+				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
+				// Analyze the text
+				analyzer.start();
 
-					// Get the file editor panel analyzer
+			}
+			if (keyEvent.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+				int caretPosition = selectedFileEditorPanel.getActiveTextEditionArea().getCaretPosition();
+				int line = selectedFileEditorPanel.getActiveTextEditionArea().getDocument().getDefaultRootElement()
+						.getElementIndex(caretPosition) + 1;
+				int column = caretPosition - selectedFileEditorPanel.getActiveTextEditionArea().getDocument()
+						.getDefaultRootElement().getElement(line - 1).getStartOffset();
+				if (column == 0) {
 					AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
-					// Analyze the text
 					analyzer.start();
 
 				}
-				if (keyEvent.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-					int caretPosition = selectedFileEditorPanel.getActiveTextEditionArea().getCaretPosition();
+			}
+		} else if(AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
+				.getAnalyzeMenu().getIncrementalAnalysisCheckBoxMenuItem().isSelected()){
+			if (delimiter.charAt(0) == keyEvent.getKeyChar()) {
+
+				// Get the fragment of text to analyze
+				int endCaretPosition = selectedFileEditorPanel.getActiveTextEditionArea().getCaretPosition();
+				int startCaretPosition = selectedFileEditorPanel.getActiveTextEditionArea().getCaretPosition() - 1;
+
+				try {
+					// Find the previos delimiter to obtain the fragment of text
+					while (startCaretPosition >= 0 && selectedFileEditorPanel.getActiveTextEditionArea()
+							.getText(startCaretPosition, 1).charAt(0) != keyEvent.getKeyChar()) {
+						startCaretPosition--;
+					}
+
+					// Get the file editor panel analyzer
+					AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
+					String text = selectedFileEditorPanel.getActiveTextEditionArea().getText(startCaretPosition + 1,
+							endCaretPosition - startCaretPosition-1)+keyEvent.getKeyChar();	
 					int line = selectedFileEditorPanel.getActiveTextEditionArea().getDocument().getDefaultRootElement()
-							.getElementIndex(caretPosition) + 1;
-					int column = caretPosition - selectedFileEditorPanel.getActiveTextEditionArea().getDocument()
+							.getElementIndex(startCaretPosition+1) + 1;
+					int column = (startCaretPosition+1) - selectedFileEditorPanel.getActiveTextEditionArea().getDocument()
 							.getDefaultRootElement().getElement(line - 1).getStartOffset();
-					if (column == 0) {
-						AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
-						analyzer.start();
-
+					if(column==0) {
+						for(int i=0;i<line-1;i++) {
+							text="\n"+text;
+						}
 					}
-				}
-			} else {
-				if (delimiter.charAt(0) == keyEvent.getKeyChar()) {
-
-					// Get the fragment of text to analyze
-					int endCaretPosition = selectedFileEditorPanel.getActiveTextEditionArea().getCaretPosition();
-					int startCaretPosition = selectedFileEditorPanel.getActiveTextEditionArea().getCaretPosition() - 1;
-
-					try {
-						// Find the previos delimiter to obtain de fragment of text
-						while (startCaretPosition >= 0 && selectedFileEditorPanel.getActiveTextEditionArea()
-								.getText(startCaretPosition, 1).charAt(0) != keyEvent.getKeyChar()) {
-							startCaretPosition--;
+					else if (column !=0) {
+						for(int i=0;i<column;i++) {
+							text=" "+text;
 						}
-
-						// Get the file editor panel analyzer
-						AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
-						String text = selectedFileEditorPanel.getActiveTextEditionArea().getText(startCaretPosition + 1,
-								endCaretPosition - startCaretPosition-1)+keyEvent.getKeyChar();	
-						String deletedCharacter = selectedFileEditorPanel.getActiveTextEditionArea().getText(startCaretPosition+1,1);
-						int line = selectedFileEditorPanel.getActiveTextEditionArea().getDocument().getDefaultRootElement()
-								.getElementIndex(startCaretPosition+1) + 1;
-						int column = (startCaretPosition+1) - selectedFileEditorPanel.getActiveTextEditionArea().getDocument()
-								.getDefaultRootElement().getElement(line - 1).getStartOffset();
-						if(column==0) {
-							for(int i=0;i<line-1;i++) {
-								text="\n"+text;
-							}
+						System.out.println(text);
+						for(int i=0;i<line-1;i++) {
+							text="\n"+text;
 						}
-						else if (column !=0) {
-							for(int i=0;i<column;i++) {
-								text=" "+text;
-							}
-							System.out.println(text);
-							for(int i=0;i<line-1;i++) {
-								text="\n"+text;
-							}
-							System.out.println(text);
-						}
-						analyzer.setText(text);
-						
-						// Analyze the text
-						analyzer.start();
-						
-
-					} catch (BadLocationException e) {
-						// Updates the log
-						AcideLog.getLog().error(e.getMessage());
 					}
+					analyzer.setText(text);
+					
+					// Analyze the text
+					analyzer.start();
+					
+
+				} catch (BadLocationException e) {
+					// Updates the log
+					AcideLog.getLog().error(e.getMessage());
 				}
 			}
 		}
+		
 
 		/*
 		 * if (keyEvent.getKeyCode() == KeyEvent.VK_DELETE) { if

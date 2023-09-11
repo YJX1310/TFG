@@ -721,16 +721,12 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 		 */
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
-			
-			AcideHighlightError errorhighlighter = AcideHighlightError.getInstance();
-			
 			// Gets the selected file editor panel
 			AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
 					.getFileEditorManager().getSelectedFileEditorPanel();
 			
 			// Clear all the errors highlights
-			errorhighlighter.clearErrorHighlight();
-			selectedFileEditorPanel.setErrors(new HashMap<String, String>());
+			AcideHighlightError.getInstance().clearErrorHighlight();
 			
 
 			// Creates the file content
@@ -812,11 +808,11 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 				
 				selectedFileEditorPanel.set_grammarDelimiter(_delimiterTxt.getText());
 				
-				// If auto-analysis is activated then
-				if(AcideMainWindow.getInstance()
-						.getMenu().getConfigurationMenu()
-						.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem()
-						.isSelected()) {
+				// If complete text analysis or incremental analysis is activated then
+				if(AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
+						.getAnalyzeMenu().getIncrementalAnalysisCheckBoxMenuItem().isSelected() 
+						|| AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
+						.getAnalyzeMenu().getCompleteTextAnalysisCheckBoxMenuItem().isSelected()) {
 					
 					// Get the file editor panel analyzer
 					AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();

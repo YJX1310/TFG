@@ -55,6 +55,7 @@ import acide.gui.menuBar.configurationMenu.consoleMenu.AcideConsoleMenu;
 import acide.gui.menuBar.configurationMenu.databasePanelMenu.AcideDatabasePanelMenu;
 import acide.gui.menuBar.configurationMenu.databasePanelMenu.showDetails.AcideShowDetailsMenu;
 import acide.gui.menuBar.configurationMenu.fileEditor.AcideFileEditorMenu;
+import acide.gui.menuBar.configurationMenu.grammarMenu.AcideGrammarAnalyzeMenu;
 import acide.gui.menuBar.configurationMenu.grammarMenu.AcideGrammarMenu;
 import acide.gui.menuBar.configurationMenu.graphPanelMenu.AcideGraphPanelArrowColorMenu;
 import acide.gui.menuBar.configurationMenu.graphPanelMenu.AcideGraphPanelArrowShapeMenu;
@@ -1450,6 +1451,32 @@ public class AcideMenuItemsConfiguration {
 		analyzeText.setVisible(false);
 		analyzeText.setCommand("$ANALYZE_TEXT");
 		result.insertObject(analyzeText);
+		
+		//ANALYZE 
+		AcideMenuSubmenuConfiguration analyze = getAnalyzeDefaultSubmenu();
+		result.insertObject(analyze);
+		
+		return result;
+	}
+	
+	public AcideMenuSubmenuConfiguration getAnalyzeDefaultSubmenu() {
+		AcideMenuSubmenuConfiguration result = new AcideMenuSubmenuConfiguration(AcideGrammarAnalyzeMenu.ANALYZE_MENU_NAME);
+		result.setErasable(false);
+		result.setVisible(true);
+		
+		//COMPLTE TEXT ANALYSIS
+		AcideMenuItemConfiguration completeTextAnalysis = new AcideMenuItemConfiguration(AcideGrammarAnalyzeMenu.COMPLETE_TEXT_ANALYSIS);
+		completeTextAnalysis.setErasable(false);
+		completeTextAnalysis.setVisible(true);
+		completeTextAnalysis.setCommand("$COMPLETE_TEXT_ANALYSIS");
+		result.insertObject(completeTextAnalysis);
+		
+		//INCREMENTAL ANALYSIS
+		AcideMenuItemConfiguration incrementalAnalysis = new AcideMenuItemConfiguration(AcideGrammarAnalyzeMenu.INCREMENTAL_ANALYSIS);
+		incrementalAnalysis.setErasable(false);
+		incrementalAnalysis.setVisible(true);
+		incrementalAnalysis.setCommand("$INCREMENTAL_ANALYSIS");
+		result.insertObject(incrementalAnalysis);
 		
 		return result;
 	}

@@ -130,35 +130,30 @@ public class AcideHighlightError {
 	 * Clear all error Highlightings.
 	 */
 	public void clearErrorHighlight() {
-	    
-	        AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
-	                .getSelectedFileEditorPanel();
-	        StyledDocument document = selectedFileEditorPanel.getStyledDocument();
-	        // Eliminar los atributos de estilo del documento
-	        SimpleAttributeSet emptyStyle = new SimpleAttributeSet();
-	        document.setCharacterAttributes(0, document.getLength(), emptyStyle, true);
-	        /*for (HashMap.Entry<String, String> entry : AcideMainWindow.getInstance().getFileEditorManager().getSelectedFileEditorPanel().get_errors()
-					.entrySet()) {
-				// Obtener la línea y columna de inicio de la palabra
-				String[] parts = entry.getKey().split(":");
-				int startLine = Integer.parseInt(parts[0]) - 1;
-				int startColumn = Integer.parseInt(parts[1]);
-				int endColumn=Integer.parseInt(parts[2])+startColumn;
-				// Calcular la posición de inicio y fin de la palabra
-				int a =document.getDefaultRootElement().getElementCount();
-				System.out.println(document.getDefaultRootElement().getElement(startLine).toString());
-				int start = document.getDefaultRootElement().getElement(startLine).getStartOffset() + startColumn;
-				int end = document.getDefaultRootElement().getElement(startLine).getStartOffset() + endColumn;
-				// Aplicar el estilo de subrayado rojo a la palabra
-				document.setCharacterAttributes(start, end - start, emptyStyle, true);
-			}*/
-	        try {
-	        	selectedFileEditorPanel.getStyledDocument().processChangedLines(0, document.getLength());
-	        } catch (BadLocationException e) {
-	        	// Updates the log
-	        	AcideLog.getLog().error(e.getMessage());
-	        }
-	    
-	}
+		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
+				.getFileEditorManager().getSelectedFileEditorPanel();
+		if(!selectedFileEditorPanel
+				.get_errors().isEmpty()) {
+	        SwingUtilities.invokeLater(new Runnable() {
+	            public void run() {
+	                AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
+	                        .getSelectedFileEditorPanel();
+	                StyledDocument document = selectedFileEditorPanel.getStyledDocument();
+
+	                // Eliminar los atributos de estilo del documento
+	                SimpleAttributeSet emptyStyle = new SimpleAttributeSet();
+	                document.setCharacterAttributes(0, document.getLength(), emptyStyle, true);
+	                try {
+	                    selectedFileEditorPanel.getStyledDocument().processChangedLines(0, document.getLength());
+	                } catch (BadLocationException e) {
+	                    // Updates the log
+	                    AcideLog.getLog().error(e.getMessage());
+	                }
+
+	            }
+	        });
+	        selectedFileEditorPanel.setErrors(new HashMap<String, String>());
+		}
+    }
 
 }

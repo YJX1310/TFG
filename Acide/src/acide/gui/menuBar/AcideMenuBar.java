@@ -75,6 +75,7 @@ import acide.gui.menuBar.configurationMenu.AcideConfigurationMenu;
 import acide.gui.menuBar.configurationMenu.consoleMenu.AcideConsoleMenu;
 import acide.gui.menuBar.configurationMenu.databasePanelMenu.AcideDatabasePanelMenu;
 import acide.gui.menuBar.configurationMenu.fileEditor.AcideFileEditorMenu;
+import acide.gui.menuBar.configurationMenu.grammarMenu.AcideGrammarAnalyzeMenu;
 import acide.gui.menuBar.configurationMenu.grammarMenu.AcideGrammarMenu;
 import acide.gui.menuBar.configurationMenu.graphPanelMenu.AcideGraphPanelArrowColorMenu;
 import acide.gui.menuBar.configurationMenu.graphPanelMenu.AcideGraphPanelMenu;
@@ -398,6 +399,15 @@ public class AcideMenuBar extends JMenuBar {
 			
 			AcideMenuItemConfiguration analyzeText = grammar.getItem(AcideGrammarMenu.ANALYZE_TEXT_NAME);
 			analyzeText.setVisible(AcideMenuConfiguration.getInstance().getIsDisplayed(AcideGrammarMenu.ANALYZE_TEXT_NAME));
+			
+			AcideMenuSubmenuConfiguration analyze = grammar.getSubmenu(AcideGrammarMenu.ANALYZE_NAME);
+			analyze.setVisible(AcideMenuConfiguration.getInstance().getIsDisplayed(AcideGrammarMenu.ANALYZE_NAME));
+			
+			AcideMenuItemConfiguration completeTextAnalysis = analyze.getItem(AcideGrammarAnalyzeMenu.COMPLETE_TEXT_ANALYSIS);
+			completeTextAnalysis.setVisible(AcideMenuConfiguration.getInstance().getIsDisplayed(AcideGrammarAnalyzeMenu.COMPLETE_TEXT_ANALYSIS));
+			
+			AcideMenuItemConfiguration incrementalAnalysis = analyze.getItem(AcideGrammarAnalyzeMenu.INCREMENTAL_ANALYSIS);
+			incrementalAnalysis.setVisible(AcideMenuConfiguration.getInstance().getIsDisplayed(AcideGrammarAnalyzeMenu.INCREMENTAL_ANALYSIS));
 
 			AcideMenuItemConfiguration compiler = configuration.getItem(AcideConfigurationMenu.COMPILER_NAME);
 			compiler.setVisible(
@@ -693,6 +703,10 @@ public class AcideMenuBar extends JMenuBar {
 				AcideMenuItemConfiguration analyzeText = grammar.getItem(AcideGrammarMenu.ANALYZE_TEXT_NAME);
 				analyzeText.setVisible(
 						AcideMenuConfiguration.getInstance().getIsDisplayed(AcideGrammarMenu.ANALYZE_TEXT_NAME));
+				
+				AcideMenuSubmenuConfiguration analyze = AcideMenuItemsConfiguration.getInstance().getAnalyzeDefaultSubmenu();
+				analyze.setVisible(
+						AcideMenuConfiguration.getInstance().getIsDisplayed(AcideGrammarMenu.ANALYZE_NAME));
 
 			} else {
 
@@ -838,6 +852,9 @@ public class AcideMenuBar extends JMenuBar {
 							grammar.getItem(AcideGrammarMenu.ANALYZE_TEXT_NAME);
 					AcideMenuConfiguration.getInstance().setIsDisplayed(AcideGrammarMenu.ANALYZE_TEXT_NAME,
 							analyzeText.isVisible());
+					AcideMenuItemsConfiguration.getInstance().getSubmenu(AcideConfigurationMenu.CONFIGURATION_MENU_NAME)
+					.getSubmenu(AcideConfigurationMenu.GRAMMAR_NAME).getItemsManager()
+					.onlyOne(AcideGrammarMenu.ANALYZE_TEXT_NAME);
 				
 				}else{
 					analyzeText = new
@@ -851,8 +868,23 @@ public class AcideMenuBar extends JMenuBar {
 				analyzeText.setParameter("None");
 				//autoAnalysis.setCommand("");
 				
-				AcideMenuItemsConfiguration.getInstance().getSubmenu(AcideConfigurationMenu.CONFIGURATION_MENU_NAME)
-						.getItemsManager().onlyOne(AcideConfigurationMenu.GRAMMAR_NAME);
+				AcideMenuSubmenuConfiguration analyze;
+				if (grammar.hasSubmenu(AcideGrammarMenu.ANALYZE_NAME)) {
+					analyze = grammar.getSubmenu(AcideGrammarMenu.ANALYZE_NAME);
+					AcideMenuConfiguration.getInstance().setIsDisplayed(AcideGrammarMenu.ANALYZE_NAME,
+							analyze.isVisible());
+					AcideMenuItemsConfiguration.getInstance().getSubmenu(AcideConfigurationMenu.CONFIGURATION_MENU_NAME)
+					.getSubmenu(AcideConfigurationMenu.GRAMMAR_NAME).getItemsManager().onlyOne(AcideGrammarMenu.ANALYZE_NAME);
+				} else {
+					analyze = new AcideMenuSubmenuConfiguration(AcideGrammarMenu.ANALYZE_NAME);
+					analyze.setVisible(AcideMenuConfiguration.getInstance()
+							.getIsDisplayed(AcideGrammarMenu.ANALYZE_NAME));
+					grammar.insertObject(analyze);
+					
+				}
+				analyze.setErasable(false);
+				//analyze.setCommand("");
+
 			}
 
 			AcideMenuItemConfiguration compiler;

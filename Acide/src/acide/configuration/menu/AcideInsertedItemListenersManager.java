@@ -84,6 +84,8 @@ import acide.gui.menuBar.configurationMenu.fileEditor.listeners.AcidePreferences
 import acide.gui.menuBar.configurationMenu.fileEditor.listeners.AcideSendToConsoleConfirmationMenuItemListener;
 import acide.gui.menuBar.configurationMenu.grammarMenu.listeners.AcideAnalyzeTextMenuItemListener;
 import acide.gui.menuBar.configurationMenu.grammarMenu.listeners.AcideAutoAnalysisMenuItemListener;
+import acide.gui.menuBar.configurationMenu.grammarMenu.listeners.AcideCompleteTextAnalysisMenuItemListener;
+import acide.gui.menuBar.configurationMenu.grammarMenu.listeners.AcideIncrementalAnalysisMenuItemListener;
 import acide.gui.menuBar.configurationMenu.grammarMenu.listeners.AcideLoadGrammarMenuItemListener;
 import acide.gui.menuBar.configurationMenu.grammarMenu.listeners.AcideModifyGrammaMenuItemrListener;
 import acide.gui.menuBar.configurationMenu.grammarMenu.listeners.AcideNewGrammarMenuItemListener;
@@ -538,6 +540,12 @@ public class AcideInsertedItemListenersManager {
 			break;
 		case 551:
 			AcideAnalyzeTextMenuItemListener.action(event);
+			break;
+		case 552:
+			AcideCompleteTextAnalysisMenuItemListener.action(event);
+			break;
+		case 553:
+			AcideIncrementalAnalysisMenuItemListener.action(event);
 			break;
 		case 601:
 			AcideShowHelpMenuItemListener.action(event);

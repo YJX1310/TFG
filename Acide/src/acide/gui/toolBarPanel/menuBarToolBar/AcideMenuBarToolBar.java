@@ -1223,9 +1223,6 @@ public class AcideMenuBarToolBar extends ArrayList<Component> {
 		 */
 		@Override
 		public void mouseReleased(MouseEvent mouseEvent) {
-
-			// Dispatches the event
-			dispatchEvent(mouseEvent);
 		}
 
 		/*
@@ -1236,9 +1233,6 @@ public class AcideMenuBarToolBar extends ArrayList<Component> {
 		 */
 		@Override
 		public void mousePressed(MouseEvent mouseEvent) {
-
-			// Dispatches the event
-			dispatchEvent(mouseEvent);
 		}
 
 		/*

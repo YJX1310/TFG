@@ -39,8 +39,6 @@
  */
 package acide.gui.fileEditor.fileEditorManager.listeners;
 
-import java.util.HashMap;
-
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
@@ -53,6 +51,7 @@ import javax.swing.text.Utilities;
 import acide.configuration.workbench.AcideWorkbenchConfiguration;
 import acide.files.bytes.AcideByteFileManager;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
+import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideHighlightError;
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideTextComponent;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
@@ -143,6 +142,10 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 			Element rootElement = AcideMainWindow.getInstance()
 					.getFileEditorManager().getSelectedFileEditorPanel()
 					.getStyledDocument().getDefaultRootElement();
+			
+			if(!selectedFileEditorPanel.get_errors().isEmpty()) {
+                AcideHighlightError.getInstance().clearErrorHighlight();
+            }
 			
 			// If auto-analysis is activated then
 			if(AcideMainWindow.getInstance()

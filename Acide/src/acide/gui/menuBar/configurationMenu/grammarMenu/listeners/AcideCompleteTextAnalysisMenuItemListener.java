@@ -46,88 +46,86 @@ package acide.gui.menuBar.configurationMenu.grammarMenu.listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.HashMap;
 
-import acide.files.AcideFileExtensionFilterManager;
-import acide.files.AcideFileManager;
+import javax.swing.JCheckBoxMenuItem;
+
 import acide.files.bytes.AcideByteFileManager;
-import acide.files.utils.AcideFileOperation;
-import acide.files.utils.AcideFileTarget;
-import acide.files.utils.AcideFileType;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideHighlightError;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
-import acide.log.AcideLog;
 import acide.process.parser.AcideGrammarAnalyzer;
 import acide.process.parser.AcideGrammarFileCreationProcess;
 
-/**
- * ACIDE - A Configurable IDE load grammar menu item listener.
- * 
- * @version 0.20
- * @see ActionListener
+/**																
+ * ACIDE - A Configurable IDE auto analysis check box menu item listener.										
+ *					
+ * @version 0.20	
+ * @see ActionListener																													
  */
-public class AcideLoadGrammarMenuItemListener implements ActionListener {
+public class AcideCompleteTextAnalysisMenuItemListener implements ActionListener{
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
-
 		action(actionEvent);
 	}
 	
 	public static void action(ActionEvent actionEvent){
-		// Asks the the file to the user
-		String absolutePath = AcideFileManager.getInstance().askForFile(
-				AcideFileOperation.OPEN,
-				AcideFileTarget.FILES,
-				AcideFileType.FILE,
-				"./configuration/grammars/",
-				new AcideFileExtensionFilterManager(new String[] { ".txt" },
-						AcideLanguageManager.getInstance().getLabels()
-								.getString("s270")));
+		// Gets the new value of the checkBox
+		boolean selected = ((JCheckBoxMenuItem)actionEvent
+				.getSource()).isSelected();
 		
-		// If the path is not null
-		if(absolutePath != null) {
-
-			String lock = "";
-			
-			// Process the file grammar
-			AcideByteFileManager.getInstance().processGrammarFile(absolutePath);
-			
-			AcideGrammarFileCreationProcess process = new AcideGrammarFileCreationProcess(
-					absolutePath, false, AcideLanguageManager.getInstance().getLabels()
-					.getString("s35"), true);
-			
-			process.setLock(lock);
-			
-			// Starts the process
-			process.start();
-			
-			// Clear all the errors highlights
-			AcideHighlightError.getInstance().clearErrorHighlight();
-			
-			
-			// If complete text analysis or incremental analysis is activated then
-			if(AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-					.getAnalyzeMenu().getIncrementalAnalysisCheckBoxMenuItem().isSelected() 
-					|| AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-					.getAnalyzeMenu().getCompleteTextAnalysisCheckBoxMenuItem().isSelected()) {
-				
-				// Get the file editor panel analyzer
-				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
-				
-				analyzer.setLock(lock);
-				
-				// Analyze the text
-				analyzer.start();
+		// Clear all the errors highlights
+		AcideHighlightError.getInstance().clearErrorHighlight();
+		
+		if(!AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
+				.getAnalyzeMenu().getIncrementalAnalysisCheckBoxMenuItem().isSelected()) {
+			if(selected) {
+				invokeAnalyze();
 			}
 		}
+		else {
+			invokeAnalyze();
+			
+			// Set the new value of the checkBox
+			AcideMainWindow.getInstance()
+			.getMenu().getConfigurationMenu()
+			.getGrammarMenu().getAnalyzeMenu()
+			.getIncrementalAnalysisCheckBoxMenuItem().setSelected(!selected);
+		}
+	}
+	
+	private static void invokeAnalyze() {
+		String lock = "";
+		
+		// Gets the selected file editor panel
+		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
+				.getFileEditorManager().getSelectedFileEditorPanel();
+		
+		// Process the current grammar
+		AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
+				.getCurrentGrammarConfiguration().getPath());
+		
+		AcideGrammarFileCreationProcess fileCreationProcess = new AcideGrammarFileCreationProcess(AcideMainWindow
+				.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
+				.getCurrentGrammarConfiguration().getPath(), false, 
+				AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
+		
+		fileCreationProcess.setLock(lock);
+		
+		// Starts the process
+		fileCreationProcess.start();
+		
+		// Get the file editor panel analyzer
+		AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
+		
+		analyzer.setLock(lock);
+		
+		// Analyze the text
+		analyzer.start();
 	}
 }

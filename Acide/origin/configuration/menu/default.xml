@@ -576,7 +576,7 @@
                           <__erasable>false</__erasable>
                           <__image></__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
-                        <acide.configuration.menu.AcideMenuItemConfiguration>
+						<acide.configuration.menu.AcideMenuItemConfiguration>
                           <__command>$AUTO_ANALYSIS</__command>
                           <__parameter>None</__parameter>
                           <__name>Auto-Analysis</__name>
@@ -584,6 +584,42 @@
                           <__erasable>false</__erasable>
                           <__image></__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
+                        <acide.configuration.menu.AcideMenuItemConfiguration>
+                          <__command>$ANALYZE_TEXT</__command>
+                          <__parameter>None</__parameter>
+                          <__name>Analyze Text</__name>
+                          <__visible>false</__visible>
+                          <__erasable>false</__erasable>
+                          <__image></__image>
+                        </acide.configuration.menu.AcideMenuItemConfiguration>
+						<acide.configuration.menu.AcideMenuSubmenuConfiguration>
+						  <__itemsManager>
+							  <__list>
+								  <__list>
+									  <acide.configuration.menu.AcideMenuItemConfiguration>
+										  <__command>$COMPLETE_TEXT_ANALYSIS</__command>
+										  <__parameter>None</__parameter>
+										  <__name>Complete Text Analysis</__name>
+										  <__visible>true</__visible>
+										  <__erasable>false</__erasable>
+										  <__image></__image>
+									  </acide.configuration.menu.AcideMenuItemConfiguration>
+									  <acide.configuration.menu.AcideMenuItemConfiguration>
+										  <__command>$INCREMENTAL_ANALYSIS</__command>
+										  <__parameter>None</__parameter>
+										  <__name>Incremental Analysis</__name>
+										  <__visible>true</__visible>
+										  <__erasable>false</__erasable>
+										  <__image></__image>
+									  </acide.configuration.menu.AcideMenuItemConfiguration>
+								  </__list>
+							  </__list>
+						  </__itemsManager>
+						  <__name>Analyze</__name>
+						  <__visible>true</__visible>
+						  <__erasable>false</__erasable>
+						  <__image></__image>
+						</acide.configuration.menu.AcideMenuSubmenuConfiguration>
                       </__list>
                     </__list>
                   </__itemsManager>

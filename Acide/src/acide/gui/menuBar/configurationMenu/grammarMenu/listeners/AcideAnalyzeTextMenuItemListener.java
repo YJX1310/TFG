@@ -80,11 +80,9 @@ public class AcideAnalyzeTextMenuItemListener implements ActionListener{
 		// Gets the selected file editor panel
 		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
 				.getFileEditorManager().getSelectedFileEditorPanel();
-		AcideHighlightError errorhighlighter=AcideHighlightError.getInstance();
 		
 		// Clear all the errors highlights
-		errorhighlighter.clearErrorHighlight();
-		selectedFileEditorPanel.setErrors(new HashMap<String, String>());
+		AcideHighlightError.getInstance().clearErrorHighlight();
 		
 		String lock = "";
 		
