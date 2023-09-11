@@ -154,9 +154,7 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 					.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem()
 					.isSelected()) {
 				if(!selectedFileEditorPanel.get_errors().isEmpty()) {
-					AcideHighlightError errorhighlighter = AcideHighlightError.getInstance();
-					errorhighlighter.clearErrorHighlight();
-					selectedFileEditorPanel.setErrors(new HashMap<String,String>());
+					AcideHighlightError.getInstance().clearErrorHighlight();
 				}
 				
 				String lock = "";

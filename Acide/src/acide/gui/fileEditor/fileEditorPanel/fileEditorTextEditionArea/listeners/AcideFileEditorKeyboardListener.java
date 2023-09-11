@@ -232,7 +232,7 @@ public class AcideFileEditorKeyboardListener extends KeyAdapter {
 				.getSelectedFileEditorPanel();
 
 		AcideHighlightError.getInstance().clearErrorHighlight();
-		selectedFileEditorPanel.getErrorPopup().setVisible(false);
+		AcideMainWindow.getInstance().getErrorPopup().setVisible(false);
 		
 		// Get the delimiter
 		String delimiter = selectedFileEditorPanel.get_grammarDelimiter();
