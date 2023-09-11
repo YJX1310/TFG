@@ -49,6 +49,7 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JOptionPane;
 
 import acide.files.bytes.AcideByteFileManager;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
@@ -78,7 +79,7 @@ public class AcideIncrementalAnalysisMenuItemListener implements ActionListener{
 		// Gets the new value of the checkBox
 		boolean selected = ((JCheckBoxMenuItem)actionEvent
 				.getSource()).isSelected();
-		
+
 		// Clear all the errors highlights
 		AcideHighlightError.getInstance().clearErrorHighlight();
 		
@@ -110,6 +111,14 @@ public class AcideIncrementalAnalysisMenuItemListener implements ActionListener{
 		AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
 				.getCurrentGrammarConfiguration().getPath());
 		
+		if(selectedFileEditorPanel.get_grammarDelimiter().equals("")) {
+			JOptionPane.showMessageDialog(
+					null,               
+					AcideLanguageManager.getInstance().getLabels().getString("s2441"), 
+					AcideLanguageManager.getInstance().getLabels().getString("s2040"),           
+					JOptionPane.WARNING_MESSAGE 
+					);
+		}
 		AcideGrammarFileCreationProcess fileCreationProcess = new AcideGrammarFileCreationProcess(AcideMainWindow
 				.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
 				.getCurrentGrammarConfiguration().getPath(), false, 
