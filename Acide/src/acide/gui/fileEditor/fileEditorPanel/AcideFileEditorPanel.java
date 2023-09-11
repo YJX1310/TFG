@@ -249,7 +249,8 @@ public class AcideFileEditorPanel extends JPanel {
 			_styledDocument.addDocumentListener(_documentListener);
 
 			// creates the error message windows
-			_errorpopup=new AcidefileEditorPanelErrorpopup();
+			//_errorpopup=new AcidefileEditorPanelErrorpopup();
+			
 
 			// Builds the popup menu
 			buildPopupMenu();
@@ -716,9 +717,9 @@ public class AcideFileEditorPanel extends JPanel {
 	 * 
 	 * @return the ACIDE - A Configurable IDE file editor panel error popup .
 	 */
-	public AcidefileEditorPanelErrorpopup getErrorPopup() {
+	/*public AcidefileEditorPanelErrorpopup getErrorPopup() {
 		return _errorpopup;
-	}
+	}*/
 	
 
 	/**

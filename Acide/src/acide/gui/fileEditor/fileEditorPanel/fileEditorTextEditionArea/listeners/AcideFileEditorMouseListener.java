@@ -118,7 +118,7 @@ public class AcideFileEditorMouseListener extends MouseAdapter  {
             	AcideFileEditorPanel selectedFileEditorPanelIndex = AcideMainWindow.getInstance().getFileEditorManager()
                         .getSelectedFileEditorPanel();
                  if (oppositeComponent == null || oppositeComponent != selectedFileEditorPanelIndex.getActiveTextEditionArea()) {            
-                	 selectedFileEditorPanelIndex.getErrorPopup().setVisible(false);
+                	 AcideMainWindow.getInstance().getErrorPopup().setVisible(false);
                  }
             }
         });

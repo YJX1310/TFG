@@ -246,7 +246,8 @@ public class AcideGrammarAnalyzer extends Thread {
 				.getActiveTextEditionArea().getDocument().getLength();
 		try {
 			//para omitir los saltos de linea al final del texto.
-			while (endoffset >= 0 && selectedFileEditorPanel.getActiveTextEditionArea().getDocument().getText(endoffset, 1).equals("\n")) {
+			while (endoffset >= 0 && selectedFileEditorPanel.getActiveTextEditionArea()
+					.getText(endoffset, 1).equals("\n")) {
 				endoffset--;
 			}
 			 text = selectedFileEditorPanel.getActiveTextEditionArea().getDocument().getText(0, endoffset+1);

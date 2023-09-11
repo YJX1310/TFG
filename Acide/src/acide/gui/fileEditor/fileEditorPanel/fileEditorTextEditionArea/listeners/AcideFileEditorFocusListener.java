@@ -93,11 +93,9 @@ public class AcideFileEditorFocusListener implements FocusListener {
     	_timer = new Timer(500, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-            	AcideFileEditorPanel selectedFileEditorPanelIndex = AcideMainWindow.getInstance().getFileEditorManager()
-                        .getSelectedFileEditorPanel();
                  Component oppositeComponent = focusEvent.getOppositeComponent();
-                 if (oppositeComponent == null || oppositeComponent != selectedFileEditorPanelIndex.getErrorPopup()) {            
-                	 selectedFileEditorPanelIndex.getErrorPopup().setVisible(false);
+                 if (oppositeComponent == null || oppositeComponent != AcideMainWindow.getInstance().getErrorPopup()) {            
+                	 AcideMainWindow.getInstance().getErrorPopup().setVisible(false);
                  }
             }
         });

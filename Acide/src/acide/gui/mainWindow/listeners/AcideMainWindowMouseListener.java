@@ -268,9 +268,7 @@ public class AcideMainWindowMouseListener extends MouseAdapter {
          Timer _timer = null;
     	_timer = new Timer(500, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	AcideFileEditorPanel selectedFileEditorPanelIndex = AcideMainWindow.getInstance().getFileEditorManager()
-                        .getSelectedFileEditorPanel();
-	             selectedFileEditorPanelIndex.getErrorPopup().setVisible(false);
+            	AcideMainWindow.getInstance().getErrorPopup().setVisible(false);
 	
             }
         });

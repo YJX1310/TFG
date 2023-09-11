@@ -87,6 +87,7 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 	@Override
 	public void stateChanged(ChangeEvent changeEvent) {
 
+		
 		if (AcideWorkbenchConfiguration.getInstance().isWorkbenchLoaded()) {
 			
 			// gets the tabbed pane
@@ -152,6 +153,11 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 					.getMenu().getConfigurationMenu()
 					.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem()
 					.isSelected()) {
+				if(!selectedFileEditorPanel.get_errors().isEmpty()) {
+					AcideHighlightError errorhighlighter = AcideHighlightError.getInstance();
+					errorhighlighter.clearErrorHighlight();
+					selectedFileEditorPanel.setErrors(new HashMap<String,String>());
+				}
 				
 				String lock = "";
 				
