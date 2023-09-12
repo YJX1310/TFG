@@ -260,7 +260,8 @@ public class AcideFileEditorKeyboardListener extends KeyAdapter {
 			}
 		} else if(AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
 				.getAnalyzeMenu().getIncrementalAnalysisCheckBoxMenuItem().isSelected()){
-			if (delimiter.charAt(0) == keyEvent.getKeyChar()) {
+			
+			if (!delimiter.equals("")&&delimiter.charAt(0) == keyEvent.getKeyChar()) {
 
 				// Get the fragment of text to analyze
 				int endCaretPosition = selectedFileEditorPanel.getActiveTextEditionArea().getCaretPosition();
