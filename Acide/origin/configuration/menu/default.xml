@@ -576,14 +576,6 @@
                           <__erasable>false</__erasable>
                           <__image></__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
-						<acide.configuration.menu.AcideMenuItemConfiguration>
-                          <__command>$AUTO_ANALYSIS</__command>
-                          <__parameter>None</__parameter>
-                          <__name>Auto-Analysis</__name>
-                          <__visible>true</__visible>
-                          <__erasable>false</__erasable>
-                          <__image></__image>
-                        </acide.configuration.menu.AcideMenuItemConfiguration>
                         <acide.configuration.menu.AcideMenuItemConfiguration>
                           <__command>$ANALYZE_TEXT</__command>
                           <__parameter>None</__parameter>

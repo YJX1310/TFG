@@ -52,7 +52,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import javax.swing.ImageIcon;
-import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
@@ -69,7 +68,6 @@ import acide.configuration.menu.AcideMenuSubmenuConfiguration;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.gui.menuBar.configurationMenu.AcideConfigurationMenu;
-import acide.gui.menuBar.configurationMenu.debugPanelMenu.AcideDebugPanelNodeShapeMenu;
 import acide.gui.menuBar.listeners.AcideMenuBarMouseClickListener;
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
@@ -176,11 +174,11 @@ public class AcideGrammarMenu extends JMenu {
 	 * ACIDE - A Configurable IDE grammar menu set paths menu item has been inserted.
 	 */
 	private boolean _setPathsInserted;
-	/**
-	 * ACIDE - A Configurable IDE grammar menu auto analysis check box menu
-	 * item.
-	 */
-	private JCheckBoxMenuItem _autoAnalysisCheckBoxMenuItem;
+//	/**
+//	 * ACIDE - A Configurable IDE grammar menu auto analysis check box menu
+//	 * item.
+//	 */
+//	private JCheckBoxMenuItem _autoAnalysisCheckBoxMenuItem;
 	/**
 	 * ACIDE - A Configurable IDE grammar menu analyze text menu item.
 	 */
@@ -331,7 +329,7 @@ public class AcideGrammarMenu extends JMenu {
 		//add(_setPathsAutoAnalyisisSeparator);
 
 		// Adds the auto analysis check box menu item to the menu
-		add(_autoAnalysisCheckBoxMenuItem);
+		//add(_autoAnalysisCheckBoxMenuItem);
 	}
 
 	/**
@@ -451,18 +449,18 @@ public class AcideGrammarMenu extends JMenu {
 		_setPathsMenuItem.setName(SET_PATHS_NAME);
 
 		// Creates the auto analysis check box menu item
-		_autoAnalysisCheckBoxMenuItem = new JCheckBoxMenuItem(
-				AcideLanguageManager.getInstance().getLabels()
-						.getString("s911"));
+//		_autoAnalysisCheckBoxMenuItem = new JCheckBoxMenuItem(
+//				AcideLanguageManager.getInstance().getLabels()
+//						.getString("s911"));
 
 		// Creates the set paths auto analysis separator
 		_setPathsAutoAnalyisisSeparator = new JSeparator();
 		
 		// Sets the auto analysis check box menu item name
-		_autoAnalysisCheckBoxMenuItem.setName(AUTO_ANALYSIS_NAME);
+		//_autoAnalysisCheckBoxMenuItem.setName(AUTO_ANALYSIS_NAME);
 
 		// Sets the auto analysis check box menu item as not selected
-		_autoAnalysisCheckBoxMenuItem.setSelected(false);
+		//_autoAnalysisCheckBoxMenuItem.setSelected(false);
 		
 		// Creates the analyze text menu item
 		icon = IconsUtils.getIcon(AcideMenuItemsConfiguration.getInstance()
@@ -519,8 +517,8 @@ public class AcideGrammarMenu extends JMenu {
 				.getLabels().getString("s912"));
 
 		// Sets the auto analysis check box menu item text
-		_autoAnalysisCheckBoxMenuItem.setText(AcideLanguageManager
-				.getInstance().getLabels().getString("s911"));
+//		_autoAnalysisCheckBoxMenuItem.setText(AcideLanguageManager
+//				.getInstance().getLabels().getString("s911"));
 		
 		// Sets the analyze text menu item text
 		_analyzeTextMenuItem.setText(AcideLanguageManager
@@ -622,12 +620,12 @@ public class AcideGrammarMenu extends JMenu {
 				.getSubmenu(GRAMMAR_MENU_NAME).getItem(SET_PATHS_NAME)));
 
 		// Sets the auto analysis check box menu item action listener
-		_autoAnalysisCheckBoxMenuItem
-				//.addActionListener(new AcideAutoAnalysisMenuItemListener());
-			.addActionListener(new AcideInsertedItemListener(
-				AcideMenuItemsConfiguration.getInstance()
-				.getSubmenu(AcideConfigurationMenu.CONFIGURATION_MENU_NAME)
-				.getSubmenu(GRAMMAR_MENU_NAME).getItem(AUTO_ANALYSIS_NAME)));
+//		_autoAnalysisCheckBoxMenuItem
+//				//.addActionListener(new AcideAutoAnalysisMenuItemListener());
+//			.addActionListener(new AcideInsertedItemListener(
+//				AcideMenuItemsConfiguration.getInstance()
+//				.getSubmenu(AcideConfigurationMenu.CONFIGURATION_MENU_NAME)
+//				.getSubmenu(GRAMMAR_MENU_NAME).getItem(AUTO_ANALYSIS_NAME)));
 		
 		// Sets the analysis text menu item action listener
 		_analyzeTextMenuItem
@@ -662,7 +660,7 @@ public class AcideGrammarMenu extends JMenu {
 		AcideMenuItemConfiguration saveGrammarConfiguration;
 		AcideMenuItemConfiguration saveGrammarAsConfiguration;
 		AcideMenuItemConfiguration setPathsConfiguration;
-		AcideMenuItemConfiguration autoAnalysisConfiguration;
+		//AcideMenuItemConfiguration autoAnalysisConfiguration;
 		AcideMenuItemConfiguration analyzeTextConfiguration;
 		
 		_grammarSubmenuConfiguration = AcideMenuItemsConfiguration.getInstance()
@@ -702,8 +700,8 @@ public class AcideGrammarMenu extends JMenu {
 				&& (_setPathsMenuItem.isVisible()));
 			
 		// Sets the auto analysis check box menu item to visible or not visible
-		autoAnalysisConfiguration = _grammarSubmenuConfiguration.getItem(AUTO_ANALYSIS_NAME);
-		_autoAnalysisCheckBoxMenuItem.setVisible(autoAnalysisConfiguration.isVisible());
+//		autoAnalysisConfiguration = _grammarSubmenuConfiguration.getItem(AUTO_ANALYSIS_NAME);
+//		_autoAnalysisCheckBoxMenuItem.setVisible(autoAnalysisConfiguration.isVisible());
 
 		// Sets the analyze text menu item to visible or not visible
 		analyzeTextConfiguration = _grammarSubmenuConfiguration.getItem(ANALYZE_TEXT_NAME);
@@ -715,7 +713,8 @@ public class AcideGrammarMenu extends JMenu {
 				|| _modifyGrammarMenuItem.isVisible()
 				|| _saveGrammarMenuItem.isVisible()
 				|| _saveGrammarAsMenuItem.isVisible() || _setPathsMenuItem.isVisible())
-				&& (_autoAnalysisCheckBoxMenuItem.isVisible()));
+				//&& (_autoAnalysisCheckBoxMenuItem.isVisible())
+				);
 		
 		Iterator<AcideMenuObjectConfiguration> it = _insertedObjects.iterator();
 		while (it.hasNext()){
@@ -801,7 +800,7 @@ public class AcideGrammarMenu extends JMenu {
 		_setPathsMenuItem.setEnabled(true);
 		
 		// Enables the auto analysis check box menu item
-		_autoAnalysisCheckBoxMenuItem.setEnabled(true);
+		//_autoAnalysisCheckBoxMenuItem.setEnabled(true);
 	}
 	
 	/**
@@ -828,7 +827,7 @@ public class AcideGrammarMenu extends JMenu {
 		_setPathsMenuItem.setEnabled(true);
 		
 		// Enables the auto analysis check box menu item
-		_autoAnalysisCheckBoxMenuItem.setEnabled(true);
+		//_autoAnalysisCheckBoxMenuItem.setEnabled(true);
 	}
 	
 	/**
@@ -930,9 +929,9 @@ public class AcideGrammarMenu extends JMenu {
 	 * @return the ACIDE - A Configurable IDE grammar menu auto analysis check box
 	 *         menu item.
 	 */
-	public JCheckBoxMenuItem getAutoAnalysisCheckBoxMenuItem() {
-		return _autoAnalysisCheckBoxMenuItem;
-	}
+//	public JCheckBoxMenuItem getAutoAnalysisCheckBoxMenuItem() {
+//		return _autoAnalysisCheckBoxMenuItem;
+//	}
 
 	/**
 	 * Returns the ACIDE - A Configurable IDE grammar menu analyze text

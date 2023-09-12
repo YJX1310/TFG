@@ -427,9 +427,9 @@ public class AcideInsertedItemListenersManager {
 		case 510:
 			AcideSetPathsMenuItemListener.action(event);
 			break;
-		case 511:
-			AcideAutoAnalysisMenuItemListener.action(event);
-			break;
+//		case 511:
+//			AcideAutoAnalysisMenuItemListener.action(event);
+//			break;
 		case 512:
 			AcideCompilerMenuItemListener.action(event);
 			break;

@@ -275,9 +275,7 @@ public class AcideFileEditorCaretListener implements CaretListener {
 									selectedFileEditorPanel
 											.getTextEditionPanelList().get(1)
 											.getMatchingElementPosition());
-					if (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-							.getAutoAnalysisCheckBoxMenuItem().isSelected()) {
-					}
+
 				}
 			}
 		} catch (BadLocationException exception) {

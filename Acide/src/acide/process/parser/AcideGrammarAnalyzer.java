@@ -45,6 +45,7 @@
 package acide.process.parser;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
@@ -112,11 +113,11 @@ public class AcideGrammarAnalyzer extends Thread {
 
 		@Override
 		public Class<?> loadClass(String name) throws ClassNotFoundException {
-
+			
+			String path = System.getProperty("user.dir");
 			if (name.equals("acide.process.parser.grammar.ExprLexer")) {
 				try {
-					InputStream is = AcideMain.class.getClassLoader()
-							.getResourceAsStream("acide/process/parser/grammar/ExprLexer.class");
+					InputStream is = new FileInputStream(path + "/out/production/Acide/acide/process/parser/grammar/ExprLexer.class");
 					ByteArrayOutputStream baos = new ByteArrayOutputStream();
 					byte[] buffer = new byte[4096];
 					int bytesRead;
@@ -132,8 +133,7 @@ public class AcideGrammarAnalyzer extends Thread {
 				}
 			} else if (name.equals("acide.process.parser.grammar.ExprParser")) {
 				try {
-					InputStream is = AcideMain.class.getClassLoader()
-							.getResourceAsStream("acide/process/parser/grammar/ExprParser.class");
+					InputStream is = new FileInputStream(path + "/out/production/Acide/acide/process/parser/grammar/ExprParser.class");
 					ByteArrayOutputStream baos = new ByteArrayOutputStream();
 					byte[] buffer = new byte[4096];
 					int bytesRead;
@@ -148,6 +148,26 @@ public class AcideGrammarAnalyzer extends Thread {
 					throw new ClassNotFoundException("", e);
 				}
 			}
+			else if (name.contains("acide.process.parser.grammar.ExprParser")){
+
+                try {
+                    String[] parts = name.split("\\.");
+                    InputStream is = new FileInputStream(path + "/out/production/Acide/acide/process/parser/grammar/" + parts[parts.length-1] + ".class");
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    byte[] buffer = new byte[4096];
+                    int bytesRead;
+                    while ((bytesRead = is.read(buffer)) != -1) {
+                        baos.write(buffer, 0, bytesRead);
+                    }
+                    byte[] classBytes = baos.toByteArray();
+                    return defineClass(name, classBytes, 0, classBytes.length);
+                } catch (IOException e) {
+                    // Updates the log
+                    AcideLog.getLog().error(e.getMessage());
+                    throw new ClassNotFoundException("", e);
+                }
+
+            }
 			return getParent().loadClass(name);
 
 		}

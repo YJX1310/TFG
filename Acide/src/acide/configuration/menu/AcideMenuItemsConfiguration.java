@@ -1439,11 +1439,11 @@ public class AcideMenuItemsConfiguration {
 		result.insertObject(setPaths);
 		
 		//AUTO ANALYSIS
-		AcideMenuItemConfiguration autoAnalysis = new AcideMenuItemConfiguration(AcideGrammarMenu.AUTO_ANALYSIS_NAME);
-		autoAnalysis.setErasable(false);
-		autoAnalysis.setVisible(true);
-		autoAnalysis.setCommand("$AUTO_ANALYSIS");
-		result.insertObject(autoAnalysis);
+//		AcideMenuItemConfiguration autoAnalysis = new AcideMenuItemConfiguration(AcideGrammarMenu.AUTO_ANALYSIS_NAME);
+//		autoAnalysis.setErasable(false);
+//		autoAnalysis.setVisible(true);
+//		autoAnalysis.setCommand("$AUTO_ANALYSIS");
+//		result.insertObject(autoAnalysis);
 		
 		//ANALYZE TEXT
 		AcideMenuItemConfiguration analyzeText = new AcideMenuItemConfiguration(AcideGrammarMenu.ANALYZE_TEXT_NAME);

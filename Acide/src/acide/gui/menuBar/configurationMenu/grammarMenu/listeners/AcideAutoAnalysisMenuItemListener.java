@@ -71,54 +71,55 @@ public class AcideAutoAnalysisMenuItemListener implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
-		action(actionEvent);
+		//action(actionEvent);
 	}
 	
-	public static void action(ActionEvent actionEvent){
-		// Gets the new value of the checkBox
-		boolean selected = ((JCheckBoxMenuItem)actionEvent
-				.getSource()).isSelected();
-		
-		// Gets the selected file editor panel
-		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
-				.getFileEditorManager().getSelectedFileEditorPanel();
-		AcideHighlightError errorhighlighter=AcideHighlightError.getInstance();
-		
-		if(selected) {
-			
-			String lock = "";
-			
-			// Process the current grammar
-			AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
-					.getCurrentGrammarConfiguration().getPath());
-			
-			AcideGrammarFileCreationProcess fileCreationProcess = new AcideGrammarFileCreationProcess(AcideMainWindow
-					.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
-					.getCurrentGrammarConfiguration().getPath(), false, 
-					AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
-			
-			fileCreationProcess.setLock(lock);
-			
-			// Starts the process
-			fileCreationProcess.start();
-			
-			// Get the file editor panel analyzer
-			AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
-			
-			analyzer.setLock(lock);
-			
-			// Analyze the text
-			analyzer.start();
-		}
-		else {
-			// Clear all the errors highlights
-			errorhighlighter.clearErrorHighlight();
-			selectedFileEditorPanel.setErrors(new HashMap<String, String>());
-		}
-		
-		// Set the new value of the checkBox
-		AcideMainWindow.getInstance()
-		.getMenu().getConfigurationMenu()
-		.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem().setSelected(selected);
-	}
+//	public static void action(ActionEvent actionEvent){
+//		// Gets the new value of the checkBox
+//		boolean selected = ((JCheckBoxMenuItem)actionEvent
+//				.getSource()).isSelected();
+//		
+//		// Gets the selected file editor panel
+//		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
+//				.getFileEditorManager().getSelectedFileEditorPanel();
+//		AcideHighlightError errorhighlighter=AcideHighlightError.getInstance();
+//		
+//		if(selected) {
+//			
+//			String lock = "";
+//			
+//			// Process the current grammar
+//			AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
+//					.getCurrentGrammarConfiguration().getPath());
+//			
+//			AcideGrammarFileCreationProcess fileCreationProcess = new AcideGrammarFileCreationProcess(AcideMainWindow
+//					.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
+//					.getCurrentGrammarConfiguration().getPath(), false, 
+//					AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
+//			
+//			fileCreationProcess.setLock(lock);
+//			
+//			// Starts the process
+//			fileCreationProcess.start();
+//			
+//			// Get the file editor panel analyzer
+//			AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
+//			
+//			analyzer.setLock(lock);
+//			
+//			// Analyze the text
+//			analyzer.start();
+//		}
+//		else {
+//			// Clear all the errors highlights
+//			errorhighlighter.clearErrorHighlight();
+//			selectedFileEditorPanel.setErrors(new HashMap<String, String>());
+//		}
+//		
+//		
+//		// Set the new value of the checkBox
+//		AcideMainWindow.getInstance()
+//		.getMenu().getConfigurationMenu()
+//		.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem().setSelected(selected);
+//	}
 }

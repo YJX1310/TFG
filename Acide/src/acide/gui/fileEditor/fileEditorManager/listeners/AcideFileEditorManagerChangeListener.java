@@ -148,14 +148,11 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
                 AcideHighlightError.getInstance().clearErrorHighlight();
             }
 			
-			// If auto-analysis is activated then
-			if(AcideMainWindow.getInstance()
-					.getMenu().getConfigurationMenu()
-					.getGrammarMenu().getAutoAnalysisCheckBoxMenuItem()
-					.isSelected()) {
-				if(!selectedFileEditorPanel.get_errors().isEmpty()) {
-					AcideHighlightError.getInstance().clearErrorHighlight();
-				}
+			// If complete text analysis or incremental analysis is activated then
+			if(AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
+					.getAnalyzeMenu().getIncrementalAnalysisCheckBoxMenuItem().isSelected() 
+					|| AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
+					.getAnalyzeMenu().getCompleteTextAnalysisCheckBoxMenuItem().isSelected()) {
 				
 				String lock = "";
 				
