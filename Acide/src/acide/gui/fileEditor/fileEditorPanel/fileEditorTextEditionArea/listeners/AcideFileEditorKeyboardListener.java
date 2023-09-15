@@ -291,7 +291,6 @@ public class AcideFileEditorKeyboardListener extends KeyAdapter {
 						for(int i=0;i<column;i++) {
 							text=" "+text;
 						}
-						System.out.println(text);
 						for(int i=0;i<line-1;i++) {
 							text="\n"+text;
 						}

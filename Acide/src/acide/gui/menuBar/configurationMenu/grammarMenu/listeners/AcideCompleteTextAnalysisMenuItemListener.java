@@ -100,8 +100,6 @@ public class AcideCompleteTextAnalysisMenuItemListener implements ActionListener
 	}
 	
 	private static void invokeAnalyze() {
-		String lock = "";
-		
 		// Gets the selected file editor panel
 		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
 				.getFileEditorManager().getSelectedFileEditorPanel();
@@ -115,17 +113,7 @@ public class AcideCompleteTextAnalysisMenuItemListener implements ActionListener
 				.getCurrentGrammarConfiguration().getPath(), false, 
 				AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
 		
-		fileCreationProcess.setLock(lock);
-		
 		// Starts the process
 		fileCreationProcess.start();
-		
-		// Get the file editor panel analyzer
-		AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
-		
-		analyzer.setLock(lock);
-		
-		// Analyze the text
-		analyzer.start();
 	}
 }

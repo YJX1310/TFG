@@ -153,9 +153,6 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 					.getAnalyzeMenu().getIncrementalAnalysisCheckBoxMenuItem().isSelected() 
 					|| AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
 					.getAnalyzeMenu().getCompleteTextAnalysisCheckBoxMenuItem().isSelected()) {
-				
-				String lock = "";
-				
 				// Process the current grammar
 				AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
 						.getCurrentGrammarConfiguration().getPath());
@@ -164,19 +161,10 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
 						.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
 						.getCurrentGrammarConfiguration().getPath(), false, 
 						AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
-				
-				fileCreationProcess.setLock(lock);
+
 				
 				// Starts the process
 				fileCreationProcess.start();
-				
-				// Get grammar analyzer
-				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
-				
-				analyzer.setLock(lock);
-				
-				// Analyze the text
-				analyzer.start();
 				
 			}
 

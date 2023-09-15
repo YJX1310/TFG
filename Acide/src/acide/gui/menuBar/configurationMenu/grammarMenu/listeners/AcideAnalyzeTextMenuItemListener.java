@@ -47,17 +47,17 @@ package acide.gui.menuBar.configurationMenu.grammarMenu.listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-
-import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JOptionPane;
 
 import acide.files.bytes.AcideByteFileManager;
 import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideHighlightError;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
+import acide.log.AcideLog;
 import acide.process.parser.AcideGrammarAnalyzer;
 import acide.process.parser.AcideGrammarFileCreationProcess;
+import acide.resources.AcideResourceManager;
 
 /**																
  * ACIDE - A Configurable IDE analysis text menu item listener.										
@@ -84,8 +84,6 @@ public class AcideAnalyzeTextMenuItemListener implements ActionListener{
 		// Clear all the errors highlights
 		AcideHighlightError.getInstance().clearErrorHighlight();
 		
-		String lock = "";
-		
 		// Process the current grammar
 		AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
 				.getCurrentGrammarConfiguration().getPath());
@@ -95,18 +93,10 @@ public class AcideAnalyzeTextMenuItemListener implements ActionListener{
 				.getCurrentGrammarConfiguration().getPath(), false, 
 				AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
 		
-		fileCreationProcess.setLock(lock);
+		fileCreationProcess.setLock(AcideLanguageManager.getInstance().getLabels().getString("s2438"));
 		
 		// Starts the process
 		fileCreationProcess.start();
-		
-		// Get the file editor panel analyzer
-		AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
-		
-		analyzer.setLock(lock);
-		
-		// Analyze the text
-		analyzer.start();
 
 	}
 	

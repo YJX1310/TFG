@@ -101,40 +101,36 @@ public class AcideIncrementalAnalysisMenuItemListener implements ActionListener{
 	}
 	
 	private static void invokeAnalyze() {
-		String lock = "";
-		
 		// Gets the selected file editor panel
 		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
 				.getFileEditorManager().getSelectedFileEditorPanel();
 		
-		// Process the current grammar
-		AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
-				.getCurrentGrammarConfiguration().getPath());
-		
-		if(selectedFileEditorPanel.get_grammarDelimiter().equals("")) {
+		String delimiter = selectedFileEditorPanel.get_grammarDelimiter();
+		if(delimiter == null || delimiter.equals("")) {
 			JOptionPane.showMessageDialog(
 					null,               
 					AcideLanguageManager.getInstance().getLabels().getString("s2441"), 
 					AcideLanguageManager.getInstance().getLabels().getString("s2040"),           
 					JOptionPane.WARNING_MESSAGE 
 					);
+			
+			// Set the new value of the checkBox
+			AcideMainWindow.getInstance()
+			.getMenu().getConfigurationMenu()
+			.getGrammarMenu().getAnalyzeMenu()
+			.getIncrementalAnalysisCheckBoxMenuItem().setSelected(false);
 		}
-		AcideGrammarFileCreationProcess fileCreationProcess = new AcideGrammarFileCreationProcess(AcideMainWindow
-				.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
-				.getCurrentGrammarConfiguration().getPath(), false, 
-				AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
-		
-		fileCreationProcess.setLock(lock);
-		
-		// Starts the process
-		fileCreationProcess.start();
-		
-		// Get the file editor panel analyzer
-		AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
-		
-		analyzer.setLock(lock);
-		
-		// Analyze the text
-		analyzer.start();
+		else {
+			// Process the current grammar
+			AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
+					.getCurrentGrammarConfiguration().getPath());
+			
+			AcideGrammarFileCreationProcess fileCreationProcess = new AcideGrammarFileCreationProcess(AcideMainWindow
+					.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
+					.getCurrentGrammarConfiguration().getPath(), false, 
+					AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
+			// Starts the process
+			fileCreationProcess.start();
+		}
 	}
 }

@@ -90,9 +90,6 @@ public class AcideLoadGrammarMenuItemListener implements ActionListener {
 		
 		// If the path is not null
 		if(absolutePath != null) {
-
-			String lock = "";
-			
 			// Process the file grammar
 			AcideByteFileManager.getInstance().processGrammarFile(absolutePath);
 			
@@ -100,29 +97,11 @@ public class AcideLoadGrammarMenuItemListener implements ActionListener {
 					absolutePath, false, AcideLanguageManager.getInstance().getLabels()
 					.getString("s35"), true);
 			
-			process.setLock(lock);
-			
 			// Starts the process
 			process.start();
 			
 			// Clear all the errors highlights
 			AcideHighlightError.getInstance().clearErrorHighlight();
-			
-			
-			// If complete text analysis or incremental analysis is activated then
-			if(AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-					.getAnalyzeMenu().getIncrementalAnalysisCheckBoxMenuItem().isSelected() 
-					|| AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-					.getAnalyzeMenu().getCompleteTextAnalysisCheckBoxMenuItem().isSelected()) {
-				
-				// Get the file editor panel analyzer
-				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
-				
-				analyzer.setLock(lock);
-				
-				// Analyze the text
-				analyzer.start();
-			}
 		}
 	}
 }

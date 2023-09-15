@@ -795,33 +795,14 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			// Save the grammar
 			AcideByteFileManager.getInstance().saveGrammar(newGrammarPath);
 			try {
-				String lock = "";
-				
 				// Creates the process for the grammar file creation
 				AcideGrammarFileCreationProcess process = new AcideGrammarFileCreationProcess(
 						newGrammarPath, _verboseProcessCheckBox.isSelected(), action, true);
 
-				process.setLock(lock);
-				
 				// Starts the process
 				process.start();
 				
 				selectedFileEditorPanel.set_grammarDelimiter(_delimiterTxt.getText());
-				
-				// If complete text analysis or incremental analysis is activated then
-				if(AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-						.getAnalyzeMenu().getIncrementalAnalysisCheckBoxMenuItem().isSelected() 
-						|| AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-						.getAnalyzeMenu().getCompleteTextAnalysisCheckBoxMenuItem().isSelected()) {
-					
-					// Get the file editor panel analyzer
-					AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
-					
-					analyzer.setLock(lock);
-					
-					// Analyze the text
-					analyzer.start();
-				}
 			} catch (Exception exception) {
 
 				// Displays an error message

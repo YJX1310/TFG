@@ -277,16 +277,8 @@ public class AcideGrammarAnalyzer extends Thread {
 		}
 
 		if (_lock != null) {
-			synchronized (_lock) {
-				try {
-					_lock.wait();
-					constructor(text);
-					analyzeText();
-				} catch (InterruptedException e) {
-					// Updates the log
-					AcideLog.getLog().error(e.getMessage());
-				}
-			}
+			constructor(text);
+			analyzeText();
 		} else {
 			if (AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
 					.getAnalyzeMenu().getCompleteTextAnalysisCheckBoxMenuItem().isSelected()) {

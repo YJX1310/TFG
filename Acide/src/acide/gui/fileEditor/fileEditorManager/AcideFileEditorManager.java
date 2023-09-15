@@ -306,8 +306,10 @@ public class AcideFileEditorManager extends JPanel {
 
 			// Sets the caret position in the position stored in the file editor
 			// configuration
-			getSelectedFileEditorPanel().getActiveTextEditionArea()
-					.setCaretPosition(caretPosition);
+			if(caretPosition >=0 && caretPosition<getSelectedFileEditorPanel().getActiveTextEditionArea().getDocument().getLength()) {
+                getSelectedFileEditorPanel().getActiveTextEditionArea()
+                .setCaretPosition(caretPosition);
+            }
 
 		} else {
 

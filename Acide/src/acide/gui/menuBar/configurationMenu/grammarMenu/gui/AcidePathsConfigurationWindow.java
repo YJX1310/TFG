@@ -61,6 +61,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
@@ -80,7 +81,7 @@ import acide.resources.AcideResourceManager;
 /**
  * ACIDE - A Configurable IDE paths configuration window.
  * 
- * @version 0.11
+ * @version 0.20
  * @see JFrame
  */
 public class AcidePathsConfigurationWindow extends JFrame {
@@ -102,7 +103,7 @@ public class AcidePathsConfigurationWindow extends JFrame {
 	/**
 	 * ACIDE - A Configurable IDE paths configuration window jar panel.
 	 */
-	private JPanel _jarPanel;
+//	private JPanel _jarPanel;
 	/**
 	 * ACIDE - A Configurable IDE paths configuration window javac panel.
 	 */
@@ -138,15 +139,15 @@ public class AcidePathsConfigurationWindow extends JFrame {
 	/**
 	 * ACIDE - A Configurable IDE paths configuration window jar text field.
 	 */
-	private JTextField _jarTextField;
+//	private JTextField _jarTextField;
 	/**
 	 * ACIDE - A Configurable IDE paths configuration window jar check box.
 	 */
-	private JCheckBox _jarCheckBox;
+//	private JCheckBox _jarCheckBox;
 	/**
 	 * ACIDE - A Configurable IDE paths configuration window jar browse button.
 	 */
-	private JButton _jarBrowseButton;
+//	private JButton _jarBrowseButton;
 	/**
 	 * ACIDE - A Configurable IDE paths configuration window accept button.
 	 */
@@ -166,7 +167,7 @@ public class AcidePathsConfigurationWindow extends JFrame {
 	/**
 	 * ACIDE - A Configurable IDE paths configuration window jar path string.
 	 */
-	private String _jarPath = "null";
+//	private String _jarPath = "null";
 
 	/**
 	 * Creates a new ACIDE - A Configurable IDE paths configuration window.
@@ -185,8 +186,8 @@ public class AcidePathsConfigurationWindow extends JFrame {
 					"javacPath");
 
 			// Gets the ACIDE - A Configurable IDE jar path
-			_jarPath = AcideResourceManager.getInstance()
-					.getProperty("jarPath");
+//			_jarPath = AcideResourceManager.getInstance()
+//					.getProperty("jarPath");
 		} catch (Exception exception) {
 
 			// Updates the log
@@ -238,14 +239,14 @@ public class AcidePathsConfigurationWindow extends JFrame {
 				new Color(0, 0, 0)));
 
 		// Creates the jar panel
-		_jarPanel = new JPanel(new GridBagLayout());
-
+//		_jarPanel = new JPanel(new GridBagLayout());
+//
 		// Sets the jar panel border
-		_jarPanel.setBorder(BorderFactory.createTitledBorder(null,
-				AcideLanguageManager.getInstance().getLabels()
-						.getString("s917"), TitledBorder.LEADING,
-				TitledBorder.DEFAULT_POSITION, new Font("Tahoma", 1, 12),
-				new Color(0, 0, 0)));
+//		_jarPanel.setBorder(BorderFactory.createTitledBorder(null,
+//				AcideLanguageManager.getInstance().getLabels()
+//						.getString("s917"), TitledBorder.LEADING,
+//				TitledBorder.DEFAULT_POSITION, new Font("Tahoma", 1, 12),
+//				new Color(0, 0, 0)));
 
 		// Creates the button panel
 		_buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -271,14 +272,14 @@ public class AcidePathsConfigurationWindow extends JFrame {
 				.getLabels().getString("s921"));
 
 		// Creates the jar text field
-		_jarTextField = new JTextField();
+//		_jarTextField = new JTextField();
 
 		// Creates the jar check box
-		_jarCheckBox = new JCheckBox();
+//		_jarCheckBox = new JCheckBox();
 
 		// Creates the jar browse button
-		_jarBrowseButton = new JButton(AcideLanguageManager.getInstance()
-				.getLabels().getString("s922"));
+//		_jarBrowseButton = new JButton(AcideLanguageManager.getInstance()
+//				.getLabels().getString("s922"));
 
 		// Creates the accept button
 		_acceptButton = new JButton(AcideLanguageManager.getInstance()
@@ -343,33 +344,33 @@ public class AcidePathsConfigurationWindow extends JFrame {
 			// Enables the javac browse button
 			_javacBrowseButton.setEnabled(true);
 		}
-		if (_jarPath.equals("null")) {
-
+//		if (_jarPath.equals("null")) {
+//
 			// Deselects the jar check box
-			_jarCheckBox.setSelected(false);
-
+//			_jarCheckBox.setSelected(false);
+//
 			// Clears the jar text field
-			_jarTextField.setText("");
-
+//			_jarTextField.setText("");
+//
 			// Disables the jar text field
-			_jarTextField.setEnabled(false);
-
+//			_jarTextField.setEnabled(false);
+//
 			// Disables the jar browse button
-			_jarBrowseButton.setEnabled(false);
-		} else {
-
+//			_jarBrowseButton.setEnabled(false);
+//		} else {
+//
 			// Selects the java check box
-			_jarCheckBox.setSelected(true);
-
+//			_jarCheckBox.setSelected(true);
+//
 			// Updates the jar text field with the jar path
-			_jarTextField.setText(_jarPath);
-
+//			_jarTextField.setText(_jarPath);
+//
 			// Enables the jar text field
-			_jarTextField.setEnabled(true);
-
+//			_jarTextField.setEnabled(true);
+//
 			// Enables the jar browse button
-			_jarBrowseButton.setEnabled(true);
-		}
+//			_jarBrowseButton.setEnabled(true);
+//		}
 	}
 
 	/**
@@ -423,19 +424,19 @@ public class AcidePathsConfigurationWindow extends JFrame {
 		constraints.gridx = 0;
 
 		// Adds the jar check box to the jar panel
-		_jarPanel.add(_jarCheckBox, constraints);
+//		_jarPanel.add(_jarCheckBox, constraints);
 
 		constraints.gridx = 1;
 		constraints.ipadx = 400;
 
 		// Adds the jar text field to the jar panel
-		_jarPanel.add(_jarTextField, constraints);
+//		_jarPanel.add(_jarTextField, constraints);
 
 		constraints.gridx = 2;
 		constraints.ipadx = 0;
 
 		// Adds the jar browse button to the jar panel
-		_jarPanel.add(_jarBrowseButton, constraints);
+//		_jarPanel.add(_jarBrowseButton, constraints);
 
 		// Adds the accept button to the button panel
 		_buttonPanel.add(_acceptButton);
@@ -456,7 +457,7 @@ public class AcidePathsConfigurationWindow extends JFrame {
 		constraints.gridy = 2;
 
 		// Adds the jar panel to the window
-		add(_jarPanel, constraints);
+//		add(_jarPanel, constraints);
 
 		constraints.gridy = 3;
 
@@ -510,7 +511,7 @@ public class AcidePathsConfigurationWindow extends JFrame {
 		_javacCheckBox.addActionListener(new JavacCheckBoxListener());
 
 		// Sets the jar check box action listener
-		_jarCheckBox.addActionListener(new JarCheckBoxListener());
+//		_jarCheckBox.addActionListener(new JarCheckBoxListener());
 
 		// Sets the java browse button action listener
 		_javaBrowseButton.addActionListener(new JavaBrowseButtonListener());
@@ -519,7 +520,7 @@ public class AcidePathsConfigurationWindow extends JFrame {
 		_javacBrowseButton.addActionListener(new JavacBrowseButtonListener());
 
 		// Sets the jar browse button action listener
-		_jarBrowseButton.addActionListener(new JarBrowseButtonListener());
+//		_jarBrowseButton.addActionListener(new JarBrowseButtonListener());
 
 		// Sets the accept button action listener
 		_acceptButton.addActionListener(new AcceptButtonListener());
@@ -612,7 +613,7 @@ public class AcidePathsConfigurationWindow extends JFrame {
 			String javac = _javacTextField.getText();
 
 			// Gets the text from the jar text field
-			String jar = _jarTextField.getText();
+//			String jar = _jarTextField.getText();
 
 			if (java.equals(""))
 
@@ -635,14 +636,14 @@ public class AcidePathsConfigurationWindow extends JFrame {
 				AcideResourceManager.getInstance().setProperty("javacPath",
 						javac);
 
-			if (jar.equals(""))
+//			if (jar.equals(""))
 
 				// Updates the ACIDE - A Configurable IDE jar path
-				AcideResourceManager.getInstance().setProperty("jarPath",
-						"null");
-			else
+//				AcideResourceManager.getInstance().setProperty("jarPath",
+//						"null");
+//			else
 				// Updates the ACIDE - A Configurable IDE jar path
-				AcideResourceManager.getInstance().setProperty("jarPath", jar);
+//				AcideResourceManager.getInstance().setProperty("jarPath", jar);
 
 			// Updates the log
 			AcideLog.getLog().info(
@@ -654,47 +655,47 @@ public class AcidePathsConfigurationWindow extends JFrame {
 		}
 	}
 
-	/**
-	 * ACIDE - A Configurable IDE paths configuration window jar browse button
-	 * action listener.
-	 * 
-	 * @version 0.11
-	 * @see ActionListener
-	 */
-	class JarBrowseButtonListener implements ActionListener {
-
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see
-		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
-		 * )
-		 */
-		@Override
-		public void actionPerformed(ActionEvent actionEvent) {
-
-			// Asks for the file path to the user
-			String absolutePath = AcideFileManager.getInstance().askForFile(
-					AcideFileOperation.OPEN,
-					AcideFileTarget.FILES,
-					AcideFileType.FILE,
-					"",
-					new AcideFileExtensionFilterManager(new String[] { "exe" },
-							"Compiler source (*.exe)"));
-
-			if (absolutePath != null) {
-
-				// Updates the jar text field with the absolute path
-				_jarTextField.setText(absolutePath);
-			}
-		}
-	}
+//	/**
+//	 * ACIDE - A Configurable IDE paths configuration window jar browse button
+//	 * action listener.
+//	 * 
+//	 * @version 0.11
+//	 * @see ActionListener
+//	 */
+//	class JarBrowseButtonListener implements ActionListener {
+//
+//		/*
+//		 * (non-Javadoc)
+//		 * 
+//		 * @see
+//		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
+//		 * )
+//		 */
+//		@Override
+//		public void actionPerformed(ActionEvent actionEvent) {
+//
+//			// Asks for the file path to the user
+//			String absolutePath = AcideFileManager.getInstance().askForFile(
+//					AcideFileOperation.OPEN,
+//					AcideFileTarget.FILES,
+//					AcideFileType.FILE,
+//					"",
+//					new AcideFileExtensionFilterManager(new String[] { "exe" },
+//							"Compiler source (*.exe)"));
+//
+//			if (absolutePath != null) {
+//
+//				// Updates the jar text field with the absolute path
+//				_jarTextField.setText(absolutePath);
+//			}
+//		}
+//	}
 
 	/**
 	 * ACIDE - A Configurable IDE paths configuration window javac browse button
 	 * action listener.
 	 * 
-	 * @version 0.11
+	 * @version 0.20
 	 * @see ActionListener
 	 */
 	class JavacBrowseButtonListener implements ActionListener {
@@ -718,10 +719,19 @@ public class AcidePathsConfigurationWindow extends JFrame {
 					new AcideFileExtensionFilterManager(new String[] { "exe" },
 							"Compiler source (*.exe)"));
 
-			if (absolutePath != null) {
+			if (absolutePath != null && absolutePath.contains("javac.exe")) {
 
 				// Updates the javac text field with te absolute path
 				_javacTextField.setText(absolutePath);
+			}
+			else {
+				// Displays an error message
+				JOptionPane.showMessageDialog(
+						null,
+						AcideLanguageManager.getInstance().getLabels()
+								.getString("s2443"),
+						AcideLanguageManager.getInstance().getLabels()
+								.getString("s928"), JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
@@ -730,7 +740,7 @@ public class AcidePathsConfigurationWindow extends JFrame {
 	 * ACIDE - A Configurable IDE paths configuration window java browse button
 	 * action listener.
 	 * 
-	 * @version 0.11
+	 * @version 0.20
 	 * @see ActionListener
 	 */
 	class JavaBrowseButtonListener implements ActionListener {
@@ -754,64 +764,74 @@ public class AcidePathsConfigurationWindow extends JFrame {
 					new AcideFileExtensionFilterManager(new String[] { "exe" },
 							"Compiler source (*.exe)"));
 
-			if (absolutePath != null) {
+			if (absolutePath != null && absolutePath.contains("java.exe")) {
 
 				// Updates the java text field with the the absolute
 				// path
+				
 				_javaTextField.setText(absolutePath);
 			}
-		}
-	}
-
-	/**
-	 * ACIDE - A Configurable IDE paths configuration window jar check box
-	 * action listener.
-	 * 
-	 * @version 0.11
-	 * @see ActionListener
-	 */
-	class JarCheckBoxListener implements ActionListener {
-
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see
-		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
-		 * )
-		 */
-		@Override
-		public void actionPerformed(ActionEvent actionEvent) {
-
-			if (_jarCheckBox.isSelected()) {
-
-				// If there is no jar path defined
-				if (_jarPath.equals("null"))
-
-					// Sets the jar text field as empty
-					_jarTextField.setText("");
-				else
-
-					// Updates the jar text field with the jar path
-					_jarTextField.setText(_jarPath);
-
-				// Enables the jar text field
-				_jarTextField.setEnabled(true);
-
-				// Enables the jar browse button
-				_jarBrowseButton.setEnabled(true);
-			} else {
-
-				// Sets the jar text field as empty
-				_jarTextField.setText("");
-
-				// Disables the jar text field
-				_jarTextField.setEnabled(false);
-
-				// Disables the jar browse button
-				_jarBrowseButton.setEnabled(false);
+			else {
+				// Displays an error message
+				JOptionPane.showMessageDialog(
+						null,
+						AcideLanguageManager.getInstance().getLabels()
+								.getString("s2442"),
+						AcideLanguageManager.getInstance().getLabels()
+								.getString("s928"), JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
+
+//	/**
+//	 * ACIDE - A Configurable IDE paths configuration window jar check box
+//	 * action listener.
+//	 * 
+//	 * @version 0.11
+//	 * @see ActionListener
+//	 */
+//	class JarCheckBoxListener implements ActionListener {
+//
+//		/*
+//		 * (non-Javadoc)
+//		 * 
+//		 * @see
+//		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
+//		 * )
+//		 */
+//		@Override
+//		public void actionPerformed(ActionEvent actionEvent) {
+//
+//			if (_jarCheckBox.isSelected()) {
+//
+//				// If there is no jar path defined
+//				if (_jarPath.equals("null"))
+//
+//					// Sets the jar text field as empty
+//					_jarTextField.setText("");
+//				else
+//
+//					// Updates the jar text field with the jar path
+//					_jarTextField.setText(_jarPath);
+//
+//				// Enables the jar text field
+//				_jarTextField.setEnabled(true);
+//
+//				// Enables the jar browse button
+//				_jarBrowseButton.setEnabled(true);
+//			} else {
+//
+//				// Sets the jar text field as empty
+//				_jarTextField.setText("");
+//
+//				// Disables the jar text field
+//				_jarTextField.setEnabled(false);
+//
+//				// Disables the jar browse button
+//				_jarBrowseButton.setEnabled(false);
+//			}
+//		}
+//	}
 
 	/**
 	 * ACIDE - A Configurable IDE paths configuration window javac check box

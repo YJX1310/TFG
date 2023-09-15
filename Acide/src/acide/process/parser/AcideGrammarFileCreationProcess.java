@@ -241,6 +241,21 @@ public class AcideGrammarFileCreationProcess extends Thread {
 						.getName());
 			}
 			
+			// If complete text analysis or incremental analysis is activated then
+			if(AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
+					.getAnalyzeMenu().getIncrementalAnalysisCheckBoxMenuItem().isSelected() 
+					|| AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
+					.getAnalyzeMenu().getCompleteTextAnalysisCheckBoxMenuItem().isSelected() ||
+					(_lock != null && _lock.equals(AcideLanguageManager.getInstance()
+							.getLabels().getString("s2438")))) {
+				// Get the file editor panel analyzer
+				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
+				
+				if(_lock != null)
+					analyzer.setLock(_lock);
+				// Analyze the text
+				analyzer.start();
+			}
 		} catch(Exception e) {
 			message = e.getMessage();
 			title = AcideLanguageManager
@@ -301,12 +316,9 @@ public class AcideGrammarFileCreationProcess extends Thread {
 			
 			// Only this time
 			AcideMainWindow.getInstance().setAlwaysOnTop(false);	
+			
+
 		}
-		
-		// Notify the lock
-        synchronized (_lock) {
-            _lock.notify();
-          }
 	}
 
 	/**
@@ -326,27 +338,42 @@ public class AcideGrammarFileCreationProcess extends Thread {
 			// manager
 			javaPath = AcideResourceManager.getInstance().getProperty(
 					"javaPath");
-			if (javaPath.equals("null"))
+			
+			if (javaPath.equals("null")) {
+				if(!_displayMessage)
+					// Displays an error message
+					JOptionPane.showMessageDialog(
+							null,
+							AcideLanguageManager.getInstance().getLabels()
+									.getString("s927"),
+							AcideLanguageManager.getInstance().getLabels()
+									.getString("s934"), JOptionPane.ERROR_MESSAGE);
 				throw new Exception(AcideLanguageManager.getInstance()
 						.getLabels().getString("s927"));
+			}
+			else if(!javaPath.contains("java.exe")) {
+				if(!_displayMessage)
+					// Displays an error message
+					JOptionPane.showMessageDialog(
+							null,
+							AcideLanguageManager.getInstance().getLabels()
+									.getString("s2444"),
+							AcideLanguageManager.getInstance().getLabels()
+									.getString("s928"), JOptionPane.ERROR_MESSAGE);
+				
+				throw new Exception(AcideLanguageManager.getInstance()
+						.getLabels().getString("s2444"));
+			}
 		} catch (Exception exception) {
-
-			// Displays an error message
-			JOptionPane.showMessageDialog(
-					null,
-					AcideLanguageManager.getInstance().getLabels()
-							.getString("s928"),
-					AcideLanguageManager.getInstance().getLabels()
-							.getString("s934"), JOptionPane.ERROR_MESSAGE);
 
 			// Updates the log
 			AcideLog.getLog().error(exception.getMessage());
-			exception.printStackTrace();
 
 			// Closes the progress window
 			AcideProgressWindow.getInstance().closeWindow();
+			
+			throw new Exception(exception.getMessage());
 
-			return;
 		}
 
 		// Updates the progress window
@@ -469,8 +496,9 @@ public class AcideGrammarFileCreationProcess extends Thread {
 	 * Compiles the generated files by ANTLR to obtain the .class files.
 	 * 
 	 * @version 0.20
+	 * @throws Exception 
 	 */
-	private void compileGeneratedFiles() {
+	private void compileGeneratedFiles() throws Exception {
 
 		String javacPath = null;
 
@@ -480,9 +508,29 @@ public class AcideGrammarFileCreationProcess extends Thread {
 			// manager
 			javacPath = AcideResourceManager.getInstance().getProperty(
 					"javacPath");
-			if (javacPath.equals("null"))
+			if (javacPath.equals("null")){
+				// Displays an error message
+				JOptionPane.showMessageDialog(
+						null,
+						AcideLanguageManager.getInstance().getLabels()
+								.getString("s929"),
+						AcideLanguageManager.getInstance().getLabels()
+								.getString("s934"), JOptionPane.ERROR_MESSAGE);
+				
 				throw new Exception(AcideLanguageManager.getInstance()
 						.getLabels().getString("s929"));
+			}
+			else if(!javacPath.contains("javac.exe")) {
+				// Displays an error message
+				JOptionPane.showMessageDialog(
+						null,
+						AcideLanguageManager.getInstance().getLabels()
+								.getString("s2445"),
+						AcideLanguageManager.getInstance().getLabels()
+								.getString("s928"), JOptionPane.ERROR_MESSAGE);
+				throw new Exception(AcideLanguageManager.getInstance()
+						.getLabels().getString("s2445"));
+			}
 		} catch (Exception exception) {
 
 			// Displays an error message
@@ -495,12 +543,11 @@ public class AcideGrammarFileCreationProcess extends Thread {
 
 			// Updates the log
 			AcideLog.getLog().error(exception.getMessage());
-			exception.printStackTrace();
 
 			// Closes the progress window
 			AcideProgressWindow.getInstance().closeWindow();
 
-			return;
+			throw new Exception(exception.getMessage());
 		}
 
 		// Updates the progress window
@@ -526,12 +573,11 @@ public class AcideGrammarFileCreationProcess extends Thread {
 
 			// Updates the log
 			AcideLog.getLog().error(exception.getMessage());
-			exception.printStackTrace();
 
 			// Closes the progress window
 			AcideProgressWindow.getInstance().closeWindow();
 
-			return;
+			throw new Exception(exception.getMessage());
 		}
 
 		// Updates the progress window
