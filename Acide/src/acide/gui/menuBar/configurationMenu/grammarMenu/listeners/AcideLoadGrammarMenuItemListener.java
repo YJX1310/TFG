@@ -97,6 +97,8 @@ public class AcideLoadGrammarMenuItemListener implements ActionListener {
 					absolutePath, false, AcideLanguageManager.getInstance().getLabels()
 					.getString("s35"), true);
 			
+			process.setLock(AcideLanguageManager.getInstance().getLabels().getString("s2438"));
+			
 			// Starts the process
 			process.start();
 			

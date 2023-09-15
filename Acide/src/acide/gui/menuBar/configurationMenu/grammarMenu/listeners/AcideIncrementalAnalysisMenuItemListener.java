@@ -129,6 +129,9 @@ public class AcideIncrementalAnalysisMenuItemListener implements ActionListener{
 					.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
 					.getCurrentGrammarConfiguration().getPath(), false, 
 					AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
+			
+			fileCreationProcess.setLock(AcideLanguageManager.getInstance().getLabels().getString("s2438"));
+			
 			// Starts the process
 			fileCreationProcess.start();
 		}

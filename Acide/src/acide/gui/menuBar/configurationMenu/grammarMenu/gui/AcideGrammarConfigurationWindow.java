@@ -799,6 +799,8 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 				AcideGrammarFileCreationProcess process = new AcideGrammarFileCreationProcess(
 						newGrammarPath, _verboseProcessCheckBox.isSelected(), action, true);
 
+				process.setLock(AcideLanguageManager.getInstance().getLabels().getString("s2438"));
+				
 				// Starts the process
 				process.start();
 				

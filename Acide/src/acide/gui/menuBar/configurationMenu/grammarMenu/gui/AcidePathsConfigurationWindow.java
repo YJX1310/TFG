@@ -620,21 +620,44 @@ public class AcidePathsConfigurationWindow extends JFrame {
 				// Updates the ACIDE - A Configurable IDE java path
 				AcideResourceManager.getInstance().setProperty("javaPath",
 						"null");
-			else
+			else {
+				if(java.contains("java.exe"))
+					// Updates the ACIDE - A Configurable IDE java path
+					AcideResourceManager.getInstance()
+							.setProperty("javaPath", java);
+				else 
+					// Displays an error message
+					JOptionPane.showMessageDialog(
+							null,
+							AcideLanguageManager.getInstance().getLabels()
+									.getString("s2442"),
+							AcideLanguageManager.getInstance().getLabels()
+									.getString("s928"), JOptionPane.ERROR_MESSAGE);
+			}
 
-				// Updates the ACIDE - A Configurable IDE java path
-				AcideResourceManager.getInstance()
-						.setProperty("javaPath", java);
 
 			if (javac.equals(""))
 
 				// Updates the ACIDE - A Configurable IDE javac path
 				AcideResourceManager.getInstance().setProperty("javacPath",
 						"null");
-			else
-				// Updates the ACIDE - A Configurable IDE javac path
-				AcideResourceManager.getInstance().setProperty("javacPath",
-						javac);
+			else {
+				if(javac.contains("javac.exe"))
+					// Updates the ACIDE - A Configurable IDE javac path
+					AcideResourceManager.getInstance().setProperty("javacPath",
+							javac);
+				else {
+					// Displays an error message
+					JOptionPane.showMessageDialog(
+							null,
+							AcideLanguageManager.getInstance().getLabels()
+									.getString("s2443"),
+							AcideLanguageManager.getInstance().getLabels()
+									.getString("s928"), JOptionPane.ERROR_MESSAGE);
+				}
+			}
+				
+
 
 //			if (jar.equals(""))
 
@@ -719,20 +742,11 @@ public class AcidePathsConfigurationWindow extends JFrame {
 					new AcideFileExtensionFilterManager(new String[] { "exe" },
 							"Compiler source (*.exe)"));
 
-			if (absolutePath != null && absolutePath.contains("javac.exe")) {
-
+			if (absolutePath != null) {
 				// Updates the javac text field with te absolute path
 				_javacTextField.setText(absolutePath);
 			}
-			else {
-				// Displays an error message
-				JOptionPane.showMessageDialog(
-						null,
-						AcideLanguageManager.getInstance().getLabels()
-								.getString("s2443"),
-						AcideLanguageManager.getInstance().getLabels()
-								.getString("s928"), JOptionPane.ERROR_MESSAGE);
-			}
+
 		}
 	}
 
@@ -764,21 +778,12 @@ public class AcidePathsConfigurationWindow extends JFrame {
 					new AcideFileExtensionFilterManager(new String[] { "exe" },
 							"Compiler source (*.exe)"));
 
-			if (absolutePath != null && absolutePath.contains("java.exe")) {
+			if (absolutePath != null) {
 
 				// Updates the java text field with the the absolute
 				// path
 				
 				_javaTextField.setText(absolutePath);
-			}
-			else {
-				// Displays an error message
-				JOptionPane.showMessageDialog(
-						null,
-						AcideLanguageManager.getInstance().getLabels()
-								.getString("s2442"),
-						AcideLanguageManager.getInstance().getLabels()
-								.getString("s928"), JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
