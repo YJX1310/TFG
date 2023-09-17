@@ -246,6 +246,7 @@ public class AcideGrammarFileCreationProcess extends Thread {
 					.getAnalyzeMenu().getIncrementalAnalysisCheckBoxMenuItem().isSelected() 
 					|| AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
 					.getAnalyzeMenu().getCompleteTextAnalysisCheckBoxMenuItem().isSelected()
+					|| (_lock != null && _lock.equals(AcideLanguageManager.getInstance().getLabels().getString("s2439")))
 					) {
 				// Get the file editor panel analyzer
 				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
