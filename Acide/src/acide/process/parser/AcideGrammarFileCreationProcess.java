@@ -274,10 +274,8 @@ public class AcideGrammarFileCreationProcess extends Thread {
 					analyzer.setLock(_lock);
 				// Analyze the text
 				analyzer.start();
-				this._progressBarFrame.setVisible(false);
 			}
 		} catch(Exception e) {
-			this._progressBar.setVisible(false);
 			message = e.getMessage();
 			title = AcideLanguageManager
 					.getInstance().getLabels().getString("s943");
@@ -299,6 +297,9 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		// Reallocates the generated .jar file into the correspondent folder
 		//reallocateJarFile();
 
+		// Close progress bar frame
+		this._progressBarFrame.dispose();
+		
 		// If the verbose flag is true then
 		if (_verboseProcess)
 			// Enables the close button in the progress window
@@ -945,8 +946,9 @@ public class AcideGrammarFileCreationProcess extends Thread {
         int x = ubicacionVentanaPrincipal.x + (AcideMainWindow.getInstance().getWidth() - _progressBarFrame.getWidth()) / 2;
         int y = ubicacionVentanaPrincipal.y + (AcideMainWindow.getInstance().getHeight() - _progressBarFrame.getHeight()) / 2;
         
-        // Set the new location
+        // Set Frames properties
         _progressBarFrame.setLocation(x,y);
         _progressBarFrame.setAlwaysOnTop(true);
+        _progressBarFrame.setResizable(false);
 	}
 }
