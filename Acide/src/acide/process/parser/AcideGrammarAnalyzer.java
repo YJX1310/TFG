@@ -256,6 +256,9 @@ public class AcideGrammarAnalyzer extends Thread {
 	 */
 	@Override
 	public void run() {
+		// Set the analyze message panel visible
+		AcideMainWindow.getInstance().getStatusBar().setAnalyzeMessagePanelVisible(true);
+		
 		// Gets the selected file editor panel
 		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance().getFileEditorManager()
 				.getSelectedFileEditorPanel();
@@ -287,6 +290,9 @@ public class AcideGrammarAnalyzer extends Thread {
 			analyzeText();
 		}
 
+		// Set the analyze message panel invisible
+		AcideMainWindow.getInstance().getStatusBar().setAnalyzeMessagePanelVisible(false);
+		
 	}
 
 	/**

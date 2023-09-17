@@ -48,6 +48,7 @@ import acide.configuration.workbench.AcideWorkbenchConfiguration;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.gui.statusBarPanel.listeners.AcideStatusBarPopupMenuListener;
 import acide.gui.statusBarPanel.popup.AcideStatusBarPopupMenu;
+import acide.language.AcideLanguageManager;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -67,6 +68,7 @@ import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
@@ -76,7 +78,7 @@ import acide.utils.AcideOSChecker;
 /**
  * ACIDE - A Configurable IDE status bar.
  * 
- * @version 0.11
+ * @version 0.20
  */
 public class AcideStatusBar extends JPanel {
 
@@ -180,6 +182,10 @@ public class AcideStatusBar extends JPanel {
 	 * ACIDE - A Configurable IDE status bar edition mode message panel.
 	 */
 	private JPanel _editionModeMessagePanel;
+	/**
+	 * ACIDE - A Configurable IDE status bar analyze message panel.
+	 */
+	private JPanel _analyzeMessagePanel;
 
 	/**
 	 * ACIDE - A Configurable IDE status bar popup menu of the status bar.
@@ -281,6 +287,9 @@ public class AcideStatusBar extends JPanel {
 		
 		// Builds format message panel
 		buildFormatMessagePanel();
+		
+		// Builds analyze message panel
+		buildAnalyzeMessagePanel();
 	}
 
 	/**
@@ -615,6 +624,32 @@ public class AcideStatusBar extends JPanel {
 		// Adds the status message label to the status message panel
 		_statusMessagePanel.add(_statusMessageLabel);
 	}
+	
+	private void buildAnalyzeMessagePanel() {
+		
+		// Creates the analyze message panel
+		_analyzeMessagePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		
+		// Sets the analyze message panel border
+		_analyzeMessagePanel.setBorder(BorderFactory.createEtchedBorder());
+		
+		// Set the analyze text
+		JLabel text = new JLabel(AcideLanguageManager.getInstance()
+				.getLabels().getString("s2450"));
+		
+		// Set the analyze progress bar
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setIndeterminate(true);
+		
+		// Add the text to the analyze message panel
+		_analyzeMessagePanel.add(text);
+		
+		// Add the progress Bar to the analyze message panel
+		_analyzeMessagePanel.add(progressBar);
+		
+		// Its will be visible while is analyzing
+		_analyzeMessagePanel.setVisible(false);
+	}
 
 	/**
 	 * Adds the components to the ACIDE - A Configurable IDE status bar.
@@ -642,46 +677,51 @@ public class AcideStatusBar extends JPanel {
 		add(_grammarMessagePanel, constraints);
 
 		constraints.gridx = 2;
+		
+		// Adds the analyze message panel to the status bar
+		add(_analyzeMessagePanel, constraints);
+		
+		constraints.gridx = 3;
 
 		// Adds the lexicon message panel to the status bar
 		add(_lexiconMessagePanel, constraints);
 
-		constraints.gridx = 3;
+		constraints.gridx = 4;
 
 		// Adds the line and column message message panel to the status bar
 		add(_lineAndColumnMessagePanel, constraints);
 
-		constraints.gridx = 4;
+		constraints.gridx = 5;
 
 		// Adds the number of lines message panel to the status bar
 		add(_numberOfLinesMessagePanel, constraints);
 
-		constraints.gridx = 5;
+		constraints.gridx = 6;
 
 		// Adds the CAPS LOCK message panel to the status bar
 		add(_capsLockMessagePanel, constraints);
 
-		constraints.gridx = 6;
+		constraints.gridx = 7;
 
 		// Adds the NUM LOCK message panel to the status bar
 		add(_numLockMessagePanel, constraints);
 
-		constraints.gridx = 7;
+		constraints.gridx = 8;
 
 		// Adds the SCROLL LOCK message panel to the status bar
 		add(_scrollLockMessagePanel, constraints);
 
-		constraints.gridx = 8;
+		constraints.gridx = 9;
 
 		// Adds the SCROLL LOCK message panel to the status bar
 		add(_encodigMessagePanel, constraints);
 
-		constraints.gridx = 9;
+		constraints.gridx = 10;
 		
 		// Adds the SCROLL LOCK message panel to the status bar
 		add(_formatMessagePanel, constraints);
 		
-		constraints.gridx = 10;
+		constraints.gridx = 11;
 
 		// Adds the edition mode message panel to the status bar
 		add(_editionModeMessagePanel, constraints);
@@ -920,6 +960,16 @@ public class AcideStatusBar extends JPanel {
 		_editionModeMessageLabel.setText(editionModeMessage);
 	}
 
+	
+	/**
+	 * Sets a new value to the ACIDE - A Configurable IDE status bar analyze message panel visibility.
+	 * 
+	 * @param value new value to set.
+	 */
+	public void setAnalyzeMessagePanelVisible(boolean value) {
+		_analyzeMessagePanel.setVisible(value);
+	}
+	
 	/**
 	 * Updates the ACIDE - A Configurable IDE status bar with the message of the
 	 * type of file that is currently selected in the file editor.

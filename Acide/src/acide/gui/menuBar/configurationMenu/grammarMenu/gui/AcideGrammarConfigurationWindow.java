@@ -542,8 +542,8 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 		constraints.anchor = GridBagConstraints.CENTER;
 		constraints.gridx = 0;
 		constraints.gridy = 0;
-		constraints.ipadx = 300;
-		constraints.ipady = 300;
+		constraints.ipadx = 600;
+		constraints.ipady = 400;
 		constraints.insets = new Insets(10, 10, 10, 10);
 
 		// Adds the categories panel to the categories scroll pane
@@ -551,7 +551,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 		
 		constraints.fill = GridBagConstraints.BOTH;
 		constraints.anchor = GridBagConstraints.EAST;
-		constraints.ipadx = 300;
+		constraints.ipadx = 600;
 		constraints.ipady = 5;
 		
 		_delimiterPanel.add(_delimiterTxt, constraints);
@@ -580,8 +580,8 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 		constraints.fill = GridBagConstraints.NONE;
 		constraints.anchor = GridBagConstraints.CENTER;
 		constraints.gridy = 0;
-		constraints.ipadx = 300;
-		constraints.ipady = 300;
+		constraints.ipadx = 600;
+		constraints.ipady = 400;
 
 		// Adds the rules scroll panel to the rules panel
 		_rulesPanel.add(_rulesScrollPane, constraints);
