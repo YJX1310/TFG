@@ -4,30 +4,30 @@
  *
  * Copyright (C) 2007-2013
  * Authors:
- * 		- Fernando S√°enz P√©rez (Team Director).
+ * 		- Fernando S·enz PÈrez (Team Director).
  *      - Version from 0.1 to 0.6:
  *      	- Diego Cardiel Freire.
- *			- Juan Jos√© Ortiz S√°nchez.
- *          - Delf√≠n Rup√©rez Ca√±as.
+ *			- Juan JosÈ Ortiz S·nchez.
+ *          - DelfÌn RupÈrez CaÒas.
  *      - Version 0.7:
- *          - Miguel Mart√≠n L√°zaro.
+ *          - Miguel MartÌn L·zaro.
  *      - Version 0.8:
- *      	- Javier Salcedo G√≥mez.
+ *      	- Javier Salcedo GÛmez.
  *      - Version from 0.9 to 0.11:
- *      	- Pablo Guti√©rrez Garc√≠a-Pardo.
- *      	- Elena Tejeiro P√©rez de √Ågreda.
- *      	- Andr√©s Vicente del Cura.
+ *      	- Pablo GutiÈrrez GarcÌa-Pardo.
+ *      	- Elena Tejeiro PÈrez de ¡greda.
+ *      	- AndrÈs Vicente del Cura.
  *      - Version from 0.12 to 0.16
- *      	- Sem√≠ramis Guti√©rrez Quintana
- *      	- Juan Jes√∫s Marqu√©s Ortiz
- *      	- Fernando Ord√°s Lorente
+ *      	- SemÌramis GutiÈrrez Quintana
+ *      	- Juan Jes˙s MarquÈs Ortiz
+ *      	- Fernando Ord·s Lorente
  *      - Version 0.17
- *      	- Sergio Dom√≠nguez Fuentes
+ *      	- Sergio DomÌnguez Fuentes
  * 		- Version 0.18
- * 			- Sergio Garc√≠a Rodr√≠guez
+ * 			- Sergio GarcÌa RodrÌguez
  * 		- Version 0.19
- * 			- Carlos Gonz√°lez Torres
- * 			- Cristina Lara L√≥pez
+ * 			- Carlos Gonz·lez Torres
+ * 			- Cristina Lara LÛpez
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -347,6 +347,18 @@ public class AcideAboutUsWindow extends JFrame {
 
 		_developersPanel.add(new JLabel(AcideLanguageManager.getInstance()
 				.getLabels().getString("s2388")), constraints);
+		
+		constraints.gridx = 0;
+		constraints.gridy = 16;
+
+		_developersPanel.add(new JLabel(AcideLanguageManager.getInstance()
+				.getLabels().getString("s2446")), constraints);
+		
+		constraints.gridx = 0;
+		constraints.gridy = 17;
+
+		_developersPanel.add(new JLabel(AcideLanguageManager.getInstance()
+				.getLabels().getString("s2447")), constraints);
 		
 		constraints.insets = new Insets(5, 5, 5, 5);
 		constraints.gridx = 0;
