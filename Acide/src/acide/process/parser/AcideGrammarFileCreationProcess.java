@@ -44,15 +44,18 @@
  */
 package acide.process.parser;
 
+import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-
 import acide.files.AcideFileManager;
 import acide.files.bytes.AcideByteFileManager;
 import acide.gui.mainWindow.AcideMainWindow;
@@ -94,6 +97,14 @@ public class AcideGrammarFileCreationProcess extends Thread {
 	 * ACIDE - A Configurable IDE grammar file creation lock.
 	 */
 	private Object _lock;
+	/**
+	 * ACIDE - A Configurable IDE grammar file creation progress bar.
+	 */
+	private JProgressBar _progressBar;
+	/**
+	 * ACIDE - A Configurable IDE grammar file creation frame.
+	 */
+	private JFrame _progressBarFrame;
 	
 	/**
 	 * Creates a new ACIDE - A Configurable IDE grammar file creation process.
@@ -122,6 +133,8 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		
 		// Store the display
 		_displayMessage = display;
+		
+		buildProgressBarFrame();
 	}
 
 	/*
@@ -131,8 +144,12 @@ public class AcideGrammarFileCreationProcess extends Thread {
 	 */
 	@Override
 	public void run() {
+		
+		this._progressBarFrame.setVisible(true);
+		
 		String message, title;
 		int type;
+		
 		
 		// If the verbose flag is true then
 		if (_verboseProcess) {
@@ -241,11 +258,14 @@ public class AcideGrammarFileCreationProcess extends Thread {
 						.getName());
 			}
 			
+			//_optionPane.setVisible(false);
+			
 			// If complete text analysis or incremental analysis is activated then
 			if(AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
 					.getAnalyzeMenu().getIncrementalAnalysisCheckBoxMenuItem().isSelected() 
 					|| AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
 					.getAnalyzeMenu().getCompleteTextAnalysisCheckBoxMenuItem().isSelected()
+					|| (_lock != null && _lock.equals(AcideLanguageManager.getInstance().getLabels().getString("s2439")))
 					) {
 				// Get the file editor panel analyzer
 				AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
@@ -254,8 +274,10 @@ public class AcideGrammarFileCreationProcess extends Thread {
 					analyzer.setLock(_lock);
 				// Analyze the text
 				analyzer.start();
+				this._progressBarFrame.setVisible(false);
 			}
 		} catch(Exception e) {
+			this._progressBar.setVisible(false);
 			message = e.getMessage();
 			title = AcideLanguageManager
 					.getInstance().getLabels().getString("s943");
@@ -568,6 +590,7 @@ public class AcideGrammarFileCreationProcess extends Thread {
 
 			// Waits for the process to finish
 			process.waitFor();
+			
 		} catch (Exception exception) {
 
 			// Updates the log
@@ -602,6 +625,7 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		
 		// Add package to the ExprParser.java file
 		AcideByteFileManager.getInstance().addPackage("ExprParser.java");
+		
 	}
 	
 	/**
@@ -657,6 +681,7 @@ public class AcideGrammarFileCreationProcess extends Thread {
 		AcideProgressWindow.getInstance().setText(
 				AcideLanguageManager.getInstance().getLabels()
 						.getString("s1056"));
+		
 	}
 
 	/**
@@ -891,5 +916,37 @@ public class AcideGrammarFileCreationProcess extends Thread {
 	
 	public void setLock(Object lock) {
 		_lock = lock;
+	}
+	
+	/** Build the progress bar frame 
+	 * 
+	 * @version 0.20
+	 */
+	public void buildProgressBarFrame() {
+		// Disable AcideMainWindow
+		AcideMainWindow.getInstance().setEnabled(false);
+		
+		_progressBar = new JProgressBar();
+		_progressBar.setIndeterminate(true);
+		
+		_progressBarFrame = new JFrame(AcideLanguageManager.getInstance().getLabels().getString("s2448"));
+		
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel(AcideLanguageManager.getInstance().getLabels().getString("s2449"));
+		panel.add(label);
+		panel.add( _progressBar);
+		
+		_progressBarFrame.add(panel); 
+		_progressBarFrame.setSize(200, 100);
+        
+        Point ubicacionVentanaPrincipal = AcideMainWindow.getInstance().getLocationOnScreen();
+
+        // Calculate the coordinates to center the new window
+        int x = ubicacionVentanaPrincipal.x + (AcideMainWindow.getInstance().getWidth() - _progressBarFrame.getWidth()) / 2;
+        int y = ubicacionVentanaPrincipal.y + (AcideMainWindow.getInstance().getHeight() - _progressBarFrame.getHeight()) / 2;
+        
+        // Set the new location
+        _progressBarFrame.setLocation(x,y);
+        _progressBarFrame.setAlwaysOnTop(true);
 	}
 }
