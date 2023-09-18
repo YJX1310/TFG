@@ -91,7 +91,7 @@ public class AcideAnalyzeTextMenuItemListener implements ActionListener{
 		AcideGrammarFileCreationProcess fileCreationProcess = new AcideGrammarFileCreationProcess(AcideMainWindow
 				.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
 				.getCurrentGrammarConfiguration().getPath(), false, 
-				AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
+				AcideLanguageManager.getInstance().getLabels().getString("s2438"), true);
 		
 		fileCreationProcess.setLock(AcideLanguageManager.getInstance().getLabels().getString("s2439"));
 		

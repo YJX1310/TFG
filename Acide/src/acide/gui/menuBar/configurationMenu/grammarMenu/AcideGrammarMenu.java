@@ -105,7 +105,7 @@ public class AcideGrammarMenu extends JMenu {
 	/**
 	 * ACIDE - A Configurable IDE grammar menu save grammar menu item name.
 	 */
-	public static final String SAVE_GRAMMAR_NAME = "Save Grammar";
+	//public static final String SAVE_GRAMMAR_NAME = "Save Grammar";
 	/**
 	 * ACIDE - A Configurable IDE grammar menu save grammar as menu item name.
 	 */
@@ -153,11 +153,11 @@ public class AcideGrammarMenu extends JMenu {
 	/**
 	 * ACIDE - A Configurable IDE grammar menu save menu item.
 	 */
-	private JMenuItem _saveGrammarMenuItem;
+//	private JMenuItem _saveGrammarMenuItem;
 	/**
 	 * ACIDE - A Configurable IDE grammar menu save grammar menu item has been inserted.
 	 */
-	private boolean _saveGrammarInserted;
+//	private boolean _saveGrammarInserted;
 	/**
 	 * ACIDE - A Configurable IDE grammar menu save grammar as menu item.
 	 */
@@ -230,7 +230,7 @@ public class AcideGrammarMenu extends JMenu {
 		_newGrammarInserted = false;
 		_loadGrammarInserted = false;
 		_modifyGrammarInserted = false;
-		_saveGrammarInserted = false;
+//		_saveGrammarInserted = false;
 		_saveGrammarAsInserted = false;
 		_setPathsInserted = false;
 		_analyzeTextInserted = false;
@@ -275,10 +275,10 @@ public class AcideGrammarMenu extends JMenu {
 				// Adds the modify grammar menu item to the menu
 				add(_modifyGrammarMenuItem);
 				_modifyGrammarInserted = true;
-			}else if (name.equals(SAVE_GRAMMAR_NAME)){
-				// Adds the save grammar menu item to the menu
-				add(_saveGrammarMenuItem);
-				_saveGrammarInserted = true;
+//			}else if (name.equals(SAVE_GRAMMAR_NAME)){
+//				// Adds the save grammar menu item to the menu
+//				add(_saveGrammarMenuItem);
+//				_saveGrammarInserted = true;
 			}else if (name.equals(SAVE_GRAMMAR_AS_NAME)){
 				// Adds the save grammar as menu item to the menu
 				add(_saveGrammarAsMenuItem);
@@ -314,8 +314,8 @@ public class AcideGrammarMenu extends JMenu {
 			add(_loadGrammarMenuItem);
 		if (!_modifyGrammarInserted)
 			add(_modifyGrammarMenuItem);
-		if (!_saveGrammarInserted)
-			add(_saveGrammarMenuItem);
+//		if (!_saveGrammarInserted)
+//			add(_saveGrammarMenuItem);
 		if (!_saveGrammarAsInserted)
 			add(_saveGrammarAsMenuItem);
 		if (!_setPathsInserted)
@@ -404,20 +404,20 @@ public class AcideGrammarMenu extends JMenu {
 		_modifyGrammarMenuItem.setName(MODIFY_GRAMMAR_NAME);
 
 		// Creates the save grammar menu item
-		icon = IconsUtils.getIcon(AcideMenuItemsConfiguration.getInstance()
-				.getMenuItemsManager().getSubmenu(AcideConfigurationMenu.CONFIGURATION_MENU_NAME)
-				.getSubmenu(GRAMMAR_MENU_NAME).getItem(SAVE_GRAMMAR_NAME).getImage());
-		
-		if (icon != null)
-			_saveGrammarMenuItem = new JMenuItem(icon);
-		else
-			_saveGrammarMenuItem = new JMenuItem();
-
-		// Sets the save grammar menu item name
-		_saveGrammarMenuItem.setName(SAVE_GRAMMAR_NAME);
-
-		// Disables the save grammar menu item
-		_saveGrammarMenuItem.setEnabled(false);
+//		icon = IconsUtils.getIcon(AcideMenuItemsConfiguration.getInstance()
+//				.getMenuItemsManager().getSubmenu(AcideConfigurationMenu.CONFIGURATION_MENU_NAME)
+//				.getSubmenu(GRAMMAR_MENU_NAME).getItem(SAVE_GRAMMAR_NAME).getImage());
+//		
+//		if (icon != null)
+//			_saveGrammarMenuItem = new JMenuItem(icon);
+//		else
+//			_saveGrammarMenuItem = new JMenuItem();
+//
+//		// Sets the save grammar menu item name
+//		_saveGrammarMenuItem.setName(SAVE_GRAMMAR_NAME);
+//
+//		// Disables the save grammar menu item
+//		_saveGrammarMenuItem.setEnabled(false);
 
 		// Creates the save grammar as menu item
 		icon = IconsUtils.getIcon(AcideMenuItemsConfiguration.getInstance()
@@ -505,8 +505,8 @@ public class AcideGrammarMenu extends JMenu {
 				.getLabels().getString("s227"));
 
 		// Sets the save grammar menu item text
-		_saveGrammarMenuItem.setText(AcideLanguageManager.getInstance()
-				.getLabels().getString("s251"));
+//		_saveGrammarMenuItem.setText(AcideLanguageManager.getInstance()
+//				.getLabels().getString("s251"));
 
 		// Sets the save grammar as menu item text
 		_saveGrammarAsMenuItem.setText(AcideLanguageManager.getInstance()
@@ -553,7 +553,7 @@ public class AcideGrammarMenu extends JMenu {
 		if (!(name.equals(NEW_GRAMMAR_NAME))
 			&& !(name.equals(LOAD_GRAMMAR_NAME))
 			&& !(name.equals(MODIFY_GRAMMAR_NAME))
-			&& !(name.equals(SAVE_GRAMMAR_NAME))
+//			&& !(name.equals(SAVE_GRAMMAR_NAME))
 			&& !(name.equals(SAVE_GRAMMAR_AS_NAME))
 			&& !(name.equals(SET_PATHS_NAME))
 			&& !(name.equals(AUTO_ANALYSIS_NAME))
@@ -596,12 +596,12 @@ public class AcideGrammarMenu extends JMenu {
 				.getSubmenu(GRAMMAR_MENU_NAME).getItem(MODIFY_GRAMMAR_NAME)));
 
 		// Sets the save grammar menu item action listener
-		_saveGrammarMenuItem
+//		_saveGrammarMenuItem
 				//.addActionListener(new AcideSaveGrammarMenuItemListener());
-			.addActionListener(new AcideInsertedItemListener(
-				AcideMenuItemsConfiguration.getInstance()
-				.getSubmenu(AcideConfigurationMenu.CONFIGURATION_MENU_NAME)
-				.getSubmenu(GRAMMAR_MENU_NAME).getItem(SAVE_GRAMMAR_NAME)));
+//			.addActionListener(new AcideInsertedItemListener(
+//				AcideMenuItemsConfiguration.getInstance()
+//				.getSubmenu(AcideConfigurationMenu.CONFIGURATION_MENU_NAME)
+//				.getSubmenu(GRAMMAR_MENU_NAME).getItem(SAVE_GRAMMAR_NAME)));
 
 		// Sets the save grammar as menu item action listener
 		_saveGrammarAsMenuItem
@@ -680,8 +680,8 @@ public class AcideGrammarMenu extends JMenu {
 		_modifyGrammarMenuItem.setVisible(modifyGrammarConfiguration.isVisible());
 
 		// Sets the save grammar menu item to visible or not visible
-		saveGrammarConfiguration = _grammarSubmenuConfiguration.getItem(SAVE_GRAMMAR_NAME);
-		_saveGrammarMenuItem.setVisible(saveGrammarConfiguration.isVisible());
+//		saveGrammarConfiguration = _grammarSubmenuConfiguration.getItem(SAVE_GRAMMAR_NAME);
+//		_saveGrammarMenuItem.setVisible(saveGrammarConfiguration.isVisible());
 
 		// Sets the save grammar as menu item to visible or not visible
 		saveGrammarAsConfiguration = _grammarSubmenuConfiguration.getItem(SAVE_GRAMMAR_AS_NAME);
@@ -696,7 +696,8 @@ public class AcideGrammarMenu extends JMenu {
 		_saveGrammarAsSetPathsSeparator.setVisible((_newGrammarMenuItem.isVisible()
 				|| _loadGrammarMenuItem.isVisible()
 				|| _modifyGrammarMenuItem.isVisible()
-				|| _saveGrammarMenuItem.isVisible() || _saveGrammarAsMenuItem.isVisible())
+//				|| _saveGrammarMenuItem.isVisible() 
+				|| _saveGrammarAsMenuItem.isVisible())
 				&& (_setPathsMenuItem.isVisible()));
 			
 		// Sets the auto analysis check box menu item to visible or not visible
@@ -711,7 +712,7 @@ public class AcideGrammarMenu extends JMenu {
 		_setPathsAutoAnalyisisSeparator.setVisible((_newGrammarMenuItem.isVisible()
 				|| _loadGrammarMenuItem.isVisible()
 				|| _modifyGrammarMenuItem.isVisible()
-				|| _saveGrammarMenuItem.isVisible()
+//				|| _saveGrammarMenuItem.isVisible()
 				|| _saveGrammarAsMenuItem.isVisible() || _setPathsMenuItem.isVisible())
 				//&& (_autoAnalysisCheckBoxMenuItem.isVisible())
 				);
@@ -733,7 +734,7 @@ public class AcideGrammarMenu extends JMenu {
 		_grammarSubmenuConfiguration.setVisible((_newGrammarMenuItem.isVisible()
 						|| _loadGrammarMenuItem.isVisible()
 						|| _modifyGrammarMenuItem.isVisible()
-						|| _saveGrammarMenuItem.isVisible()
+//						|| _saveGrammarMenuItem.isVisible()
 						|| _saveGrammarAsMenuItem.isVisible()) && b);
 		_grammarSubmenuConfiguration.setErasable(false);
 		
@@ -791,7 +792,7 @@ public class AcideGrammarMenu extends JMenu {
 		_modifyGrammarMenuItem.setEnabled(true);
 		
 		// Enables the save grammar menu item
-		_saveGrammarMenuItem.setEnabled(true);
+//		_saveGrammarMenuItem.setEnabled(true);
 		
 		// Enables the save grammar as menu item
 		_saveGrammarAsMenuItem.setEnabled(true);
@@ -818,7 +819,7 @@ public class AcideGrammarMenu extends JMenu {
 		_modifyGrammarMenuItem.setEnabled(false);
 		
 		// Disables the save grammar menu item
-		_saveGrammarMenuItem.setEnabled(false);
+//		_saveGrammarMenuItem.setEnabled(false);
 		
 		// Disables the save grammar as menu item
 		_saveGrammarAsMenuItem.setEnabled(false);
@@ -848,18 +849,18 @@ public class AcideGrammarMenu extends JMenu {
 
 			// If the current grammar configuration is lastModified or
 			// newGrammar
-			if (selectedFileEditorPanel.getCurrentGrammarConfiguration()
-					.getName().matches("newGrammar")
-					|| selectedFileEditorPanel.getCurrentGrammarConfiguration()
-							.getName().matches("lastModified"))
-
-				// Enables the save grammar menu
-				_saveGrammarMenuItem
-						.setEnabled(true);
-			else
-				// Disables the save grammar menu
-				_saveGrammarMenuItem
-						.setEnabled(false);
+//			if (selectedFileEditorPanel.getCurrentGrammarConfiguration()
+//					.getName().matches("newGrammar")
+//					|| selectedFileEditorPanel.getCurrentGrammarConfiguration()
+//							.getName().matches("lastModified"))
+//
+//				// Enables the save grammar menu
+//				_saveGrammarMenuItem
+//						.setEnabled(true);
+//			else
+//				// Disables the save grammar menu
+//				_saveGrammarMenuItem
+//						.setEnabled(false);
 		} else {
 
 			// Disables the grammar menu
@@ -907,9 +908,9 @@ public class AcideGrammarMenu extends JMenu {
 	 * @return the ACIDE - A Configurable IDE grammar menu save grammar menu
 	 *         item.
 	 */
-	public JMenuItem getSaveGrammarMenuItem() {
-		return _saveGrammarMenuItem;
-	}
+//	public JMenuItem getSaveGrammarMenuItem() {
+//		return _saveGrammarMenuItem;
+//	}
 
 	/**
 	 * Returns the ACIDE - A Configurable IDE grammar menu save grammar as menu

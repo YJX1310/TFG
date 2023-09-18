@@ -73,7 +73,7 @@ public class myErrorListener extends BaseErrorListener {
       else {
     	  _errors.put(line + ":" + charPositionInLine+ ":" + lenght, msg);	  
       }
-      System.out.println("La palabra \"" +offendingWord + "\"" + "  tiene un error en la línea " + line + ":" + charPositionInLine + " - " + msg);
+      //System.out.println("La palabra \"" +offendingWord + "\"" + "  tiene un error en la línea " + line + ":" + charPositionInLine + " - " + msg);
 	  
   }
 }

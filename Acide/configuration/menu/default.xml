@@ -553,14 +553,6 @@
                           <__image></__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
                         <acide.configuration.menu.AcideMenuItemConfiguration>
-                          <__command>$SAVE_GRAMMAR</__command>
-                          <__parameter>None</__parameter>
-                          <__name>Save Grammar</__name>
-                          <__visible>true</__visible>
-                          <__erasable>false</__erasable>
-                          <__image></__image>
-                        </acide.configuration.menu.AcideMenuItemConfiguration>
-                        <acide.configuration.menu.AcideMenuItemConfiguration>
                           <__command>$SAVE_GRAMMAR_AS</__command>
                           <__parameter>None</__parameter>
                           <__name>Save Grammar As</__name>

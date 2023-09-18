@@ -606,11 +606,17 @@ public class AcidePathsConfigurationWindow extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent actionEvent) {
 
+			boolean closeJava = false, closeJavac = false;
+			
 			// Gets the text from the java text field
 			String java = _javaTextField.getText();
+			
+			String[] javaPath = java.split("\\\\");
 
 			// Gets the text from the javac text field
 			String javac = _javacTextField.getText();
+			
+			String[] javacPath = javac.split("\\\\");
 
 			// Gets the text from the jar text field
 //			String jar = _jarTextField.getText();
@@ -621,10 +627,12 @@ public class AcidePathsConfigurationWindow extends JFrame {
 				AcideResourceManager.getInstance().setProperty("javaPath",
 						"null");
 			else {
-				if(java.contains("java.exe"))
+				if(javaPath[javaPath.length - 1].equals("java.exe")) {
 					// Updates the ACIDE - A Configurable IDE java path
 					AcideResourceManager.getInstance()
-							.setProperty("javaPath", java);
+					.setProperty("javaPath", java);
+					closeJava = true;
+				}
 				else 
 					// Displays an error message
 					JOptionPane.showMessageDialog(
@@ -642,10 +650,13 @@ public class AcidePathsConfigurationWindow extends JFrame {
 				AcideResourceManager.getInstance().setProperty("javacPath",
 						"null");
 			else {
-				if(javac.contains("javac.exe"))
+				if(javacPath[javacPath.length - 1].equals("javac.exe")) {
 					// Updates the ACIDE - A Configurable IDE javac path
 					AcideResourceManager.getInstance().setProperty("javacPath",
 							javac);
+					closeJavac = true;
+				}
+							
 				else {
 					// Displays an error message
 					JOptionPane.showMessageDialog(
@@ -668,13 +679,15 @@ public class AcidePathsConfigurationWindow extends JFrame {
 				// Updates the ACIDE - A Configurable IDE jar path
 //				AcideResourceManager.getInstance().setProperty("jarPath", jar);
 
-			// Updates the log
-			AcideLog.getLog().info(
-					AcideLanguageManager.getInstance().getLabels()
-							.getString("s925"));
-
-			// Closes the window
-			closeWindow();
+			if(closeJava && closeJavac) {
+				// Updates the log
+				AcideLog.getLog().info(
+						AcideLanguageManager.getInstance().getLabels()
+								.getString("s925"));
+				
+				// Closes the window
+				closeWindow();
+			}
 		}
 	}
 

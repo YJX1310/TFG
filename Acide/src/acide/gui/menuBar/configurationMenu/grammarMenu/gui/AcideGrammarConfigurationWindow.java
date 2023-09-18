@@ -255,13 +255,15 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 	private void setWindowConfiguration() {
 
 		if (_isForModifying) {
-
 			// Gets the ACIDE - A Configuration IDE current grammar
 			// configuration
 			String currentGrammarConfiguration = AcideMainWindow.getInstance()
 					.getFileEditorManager().getSelectedFileEditorPanel()
 					.getCurrentGrammarConfiguration().getPath();
-
+			
+			// Process the file grammar
+			AcideByteFileManager.getInstance().processGrammarFile(currentGrammarConfiguration);
+			
 			// Gets the name
 			int lastIndexOfSlash = currentGrammarConfiguration
 					.lastIndexOf("\\");
@@ -462,7 +464,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 
 		// Creates the accept button
 		_acceptButton = new JButton(AcideLanguageManager.getInstance()
-				.getLabels().getString("s177"));
+				.getLabels().getString("s194"));
 
 		// Sets the accept button tool tip text
 		_acceptButton.setToolTipText(AcideLanguageManager.getInstance()
@@ -515,12 +517,12 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 				.getLabels().getString("s197"));
 
 		// Creates the save rules button
-		_saveRulesButton = new JButton(AcideLanguageManager.getInstance()
-				.getLabels().getString("s198"));
+//		_saveRulesButton = new JButton(AcideLanguageManager.getInstance()
+//				.getLabels().getString("s198"));
 
 		// Sets the save rules button tool tip text
-		_saveRulesButton.setToolTipText(AcideLanguageManager.getInstance()
-				.getLabels().getString("s199"));
+//		_saveRulesButton.setToolTipText(AcideLanguageManager.getInstance()
+//				.getLabels().getString("s199"));
 
 		// Creates the verbose process check box
 		_verboseProcessCheckBox = new JCheckBox(AcideLanguageManager
@@ -596,7 +598,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 		_rulesButtonPanel.add(_loadRulesButton);
 
 		// Adds the save rules button to the rules button panel
-		_rulesButtonPanel.add(_saveRulesButton);
+//		_rulesButtonPanel.add(_saveRulesButton);
 
 		// Adds the rules button panel to the rules panel
 		_rulesPanel.add(_rulesButtonPanel, constraints);
@@ -661,7 +663,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 		_loadRulesButton.addActionListener(new LoadRulesButtonAction());
 
 		// Sets the save rules button action listener
-		_saveRulesButton.addActionListener(new SaveRulesButtonAction());
+//		_saveRulesButton.addActionListener(new SaveRulesButtonAction());
 
 		// Set the load lexicon button action listener
 		_loadLexiconButton.addActionListener(new LoadLexiconButtonAction());
@@ -728,7 +730,6 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			// Clear all the errors highlights
 			AcideHighlightError.getInstance().clearErrorHighlight();
 			
-
 			// Creates the file content
 			String textContent = "grammar Expr;" + System.lineSeparator() +_rulesTextArea.getText()
 			+ System.lineSeparator() + _categoriesTextArea.getText();
@@ -774,30 +775,36 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 			closeWindow();
 
 			// Selects the new grammar name
-			String newGrammarName = "";
+//			String newGrammarName = "";
 			
 			// Selects the action
 			String action = "";
-			if (_isForModifying){
-				newGrammarName = "lastModified.txt";
-				action = AcideLanguageManager.getInstance().getLabels()
-				.getString("s29");				
-			}
-			else {
-				newGrammarName = "newGrammar.txt";
-				action = AcideLanguageManager.getInstance().getLabels()
-				.getString("s30");				
-			}
 			
 			// Selects the new grammar path
-			String newGrammarPath = AcideGrammarConfiguration.DEFAULT_PATH + newGrammarName;
+			String grammarPath;
+			
+			if (_isForModifying){
+//				newGrammarName = "lastModified.txt";
+				action = AcideLanguageManager.getInstance().getLabels()
+				.getString("s29");
+				grammarPath = AcideMainWindow.getInstance().getFileEditorManager()
+						.getSelectedFileEditorPanel().getCurrentGrammarConfiguration()
+						.getPath();
+			}
+			else {
+//				newGrammarName = "newGrammar.txt";
+				action = AcideLanguageManager.getInstance().getLabels()
+				.getString("s30");
+				grammarPath = AcideGrammarConfiguration.DEFAULT_PATH + "newGrammar.txt";
+			}
+			
 			
 			// Save the grammar
-			AcideByteFileManager.getInstance().saveGrammar(newGrammarPath);
+			AcideByteFileManager.getInstance().saveGrammar(grammarPath);
 			try {
 				// Creates the process for the grammar file creation
 				AcideGrammarFileCreationProcess process = new AcideGrammarFileCreationProcess(
-						newGrammarPath, _verboseProcessCheckBox.isSelected(), action, true);
+						grammarPath, _verboseProcessCheckBox.isSelected(), action, true);
 
 				process.setLock(AcideLanguageManager.getInstance().getLabels().getString("s2438"));
 				

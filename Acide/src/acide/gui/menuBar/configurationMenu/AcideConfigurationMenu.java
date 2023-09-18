@@ -707,7 +707,8 @@ public class AcideConfigurationMenu extends JMenu {
 				|| _grammarMenu.getNewGrammarMenuItem().isVisible() || _grammarMenu.getLoadGrammarMenuItem().isVisible()
 				|| _grammarMenu.getModifyGrammarMenuItem().isVisible() || _themeMenu.isVisible()
 				|| _compilerMenuItem.isVisible() || _lexiconMenu.getNewLexiconMenuItem().isVisible()
-				|| _grammarMenu.getSaveGrammarMenuItem().isVisible())
+//				|| _grammarMenu.getSaveGrammarMenuItem().isVisible()
+				)
 				&& (_consoleMenu.getConfigureMenuItem().isVisible()
 						|| _consoleMenu.getExternalCommandMenuItem().isVisible()));
 
@@ -741,7 +742,8 @@ public class AcideConfigurationMenu extends JMenu {
 				|| _consoleMenu.getExternalCommandMenuItem().isVisible()
 				|| _consoleMenu.getConsoleDisplayOptionsMenuItem().isVisible()
 				|| _lexiconMenu.getNewLexiconMenuItem().isVisible()
-				|| _grammarMenu.getSaveGrammarMenuItem().isVisible()) || _graphPanelMenu.isVisible()
+//				|| _grammarMenu.getSaveGrammarMenuItem().isVisible()
+				) || _graphPanelMenu.isVisible()
 				|| _debugPanelMenu.isVisible() && (_menuMenu.isVisible() || _toolBarMenu.isVisible()));
 
 		_configurationSubmenuConfiguration.setVisible(true);

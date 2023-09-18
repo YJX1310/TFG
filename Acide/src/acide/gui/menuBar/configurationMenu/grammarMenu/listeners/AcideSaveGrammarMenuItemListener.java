@@ -98,9 +98,9 @@ public class AcideSaveGrammarMenuItemListener implements ActionListener {
 					.setPath(currentGrammarConfiguration);
 			
 			// Disables the save grammar menu item
-			AcideMainWindow.getInstance().getMenu().getConfigurationMenu()
-					.getGrammarMenu().getSaveGrammarMenuItem()
-					.setEnabled(false);
+//			AcideMainWindow.getInstance().getMenu().getConfigurationMenu()
+//					.getGrammarMenu().getSaveGrammarMenuItem()
+//					.setEnabled(false);
 
 			// Updates the grammar message in the status bar
 			AcideMainWindow

@@ -144,16 +144,16 @@ public class AcideGrammarFileCreationProcess extends Thread {
 	 */
 	@Override
 	public void run() {
-		
 		this._progressBarFrame.setVisible(true);
 		
 		String message, title;
 		int type;
 		
-		
 		// If the verbose flag is true then
 		if (_verboseProcess) {
 
+			this._progressBarFrame.setVisible(false);
+			
 			// Sets the initial text in the progress window
 			AcideProgressWindow.getInstance().setInitialText(
 					AcideLanguageManager.getInstance().getLabels()
@@ -195,12 +195,7 @@ public class AcideGrammarFileCreationProcess extends Thread {
 					AcideLog.getLog().info(
 							AcideLanguageManager.getInstance().getLabels()
 							.getString("s243")
-							+ " " + _grammarName);
-					
-					// Disables the save grammar menu item
-					AcideMainWindow.getInstance().getMenu().getConfigurationMenu()
-					.getGrammarMenu().getSaveGrammarMenuItem()
-					.setEnabled(false);						
+							+ " " + _grammarName);				
 				}
 				else{
 					// If the previous grammar configuration does not contain
@@ -228,10 +223,6 @@ public class AcideGrammarFileCreationProcess extends Thread {
 												.getCurrentGrammarConfiguration()
 												.getPath());
 
-					// Enables the save grammar menu item
-					AcideMainWindow.getInstance().getMenu().getConfigurationMenu()
-							.getGrammarMenu().getSaveGrammarMenuItem()
-							.setEnabled(true);
 					// Updates the log
 					AcideLog.getLog().info(
 							AcideLanguageManager.getInstance().getLabels()
@@ -258,8 +249,6 @@ public class AcideGrammarFileCreationProcess extends Thread {
 						.getName());
 			}
 			
-			//_optionPane.setVisible(false);
-			
 			// If complete text analysis or incremental analysis is activated then
 			if(AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
 					.getAnalyzeMenu().getIncrementalAnalysisCheckBoxMenuItem().isSelected() 
@@ -282,21 +271,6 @@ public class AcideGrammarFileCreationProcess extends Thread {
 			type = JOptionPane.ERROR_MESSAGE;
 		}
 		
-		// Modifies the generated GrammarParser.java
-		//modifyGrammarParserFile();
-
-		// Compiles the generated files to obtain the .class files
-		//compileGeneratedFiles();
-
-		// Generates the .jar file
-		//generateJarFile();
-
-		// Deletes the generated files
-		//deleteGeneratedFiles();
-
-		// Reallocates the generated .jar file into the correspondent folder
-		//reallocateJarFile();
-
 		// Close progress bar frame
 		this._progressBarFrame.dispose();
 		
@@ -308,10 +282,11 @@ public class AcideGrammarFileCreationProcess extends Thread {
 			//	If the display message flag is true then
 			if(_displayMessage)
 				if(type == JOptionPane.INFORMATION_MESSAGE) {
-					// Displays a message
-					JOptionPane.showMessageDialog(
-							AcideMainWindow.getInstance(),
-							message, title, type);
+					if(!_action.equals(AcideLanguageManager.getInstance().getLabels().getString("s2438")))
+						// Displays a message
+						JOptionPane.showMessageDialog(
+								AcideMainWindow.getInstance(),
+								message, title, type);
 				}
 				else {
 					
@@ -328,11 +303,6 @@ public class AcideGrammarFileCreationProcess extends Thread {
 							AcideMainWindow.getInstance(),
 							scrollPane, title, type);
 				}
-
-			
-			// Enables the main window
-			AcideMainWindow.getInstance().setEnabled(true);
-			
 			// Brings the main window to the front
 			AcideMainWindow.getInstance().setAlwaysOnTop(true);
 			
@@ -341,6 +311,9 @@ public class AcideGrammarFileCreationProcess extends Thread {
 			
 
 		}
+		
+		// Enables the main window
+		AcideMainWindow.getInstance().setEnabled(true);
 	}
 
 	/**

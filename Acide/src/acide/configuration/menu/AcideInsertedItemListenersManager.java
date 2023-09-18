@@ -418,9 +418,9 @@ public class AcideInsertedItemListenersManager {
 		case 507:
 			AcideModifyGrammaMenuItemrListener.action(event);
 			break;
-		case 508:
-			AcideSaveGrammarMenuItemListener.action(event);
-			break;
+//		case 508:
+//			AcideSaveGrammarMenuItemListener.action(event);
+//			break;
 		case 509:
 			AcideSaveAsGrammarMenuItemListener.action(event);
 			break;

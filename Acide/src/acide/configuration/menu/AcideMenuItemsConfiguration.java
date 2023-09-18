@@ -1418,11 +1418,11 @@ public class AcideMenuItemsConfiguration {
 		result.insertObject(modifyGrammar);
 		
 		//SAVE GRAMMAR
-		AcideMenuItemConfiguration saveGrammar = new AcideMenuItemConfiguration(AcideGrammarMenu.SAVE_GRAMMAR_NAME);
-		saveGrammar.setErasable(false);
-		saveGrammar.setVisible(true);
-		saveGrammar.setCommand("$SAVE_GRAMMAR");
-		result.insertObject(saveGrammar);
+//		AcideMenuItemConfiguration saveGrammar = new AcideMenuItemConfiguration(AcideGrammarMenu.SAVE_GRAMMAR_NAME);
+//		saveGrammar.setErasable(false);
+//		saveGrammar.setVisible(true);
+//		saveGrammar.setCommand("$SAVE_GRAMMAR");
+//		result.insertObject(saveGrammar);
 		
 		//SAVE GRAMMAR AS
 		AcideMenuItemConfiguration saveGrammarAs = new AcideMenuItemConfiguration(AcideGrammarMenu.SAVE_GRAMMAR_AS_NAME);

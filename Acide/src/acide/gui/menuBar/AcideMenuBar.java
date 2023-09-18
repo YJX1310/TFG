@@ -381,9 +381,9 @@ public class AcideMenuBar extends JMenuBar {
 			modifyGrammar.setVisible(
 					AcideMenuConfiguration.getInstance().getIsDisplayed(AcideGrammarMenu.MODIFY_GRAMMAR_NAME));
 
-			AcideMenuItemConfiguration saveGrammar = grammar.getItem(AcideGrammarMenu.SAVE_GRAMMAR_NAME);
-			saveGrammar.setVisible(
-					AcideMenuConfiguration.getInstance().getIsDisplayed(AcideGrammarMenu.SAVE_GRAMMAR_NAME));
+//			AcideMenuItemConfiguration saveGrammar = grammar.getItem(AcideGrammarMenu.SAVE_GRAMMAR_NAME);
+//			saveGrammar.setVisible(
+//					AcideMenuConfiguration.getInstance().getIsDisplayed(AcideGrammarMenu.SAVE_GRAMMAR_NAME));
 
 			AcideMenuItemConfiguration saveGrammarAs = grammar.getItem(AcideGrammarMenu.SAVE_GRAMMAR_AS_NAME);
 			saveGrammarAs.setVisible(
@@ -683,9 +683,9 @@ public class AcideMenuBar extends JMenuBar {
 				modifyGrammar.setVisible(
 						AcideMenuConfiguration.getInstance().getIsDisplayed(AcideGrammarMenu.MODIFY_GRAMMAR_NAME));
 
-				AcideMenuItemConfiguration saveGrammar = grammar.getItem(AcideGrammarMenu.SAVE_GRAMMAR_NAME);
-				saveGrammar.setVisible(
-						AcideMenuConfiguration.getInstance().getIsDisplayed(AcideGrammarMenu.SAVE_GRAMMAR_NAME));
+//				AcideMenuItemConfiguration saveGrammar = grammar.getItem(AcideGrammarMenu.SAVE_GRAMMAR_NAME);
+//				saveGrammar.setVisible(
+//						AcideMenuConfiguration.getInstance().getIsDisplayed(AcideGrammarMenu.SAVE_GRAMMAR_NAME));
 
 				AcideMenuItemConfiguration saveGrammarAs = grammar.getItem(AcideGrammarMenu.SAVE_GRAMMAR_AS_NAME);
 				saveGrammarAs.setVisible(
@@ -770,24 +770,24 @@ public class AcideMenuBar extends JMenuBar {
 				modifyGrammar.setParameter("None");
 				// modifyGrammar.setCommand("");
 
-				AcideMenuItemConfiguration saveGrammar;
-				if (grammar.hasItem(AcideGrammarMenu.SAVE_GRAMMAR_NAME)) {
-					saveGrammar = grammar.getItem(AcideGrammarMenu.SAVE_GRAMMAR_NAME);
-					AcideMenuConfiguration.getInstance().setIsDisplayed(AcideGrammarMenu.SAVE_GRAMMAR_NAME,
-							saveGrammar.isVisible());
-					AcideMenuItemsConfiguration.getInstance().getSubmenu(AcideConfigurationMenu.CONFIGURATION_MENU_NAME)
-							.getSubmenu(AcideConfigurationMenu.GRAMMAR_NAME).getItemsManager()
-							.onlyOne(AcideGrammarMenu.SAVE_GRAMMAR_NAME);
-				} else {
-					saveGrammar = new AcideMenuItemConfiguration(AcideGrammarMenu.SAVE_GRAMMAR_NAME);
-					saveGrammar.setVisible(
-							AcideMenuConfiguration.getInstance().getIsDisplayed(AcideGrammarMenu.SAVE_GRAMMAR_NAME));
-					saveGrammar.setCommand("$SAVE_GRAMMAR");
-					grammar.insertObject(saveGrammar);
-				}
-				saveGrammar.setErasable(false);
-				saveGrammar.setParameter("None");
-				// saveGrammar.setCommand("");
+//				AcideMenuItemConfiguration saveGrammar;
+//				if (grammar.hasItem(AcideGrammarMenu.SAVE_GRAMMAR_NAME)) {
+//					saveGrammar = grammar.getItem(AcideGrammarMenu.SAVE_GRAMMAR_NAME);
+//					AcideMenuConfiguration.getInstance().setIsDisplayed(AcideGrammarMenu.SAVE_GRAMMAR_NAME,
+//							saveGrammar.isVisible());
+//					AcideMenuItemsConfiguration.getInstance().getSubmenu(AcideConfigurationMenu.CONFIGURATION_MENU_NAME)
+//							.getSubmenu(AcideConfigurationMenu.GRAMMAR_NAME).getItemsManager()
+//							.onlyOne(AcideGrammarMenu.SAVE_GRAMMAR_NAME);
+//				} else {
+//					saveGrammar = new AcideMenuItemConfiguration(AcideGrammarMenu.SAVE_GRAMMAR_NAME);
+//					saveGrammar.setVisible(
+//							AcideMenuConfiguration.getInstance().getIsDisplayed(AcideGrammarMenu.SAVE_GRAMMAR_NAME));
+//					saveGrammar.setCommand("$SAVE_GRAMMAR");
+//					grammar.insertObject(saveGrammar);
+//				}
+//				saveGrammar.setErasable(false);
+//				saveGrammar.setParameter("None");
+//				// saveGrammar.setCommand("");
 
 				AcideMenuItemConfiguration saveGrammarAs;
 				if (grammar.hasItem(AcideGrammarMenu.SAVE_GRAMMAR_AS_NAME)) {
