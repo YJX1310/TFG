@@ -83,7 +83,7 @@ import acide.resources.AcideResourceManager;
 /**
  * ACIDE - A Configurable IDE paths configuration window.
  * 
- * @version 0.20
+ * @version 0.19
  * @see JFrame
  */
 public class AcidePathsConfigurationWindow extends JFrame {
@@ -733,7 +733,7 @@ public class AcidePathsConfigurationWindow extends JFrame {
 	 * ACIDE - A Configurable IDE paths configuration window javac browse button
 	 * action listener.
 	 * 
-	 * @version 0.20
+	 * @version 0.19
 	 * @see ActionListener
 	 */
 	class JavacBrowseButtonListener implements ActionListener {
@@ -769,7 +769,7 @@ public class AcidePathsConfigurationWindow extends JFrame {
 	 * ACIDE - A Configurable IDE paths configuration window java browse button
 	 * action listener.
 	 * 
-	 * @version 0.20
+	 * @version 0.19
 	 * @see ActionListener
 	 */
 	class JavaBrowseButtonListener implements ActionListener {

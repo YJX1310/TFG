@@ -74,7 +74,7 @@ import acide.process.parser.grammar.ExprParser;
 /**
  * ACIDE - A Configurable IDE grammar analyzer.
  * 
- * @version 0.20
+ * @version 0.19
  * @see Thread
  */
 public class AcideGrammarAnalyzer extends Thread {
@@ -181,7 +181,7 @@ public class AcideGrammarAnalyzer extends Thread {
 	 * of antlr4
 	 * 
 	 * @param text the text to analyze
-	 * @version 0.20
+	 * @version 0.19
 	 */
 	private void constructor(String text) {
 		// Store the text
@@ -301,7 +301,7 @@ public class AcideGrammarAnalyzer extends Thread {
 	 * ACIDE - A Configurable IDE grammar analyzer analyze the entire text according
 	 * to the grammar rules
 	 * 
-	 * @version 0.20
+	 * @version 0.19
 	 */
 	public void analyzeText() {
 		try {

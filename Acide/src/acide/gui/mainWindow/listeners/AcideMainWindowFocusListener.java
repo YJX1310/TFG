@@ -61,7 +61,7 @@ import acide.gui.mainWindow.AcideMainWindow;
 /**
  * ACIDE - A Configurable IDE Main Window Focus Listener
  * 
- * version 0.20
+ * version 0.19
  * see @WindowFocusListener
  */
 public class AcideMainWindowFocusListener implements WindowFocusListener {

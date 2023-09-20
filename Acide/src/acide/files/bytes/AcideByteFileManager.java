@@ -280,7 +280,7 @@ public class AcideByteFileManager {
 	 * 
 	 * @param source
 	 *            source path.
-	 * @version 0.20
+	 * @version 0.19
 	 */
 	public void addPackage(String source) {
 		
@@ -319,7 +319,7 @@ public class AcideByteFileManager {
 	 * 
 	 * @param source
 	 *            source path.
-	 * @version 0.20
+	 * @version 0.19
 	 */
 	public void processGrammarFile(String source) {
 		
@@ -417,7 +417,7 @@ public class AcideByteFileManager {
 	 * Save the grammar with specific format in to the "target" file
 	 * @param target
 	 * 			target path.
-	 * @version 0.20
+	 * @version 0.19
 	 */
 	public void saveGrammar(String target) {
 		String syntaxFile = AcideGrammarFileCreationProcess.DEFAULT_PATH + "syntaxRules.txt";

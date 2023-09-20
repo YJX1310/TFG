@@ -64,7 +64,7 @@ import acide.log.AcideLog;
 /**
  * ACIDE - A Configurable IDE save as grammar menu item listener.
  * 
- * @version 0.20
+ * @version 0.19
  * @see ActionListener
  */
 public class AcideSaveAsGrammarMenuItemListener implements ActionListener {

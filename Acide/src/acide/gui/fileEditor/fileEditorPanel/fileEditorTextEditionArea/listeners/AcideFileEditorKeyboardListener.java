@@ -68,7 +68,7 @@ import acide.process.parser.AcideGrammarAnalyzer;
 /**
  * ACIDE - A Configurable IDE file editor text edition area keyboard listener.
  * 
- * @version 0.20
+ * @version 0.19
  * @see FocusListener
  */
 public class AcideFileEditorKeyboardListener extends KeyAdapter {

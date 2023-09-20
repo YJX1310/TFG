@@ -49,14 +49,22 @@ package acide.gui.menuBar.configurationMenu.grammarMenu.listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import acide.files.bytes.AcideByteFileManager;
+import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideHighlightError;
+import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
+import acide.log.AcideLog;
 import acide.process.parser.AcideGrammarAnalyzer;
+import acide.process.parser.AcideGrammarFileCreationProcess;
+import acide.resources.AcideResourceManager;
+import acide.resources.exception.MissedPropertyException;
 
 /**																
  * ACIDE - A Configurable IDE analysis text menu item listener.										
  *					
- * @version 0.20	
+ * @version 0.19	
  * @see ActionListener																													
  */
 public class AcideAnalyzeTextMenuItemListener implements ActionListener{
@@ -71,9 +79,43 @@ public class AcideAnalyzeTextMenuItemListener implements ActionListener{
 	}
 
 	public static void action(ActionEvent actionEvent){
+		// Gets the selected file editor panel
+		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
+				.getFileEditorManager().getSelectedFileEditorPanel();
+		
 		// Clear all the errors highlights
 		AcideHighlightError.getInstance().clearErrorHighlight();
 		
+		if(!AcideMainWindow.getInstance().getFirstAnalysis()) {
+			
+			try {
+				// Get the previous analyze
+				String previous = AcideResourceManager.getInstance().getProperty("previousAnalyze");
+				if(!selectedFileEditorPanel.getCurrentGrammarConfiguration().getName().equals(previous)) {
+					compileAndAnalyze();
+				}
+				else {
+					analyze();
+				}
+			} catch (MissedPropertyException e) {
+				// Updates the log
+				AcideLog.getLog().error(e.getMessage());
+			}
+		}
+		else {
+			compileAndAnalyze();
+			
+			// Set first analysis to false
+			AcideMainWindow.getInstance().setFirstAnalysis(false);
+		}
+	}
+	
+	
+	/**
+	 * Invoke the acide grammar analyzer
+	 * 
+	 */
+	private static void analyze() {
 		// Get the file editor panel analyzer
 		AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
 		
@@ -81,7 +123,30 @@ public class AcideAnalyzeTextMenuItemListener implements ActionListener{
 		
 		// Analyze the text
 		analyzer.start();
-
+	}
+	
+	/**
+	 * Invoke the acide grammar file creation process
+	 * 
+	 */
+	private static void compileAndAnalyze() {
+		// Gets the selected file editor panel
+		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
+				.getFileEditorManager().getSelectedFileEditorPanel();
+		
+		String absolutePath = selectedFileEditorPanel.getCurrentGrammarConfiguration().getPath();
+		
+		// Process the file grammar
+		AcideByteFileManager.getInstance().processGrammarFile(absolutePath);
+		
+		AcideGrammarFileCreationProcess process = new AcideGrammarFileCreationProcess(
+				absolutePath, false, AcideLanguageManager.getInstance().getLabels()
+				.getString("s35"), true);
+		
+		process.setLock(AcideLanguageManager.getInstance().getLabels().getString("s2439"));
+		
+		// Starts the process
+		process.start();
 	}
 	
 }

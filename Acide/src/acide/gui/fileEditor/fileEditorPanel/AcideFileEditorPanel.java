@@ -82,7 +82,7 @@ import acide.process.parser.AcideGrammarAnalyzer;
 /**
  * ACIDE - A Configurable IDE file editor panel.
  * 
- * @version 0.20
+ * @version 0.19
  * @see JPanel
  */
 public class AcideFileEditorPanel extends JPanel {

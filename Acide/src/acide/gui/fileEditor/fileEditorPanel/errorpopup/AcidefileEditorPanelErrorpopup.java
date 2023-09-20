@@ -67,7 +67,7 @@ import acide.language.AcideLanguageManager;
 /**
  * ACIDE - A Configurable IDE file editor panel error popup.
  * 
- * @version 0.20
+ * @version 0.19
  * @see JFrame
  */
 

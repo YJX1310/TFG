@@ -65,6 +65,8 @@ import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
 import acide.process.parser.AcideGrammarAnalyzer;
 import acide.process.parser.AcideGrammarFileCreationProcess;
+import acide.resources.AcideResourceManager;
+import acide.resources.exception.MissedPropertyException;
 
 /**
  * <p>
@@ -79,7 +81,7 @@ import acide.process.parser.AcideGrammarFileCreationProcess;
  * except in the action listener of the closing buttons in the tabbed pane.
  * </p>
  * 
- * @version 0.20
+ * @version 0.19
  * @see ChangeListener
  */
 public class AcideFileEditorManagerChangeListener implements ChangeListener {
@@ -155,27 +157,55 @@ public class AcideFileEditorManagerChangeListener implements ChangeListener {
                 AcideHighlightError.getInstance().clearErrorHighlight();
             }
 			
-			// If complete text analysis or incremental analysis is activated then
-			if(AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-					.getAnalyzeMenu().getIncrementalAnalysisCheckBoxMenuItem().isSelected() 
-					|| AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
-					.getAnalyzeMenu().getCompleteTextAnalysisCheckBoxMenuItem().isSelected()) {
-				// Process the current grammar
-				AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
-						.getCurrentGrammarConfiguration().getPath());
+			try {
+				boolean change = false;
 				
-				AcideGrammarFileCreationProcess fileCreationProcess = new AcideGrammarFileCreationProcess(AcideMainWindow
-						.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
-						.getCurrentGrammarConfiguration().getPath(), false, 
-						AcideLanguageManager.getInstance().getLabels().getString("s35"), false);
+				// Gets the previousFileEditorPanel value
+				String previous = AcideResourceManager.getInstance().getProperty("previousFileEditorPanel");
+				
+				if(!selectedFileEditorPanel.getCurrentGrammarConfiguration().getName().equals(previous)) {
+					AcideResourceManager.getInstance().setProperty("previousFileEditorPanel",
+							selectedFileEditorPanel.getCurrentGrammarConfiguration().getName());
+					change = true;
+				}
+				
+				// If complete text analysis or incremental analysis is activated then
+				if(AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
+						.getAnalyzeMenu().getIncrementalAnalysisCheckBoxMenuItem().isSelected() 
+						|| AcideMainWindow.getInstance().getMenu().getConfigurationMenu().getGrammarMenu()
+						.getAnalyzeMenu().getCompleteTextAnalysisCheckBoxMenuItem().isSelected()) {
+					
+					// If grammar changed
+					if(change) {
+						AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
+								.getCurrentGrammarConfiguration().getPath());
+						
+						AcideGrammarFileCreationProcess fileCreationProcess = new AcideGrammarFileCreationProcess(AcideMainWindow
+								.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
+								.getCurrentGrammarConfiguration().getPath(), false, 
+								AcideLanguageManager.getInstance().getLabels().getString("s35"), true);
 
-				fileCreationProcess.setLock(AcideLanguageManager.getInstance().getLabels().getString("s2438"));
+						fileCreationProcess.setLock(AcideLanguageManager.getInstance().getLabels().getString("s2438"));
+						
+						// Starts the process
+						fileCreationProcess.start();
+					}
+					else {
+						// Get the file editor panel analyzer
+						AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
+						
+						analyzer.setLock(AcideLanguageManager.getInstance().getLabels().getString("s2439"));
+						
+						// Analyze the text
+						analyzer.start();
+					}
+				}
 				
-				
-				// Starts the process
-				fileCreationProcess.start();
-				
+			} catch (MissedPropertyException e) {
+				// Updates the log
+				AcideLog.getLog().error(e.getMessage());
 			}
+
 
 			// Gets its number of lines
 			int numLines = rootElement.getElementCount();

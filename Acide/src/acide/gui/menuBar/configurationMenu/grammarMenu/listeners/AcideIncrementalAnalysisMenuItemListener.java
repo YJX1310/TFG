@@ -64,7 +64,7 @@ import acide.process.parser.AcideGrammarFileCreationProcess;
 /**																
  * ACIDE - A Configurable IDE auto analysis check box menu item listener.										
  *					
- * @version 0.20	
+ * @version 0.19	
  * @see ActionListener																													
  */
 public class AcideIncrementalAnalysisMenuItemListener implements ActionListener{

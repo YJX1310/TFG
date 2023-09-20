@@ -69,12 +69,15 @@ import acide.configuration.workbench.recentFiles.AcideRecentFilesConfiguration;
 import acide.configuration.workbench.recentProjects.AcideRecentProjectsConfiguration;
 import acide.configuration.workbench.utils.AcideFileEditorLoader;
 import acide.files.AcideFileManager;
+import acide.files.bytes.AcideByteFileManager;
 import acide.files.project.AcideProjectFile;
 import acide.gui.debugPanel.debugDatalogPanel.debugDatalogConfiguration.AcideDebugDatalogConfigurationWindow;
+import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.gui.menuBar.configurationMenu.themesMenu.AcideThemesMenu;
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
+import acide.process.parser.AcideGrammarFileCreationProcess;
 import acide.resources.AcideResourceManager;
 import acide.resources.exception.MissedPropertyException;
 
@@ -316,6 +319,26 @@ public class AcideWorkbenchConfiguration {
 
 		// Loads the main window configuration
 		loadMainWindowConfiguration();
+		
+		// Loads the grammar configuration
+		loadGrammarConfiguration();
+	}
+
+	private void loadGrammarConfiguration() {
+		// Gets the selected file editor index from the workbench configuration
+		int selectedFileEditorIndex = AcideMainWindow.getInstance()
+				.getFileEditorManager().getFileEditorPanelAt(
+						AcideWorkbenchConfiguration.getInstance()
+								.getFileEditorConfiguration()
+								.getSelectedFileEditorPanelName());
+		
+		// Get the selected file editor panel with the index
+		AcideFileEditorPanel selectedFileEditor = AcideMainWindow.getInstance()
+				.getFileEditorManager().getFileEditorPanelAt(selectedFileEditorIndex);
+		
+		// Updates the previousFileEditorPanel
+		AcideResourceManager.getInstance().setProperty("previousFileEditorPanel"
+				, selectedFileEditor.getCurrentGrammarConfiguration().getName());
 	}
 
 	private void loadDatabaseConfiguration() {

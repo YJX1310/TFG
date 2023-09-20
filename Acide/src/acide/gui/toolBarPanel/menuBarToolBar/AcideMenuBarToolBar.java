@@ -69,7 +69,7 @@ import acide.log.AcideLog;
  * 
  * Its buttons execute internal commands to ACIDE - A Configurable IDE.
  * 
- * @version 0.20
+ * @version 0.19
  * @see ArrayList
  */
 public class AcideMenuBarToolBar extends ArrayList<Component> {
@@ -1211,7 +1211,7 @@ public class AcideMenuBarToolBar extends ArrayList<Component> {
 	 * ACIDE - A Configurable IDE menu bar tool bar analyze file button mouse
 	 * listener
 	 * 
-	 * @version 0.20
+	 * @version 0.19
 	 * @see MouseListener
 	 */
 	class analizyTextButtonMouseListener implements MouseListener {

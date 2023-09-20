@@ -196,6 +196,11 @@ public class AcideMainWindow extends JFrame {
 	 * ACIDE - A Configurable IDE main window vertical length.
 	 */
 	private int _verticalSize = 0;
+	
+	/**
+	 * ACIDE - A Configurable IDE main window first analysis.
+	 */
+	private boolean _firstAnalysis = true ;
 
 	/**
 	 * Returns the unique ACIDE - A Configurable IDE main window class instance.
@@ -822,6 +827,24 @@ public class AcideMainWindow extends JFrame {
 	 */
 	public void setLastElementOnFocus(AcideLastElementOnFocus lastElementOnFocus) {
 		_lastElementOnFocus = lastElementOnFocus;
+	}
+	
+	/**
+	 * Sets a new value to the ACIDE - A Configurable IDE main window first analysis
+	 * 
+	 * @param value new value to set.
+	 */
+	public void setFirstAnalysis(boolean value) {
+		_firstAnalysis = value;
+	}
+	
+	/**
+	 * Returns the ACIDE - A Configurable IDE main window first analysis.
+	 * 
+	 * @return the ACIDE - A Configurable IDE main window first analysis.
+	 */
+	public boolean getFirstAnalysis() {
+		return _firstAnalysis;
 	}
 
 	/**

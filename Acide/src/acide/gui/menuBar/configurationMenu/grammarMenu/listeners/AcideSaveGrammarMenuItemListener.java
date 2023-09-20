@@ -59,7 +59,7 @@ import javax.swing.JOptionPane;
 /**
  * ACIDE - A Configurable IDE save grammar menu item listener.
  * 
- * @version 0.20
+ * @version 0.19
  * @see ActionListener
  */
 public class AcideSaveGrammarMenuItemListener implements ActionListener {

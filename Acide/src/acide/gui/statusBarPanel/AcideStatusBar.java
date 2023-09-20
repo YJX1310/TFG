@@ -80,7 +80,7 @@ import acide.utils.AcideOSChecker;
 /**
  * ACIDE - A Configurable IDE status bar.
  * 
- * @version 0.20
+ * @version 0.19
  */
 public class AcideStatusBar extends JPanel {
 

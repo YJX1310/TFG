@@ -55,7 +55,7 @@ import org.antlr.v4.runtime.Token;
 
 /**
  * ACIDE - A Configurable IDE antlr error listener.
- * @version 0.20
+ * @version 0.19
  */
 public class myErrorListener extends BaseErrorListener {
 	

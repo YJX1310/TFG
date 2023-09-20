@@ -171,7 +171,7 @@ import acide.language.AcideLanguageManager;
 /**																
  * ACIDE - A Configurable IDE inserted items listeners manager.
  *					
- * @version 0.20																													
+ * @version 0.19																													
  */
 public class AcideInsertedItemListenersManager {
 	/**

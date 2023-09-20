@@ -100,7 +100,7 @@ import acide.resources.AcideResourceManager;
 /**
  * ACIDE - A Configurable IDE menu bar.
  * 
- * @version 0.20
+ * @version 0.19
  */
 public class AcideMenuBar extends JMenuBar {
 

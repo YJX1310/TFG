@@ -82,7 +82,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 /**
  * ACIDE - A Configurable IDE console menu items configuration.
  * 
- * @version 0.20
+ * @version 0.19
  */
 public class AcideMenuItemsConfiguration {
 	

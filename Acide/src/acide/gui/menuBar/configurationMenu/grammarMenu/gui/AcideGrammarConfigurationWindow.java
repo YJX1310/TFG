@@ -108,7 +108,7 @@ import acide.resources.AcideResourceManager;
 /**
  * ACIDE - A Configurable IDE grammar configuration window.
  * 
- * @version 0.20
+ * @version 0.19
  * @see JFrame
  */
 public class AcideGrammarConfigurationWindow extends JFrame {
@@ -712,7 +712,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 	 * ACIDE - A Configurable IDE grammar configuration window accept button
 	 * action listener.
 	 * 
-	 * @version 0.20
+	 * @version 0.19
 	 * @see ActionListener
 	 */
 	class AcceptButtonAction implements ActionListener {
@@ -858,7 +858,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 	 * ACIDE - A Configurable IDE grammar configuration window load rules button
 	 * action listener.
 	 * 
-	 * @version 0.20
+	 * @version 0.19
 	 * @see ActionListener
 	 */
 	class LoadRulesButtonAction implements ActionListener {
@@ -1004,7 +1004,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 	 * ACIDE - A Configurable IDE grammar configuration window load lexicon
 	 * button action listener.
 	 * 
-	 * @version 0.20
+	 * @version 0.19
 	 * @see ActionListener
 	 */
 	class LoadLexiconButtonAction implements ActionListener{
@@ -1073,7 +1073,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 	 * ACIDE - A Configurable IDE grammar configuration window load categories
 	 * button action listener.
 	 * 
-	 * @version 0.20
+	 * @version 0.19
 	 * @see ActionListener
 	 */
 	
@@ -1114,7 +1114,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 	 * ACIDE - A Configurable IDE grammar configuration window save categories
 	 * button action listener.
 	 * 
-	 * @version 0.20
+	 * @version 0.19
 	 * @see ActionListener
 	 */
 //	class SaveCategoriesButtonAction implements ActionListener {
@@ -1188,7 +1188,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 	 * ACIDE - A Configurable IDE grammar configuration window combo box item
 	 * class.
 	 * 
-	 * @version 0.20
+	 * @version 0.19
 	 * 
 	 */
 	class ComboBoxItem{
@@ -1226,7 +1226,7 @@ public class AcideGrammarConfigurationWindow extends JFrame {
 	 * ACIDE - A Configurable IDE grammar configuration window text field limit
 	 * class.
 	 * 
-	 * @version 0.20
+	 * @version 0.19
 	 */
 	class JTextFieldLimit extends PlainDocument {
 		/**

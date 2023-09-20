@@ -80,7 +80,7 @@ import acide.utils.IconsUtils;
 /**
  * ACIDE - A Configurable IDE grammar analyze menu.
  * 
- * @version 0.20
+ * @version 0.19
  * @see ActionListener
  */
 public class AcideGrammarAnalyzeMenu extends JMenu {
