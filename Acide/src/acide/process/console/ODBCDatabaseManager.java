@@ -2,7 +2,7 @@
  * ACIDE - A Configurable IDE
  * Official web site: http://acide.sourceforge.net
  *
- * Copyright (C) 2007-2013
+ * Copyright (C) 2007-2023
  * Authors:
  * 		- Fernando Sáenz Pérez (Team Director).
  *      - Version from 0.1 to 0.6:
@@ -28,6 +28,8 @@
  * 		- Version 0.19
  * 			- Carlos González Torres
  * 			- Cristina Lara López
+ * 			- Yuejie Xu
+ * 			- Yihang Zhuo
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
