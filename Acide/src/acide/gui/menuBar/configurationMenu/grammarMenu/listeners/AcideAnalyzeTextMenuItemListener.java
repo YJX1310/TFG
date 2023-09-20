@@ -2,7 +2,7 @@
  * ACIDE - A Configurable IDE
  * Official web site: http://acide.sourceforge.net
  *
- * Copyright (C) 2007-2013
+ * Copyright (C) 2007-2023
  * Authors:
  * 		- Fernando Sáenz Pérez (Team Director).
  *      - Version from 0.1 to 0.6:
@@ -28,6 +28,8 @@
  * 		- Version 0.19
  * 			- Carlos González Torres
  * 			- Cristina Lara López
+ * 			- Yuejie Xu
+ * 			- Yihang Zhuo
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,17 +49,9 @@ package acide.gui.menuBar.configurationMenu.grammarMenu.listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
-
-import acide.files.bytes.AcideByteFileManager;
-import acide.gui.fileEditor.fileEditorPanel.AcideFileEditorPanel;
 import acide.gui.fileEditor.fileEditorPanel.fileEditorTextEditionArea.utils.AcideHighlightError;
-import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
-import acide.log.AcideLog;
 import acide.process.parser.AcideGrammarAnalyzer;
-import acide.process.parser.AcideGrammarFileCreationProcess;
-import acide.resources.AcideResourceManager;
 
 /**																
  * ACIDE - A Configurable IDE analysis text menu item listener.										
@@ -77,26 +71,16 @@ public class AcideAnalyzeTextMenuItemListener implements ActionListener{
 	}
 
 	public static void action(ActionEvent actionEvent){
-		// Gets the selected file editor panel
-		AcideFileEditorPanel selectedFileEditorPanel = AcideMainWindow.getInstance()
-				.getFileEditorManager().getSelectedFileEditorPanel();
-		
 		// Clear all the errors highlights
 		AcideHighlightError.getInstance().clearErrorHighlight();
 		
-		// Process the current grammar
-		AcideByteFileManager.getInstance().processGrammarFile(selectedFileEditorPanel
-				.getCurrentGrammarConfiguration().getPath());
+		// Get the file editor panel analyzer
+		AcideGrammarAnalyzer analyzer = new AcideGrammarAnalyzer();
 		
-		AcideGrammarFileCreationProcess fileCreationProcess = new AcideGrammarFileCreationProcess(AcideMainWindow
-				.getInstance().getFileEditorManager().getSelectedFileEditorPanel()
-				.getCurrentGrammarConfiguration().getPath(), false, 
-				AcideLanguageManager.getInstance().getLabels().getString("s2438"), true);
+		analyzer.setLock(AcideLanguageManager.getInstance().getLabels().getString("s2439"));
 		
-		fileCreationProcess.setLock(AcideLanguageManager.getInstance().getLabels().getString("s2439"));
-		
-		// Starts the process
-		fileCreationProcess.start();
+		// Analyze the text
+		analyzer.start();
 
 	}
 	
